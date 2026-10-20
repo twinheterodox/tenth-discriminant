@@ -143,16 +143,44 @@ below 2,000 and confirms the nine survivors by reduced-form enumeration.
 The programs use only the Python standard library. The eleven-page PDF
 has a clean LaTeX build and has been rendered and visually inspected.
 
-**Independent mathematical review of v5 is pending.** Codex developed
-the new derivation, paper, and verification programs. The exact
-arithmetic certificate and finite examples do not establish the general
-v5 proof. V4's completed independent verification applies to the cited
-earlier result, not to the new v5 argument.
+**V5 has passed a manual mathematical audit with exact computational
+checks**, as confirmed on 20 October 2026. This is not formal verification.
+The audit reported one minor wording correction in §6.2: `(log R)/S`,
+where `S = floor(R/110)`, is not itself decreasing between floor jumps.
+The justification should explicitly use the upper bound
+`110.001 log(R)/R`, which decreases for `R >= M > e`. The certificate
+already uses this bound, so the conclusion is unaffected.
+
+The reviewed release is v0.5.0, commit
+[7a883b7](https://github.com/twinheterodox/tenth-discriminant/commit/7a883b764213cc52c76c9849925b823861eefc38).
+The [supplied audit comment](versions/v5.1/AUDIT.md) is retained with the
+correction. No reviewer identity or longer report was supplied. Codex
+developed the argument and programs and applied the reported wording
+correction in v0.5.1. The original v0.5.0 paper, tag, bundle, and
+publication-time review record are unchanged.
 
 The [v5 review record at publication](versions/v5/REVIEW.md) specifies
 the checks. The stated Rosser–Schoenfeld estimates and classical
 quadratic and analytic identities remain external inputs. No Lean
 formalization is supplied.
+
+## v0.5.1 — wording correction following the v5 audit
+
+The corrected §6.2 explicitly gives the chain
+`(log R)/S <= 110.001 log(R)/R <= 110.001 log(M)/M < 0.00004`
+and applies monotonicity to `(log R)/R`. The bound remains `q < 2,000`.
+The generating assistant checked that the rest of the mathematical text
+is unchanged and confirmed the two relevant exact certificate checks.
+All certificate calculations and numerical results are retained; only
+the final printed review-status sentence changes. The full suite was
+not rerun for this wording patch. The PDF was rebuilt, rendered, and
+visually inspected.
+
+The [v0.5.1 verification record](versions/v5.1/REVIEW.md) distinguishes
+the completed manual audit of v5 from the implementation of its finding.
+No separate independent audit of the patch release is claimed. The
+original v0.5.0 release prominently links to the corrected paper while
+preserving its original downloadable files.
 
 ## Recording future reviews
 
