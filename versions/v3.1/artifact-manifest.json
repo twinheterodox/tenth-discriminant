@@ -1,0 +1,19 @@
+{
+  "version": "v0.3.1",
+  "sha256": {
+    ".gitignore": "42902f3fa3a16917eabb81a605976aef99a46c87c141f36dd98cfb2f3dd31688",
+    "README.md": "a05f41a20d8052baa655c9465e49b1ef5a88c5be5140387717826818b2241162",
+    "REVIEW.md": "2c184b945f023dc3542ec3c31481454790209c34920e7495903ad7b3e975a246",
+    "checks.txt": "29a296efea697643dac24aa5c18d3b1f27d3569104da3e9823ebb9f6a5462ad7",
+    "finite_range_checks.txt": "93b28fa0569f2837de1cdc7abc78c4abf9b76a9a859ff86316ae494366ac6ab3",
+    "output/pdf/proof.pdf": "d6352dd58abcbe267a121f06cc412ec3b3de25ad6134e56cb0865faef153a286",
+    "proof.tex": "3a31b9f884f972e77d3962afda03ed7f33f9749d16176065df0f704005488ffc",
+    "sieve_cpp_output.txt": "a35b84bff2e4d80f319abed00a618fcbd3f475fe85f73f75c4673e4c0990f0b8",
+    "sieve_python_output.txt": "8d29b667467ac19170d4e977c707d2c7046d48992c3eeb1b98521d926b1f1a0d",
+    "sources.json": "834c9e642904757b98f2853439944dc27d062ae7e1dcb62dd66f6cbe0e3dfb9a",
+    "verify_direct_prime.py": "94faba2270d4b9cbda7b25ae1897df6a2a1db8c7c9211f3bef6abc91b7d078ae",
+    "verify_finite_range.py": "9857305b2cd01089c9dd8033b321f731a73a1cef3066e7768a4ec408b617cbd2",
+    "verify_independent.py": "21a213fba70e87171ffbf364a5a06c40678a6c42fe04df30efbf5e5392f3f789",
+    "verify_sieve.cpp": "553ee10a0235fe46005bb4756e84772395ce2f2e68d9aff6bdf06bf249b753b2"
+  }
+}

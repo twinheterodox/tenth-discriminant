@@ -1,0 +1,730 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array}
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+\hypersetup{pdftitle={A direct split-prime bound for the tenth discriminant: expanded v3},
+ pdfauthor={Research note prepared with Codex},
+ pdfsubject={Version 0.3.1: the bound q < 1,000,000 and its finite verification}}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\OK}{\mathcal O_K}
+\title{A direct split-prime bound for the tenth discriminant\\
+\large Version 3, expanded exposition: \(q<10^6\)}
+\author{Research note prepared with Codex}
+\date{Version 0.3.1 --- 20 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Assuming the determinant construction and Lemmas 4.2, 5.1, and 6.2 of
+Banks, we obtain \(q<10^6\) for imaginary quadratic fields of class
+number one. This improves the preceding cutoff \(5\cdot10^7\) by a
+factor of 50. The key ingredient is a direct upper bound on the weighted
+sum of split primes, obtained by counting primitive lattice points.
+It replaces both the theta-integral zero construction and the
+zero-dependent prime-bias estimate. Banks's determinant argument remains
+an external input. This expanded version supplies the background,
+determinant notation, and finite verification within one paper; no
+earlier version is needed. The bound and analytic constants are unchanged.
+No Heegner method or small-conductor zero computation is used.
+\end{abstract}
+
+\paragraph{Status.}
+This is an AI-assisted research draft. Exact arithmetic checks and finite
+computations are supplied, but an independent mathematical cross-check
+of the v3 argument is pending. The completed check of v2 does not cover
+this argument. The original v0.3.0 paper remains available unchanged.
+
+\section{The problem, the result, and the route through the proof}
+
+Tao's tenth-discriminant challenge \cite{tao} asks how large a further imaginary
+quadratic field of class number one could be, using arguments related to
+Siegel zeroes rather than Heegner's solution of the class-number-one
+problem. Our aim is first to obtain an explicit analytic cutoff, and
+then to check every smaller candidate by elementary integer arithmetic.
+The two stages are distinct: the analytic argument supplies the bound
+\(10^6\); the finite check leaves exactly the nine familiar fields.
+
+Write \(K=\Q(\sqrt d)\), where \(d<0\) is squarefree. Its field
+discriminant is the \emph{fundamental discriminant}
+\[
+ D=\begin{cases}
+ d,&d\equiv1\pmod4,\\
+ 4d,&d\equiv2,3\pmod4.
+ \end{cases}
+\]
+Put
+\[
+ q=|D|,\qquad K=\Q(\sqrt D),\qquad R=\sqrt q,\qquad L=\log q.
+\]
+Thus \(q\) is the absolute field discriminant; for example,
+\(\Q(i)\) has \(q=4\). All logarithms are natural.
+The class number \(h(K)\) counts ideal classes. We use the equivalence
+\[
+ h(K)=1
+ \quad\Longleftrightarrow\quad
+ \text{every nonzero integral ideal of \(\OK\) is principal}.
+\]
+Write \(\chi_D(n)=(D/n)\) for the quadratic Kronecker character of
+conductor \(q\). The meaning of its prime values is explained below.
+
+\begin{samepage}
+\begin{theorem}\label{main}
+Assume Banks's determinant construction and Lemmas 4.2, 5.1, and 6.2
+in \cite{banks}, including the interpolation results used in that
+construction. Then
+\[
+ h(K)=1\quad\Longrightarrow\quad q<1\,000\,000.
+\]
+Together with the finite verification in Section~\ref{finite}, this gives
+\[
+ h(K)=1\quad\Longleftrightarrow\quad
+ q\in\{3,4,7,8,11,19,43,67,163\}.
+\]
+\end{theorem}
+\end{samepage}
+
+Here is the route through the proof.
+\begin{enumerate}
+\item Class number one turns prime ideals of norm \(p\) into algebraic
+integers of norm \(p\). A split prime supplies two such lattice points
+in the upper half-plane.
+\item A geometric count, followed by a small inclusion--exclusion sieve,
+bounds the weighted sum of split primes. Subtracting split and ramified
+primes from an explicit total prime sum gives many inert primes.
+\item Banks's construction supplies a nonzero integer \(J\). Its
+absolute size has an upper bound, while each inert prime forces a large
+prime-power divisor of \(J\). For \(q\ge10^6\), the lower bound exceeds
+the upper bound.
+\item Below \(10^6\), a separate exhaustive residue check excludes all
+but nine discriminants. Reduced binary quadratic forms verify that
+each survivor actually has class number one.
+\end{enumerate}
+
+The standard background is quadratic ideal theory and reduction of
+positive binary quadratic forms; the facts needed from both are stated
+in this paper. We also use the explicit prime estimates of
+Rosser--Schoenfeld, stated in Section~\ref{prime-mass}.
+Section~\ref{det-input} defines the determinant and states the exact
+external bounds used from Banks. It does not reprove his interpolation
+theorem. The present proof constructs no zero of an \(L\)-function and
+does not use Banks's Theorem 1.1, Lemma 2.1, or Corollary 6.3.
+
+\section{Quadratic integers, prime ideals, and the norm lattice}\label{background}
+
+Embed \(K\) in \(\mathbb C\), choosing \(\sqrt D=i\sqrt q\).
+The ring of integers has the explicit basis
+\[
+ \OK=\Z+\Z\omega,\qquad
+ \omega=\begin{cases}
+ (1+\sqrt D)/2,&D\text{ odd},\\
+ \sqrt D/2,&D\text{ even}.
+ \end{cases}
+\]
+In particular, \(\operatorname{Re}\omega=u\in\{0,1/2\}\) and
+\(\operatorname{Im}\omega=R/2\). The field norm is
+\(\operatorname{N}_{K/\Q}(\alpha)=\alpha\bar\alpha=|\alpha|^2\).
+For integer coordinates \(a,b\), write
+\[
+ Q(a,b):=\operatorname{N}_{K/\Q}(a+b\omega)
+        =(a+ub)^2+\frac q4b^2.
+\]
+It is a positive integer for \((a,b)\ne(0,0)\). An element is
+nonrational exactly when \(b\ne0\), so every nonrational integer
+has norm at least \(q/4\). An ordinary integer \(a\) has norm \(a^2\),
+which cannot be prime.
+
+For an integral ideal \(\mathfrak a\), its ideal norm is the index
+\(\operatorname{N}\mathfrak a=[\OK:\mathfrak a]\).
+For a principal ideal, this equals the field norm of a generator.
+The three possibilities for a rational prime \(p\) are
+\[
+\begin{array}{c|c|c}
+ \chi_D(p)&\text{factorization of }p\OK&\text{norms of prime ideals}\\ \hline
+ 1&\mathfrak p\,\bar{\mathfrak p},\ \mathfrak p\ne\bar{\mathfrak p}
+      &p,\ p\\
+ -1&p\OK\text{ is prime}&p^2\\
+ 0&\mathfrak p^2&p
+\end{array}
+\]
+These are called split, inert, and ramified, respectively. Ramification
+means \(p\mid D\). For odd \(p\), \(\chi_D(p)\) is zero if \(p\mid D\),
+and otherwise is \(1\) or \(-1\) according as \(D\) is a square or a
+nonsquare modulo \(p\). For \(p=2\), it is zero when \(D\) is even,
+\(1\) when \(D\equiv1\pmod8\), and \(-1\) when \(D\equiv5\pmod8\).
+
+\begin{lemma}[The small-prime obstruction]\label{small-prime}
+If \(h(K)=1\), every prime \(p<q/4\) is inert.
+\end{lemma}
+\begin{proof}
+A split or ramified prime has an ideal of norm \(p\). Under class
+number one, that ideal is \((\alpha)\) with
+\(\operatorname{N}_{K/\Q}(\alpha)=p\). The generator is nonrational,
+so the norm formula gives \(p\ge q/4\), a contradiction.
+\end{proof}
+
+For \(q>4\), the only units are \(\pm1\). Thus an ideal with one
+generator \(\alpha\) has exactly the two generators \(\alpha,-\alpha\).
+If its norm is prime, neither is real, and exactly one has positive
+imaginary part. Distinct split prime ideals therefore give exactly two
+points with \(b>0\) and norm \(p\). This explains the factor \(1/2\)
+in the split-prime estimate below.
+
+\section{Counting lattice points and imposing primitivity}\label{counting}
+
+For \(x\ge0\), define
+\[
+ A(x)=\#\{(a,b)\in\Z\times\Z_{\ge1}:Q(a,b)\le x\}.
+\]
+The region \(Q(a,b)\le x\) is an ellipse in the coordinate plane.
+The restriction \(b>0\) counts one half of the nonrational points.
+
+\begin{lemma}\label{lattice}
+For every \(x\ge0\),
+\[
+ \frac{\pi x}{R}-2\sqrt x-\frac{2\sqrt x}{R}
+ \le A(x)\le
+ \frac{\pi x}{R}+\frac{2\sqrt x}{R}.
+\]
+\end{lemma}
+\begin{proof}
+Put \(B=2\sqrt x/R\) and
+\(f(t)=2\sqrt{x-qt^2/4}\) on \([0,B]\).
+For each integer \(1\le b\le B\), the allowed real values of \(a\)
+form a closed interval of length \(f(b)\). Its integer count lies
+between \(f(b)-1\) and \(f(b)+1\). Since \(f\) is decreasing,
+\[
+ \int_0^B f(t)\,dt-f(0)
+ \le\sum_{b=1}^{\lfloor B\rfloor}f(b)
+ \le\int_0^B f(t)\,dt.
+\]
+The integral is \(\pi x/R\), and there are at most \(B\) intervals.
+This gives both bounds, including when \(B<1\).
+\end{proof}
+
+A pair \((a,b)\) is \emph{primitive} if \(\gcd(a,b)=1\). A common
+divisor \(d>1\) would make \(d^2\) divide \(Q(a,b)\), so every pair of
+prime norm is primitive. We only remove common factors among four
+small primes. This leaves a superset of the primitive pairs, which
+is sufficient for an upper bound. Set
+\[
+ P=2\cdot3\cdot5\cdot7=210,\qquad
+ A_P(x)=\#\{(a,b):b\ge1,\ Q(a,b)\le x,\ \gcd(a,b,P)=1\}.
+\]
+
+\begin{lemma}\label{primitive}
+For every \(x\ge0\),
+\[
+ A_P(x)\le\frac{\pi\rho}{R}x+B_R\sqrt x,
+ \qquad
+ \rho=\frac{768}{1225},\quad
+ B_R=\frac{88}{35}+\frac{192}{35R}.
+\]
+\end{lemma}
+\begin{proof}
+Write \(\mu(d)=(-1)^k\) when \(d\mid P\) has \(k\) prime factors.
+The pairs whose two coordinates are divisible by \(d\) correspond
+to the pairs counted by \(A(x/d^2)\). Inclusion--exclusion therefore gives
+\[
+ A_P(x)=\sum_{d\mid P}\mu(d)A(x/d^2).
+\]
+For positive coefficients use the upper bound of Lemma~\ref{lattice};
+for negative coefficients use its lower bound. The area coefficient is
+\[
+ \sum_{d\mid P}\frac{\mu(d)}{d^2}
+   =\prod_{p\mid P}(1-p^{-2})=\rho.
+\]
+Write
+\[
+ T=\sum_{d\mid P}\frac{|\mu(d)|}{d}=\frac{96}{35},\qquad
+ U=\sum_{d\mid P}\frac{\mu(d)}d=\frac8{35}.
+\]
+The boundary coefficient is
+\(2\sum_{\mu(d)=-1}d^{-1}+2T/R=T-U+2T/R=B_R\).
+\end{proof}
+
+\section{Direct bounds on split and ramified primes}
+
+Assume \(h(K)=1\) and \(q\ge10^6\), and put \(a_0=q/4\).
+If \(p\) splits, its two prime ideals of norm \(p\) are principal.
+As explained in Section~\ref{background}, there are exactly four generators
+of norm \(p\). They give two distinct pairs with \(b>0\).
+They are nonrational, and each satisfies \(\gcd(a,b,P)=1\), since
+\(d\mid a,b\) would force \(d^2\mid Q(a,b)=p\).
+Consequently,
+\begin{equation}\label{split-count}
+ S_+(X):=\sum_{\substack{p\le X\\\chi_D(p)=1}}\frac{\log p}{p}
+ \le\frac12\sum_{\substack{b\ge1,\ Q(a,b)\le X\\\gcd(a,b,P)=1}}
+                        \frac{\log Q(a,b)}{Q(a,b)}.
+\end{equation}
+
+All norms in this sum are at least \(a_0\).
+For \(f(t)=(\log t)/t\), we have
+\(-f'(t)=(\log t-1)/t^2>0\) on \([a_0,\infty)\).
+Partial summation expresses the weighted count as its endpoint term
+plus \(-\int A_P(t)f'(t)\,dt\); the lower endpoint uses
+\(A_P(a_0^-)=0\), so points of norm exactly \(a_0\) are included.
+For \(X\ge a_0\), inserting Lemma~\ref{primitive} gives
+\begin{align}
+ S_+(X)
+ &\le\frac12\left\{
+ A_P(X)\frac{\log X}{X}
+ +\int_{a_0}^X A_P(t)\frac{\log t-1}{t^2}\,dt\right\} \notag\\
+ &\le\frac{\pi\rho}{4R}
+       \bigl((\log X)^2-(\log a_0)^2+2\log a_0\bigr)
+   +\frac{B_R(\log a_0+1)}{\sqrt{a_0}}.\label{split-precise}
+\end{align}
+In the last line we dropped the nonpositive boundary term
+\(-B_R(\log X+2)/(2\sqrt X)\).
+Here \(\log a_0>2\), and \(\log a_0+1<L\) because \(\log4>1\).
+Also, for \(R\ge1000\),
+\[
+ \frac{\pi\rho}{4}<\frac{493}{1000},\qquad B_R<\frac{63}{25}.
+\]
+Thus the required direct split-prime bound is
+\begin{equation}\label{split-final}
+ S_+(X)<\frac{493}{1000R}(\log X)^2+\frac{126L}{25R}
+             \qquad(X\ge q/4).
+\end{equation}
+
+A ramified prime likewise has a principal prime ideal of norm \(p\).
+Its generator is nonrational, so \(p\ge q/4\). Hence
+\begin{equation}\label{ramified}
+ S_0(X):=\sum_{\substack{p\le X\\p\mid q}}\frac{\log p}{p}
+ \le\frac4q\sum_{p\mid q}\log p\le\frac{4L}{q}.
+\end{equation}
+Neither this estimate nor the split-prime count requires a separate
+reduction to prime discriminants.
+
+\section{Obtaining the inert-prime mass}\label{prime-mass}
+
+For any \(X>H\ge319\), the explicit prime estimates we use are
+\begin{equation}\label{mertens}
+ \sum_{H<p\le X}\frac{\log p}{p}
+ >\log X-\log H-\frac1{\log H},
+ \qquad
+ \vartheta(X):=\sum_{p\le X}\log p<2X.
+\end{equation}
+For completeness, Rosser--Schoenfeld's Theorem 6 \cite{rs} gives a constant \(C\)
+such that
+\[
+ \left|\sum_{p\le x}\frac{\log p}{p}-\log x-C\right|
+ <\frac1{2\log x}\qquad(x\ge319).
+\]
+Subtract the upper bound at \(H\) from the lower bound at \(X\).
+Since \((2\log X)^{-1}<(2\log H)^{-1}\), this proves the first
+inequality in \eqref{mertens}. Their Theorem 9 gives the stronger
+\(\vartheta(x)<1.01624x\) for \(x>0\), so also the second.
+
+Every prime is split, inert, or ramified. Removing the full split and
+ramified sums up to \(X\) removes at least their contributions in
+\((H,X]\). Thus
+\[
+ \sum_{\substack{H<p\le X\\\chi_D(p)=-1}}\frac{\log p}{p}
+ \ge \sum_{H<p\le X}\frac{\log p}{p}-S_+(X)-S_0(X).
+\]
+Combining \eqref{mertens}, \eqref{split-final}, and \eqref{ramified},
+for \(X>H\ge319\) and \(X\ge q/4\) we obtain
+\begin{equation}\label{inert}
+ \sum_{\substack{H<p\le X\\\chi_D(p)=-1}}\frac{\log p}{p}
+ >\log X-\log H-\frac1{\log H}
+  -\frac{493}{1000R}(\log X)^2
+  -\left(\frac{126}{25R}+\frac4q\right)L.
+\end{equation}
+
+\section{The determinant and the external results used}\label{det-input}
+
+We now define the objects whose estimates are taken from Banks. This
+section is an explicit statement of that input, not a new proof of his
+interpolation result. Our notation \(K\) denotes the quadratic field;
+the biquadratic field called \(K\) in Banks is denoted by \(E\) here.
+
+\subsection{The points, the rows, and the nonzero integer}
+
+Let \(d<0\) be the squarefree integer from Section 1, and set
+\[
+ \eta=\sqrt d,\qquad \xi=\sqrt2,\qquad
+ E=\Q(\eta,\xi),\qquad \mathcal O=\Z[\eta,\xi].
+\]
+The field \(E\) has degree four over \(\Q\). Its four automorphisms
+are \(1,\sigma,\tau,\sigma\tau\), where \(\sigma\) changes the sign
+of \(\eta\) and \(\tau\) changes the sign of \(\xi\). Elements of
+\(\mathcal O\) are algebraic integers, so their field norms are integers.
+
+Choose integers \(1\le H\le N\), and put \(M=N^{4/3}\). The real number
+\(M\) need not be an integer. The column set is
+\(\mathcal I=\{0,\ldots,N-1\}^4\), of cardinality \(N^4\). For each
+\(\boldsymbol n=(n_1,n_2,n_3,n_4)\in\mathcal I\), set
+\[
+ \theta_{\boldsymbol n}
+ =n_1+n_2\eta+n_3\xi+n_4\eta\xi.
+\]
+For \(\boldsymbol\alpha=(\alpha_1,\alpha_2,\alpha_3)
+\in\Z_{\ge0}^3\), form the row
+\[
+ \boldsymbol v_{\boldsymbol\alpha}
+ =\bigl(\theta_{\boldsymbol n}^{\alpha_1}
+       \sigma(\theta_{\boldsymbol n})^{\alpha_2}
+       \sigma\tau(\theta_{\boldsymbol n})^{\alpha_3}
+   \bigr)_{\boldsymbol n\in\mathcal I},
+ \qquad
+ w(\boldsymbol\alpha)=\alpha_1+H\alpha_2+H\alpha_3.
+\]
+Here \(z^0=1\), including at \(z=0\). Order the indices by increasing
+weight, breaking ties by any fixed rule, and retain a row if it is
+linearly independent over \(E\) of the earlier retained rows.
+Let \(\mathcal A\) be the retained index set.
+
+The interpolation and construction results in Banks's Sections 3--4
+give \(|\mathcal A|=N^4\) and a basis of the \(N^4\)-dimensional row
+space. Consequently, the following determinant and integer are nonzero:
+\[
+ \Delta=\det(\boldsymbol v_{\boldsymbol\alpha})_{\boldsymbol\alpha\in\mathcal A}
+       \in\mathcal O\setminus\{0\},\qquad
+ J=\operatorname{N}_{E/\Q}(\Delta)
+   =\Delta\,\sigma(\Delta)\,\tau(\Delta)\,\sigma\tau(\Delta)
+       \in\Z\setminus\{0\}.
+\]
+Define the degree sums
+\[
+ S_1=\sum_{\boldsymbol\alpha\in\mathcal A}\alpha_1,\qquad
+ S_{23}=\sum_{\boldsymbol\alpha\in\mathcal A}(\alpha_2+\alpha_3).
+\]
+These are the quantities denoted by \(S_1,S_{23}\) below.
+The argument uses their bounds; it never numerically constructs this
+enormous determinant.
+
+\subsection{The three estimates}
+
+For \(q\ge9\) and \(H^{2/3}N^{4/3}\ge2\cdot97^2\), the precise
+consequences of the cited lemmas are as follows.
+\begin{enumerate}
+\item \emph{Degree estimates (Lemma 4.2):}
+\begin{equation}\label{banks-degree}
+ S_1\ge\frac{N^4H^{2/3}M}{4\cdot97^2}>0,
+ \qquad
+ S_{23}\le192N^4H^{-1/3}M.
+\end{equation}
+\item \emph{Absolute-size estimate (Lemma 5.1):}
+\begin{equation}\label{banks-arch}
+ \frac14\log|J|
+ \le (S_1+S_{23})\left(\log N+\frac L2+\log8\right)
+                       +2N^4\log N.
+\end{equation}
+This bounds the determinant at its four complex embeddings.
+\item \emph{Prime-power divisibility (Lemma 6.2):}
+for every odd prime \(p>H\) with \(\chi_D(p)=-1\),
+\begin{equation}\label{banks-div}
+ p^{4E_p}\mid J,\qquad
+ E_p=\sum_{\boldsymbol\alpha\in\mathcal A}
+           \left\lfloor\frac{\alpha_1}{p}\right\rfloor.
+\end{equation}
+The factor four comes from taking the norm from \(E\): a factor
+\(p^{E_p}\) of \(\Delta\) contributes \(p^{4E_p}\) to its norm.
+\end{enumerate}
+
+The mechanism in the last estimate is the Frobenius congruence
+\(\theta^p\equiv g_p(\theta)\pmod{p\mathcal O}\), where \(g_p\)
+is \(\sigma\) or \(\sigma\tau\). In a row, exchanging \(p\) powers
+of the first variable for one power of either other variable decreases
+the weight when \(p>H\). Banks uses the resulting row operations to
+extract the stated prime powers. No hypothesis about a real zero is
+present in \eqref{banks-degree}--\eqref{banks-div}.
+
+\section{Applying the determinant estimates}\label{comparison}
+
+Take
+\[
+ H=10^9,\qquad N=q^{13},\qquad M=N^{4/3},\qquad
+ z=\frac{52}{3},\qquad \log M=zL.
+\]
+For \(q\ge10^6\), Banks's hypotheses
+\(q\ge9\), \(1\le H\le N\), and
+\(H^{2/3}N^{4/3}\ge2\cdot97^2\) hold, as do \(M>H\) and \(M\ge q/4\).
+All definitions and estimates of Section~\ref{det-input} therefore apply.
+Dividing the degree bounds \eqref{banks-degree} gives
+\[
+ \frac{S_{23}}{S_1}\le\frac{768\cdot97^2}{10^9}
+                  <r:=\frac{73}{10000},\qquad
+ \frac{N^4M}{S_1}\le\frac{4\cdot97^2}{10^6}
+                  <c:=\frac{19}{500}.
+\]
+Divide \eqref{banks-arch} by \(S_1\).
+Since \(N^4/S_1<c/M\), it gives
+\begin{equation}\label{arch}
+ \frac{\log|J|}{4S_1}
+ \le(1+r)\left(\log N+\frac L2+\log8\right)
+                         +\frac{2c\log N}{M}.
+\end{equation}
+
+There are \(N^4\) retained indices. The elementary bound
+\(\lfloor t\rfloor\ge t-1\) therefore gives
+\[
+ E_p\ge\frac{S_1}{p}-N^4.
+\]
+The powers in \eqref{banks-div} for different primes are coprime, so
+their product divides the nonzero integer \(J\). Hence
+\begin{align*}
+ \frac{\log|J|}{4S_1}
+ &\ge\sum_{\substack{H<p\le M\\\chi_D(p)=-1}}
+                       \frac{E_p}{S_1}\log p\\
+ &\ge\sum_{\substack{H<p\le M\\\chi_D(p)=-1}}\frac{\log p}{p}
+       -\frac{N^4}{S_1}
+        \sum_{\substack{H<p\le M\\\chi_D(p)=-1}}\log p.
+\end{align*}
+The last sum is at most \(\vartheta(M)<2M\), and
+\(N^4M/S_1<c\). Consequently,
+\begin{equation}\label{padic}
+ \frac{\log|J|}{4S_1}
+ \ge\sum_{\substack{H<p\le M\\\chi_D(p)=-1}}\frac{\log p}{p}-2c.
+\end{equation}
+This derives the lower bound from prime-power divisibility itself.
+
+Compare \eqref{arch} with \eqref{padic} and insert \eqref{inert}
+at \(X=M\). The leading lower term is \(\log M\), whereas the leading
+upper term is \((1+r)\log N=\tfrac34(1+r)\log M\).
+Moving the other terms to the right, using \(\log N=13L\), and
+dividing by \(L\) gives the necessary inequality
+\begin{align}
+ \left(\frac14-\frac{3r}{4}\right)z
+ &\le \frac{493}{1000}z^2\frac{L}{R}
+       +\frac{1+r}{2}+\frac{126}{25R}+\frac4q \notag\\
+ &\quad+\frac{\log H+(1+r)\log8+1/\log H+2c}{L}
+       +\frac{26c}{M}.\label{necessary}
+\end{align}
+
+\section{A uniform rational contradiction}\label{contradiction}
+
+The derivative of \((\log q)/\sqrt q\) is
+\(q^{-3/2}(1-\tfrac12\log q)\), so the function decreases for \(q>e^2\).
+Using \(q\ge10^6\), we have the uniform estimates
+\[
+ \begin{gathered}
+ \frac LR<\frac{13.816}{1000},\qquad L>13.815,\qquad R\ge1000,\qquad
+ \frac{\log H}{L}\le\frac32,\\
+ \log8<2.08,\qquad \frac1{\log H}<0.049,\qquad
+ \frac{26c}{M}<10^{-6}.
+ \end{gathered}
+\]
+The last inequality follows already from \(M\ge10^6\) and
+\(26c=0.988<1\). The logarithmic estimates are certified by rational
+Taylor bounds for the exponential function in the accompanying program.
+
+The left side of \eqref{necessary} equals
+\[
+ \left(\frac14-\frac34\frac{73}{10000}\right)\frac{52}{3}
+                  =\frac{127153}{30000}>4.238.
+\]
+Its right side is strictly less than the rational number
+\begin{align*}
+ \mathcal R={}&\frac{493}{1000}\left(\frac{52}{3}\right)^2
+                       \frac{13.816}{1000}
+             +\frac{1.0073}{2}+\frac32\\
+ &+\frac{1.0073(2.08)+0.049+0.076}{13.815}
+             +\frac{5.04}{1000}+\frac4{10^6}+\frac1{10^6}
+             <4.216.
+\end{align*}
+Every terminating decimal here denotes its exact rational value.
+More precisely, the certificate checks
+\[
+ \frac{127153}{30000}-\mathcal R
+   =\frac{867907363}{38375000000}>0.022.
+\]
+Every term has been bounded uniformly for all \(q\ge10^6\), rather
+than only at the endpoint. This contradicts \eqref{necessary} and
+proves the analytic cutoff in Theorem~\ref{main}.
+
+\section{The complete finite verification below the cutoff}\label{finite}
+
+We now justify the finite classification within this paper. It uses
+Lemma~\ref{small-prime}, not the determinant estimates. The finite
+discriminant search here is also distinct from the sieve by \(2,3,5,7\)
+in Section~\ref{counting}, which counts lattice points for one field.
+
+\subsection{Why these are all the candidates}
+
+If \(q>8\) and \(h(K)=1\), Lemma~\ref{small-prime} applies to \(p=2\).
+The splitting rule in Section~\ref{background} then gives
+\[
+ D\equiv5\pmod8,\qquad q\equiv3\pmod8.
+\]
+The fundamental negative discriminants with \(q\le8\) are exactly
+\(-3,-4,-7,-8\), by the definition in Section 1. Thus, after the
+analytic cutoff, every additional candidate lies in the finite set
+\[
+ 11\le q<1\,000\,000,\qquad q\equiv3\pmod8.
+\]
+For each odd prime \(p\) with \(4p<q\), the integer \(-q\) must be a
+nonzero nonsquare modulo \(p\). We exclude \(q\) if it fails even one
+of these necessary conditions.
+
+It is sufficient to use only primes \(p\le109\). The direct scan checks
+all \(124\,999\) integers in the displayed progression. It deliberately
+includes nonfundamental integers: omitting the squarefreeness test
+enlarges the candidate set and cannot discard a genuine field.
+Let \(T_p=\{a^2\bmod p:0\le a<p\}\), including zero. The complete
+exclusion rule can be written as the following Python pseudocode:
+\begin{verbatim}
+primes = [odd primes at most 109, generated by trial division]
+squares = {p: {a*a % p for a in range(p)} for p in primes}
+survivors = []
+for q in range(11, 1_000_000, 8):
+    if all((-q) % p not in squares[p]
+           for p in primes if 4*p < q):
+        survivors.append(q)
+\end{verbatim}
+The supplied executable program \texttt{verify\_finite\_range.py}
+implements this scan using only integer arithmetic. It gives exactly
+\[
+ \texttt{survivors}=[11,19,43,67,163].
+\]
+Its output records how many candidates each first rejecting prime
+eliminates; those counts sum to \(124\,994\). Adding the five survivors
+accounts for every scanned integer.
+
+\subsection{Why each surviving field has class number one}
+
+Passing the residue tests is only a necessary condition. To verify the
+survivors, use the classical correspondence between ideal classes of
+\(\OK\) and proper equivalence classes of primitive positive definite
+integral binary quadratic forms
+\[
+ f(x,y)=ax^2+bxy+cy^2,\qquad b^2-4ac=D=-q.
+\]
+Here primitive means \(\gcd(a,b,c)=1\), and proper equivalence means
+an integral change of variables of determinant one. For example, the
+form determines the ideal class represented by
+\(a\Z+\frac{-b+\sqrt D}{2}\Z\).
+The reduction theorem says that each class has exactly one representative
+with
+\[
+ |b|\le a\le c,\qquad
+ b\ge0\ \text{if }|b|=a\text{ or }a=c.
+\]
+Thus the number of these reduced forms is \(h(K)\).
+The inequalities imply
+\[
+ q=4ac-b^2\ge3a^2,\qquad
+ 1\le a\le\left\lfloor\sqrt{q/3}\right\rfloor.
+\]
+This makes the check exhaustive: enumerate these \(a\), then
+\(-a\le b\le a\), and retain
+\(c=(b^2+q)/(4a)\) exactly when it is an integer with \(c\ge a\),
+the gcd condition holds, and the boundary convention holds.
+
+The program checks that every survivor is a fundamental discriminant
+and enumerates its reduced forms. The complete result is
+\[
+\begin{array}{r|c@{\qquad}r|c@{\qquad}r|c}
+ q&(a,b,c)&q&(a,b,c)&q&(a,b,c)\\ \hline
+ 3&(1,1,1)&8&(1,0,2)&43&(1,1,11)\\
+ 4&(1,0,1)&11&(1,1,3)&67&(1,1,17)\\
+ 7&(1,1,2)&19&(1,1,5)&163&(1,1,41)
+\end{array}
+\]
+Each field has exactly one reduced form. This proves the remaining
+assertion of Theorem~\ref{main}, subject to the explicitly stated
+analytic inputs and the reproducible finite computation.
+
+\subsection{Relation to the larger existing certificate}
+
+The bundle also retains \texttt{verify\_sieve.cpp} and
+\texttt{verify\_independent.py}, with their original outputs. They check
+the larger interval \(q<10^{10}\), which contains the present one.
+For \(q\ge437\), they first combine the conditions for
+\(2,3,5,7,11,13,17\) into \(1440\) residue classes modulo
+\(8\cdot3\cdot5\cdot7\cdot11\cdot13\cdot17=2042040\).
+They then test primes from \(19\) through \(109\). All are eligible
+there because \(4\cdot109<437\). Of \(7\,051\,769\) candidates in that
+range, none survive. For \(11\le q<437\), they apply only the eligible
+conditions \(4p<q\), leaving the same five values.
+The C++ program builds residue classes by the Chinese remainder theorem;
+the Python program scans the initial classes and uses periodic bitsets.
+This is supporting evidence. The direct scan just described suffices
+to reproduce the finite part of the present proof.
+
+\section{Reproduction, verification scope, and version history}\label{reproduce}
+
+Run these commands from this version's directory:
+\begin{verbatim}
+python3 verify_direct_prime.py --sanity
+python3 verify_finite_range.py
+\end{verbatim}
+Both use only the Python standard library.
+The first records its output in \texttt{checks.txt} and passes 26 exact
+arithmetic checks and 22 finite sanity cases.
+The second checks the entire remaining candidate progression and the
+nine reduced-form counts; its output is in
+\texttt{finite\_range\_checks.txt}.
+
+\subsection{What the arithmetic certificate establishes}
+
+The 26 checks verify the sieve constants, determinant parameters,
+logarithmic estimates, and final rational contradiction. For
+\(x\ge0\) and an integer \(n\) with \(n+2>x\), put
+\(T_n(x)=\sum_{k=0}^n x^k/k!\). The bound used in the program is
+\[
+ T_n(x)\le e^x\le T_n(x)+
+ \frac{x^{n+1}}{(n+1)!}\frac1{1-x/(n+2)}.
+\]
+Indeed, after the first omitted term, each ratio of successive terms
+is at most \(x/(n+2)<1\), so a geometric series bounds the tail.
+All quantities are exact fractions. With \(n=160\), the program
+certifies, for example, \(e^{13.815}<10^6<e^{13.816}\), which proves
+the two logarithmic bounds. The classical inequality \(\pi<22/7\)
+is used to check the coefficient \(0.493\).
+
+The 22 sanity cases comprise 15 finite lattice comparisons and seven
+prime-norm multiplicity checks. The lattice examples compare direct
+enumeration with row counting, inclusion--exclusion, and the geometric
+bounds. The prime checks cover all primes at most \(2000\) for each
+of \(q=7,8,11,19,43,67,163\). These examples test the formulas and
+implementation; they do not prove the general counting lemmas.
+
+\subsection{What changed, and what remains external}
+
+The original v3 cutoff \(q<10^6\) \cite{v3}, all its analytic constants, and its
+26-check arithmetic certificate are unchanged in v0.3.1. This revision
+adds the setup and roadmap, defines the determinant objects and states
+their input bounds, expands the intermediate deductions, and includes
+the finite classification and a direct verifier for the exact remaining
+range. The preceding v2 cutoff was \(q<5\cdot10^7\); its theta-integral
+route is historical context and is not needed here.
+
+Banks's interpolation and determinant results, the Rosser--Schoenfeld
+prime estimates, and the stated classical quadratic theory remain
+mathematical inputs. The programs do not audit those results or
+formalize the general analytic deductions. No independent mathematical
+cross-check of v3 or Lean formalization is recorded here.
+Codex generated the v3 derivation, this expanded exposition, and the
+verification programs. The completed independent check of v2 remains
+scoped to v2. Source URLs and snapshot hashes are in
+\texttt{sources.json}; detailed review status is in \texttt{REVIEW.md}.
+
+\begin{thebibliography}{9}
+\bibitem{banks}
+W.~D.~Banks, \emph{On the OpenAI proof that Landau--Siegel zeros
+do not exist}, \href{https://arxiv.org/abs/2610.15483v1}
+{arXiv:2610.15483v1}, especially the determinant construction in
+Sections 3--4 and Lemmas 4.2, 5.1, and 6.2.
+\bibitem{rs}
+J.~B.~Rosser and L.~Schoenfeld,
+\emph{Approximate formulas for some functions of prime numbers},
+Illinois J. Math. \textbf{6} (1962), 64--94, Theorems 6 and 9.
+\href{https://doi.org/10.1215/ijm/1255631807}{doi:10.1215/ijm/1255631807}.
+\bibitem{tao}
+T.~Tao, \emph{An experimental AI-math challenge: using tenth-discriminant
+bounds to explore arguments ruling out Siegel zeroes},
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/}
+{challenge and discussion}, 20 October 2026.
+\bibitem{v3}
+\emph{A direct split-prime bound for the tenth discriminant},
+\href{https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.0}
+{original v3 release v0.3.0}, 20 October 2026.
+\end{thebibliography}
+\end{document}

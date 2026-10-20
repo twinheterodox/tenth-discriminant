@@ -1,7 +1,15 @@
 TENTH-DISCRIMINANT BOUNDS — VERSION INDEX
 20 October 2026
 
-Current research draft: v0.3.0, analytic cutoff q < 1,000,000.
+Current research draft: v0.3.1 (expanded v3), analytic cutoff q < 1,000,000.
+
+v3 expanded: versions/v3.1/README.md
+    Ten-page proof and finite classification: versions/v3.1/output/pdf/proof.pdf
+    No earlier paper is needed. Bound and analytic constants unchanged.
+    26 arithmetic checks, 22 finite sanity cases, and an exhaustive scan
+    of all 124,999 remaining candidates pass.
+    Independent mathematical cross-check pending.
+    https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.1
 
 v3: versions/v3/README.md
     Direct split-prime proof: versions/v3/output/pdf/proof.pdf
@@ -23,13 +31,14 @@ v1: versions/v1/README.md
 See CHANGELOG.md for mathematical changes and REVIEW.md for review scope.
 The v2 cross-check passed after publication, as confirmed on 20 October
 2026; it applies to v2. The fixed release files retain their status at
-publication. The original finite-verification files are included in v3
-and cover its remaining range without changes to the nine survivors.
+publication. The original finite-verification files are included in both
+v3 releases. The expanded version also has a direct verifier for q < 10^6.
+The nine survivors are unchanged.
 The original root proof, programs, outputs, and bundle remain unchanged.
 
 ORIGINAL README — V1, AS PUBLISHED
 The following text is a historical snapshot; consult REVIEW.md for later
-review information and versions/v3/README.md for the current draft.
+review information and versions/v3.1/README.md for the current draft.
 
 EXPLICIT TENTH-DISCRIMINANT BOUND
 20 October 2026

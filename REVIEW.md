@@ -66,6 +66,29 @@ The [v3 review record at publication](versions/v3/REVIEW.md) gives the
 scope of each check. Banks's determinant construction and cited lemmas,
 and Rosser–Schoenfeld's prime estimates, remain external inputs.
 
+## v0.3.1 — expanded v3 exposition
+
+The ten-page paper now includes the background, determinant definitions
+and input estimates, intermediate deductions, and complete finite
+classification. The analytic bound and constants are unchanged.
+
+The original arithmetic checker and output are preserved byte-for-byte;
+all 26 arithmetic checks and 22 finite sanity cases reproduce successfully.
+A new direct verifier checks all 124,999 remaining candidate integers
+below `10^6` and verifies the nine survivors by reduced-form enumeration.
+Both retained larger-range programs were also rerun and reproduce their
+original outputs apart from machine-dependent runtime.
+
+The PDF has a clean LaTeX build, and all ten pages were rendered and
+visually inspected. The generating assistant checked the expanded
+exposition against the original v3 deductions and the cited determinant
+estimates. **Independent mathematical review of v3 remains pending.**
+The completed v2 cross-check still applies to v2.
+
+The [patch review record](versions/v3.1/REVIEW.md) gives the scope of
+these checks. The original v0.3.0 publication and its review record
+remain unchanged.
+
 ## Recording future reviews
 
 Record the reviewed version or commit, date, reviewer/model when available,

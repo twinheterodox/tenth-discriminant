@@ -1,5 +1,29 @@
 # Mathematical changelog
 
+## v0.3.1 — 20 October 2026
+
+**Expanded v3 exposition; the analytic cutoff remains `q < 1,000,000`.**
+
+- Adds the problem statement, definitions, and a proof roadmap, so the
+  paper can be read without v1, v2, or the original v3 paper.
+- Explains class number, prime splitting, the norm lattice, and the
+  small-prime obstruction used in the finite exclusion.
+- Defines Banks's determinant, retained row indices, and degree sums;
+  states the exact external estimates and expands their application.
+- Includes the complete finite-exclusion argument, reduced-form
+  correspondence, enumeration bounds, and nine surviving forms.
+- Adds a short direct verifier for all 124,999 candidate integers below
+  `10^6`, with deterministic output. It passes and agrees with both
+  retained larger-range computations, which were rerun successfully.
+- Preserves the analytic constants and original checker byte-for-byte;
+  all 26 arithmetic checks and 22 finite sanity cases still pass.
+- Compiles and visually verifies the expanded ten-page paper.
+- Leaves the original v0.3.0 files, tag, and release unchanged. Independent
+  mathematical review of v3 remains pending.
+
+Paper and reproduction files: [versions/v3.1](versions/v3.1/README.md).
+Fixed release: [v0.3.1](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.1).
+
 ## v0.3.0 — 20 October 2026
 
 **Analytic cutoff: `q < 1,000,000` (previously `q < 50,000,000`).**

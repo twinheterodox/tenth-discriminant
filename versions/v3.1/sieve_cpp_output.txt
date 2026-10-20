@@ -1,0 +1,30 @@
+limit_exclusive 10000000000
+large_begin 437
+wheel_modulus 2042040
+wheel_residues 1440
+large_candidates_checked 7051769
+first_rejecting_prime 19 count 3711443
+first_rejecting_prime 23 count 1742764
+first_rejecting_prime 29 count 826340
+first_rejecting_prime 31 count 397996
+first_rejecting_prime 37 count 191579
+first_rejecting_prime 41 count 93065
+first_rejecting_prime 43 count 45343
+first_rejecting_prime 47 count 22307
+first_rejecting_prime 53 count 10912
+first_rejecting_prime 59 count 5284
+first_rejecting_prime 61 count 2459
+first_rejecting_prime 67 count 1180
+first_rejecting_prime 71 count 554
+first_rejecting_prime 73 count 281
+first_rejecting_prime 79 count 136
+first_rejecting_prime 83 count 55
+first_rejecting_prime 89 count 43
+first_rejecting_prime 97 count 12
+first_rejecting_prime 101 count 7
+first_rejecting_prime 103 count 3
+first_rejecting_prime 107 count 4
+first_rejecting_prime 109 count 2
+large_survivors 0
+small_survivors 11 19 43 67 163
+elapsed_seconds 0.109419

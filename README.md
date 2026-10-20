@@ -24,7 +24,7 @@ dependencies stated in each version. Codex prepared the derivations,
 write-ups, and verification programs; the review record identifies the
 checks completed for each version.
 
-**Current research draft: v0.3.0, with analytic cutoff `q < 1,000,000`.**
+**Current research draft: v0.3.1 (expanded v3), with analytic cutoff `q < 1,000,000`.**
 
 ## Versions and improvements
 
@@ -38,7 +38,8 @@ snapshot.
 
 | Version | Analytic cutoff | Paper and files | Mathematical review status |
 |---|---|---|---|
-| **v3 · v0.3.0** | **`q < 10^6`** | [Proof of the new cutoff](versions/v3/output/pdf/proof.pdf) · [Source and reproduction](versions/v3/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.0) | 26 exact arithmetic checks and 22 finite sanity cases pass; independent mathematical cross-check pending |
+| **v3 expanded · v0.3.1** | **`q < 10^6`** | [Expanded proof and finite classification](versions/v3.1/output/pdf/proof.pdf) · [Source and reproduction](versions/v3.1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.1) | Original 26 arithmetic checks and 22 finite cases pass; new exhaustive check of 124,999 candidates passes; independent mathematical cross-check pending |
+| **v3 original · v0.3.0** | `q < 10^6` | [Original v3 proof](versions/v3/output/pdf/proof.pdf) · [Source and reproduction](versions/v3/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.0) | 26 exact arithmetic checks and 22 finite sanity cases pass; independent mathematical cross-check pending |
 | **v2 · v0.2.0** | `q < 5 × 10^7` | [Complete cumulative proof](versions/v2/output/pdf/proof.pdf) · [Source and reproduction](versions/v2/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.2.0) | Mathematical cross-check with a different frontier model passed; 23 exact arithmetic checks pass |
 | **v1 · v0.1.0** | `q < 10^10` | [Original proof](versions/v1/output/pdf/proof.pdf) · [Unchanged original snapshot](versions/v1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.1.0) | Different-frontier-model cross-check reported by the repository owner; see the review record |
 
@@ -53,9 +54,13 @@ estimates from Rosser–Schoenfeld. Each use includes the preceding
 construction and hypotheses stated in the corresponding paper. These
 external results are not independently proved here.
 
-The v3 paper proves the new analytic cutoff and reuses the earlier finite
-classification; its bundle includes the original finite-verification
-programs and outputs. Its independent mathematical cross-check is pending.
+The expanded v3 paper includes the setup, determinant inputs, analytic
+proof, and complete finite classification without requiring earlier papers.
+Its new direct verifier checks the exact remaining range below `10^6`;
+the original larger finite-verification programs and outputs are also
+included. The patch changes exposition and reproduction, while preserving
+the bound, analytic constants, and original v3 snapshot. Its independent
+mathematical cross-check is pending.
 The completed different-frontier-model cross-check of v2, confirmed on
 20 October 2026 after publication, applies to v2. The
 [current review record](REVIEW.md) records later checks; fixed release
@@ -66,6 +71,7 @@ files retain their status at publication. All releases are research drafts.
 - [v0.1.0: original published commit](https://github.com/twinheterodox/tenth-discriminant/tree/v0.1.0)
 - [v0.2.0: cumulative refined paper and files](https://github.com/twinheterodox/tenth-discriminant/tree/v0.2.0/versions/v2)
 - [v0.3.0: direct split-prime proof and files](https://github.com/twinheterodox/tenth-discriminant/tree/v0.3.0/versions/v3)
+- [v0.3.1: expanded v3 proof and complete finite verification](https://github.com/twinheterodox/tenth-discriminant/tree/v0.3.1/versions/v3.1)
 
 The original proof, programs, outputs, and bundle remain at their existing
 root paths. The `versions/v1/` directory is an exact copy of all tracked
@@ -80,7 +86,7 @@ checksums; each version also retains its own manifest.
 > The following text is retained verbatim as a historical snapshot.
 > Its review and publication statements describe that snapshot. Subsequent
 > review information is recorded in [REVIEW.md](REVIEW.md); current work is
-> documented in [v3](versions/v3/README.md).
+> documented in [expanded v3](versions/v3.1/README.md).
 
 # An explicit tenth-discriminant bound from Banks's zero-free theorem
 
