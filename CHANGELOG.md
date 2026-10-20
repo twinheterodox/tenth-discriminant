@@ -1,5 +1,33 @@
 # Mathematical changelog
 
+## v0.5.0 — 20 October 2026
+
+**Analytic cutoff: `q < 2,000` (previously `q < 4,000`).**
+
+- Averages Green's derivative determinant inequality over its size
+  parameter to bound a convergent weighted sum of non-inert primes.
+- Uses the Euler product of primitive quadratic norms for a competing
+  upper bound, accounting for composite norms. Euler summation controls
+  the norm series and its derivative with explicit errors.
+- Chooses `S = floor(R/110)`, `J = floor(R/160)`, and Mellin exponent
+  `sigma = 1 + 1/70`, with the determinant estimates valid for all
+  `R >= 50,000,000`.
+- Supplies 37 exact arithmetic checks certifying a contradiction gap
+  greater than `0.017` uniformly on `2,000 <= q <= 4,000`, plus 62,880
+  retained determinant sanity cases and 10,000 new comparisons of
+  primitive-norm coefficients with Euler factors.
+- Checks the 249 remaining candidate integers below 2,000 and verifies
+  the nine surviving discriminants by reduced-form enumeration.
+- Cites the independently verified v4 result for `q >= 4,000`. The
+  eleven-page paper includes the rest of the argument in full relative
+  to its stated classical inputs, including the determinant and resultant
+  proofs and explicit numerical formulas with error bounds.
+- Records independent mathematical review of v5 as pending. Preserves
+  all earlier version snapshots, tags, papers, and downloadable assets.
+
+Paper and reproduction files: [versions/v5](versions/v5/README.md).
+Fixed release: [v0.5.0](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0).
+
 ## Subsequent verification of v0.4.0 — 20 October 2026
 
 - Independent mathematical verification of v4 passed.

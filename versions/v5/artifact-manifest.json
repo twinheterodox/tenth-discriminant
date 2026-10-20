@@ -1,0 +1,18 @@
+{
+  "version": "v0.5.0",
+  "analytic_cutoff": "q < 2,000",
+  "mathematical_review": "independent review pending",
+  "sha256": {
+    ".gitignore": "42902f3fa3a16917eabb81a605976aef99a46c87c141f36dd98cfb2f3dd31688",
+    "README.md": "a84248e257fce93493ae2a366c6eea5dcebf69b2fc356354df457b77cabfbb83",
+    "REVIEW.md": "7f5d7bcfd12f0ec1bed118836dc1b505e866ddbbb8607009568b3f9d4de3f1eb",
+    "certificate_support.py": "39b433f4a8a613e3ccfadce73beeca9307f3fb08e0b8f993f35dbf9d6b1d8ffc",
+    "checks.txt": "541af4fdee41bb4c8bcdaba8b106f1511ab4f21dbe784e1d85598615bf3aaa39",
+    "finite_range_checks.txt": "47beb2c6fcb96b867e1633a48a3625eb7976dff5e5efc5fbabc62310582ed029",
+    "output/pdf/proof.pdf": "5dc3da40dc3d992ad5d0920771cdc92cf3e1b80e8238ffea76bcec482928f765",
+    "proof.tex": "6676364d5fd32a0179967da4752f67132714eeb69aa6cbc45c9c2eb8900d0d71",
+    "sources.json": "b98bd8ce80859763e40eff971cdb59570ea4e03cd6d76a150030a1ce70fb70b2",
+    "verify_finite_range.py": "36d553512c309ea513f77d5f351c697eeed3d065e46f4d385909c73510370fd4",
+    "verify_v5_bound.py": "50adf51e8dfced4e49c68ce8498661e3aa71127b1f5cef90c5157d3cfa033731"
+  }
+}

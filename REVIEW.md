@@ -124,6 +124,36 @@ the scope of each check. The two stated Rosser–Schoenfeld estimates,
 quadratic ideal theory, and classical reduction of binary quadratic
 forms remain external inputs. No Lean formalization is supplied.
 
+## v0.5.0 — Mellin-averaged determinant argument
+
+The analytic cutoff is `q < 2,000`. The new argument averages Green's
+derivative determinant inequality over its size parameter and compares
+the resulting prime sum with the Euler product of primitive quadratic
+norms. Euler summation controls the norm series and its derivative.
+The independently verified v4 result is cited for `q >= 4,000`; the
+new interval, including its determinant and resultant arguments, is
+treated in full relative to the stated classical inputs.
+
+All 37 exact arithmetic checks pass, certifying a gap greater than
+`0.017` uniformly on `2,000 <= q <= 4,000`. The finite checks pass
+2,880 valuation cases, 60,000 derivative row-transformation cases, and
+10,000 comparisons of primitive-norm coefficients with Euler factors.
+An exhaustive verifier checks the 249 remaining candidate integers
+below 2,000 and confirms the nine survivors by reduced-form enumeration.
+The programs use only the Python standard library. The eleven-page PDF
+has a clean LaTeX build and has been rendered and visually inspected.
+
+**Independent mathematical review of v5 is pending.** Codex developed
+the new derivation, paper, and verification programs. The exact
+arithmetic certificate and finite examples do not establish the general
+v5 proof. V4's completed independent verification applies to the cited
+earlier result, not to the new v5 argument.
+
+The [v5 review record at publication](versions/v5/REVIEW.md) specifies
+the checks. The stated Rosser–Schoenfeld estimates and classical
+quadratic and analytic identities remain external inputs. No Lean
+formalization is supplied.
+
 ## Recording future reviews
 
 Record the reviewed version or commit, date, reviewer/model when available,

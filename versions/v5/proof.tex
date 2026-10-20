@@ -1,0 +1,806 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage{microtype}
+\hypersetup{pdftitle={A Mellin-averaged determinant bound for the tenth discriminant},
+ pdfauthor={Research note prepared with Codex},
+ pdfsubject={Version 0.5.0: q < 2000}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\C}{\mathbb C}
+\newcommand{\OK}{\mathcal O_K}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\ord}{\operatorname{ord}}
+\title{A Mellin-averaged determinant bound for the tenth discriminant\\
+\large Version 5: \(q<2\,000\)}
+\author{Research note prepared with Codex}
+\date{Version 0.5.0 --- 20 October 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We improve the analytic cutoff for an imaginary quadratic field of class
+number one from \(q<4000\) to \(q<2000\). The new step averages a derivative
+determinant inequality over its size parameter, producing a lower bound
+for a convergent weighted sum of non-inert primes. The Euler product of
+primitive quadratic norms gives a competing upper bound that accounts
+for composite norms. An elementary summation formula controls the
+quadratic norm series and its derivative. Exact rational intervals give
+a contradiction gap greater than \(0.017\) throughout
+\(2000\le q\le4000\). The independently verified v4 paper is cited for
+\(q\ge4000\); its infinite-range proof is not repeated. The argument for
+the new interval, including the determinant and resultant lemmas, is
+given in full. A separate finite computation leaves the usual nine
+discriminants.
+\end{abstract}
+
+\paragraph{Status and attribution.}
+This is an AI-assisted v5 research draft. Codex developed the new
+averaging argument, estimates, exposition, and verification programs.
+Independent mathematical verification of v4 has passed; independent
+review of v5 is pending. Arithmetic checks and finite examples do not
+establish the general proof. Green's note \cite{green} supplies the
+derivative determinant, Frobenius row operation, and resultant method.
+The sharpened rank criterion and lattice construction are retained from
+v4 \cite{v4}; the averaging and primitive-norm comparison are the new
+steps here.
+
+\section{Result, dependencies, and proof strategy}
+
+Let \(D<0\) be a fundamental discriminant, set \(q=|D|\), and put
+\(K=\Q(\sqrt D)\). Write \(\OK\) for the ring of integers and \(h(K)\)
+for its ideal class number. All logarithms are natural.
+
+\begin{theorem}\label{main}
+If \(h(K)=1\), then \(q<2000\). The finite verification supplied with
+this paper consequently gives
+\[
+ h(K)=1\quad\Longleftrightarrow\quad
+ q\in\{3,4,7,8,11,19,43,67,163\}.
+\]
+\end{theorem}
+
+The only earlier-version input is the already established implication
+\[
+ h(K)=1\ \Longrightarrow\ q<4000,
+\]
+from the fixed v4 release \cite{v4}. That infinite-range argument is
+referenced rather than reproduced. Everything needed for
+the new exclusion of \(2000\le q\le4000\) is set out below, relative
+to the stated classical inputs: quadratic ideal theory,
+Rosser--Schoenfeld's ordinary-prime estimates, elementary
+Euler--Maclaurin summation and gamma identities. Reduction of binary
+quadratic forms is used only for the finite verification.
+
+The proof of the new interval has three parts. First, a positive integer
+Gram determinant bounds the weighted inert-prime sum for every
+sufficiently large determinant parameter. Averaging this family of
+inequalities gives a lower bound for a convergent sum over the other
+primes. Second, unique factorization of ideals expresses the same sum
+through the Euler product of primitive norms. Third, an explicit
+summation estimate for the norm series gives an incompatible upper
+bound. Monotonicity reduces the entire real interval
+\([2000,4000]\) to one endpoint; no discriminants in that interval
+are individually enumerated to establish the analytic improvement.
+
+We use no Heegner method or computed zero-free region for quadratic
+Dirichlet \(L\)-functions. The ordinary Riemann zeta function below is
+evaluated only at real arguments greater than one.
+
+\section{Elementary consequences of class number one}\label{elementary}
+
+For the new analytic argument assume
+\[
+ h(K)=1,\qquad 2000\le q\le4000,\qquad u=\sqrt q.
+\]
+A split or ramified prime \(p\) has an integral ideal of norm \(p\).
+Since the ideal is principal, its generator has absolute norm \(p\).
+In a standard integral basis, a nonrational quadratic integer has
+imaginary part of absolute value at least \(u/2\), and hence norm at
+least \(q/4\). A rational integer has square norm. Therefore
+\begin{equation}\label{small-inert}
+ p<q/4\quad\Longrightarrow\quad p\text{ is inert in }K.
+\end{equation}
+This argument is valid for any class-number-one field, independently of
+the interval restriction.
+
+In particular, 2 is inert, so \(D\equiv5\pmod8\), or \(q\equiv3\pmod8\).
+Thus \(q\) is squarefree and
+\[
+ \omega=\frac{1+i\sqrt q}{2},\qquad
+ \OK=\Z+\Z\omega,\qquad
+ Q(a,b)=|a+b\omega|^2=(a+b/2)^2+qb^2/4.
+\]
+Moreover, \(q\) is prime: otherwise its smallest prime divisor is at
+most \(\sqrt q<q/4\), but is ramified, contradicting
+\eqref{small-inert}. The only ramified prime is consequently \(q\).
+The only units are \(\pm1\), since \(q>4\).
+
+\section{Explicit estimates for ordinary primes}\label{primes}
+
+Put \(A_{\rm pr}(x)=\sum_{p\le x}\log p/p\) and
+\(\vartheta(x)=\sum_{p\le x}\log p\). Theorems 6 and 9 of
+Rosser--Schoenfeld \cite{rs} give
+\[
+ |A_{\rm pr}(x)-\log x-c_0|<\frac1{2\log x}\quad(x\ge319),
+ \qquad \vartheta(x)<cx,\quad c=1.01624,\quad x>0.
+\]
+The finite sum at 319 gives
+\(\log319-A_{\rm pr}(319)+1/(2\log319)<1.334\), so
+\begin{equation}\label{prime-total}
+ A_{\rm pr}(x)>\log x-1.334-\frac1{2\log x}\quad(x\ge319).
+\end{equation}
+Partial summation also gives \(A_{\rm pr}(x)<2\log x\) for \(x\ge2\).
+The stated inequalities for the finite sums are included in the
+certificate.
+
+We use the fixed prime cutoff \(H=110\), and write
+\[
+ a_H=\sum_{p\le H}\frac{\log p}{p},\quad
+ \theta_H=\sum_{p\le H}\log p,\quad
+ W=\sum_{p\le H}\left(\frac1{110}-\frac{p}{3\cdot110^2}\right)\log p.
+\]
+Exact logarithm intervals give
+\begin{equation}\label{prime-constants}
+ a_H<3.546874,\qquad \theta_H<103,\qquad W>0.759467.
+\end{equation}
+For the prime-square tail, partial summation at \(N=10000\) gives
+\[
+ \sum_{p>N}\frac{\log p}{p^2}
+ <\frac{2c}{N}-\frac{\vartheta(N)}{N^2}.
+\]
+Adding the explicit primes between \(H\) and \(N\), the certificate
+therefore proves
+\begin{equation}\label{prime-tail}
+ \sum_{p>110}\frac{\log p}{p^2}<b:=0.00820476.
+\end{equation}
+The inertness of every prime at most 110 follows from
+\eqref{small-inert}.
+
+\section{A sharpened derivative interpolation lemma}\label{rank}
+
+This section restates the v4 refinement of Green's resultant proof \cite{green,v4}. We retain the
+actual constant in the bound for the number of points on a curve, and
+retain the loss of \(w\)-degree when removing factors depending only on
+\(w\). These changes give the following useful criterion.
+
+\begin{lemma}\label{rank-lemma}
+Let \(P_i=(z_i,w_i)\in\C^2\), \(1\le i\le n\), with all \(w_i\)
+distinct. Suppose every nonzero polynomial \(F\in\C[z,w]\) satisfies
+\[
+ \#\{i:F(P_i)=0\}\le A\deg F.
+\]
+Let \(R,S,J\) be positive integers with
+\begin{equation}\label{rank-condition}
+ J\le2R+A,\qquad nJ>2RS+A(R+S).
+\end{equation}
+Then the \(RS\) vectors
+\[
+ v_{r,s}=\bigl(\partial_z^j(z^r w^s)(P_i)\bigr)_{
+                 1\le i\le n,\ 0\le j<J},
+ \qquad0\le r<R,\quad0\le s<S,
+\]
+are linearly independent over \(\C\).
+\end{lemma}
+
+\begin{proof}
+A dependence would give a nonzero polynomial of degrees less than
+\((R,S)\) whose first \(J\) derivatives in \(z\) vanish at every point.
+Factor it over \(\C\) as
+\[
+ F(z,w)=F_0(w)\prod_{\ell=1}^k F_\ell(z,w),
+\]
+where each \(F_\ell\) is irreducible and has positive \(z\)-degree
+\(d_\ell\); factors may be repeated. Write \(d'_\ell=\deg_w F_\ell\)
+and \(d'_0=\deg F_0\). We can use the weak bounds
+\(\sum d_\ell\le R\) and \(\sum d'_\ell\le S-d'_0\).
+
+For an irreducible factor of bidegree \((d,d')\) with \(d>0\), the
+polynomial \(T(w)=\Res_z(F_\ell,\partial_zF_\ell)\) is nonzero and
+has degree at most \(2dd'\). No specialization
+\(F_\ell(z,w_i)\) is identically zero: otherwise \(w-w_i\) would
+divide the irreducible polynomial. At a root of multiplicity \(m\),
+\begin{equation}\label{resultant-order}
+ m\le1+\ord_{w=w_i}T(w).
+\end{equation}
+Here is a direct justification. The Sylvester matrix has size \(2d-1\).
+After specialization at \(w_i\), both polynomials are divisible by
+\((z-z_i)^{m-1}\), so the matrix has rank deficiency at least \(m-1\).
+A constant invertible row transformation can make that many rows zero
+at \(w_i\). Each such row is then divisible by \(w-w_i\), so the
+determinant vanishes to order at least \(m-1\). Its entries have
+\(w\)-degree at most \(d'\), which also proves the degree bound.
+Nonvanishing follows from irreducibility and characteristic zero.
+
+The number of points where this factor vanishes is at most
+\(A(d+d')\). Summing \eqref{resultant-order} over these points, using
+distinct \(w_i\), bounds the sum of its specialized multiplicities by
+\(A(d+d')+2dd'\).
+
+There are at most \(d'_0\) indices where \(F_0(w_i)=0\). At every
+other index the specialization of \(F\) has multiplicity at least \(J\).
+Thus
+\begin{align*}
+ J(n-d'_0)
+ &\le A(R+S-d'_0)+2R(S-d'_0),\\
+ nJ
+ &\le A(R+S)+2RS+(J-A-2R)d'_0
+ \le A(R+S)+2RS.
+\end{align*}
+The last inequality uses \(J\le2R+A\), and contradicts
+\eqref{rank-condition}.
+\end{proof}
+
+\section{The integral determinant and its prime divisibility}\label{det}
+
+Take distinct points \(z_i\in\OK\) and \(w_i=\overline{z_i}\) satisfying
+Lemma~\ref{rank-lemma}. The derivative vectors lie in \(\OK^{nJ}\).
+Form the real Gram matrix
+\[
+ G_{(r,s),(r',s')}=
+ \Tr_{K/\Q}\!\left(\sum_{i,j}
+ (v_{r,s})_{i,j}\,\overline{(v_{r',s'})_{i,j}}\right).
+\]
+Every entry is an integer. The trace pairing on this imaginary
+quadratic field is the positive real inner product
+\(2\operatorname{Re}(\alpha\overline\beta)\). Complex linear
+independence of the vectors implies their real linear independence.
+Consequently
+\begin{equation}\label{positive-det}
+ \Delta:=\det G\in\Z_{>0}.
+\end{equation}
+
+\subsection{The inert-prime bound, including the prime 2}
+
+If \(p\) is inert, \(\OK/p\OK\) is the field of \(p^2\) elements.
+Its Frobenius is the nontrivial quadratic automorphism, so
+\(z_i^p\equiv\overline{z_i}=w_i\pmod{p\OK}\).
+This applies to \(p=2\) as well as odd inert primes because we work
+in the full ring of integers. Put \(\psi=z^p-w\).
+Its value and all its positive \(z\)-derivatives at these points are
+in \(p\OK\): every nonzero derivative coefficient contains \(p\).
+
+For each pair \((r,s)\), let
+\(h_{r,s}=\min(\lfloor r/p\rfloor,S-1-s)\).
+Replace its polynomial by
+\(z^{r-ph_{r,s}}\psi^{h_{r,s}}w^s\).
+The binomial expansion has leading term \(z^r w^s\) and other terms
+\(z^{r-pi}w^{s+i}\), all with smaller \(r\) and still within the
+rectangle of indices. The induced row transformation is an integer
+triangular matrix with determinant one. Every derivative of the
+replacement polynomial is in \(p^{h_{r,s}}\OK\), by the product rule.
+Applying the same transformation to the Gram matrix and factoring
+from rows and columns proves
+\begin{equation}\label{valuation}
+ v_p(\Delta)\ge
+ 2\sum_{0\le r<R,\ 0\le s<S}\min(\lfloor r/p\rfloor,S-1-s).
+\end{equation}
+No division by derivative factorials is made in this argument.
+
+\subsection{Explicit lower bounds for the valuation sum}
+
+Let \(e(R,S,p)\) denote the right side of \eqref{valuation}, divided
+by \(R^2S\). Counting the pairs for which the minimum is at least
+\(h\) gives the exact identity
+\begin{equation}\label{layers}
+ e(R,S,p)=\frac2{R^2S}
+ \sum_{h=1}^{S-1}(S-h)\max(R-ph,0).
+\end{equation}
+When \(p(S-1)\le R-1\), summing this quadratic expression gives
+\begin{equation}\label{small-e}
+ e(R,S,p)=\frac{S-1}{R}-\frac{p(S^2-1)}{3R^2}.
+\end{equation}
+For a bound valid for all \(p\), use
+\(\sum_{s=0}^{S-1}\min(k,S-1-s)\ge Sk-k(k+1)/2\).
+Writing \(R=ap+b\), \(0\le b<p\), shows
+\[
+ \sum_{r=0}^{R-1}\lfloor r/p\rfloor
+ =\frac{R(R-p)}{2p}+\frac{b(p-b)}{2p}
+ \ge\frac{R(R-p)}{2p}.
+\]
+Also \(\lfloor r/p\rfloor(\lfloor r/p\rfloor+1)
+\le r^2/p^2+r/p\). Substitution gives
+\begin{equation}\label{tail-e}
+ e(R,S,p)\ge
+ \left(1-\frac{R-1}{2RS}\right)\frac1p
+ -\frac1R-\frac{(R-1)(2R-1)}{6RS\,p^2}.
+\end{equation}
+
+\section{A determinant inequality at every large scale}\label{scales}
+
+Set
+\[
+ t=\frac1{110},\quad j_0=\frac1{160},\quad
+ C_0=\frac{16}{5},\quad \eta=\frac{2001}{2000},\quad
+ M=50\,000\,000.
+\]
+For each integer \(R\ge M\), choose
+\[
+ S=\lfloor tR\rfloor,\qquad J=\lfloor j_0R\rfloor,\qquad
+ N_x=\left\lceil\sqrt{C_0Ru/2}\right\rceil,\quad
+ N_y=\left\lceil\sqrt{2C_0R/u}\right\rceil.
+\]
+Take \(N_y\) consecutive integers \(b\), centered so that
+\(|b|\le N_y/2\). For each \(b\), take \(N_x\) consecutive integers
+\(a\) with \(|a+b/2|\le N_x/2\), and use the points
+\((z,w)=(a+b\omega,a+b\overline\omega)\).
+There are \(n=N_xN_y\) points and their \(w\)-coordinates are distinct.
+
+Both unrounded side lengths exceed 2000, since \(44<u<64\).
+Consequently
+\[
+ C_0R\le n<\eta^2C_0R<4R,\qquad
+ |z|=|w|\le T:=\eta\sqrt{C_0Ru/4},\qquad T/R<0.00102.
+\]
+Here \(T\ge1\). The zero-count constant in
+Lemma~\ref{rank-lemma} can be taken to be \(A=N_x\).
+Indeed, after the invertible linear change from \((z,w)\) to \((a,b)\),
+a polynomial of total degree \(d\) that vanishes identically on \(k\)
+horizontal lines has at most
+\[
+ kN_x+(N_y-k)(d-k)\le N_xd
+\]
+zeros on the grid. This follows by factoring out those \(k\) line
+factors; \(N_x\ge N_y\) and \(k\le d\).
+
+Uniformly in the stated ranges, \(A/R<0.00144\), and
+\[
+ C_0j_0-2t>
+ \frac{C_0}{M}+0.00144(1+t).
+\]
+It follows that \(nJ>2RS+A(R+S)\).
+The other rank condition \(J\le2R+A\) is immediate.
+Thus the positive integer determinant of Section~\ref{det} exists
+for every integer \(R\ge M\).
+
+\subsection{Averaging the derivative size over the rows}
+
+There is a small improvement to the usual maximum-row estimate.
+For a monomial \(z^rw^s\), its derivative entries satisfy
+\[
+ |\partial_z^k(z^rw^s)|\le
+ T^{r+s}\max(1,r/T)^{J-1}\qquad(0\le k<J).
+\]
+The derivative is zero if \(k>r\), which is consistent with this bound.
+Since the function \(\log_+(x/T)=\max(0,\log(x/T))\) is increasing,
+\[
+ \sum_{r=0}^{R-1}\log_+(r/T)
+ \le\int_0^R\log_+(x/T)\,dx=R\log(R/T)-R+T.
+\]
+Hadamard's inequality now gives
+\begin{equation}\label{mean-arch}
+ \frac{\log\Delta}{R^2S}
+ \le \frac{\log(2nJ)}R+
+ \left(1+\frac SR\right)\log T+
+ \frac{2J}R\bigl(\log(R/T)-1+T/R\bigr).
+\end{equation}
+The last bracket is nonnegative, so \(S/R\le t\) and \(J/R\le j_0\)
+can be substituted on the right. Put
+\[
+ \beta=1+t-2j_0=\frac{877}{880},\qquad
+ \alpha=1-\frac{1+t}{2}-j_0=\frac{861}{1760}.
+\]
+The prefactor \(\log(2nJ)/R\) is less than \(10^{-6}\), and
+\(2j_0T/R+10^{-6}<0.00002\). Therefore
+\begin{equation}\label{new-arch}
+ \frac{\log\Delta}{R^2S}
+ <(1-\alpha)\log R+\frac{\beta}{4}\log q+
+ \frac{\beta}{2}\log(4/5)+\beta\log\eta-2j_0+0.00002.
+\end{equation}
+
+\subsection{The prime divisibility comparison}
+
+Write
+\[
+ I_R=\sum_{\substack{110<p\le R\\p\ {\rm inert}}}\frac{\log p}{p},
+ \qquad
+ S_-(R)=\sum_{\substack{p\le R\\p\ {\rm inert}}}\frac{\log p}{p}.
+\]
+The small-prime valuation formula \eqref{small-e} gives a total
+contribution at least \(W-2\theta_H/R\); its hypothesis holds since
+the largest prime at most 110 is 109.
+For the other inert primes, \eqref{tail-e} gives
+\[
+ \frac{\log\Delta}{R^2S}>
+ I_R+W-c-\frac{110.001}{3}b-0.0001.
+\]
+In detail, \(R/S\le110.001\), the small-prime floor loss is less than
+\(0.000005\), and
+\[
+ \frac{I_R}{2S}<\frac{\log R}{S}<0.00004.
+\]
+The last inequality holds at \(M\) and improves as \(R\) increases.
+The loss from \(\vartheta(R)/R\) is at most \(c\).
+These estimates explain the stated \(0.0001\) allowance.
+
+Combining this with \eqref{new-arch}, and adding \(a_H\), yields
+\begin{equation}\label{inert-all-scales}
+ S_-(x)<(1-\alpha)\log x+\frac{\beta}{4}\log q+C_*,
+ \qquad C_*=3.982,\qquad x\ge M.
+\end{equation}
+The certificate checks
+\[
+ a_H-W+c+\frac{110.001}{3}b+
+ \frac{\beta}{2}\log(4/5)+\beta\log\eta-2j_0+0.00012<3.982.
+\]
+Initially the argument proves \eqref{inert-all-scales} for integer \(x\).
+For real \(x\ge M\), apply it to \(R=\lfloor x\rfloor\): the prime
+sum is unchanged and \(\log R\le\log x\).
+
+\section{Mellin averaging gives a lower bound}\label{mellin}
+
+Fix
+\[
+ \delta=\frac1{70},\qquad \sigma=1+\delta=\frac{71}{70},
+ \qquad m=\log M.
+\]
+Let \(S_{\ne-}(x)\) be the sum of \(\log p/p\) over split and ramified
+primes at most \(x\). Equations \eqref{prime-total} and
+\eqref{inert-all-scales} imply
+\[
+ S_{\ne-}(x)>
+ \alpha\log x-\frac{\beta}{4}\log q-C_*-1.334-\frac1{2m}
+ \qquad(x\ge M).
+\]
+All terms in \(S_{\ne-}\) are nonnegative. Thus, by integrating the
+step function and interchanging nonnegative sums and integrals,
+\begin{align}
+ D_{\ne-}(\sigma)
+ &:=\sum_{p\ {\rm split\ or\ ramified}}\frac{\log p}{p^\sigma}
+ =\delta\int_1^\infty S_{\ne-}(x)x^{-1-\delta}\,dx \nonumber\\
+ &>P(q):=e^{-\delta m}\left[
+ \alpha(m+\delta^{-1})-\frac{\beta}{4}\log q
+ -3.982-1.334-\frac1{2m}\right].\label{mellin-lower}
+\end{align}
+This is the first new comparison: a family of determinant inequalities
+produces a bound for a convergent Dirichlet sum rather than for a
+single sharply truncated sum.
+
+\section{The Euler product of primitive norms}\label{euler}
+
+For real \(s>1\), define the nonrational norm series
+\[
+ A_q(s)=\sum_{b=1}^{\infty}\sum_{a\in\Z}Q(a,b)^{-s}.
+\]
+Because every ideal is principal and the units are \(\pm1\), the
+Dedekind zeta series is
+\[
+ Z_K(s)=\zeta(2s)+A_q(s).
+\]
+The rational generators contribute \(\zeta(2s)\); each nonrational
+ideal has exactly one generator with \(b>0\).
+
+Dividing out rational integer factors gives
+\begin{equation}\label{primitive-euler}
+ B_q(s):=\frac{Z_K(s)}{\zeta(2s)}
+ =\prod_{p\ {\rm split}}\frac{1+p^{-s}}{1-p^{-s}}\,(1+q^{-s}).
+\end{equation}
+One can also check this directly from ideal factorization. At a split
+prime, removing a rational factor leaves a power of at most one of the
+two prime ideals, giving \(1+2\sum_{k\ge1}p^{-ks}\).
+At an inert prime, the sole prime ideal is generated by the rational
+integer \(p\), so its primitive factor is 1. At the ramified prime \(q\),
+the two possible primitive exponents are 0 and 1.
+All products and differentiated series converge absolutely for \(s>1\).
+
+Logarithmic differentiation gives
+\[
+ -\frac{B_q'(s)}{B_q(s)}
+ =2\sum_{p\ {\rm split}}\frac{\log p}{p^s(1-p^{-2s})}
+   +\frac{\log q}{q^s+1}.
+\]
+In particular,
+\begin{equation}\label{euler-upper-start}
+ D_{\ne-}(s)\le-\frac{B_q'(s)}{2B_q(s)}
+                         +\frac{\log q}{q^s}.
+\end{equation}
+The denominator \(B_q(s)\) retains the contribution of composite
+primitive norms, which was discarded when the earlier argument simply
+bounded the number of prime norms by the number of primitive points.
+
+Put \(z=\zeta(2s)\) and \(c_s=-2\zeta'(2s)/\zeta(2s)>0\).
+The useful exact identity is
+\begin{equation}\label{logderivative}
+ -\frac{B_q'(s)}{B_q(s)}
+ =\frac{-A_q'(s)-c_s A_q(s)}{z+A_q(s)}.
+\end{equation}
+The cancellation of the rational-generator contribution is explicit
+in this formula.
+
+\section{An explicit estimate for the norm series}\label{norm-series}
+
+Write \(v=\sqrt q/2\), and define
+\[
+ C(s)=\int_{\mathbb R}(1+x^2)^{-s}\,dx
+ =\frac{\sqrt\pi\,\Gamma(s-\tfrac12)}{\Gamma(s)},\qquad
+ F_q(s)=C(s)v^{1-2s}\zeta(2s-1).
+\]
+Replacing each horizontal lattice sum by its integral gives \(F_q(s)\).
+We bound the error for the series and its derivative separately; we
+do not differentiate an already bounded error term.
+
+For a twice differentiable decaying function \(f\) and a real shift
+\(\tau\), Euler summation gives
+\begin{equation}\label{summation-error}
+ \left|\sum_{a\in\Z}f(a+\tau)-\int_{\mathbb R}f(x)\,dx\right|
+ \le\frac1{12}\int_{\mathbb R}|f''(x)|\,dx.
+\end{equation}
+Indeed the error is, up to sign, the integral of
+\(\widetilde B_2(x-\tau)f''(x)/2\), where the periodic Bernoulli
+polynomial satisfies \(|\widetilde B_2|\le1/6\).
+This identity follows by two integrations by parts on the unit
+intervals; the boundary terms telescope. Decay justifies passage to
+the whole line.
+
+Apply this first to \(f(x)=(x^2+w^2)^{-\sigma}\) and then to
+\(g(x)=\log(x^2+w^2)(x^2+w^2)^{-\sigma}\), with \(w=vb\).
+Since \(\sigma<1.02\) and \(w\ge22\), elementary differentiation gives
+\[
+ |f''(x)|\le11(x^2+w^2)^{-\sigma-1},\qquad
+ |g''(x)|\le\bigl(19+11\log(x^2+w^2)\bigr)
+                         (x^2+w^2)^{-\sigma-1}.
+\]
+For the constants, the bounds
+\(4\sigma^2+6\sigma<11\) and \(10+8\sigma<19\) suffice.
+After \(x=wy\), use
+\[
+ \int_{\mathbb R}(1+y^2)^{-2}\,dy=\frac\pi2,\qquad
+ \int_{\mathbb R}\frac{\log(1+y^2)}{(1+y^2)^2}\,dy\le\pi.
+\]
+The second inequality follows from \(\log t\le t\).
+Summing \eqref{summation-error} over \(b\ge1\) therefore gives
+\begin{align}
+ |A_q(\sigma)-F_q(\sigma)|
+ &\le \frac{11\pi}{24\cdot22^3}\zeta(3)
+ <E_A:=0.0002,\label{norm-error}\\
+ |-A_q'(\sigma)+F_q'(\sigma)|
+ &\le\frac{\pi}{24\cdot22^3}
+ \left((41+22\log22)\zeta(3)+22(-\zeta'(3))\right)
+ <E_N:=0.002.\label{derivative-error}
+\end{align}
+Here \(v^{-3}(41+22\log v)\) decreases for \(v\ge22\).
+Absolute convergence justifies all differentiations and summations.
+
+From now on all functions of \(s\) are evaluated at \(s=\sigma\).
+Let
+\[
+ \ell=\log(q/4),\quad F(q)=F_q(\sigma),\quad
+ g=-\frac{C'(\sigma)}{C(\sigma)},\quad
+ \kappa=g-\frac{2\zeta'(2\sigma-1)}{\zeta(2\sigma-1)}-c_\sigma .
+\]
+Then
+\[
+ -F_q'(\sigma)-c_\sigma F(q)=F(q)(\ell+\kappa).
+\]
+For fixed \(N\ge0,c>0,z>0\), the function
+\((N-cA)/(z+A)\) decreases with \(A\). Applying this observation
+to \eqref{logderivative}, with \eqref{norm-error} and
+\eqref{derivative-error}, proves
+\[
+ -\frac{B_q'(\sigma)}{B_q(\sigma)}
+ \le\frac{F(q)(\ell+\kappa)+E_N+c_\sigma E_A}
+           {\zeta(2\sigma)+F(q)-E_A}.
+\]
+The rational certificate proves the following rounded bounds:
+\[
+ \zeta(2\sigma)>1.61893624,\quad
+ c_\sigma<1.090928,\quad
+ 65<\kappa<69.106001.
+\]
+Thus \eqref{euler-upper-start} yields the completely specified upper
+bound
+\begin{equation}\label{euler-upper}
+ D_{\ne-}(\sigma)\le U(q):=
+ \frac{F(q)(\log(q/4)+69.106001)+0.002219}
+      {2(1.61873624+F(q))}
+ +\frac{\log q}{q^\sigma}.
+\end{equation}
+
+\section{One endpoint gives the new contradiction}\label{endpoint}
+
+Throughout \(2000\le q\le4000\), the certificate proves \(3<F(q)<5\).
+Set \(a=\sigma-\tfrac12>\tfrac12\),
+\(A_0=1.61873624\), \(E_0=0.002219\), and \(k_0=69.106001\).
+We have \(dF/d\log q=-aF\), so
+\[
+ \frac{d}{d\log q}\frac{F(\ell+k_0)+E_0}{A_0+F}
+ =\frac{F}{A_0+F}
+  \left(1-\frac{a(A_0(\ell+k_0)-E_0)}{A_0+F}\right).
+\]
+Use \(1.6<A_0<1.7\), \(E_0<0.003\), \(6<\ell<7\),
+\(k_0>65\), and \(3<F<5\). The bracket is negative, and the
+displayed derivative is at most
+\[
+ \frac38\left(1-\frac{(1/2)(1.6\cdot71-0.003)}{6.7}\right)<-2.
+\]
+The derivative of \((\log q)/q^\sigma\) with respect to \(\log q\)
+is also negative. Consequently \(dU/d\log q<-1\).
+In contrast, \eqref{mellin-lower} gives
+\[
+ \frac{dP}{d\log q}=-e^{-\delta m}\frac{\beta}{4}>-\frac14.
+\]
+Hence \(P(q)-U(q)\) is increasing on the whole interval.
+
+At the single endpoint \(q=2000\), rational interval arithmetic gives
+\[
+ P(2000)>27.696,\qquad U(2000)<27.679.
+\]
+The gap is greater than \(0.017\). This contradicts
+\eqref{mellin-lower} and \eqref{euler-upper} for every
+\(q\in[2000,4000]\). Together with the cited v4 exclusion above
+4000, it proves the analytic part of Theorem~\ref{main}.
+
+\section{Numerical certificate and reproduction}\label{certificate}
+
+The verification programs use only the Python standard library.
+Every numerical acceptance decision uses integers or rational intervals.
+The interval operations round outwards to multiples of \(10^{-45}\).
+Floating-point optimization was used only to select parameters; it is
+not an input to the certificate.
+
+Logarithms are enclosed by range reduction and
+\[
+ \log x=2\sum_{k\ge0}\frac{t^{2k+1}}{2k+1},\qquad
+ t=\frac{x-1}{x+1},\quad 1\le x\le2,
+\]
+using 60 terms and the positive geometric tail.
+Exponentials use range reduction to \(0\le x\le1\), the Taylor
+polynomial through degree 80, and remainder at most
+\(x^{81}/(81!(1-x/82))\). Inversion handles negative arguments.
+Machin's identity
+\(\pi=16\arctan(1/5)-4\arctan(1/239)\), with 40 alternating terms
+in each series, supplies the interval for \(\pi\).
+
+For completeness, here are the special-function enclosures used in
+the certificate. Write \((s)_r=s(s+1)\cdots(s+r-1)\).
+Euler--Maclaurin, with \(N=64\) and \(m_0=4\), gives
+\begin{align*}
+ \zeta(s)={}&\sum_{n=1}^{N-1}n^{-s}+\frac{N^{1-s}}{s-1}
+ +\frac12N^{-s}
+ +\sum_{k=1}^{m_0}\frac{B_{2k}}{(2k)!}(s)_{2k-1}
+                 N^{1-s-2k}+\mathcal R(s),\\
+ |\mathcal R(s)|\le{}&
+ E(s):=\frac{|B_{2m_0}|}{(2m_0)!}
+       \frac{(s)_{2m_0}}{s+2m_0-1}N^{1-s-2m_0},\\
+ |\mathcal R'(s)|\le{}&
+ E(s)\left(\sum_{j=0}^{2m_0-1}\frac1{s+j}
+             +\log N+\frac1{s+2m_0-1}\right).
+\end{align*}
+These estimates follow from the periodic Bernoulli remainder integral,
+and from separately bounding its differentiated integrand.
+The bound \(|\widetilde B_{2m_0}|\le |B_{2m_0}|\) follows from the
+absolutely convergent Fourier series of that polynomial.
+All values used have \(s>1\).
+
+Finally, the beta integral and the gamma duplication formula give
+\[
+ C(1+\delta)=
+ \pi\,2^{-2\delta}
+ \frac{\Gamma(1+2\delta)}{\Gamma(1+\delta)^2}.
+\]
+Expanding the logarithm by Euler's gamma product yields
+\begin{align*}
+ \log(C(1+\delta)/\pi)
+ &=-2\delta\log2+
+   \sum_{n\ge2}\frac{(-1)^n(2^n-2)\zeta(n)}{n}\delta^n,\\
+ -C'(1+\delta)/C(1+\delta)
+ &=2\log2+
+   \sum_{n\ge2}(-1)^{n+1}(2^n-2)\zeta(n)\delta^{n-1}.
+\end{align*}
+The linear Euler-constant terms cancel. Truncation at \(n=10\)
+leaves absolute remainders at most
+\[
+ \frac{2(2\delta)^{11}}{1-2\delta},\qquad
+ \frac{2(2\delta)^{11}}{\delta(1-2\delta)},
+\]
+respectively, since \(1<\zeta(n)<2\) for \(n\ge2\).
+These formulas also follow from the classical expansions and
+summation identities collected in \cite{dlmf}.
+
+Run
+\begin{verbatim}
+python3 verify_v5_bound.py --sanity
+python3 verify_finite_range.py
+\end{verbatim}
+The first command certifies 37 new numerical inequalities and also
+runs the retained finite determinant sanity checks: 2880 valuation
+cases and 60\,000 derivative row transformations. A further check
+compares 10\,000 primitive-norm coefficients, enumerated directly,
+with the Euler factors in five known class-number-one fields.
+These finite examples do not prove the general lemmas. The second command performs
+the exhaustive exclusion and reduced-form enumeration described below.
+
+The certificate verifies the arithmetic and the stated error bounds;
+the mathematical deductions, including Euler summation and the
+resultant lemma, remain subject to independent review. No formal
+verification or independent review of v5 is claimed.
+
+\section{The remaining finite classification}\label{finite}
+
+For \(q>8\), the elementary norm argument in
+Section 2 already forces \(q\equiv3\pmod8\) and makes every prime
+\(p<q/4\) inert. Hence every remaining candidate is among the 249
+integers
+\[
+ 11\le q<2\,000,\qquad q\equiv3\pmod8.
+\]
+The program \texttt{verify\_finite\_range.py} checks every such integer.
+For each odd prime \(p\le109\) with \(4p<q\), it rejects \(q\) if
+\(-q\) is zero or a square modulo \(p\). These would respectively
+make \(p\) ramified or split, contrary to \eqref{small-inert}.
+Including nonfundamental integers in the scan makes the exclusion
+stronger; it cannot remove a possible field incorrectly.
+The surviving values are exactly
+\[
+ 11,19,43,67,163.
+\]
+The negative fundamental discriminants with \(q\le8\) give
+\(q=3,4,7,8\).
+
+To check class number one for each survivor, use the correspondence
+between ideal classes of discriminant \(-q\) and primitive positive
+binary quadratic forms \((a,b,c)\) of discriminant
+\(b^2-4ac=-q\). Each class has one reduced representative with
+\[
+ |b|\le a\le c,\qquad
+ b\ge0\ \text{if }|b|=a\text{ or }a=c.
+\]
+The bound \(a\le\sqrt{q/3}\) follows from
+\(q=4ac-b^2\ge3a^2\). Enumerating this finite range, retaining
+\(\gcd(a,b,c)=1\), gives exactly one reduced form for each of the
+nine survivors. Thus the finite program proves the remaining assertion
+of Theorem~\ref{main}, conditional only on the analytic argument above
+and the standard form-class correspondence.
+
+
+\begin{thebibliography}{9}
+\bibitem{green}
+B.~Green, \emph{On Landau--Siegel zeros}, version 2, 2026.
+Source snapshot identified as \texttt{2610.00311v2},
+\href{https://hexagonmath.org/api/v1/works/2610.00311v2/source?path=no-siegel.tex}
+{\texttt{no-siegel.tex}}.
+The derivative determinant, Frobenius row operation, and resultant method
+originate in this note; the needed arguments are included above.
+
+\bibitem{rs}
+J.~Barkley Rosser and L.~Schoenfeld,
+\emph{Approximate formulas for some functions of prime numbers},
+Illinois J. Math. \textbf{6} (1962), 64--94.
+\href{https://doi.org/10.1215/ijm/1255631807}{doi:10.1215/ijm/1255631807}.
+Theorems 6 and 9, printed pp.~70--71.
+
+\bibitem{v4}
+\emph{A derivative determinant bound for the tenth discriminant},
+version 0.4.0, 20 October 2026.
+\href{https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.4.0}
+{Fixed v4 release} and
+\href{https://github.com/twinheterodox/tenth-discriminant/releases/download/v0.4.0/tenth-discriminant-v0.4.0.pdf}
+{direct PDF}.
+The implication \(h(K)=1\Rightarrow q<4000\) is an input to this paper.
+Independent mathematical verification was confirmed on 20 October 2026;
+the fixed release files retain their status at publication. See the
+\href{https://github.com/twinheterodox/tenth-discriminant/blob/main/REVIEW.md}
+{current review record}.
+
+\bibitem{dlmf}
+NIST Digital Library of Mathematical Functions,
+\href{https://dlmf.nist.gov/2.10}{Section 2.10} (Euler--Maclaurin),
+\href{https://dlmf.nist.gov/5.7}{Section 5.7} (gamma expansions), and
+\href{https://dlmf.nist.gov/25.2}{Section 25.2} (zeta representations).
+The specific formulas and remainder bounds used in the certificate are
+stated in Section~\ref{certificate}.
+
+\bibitem{tao}
+T.~Tao, \emph{An experimental AI math challenge: using tenth discriminant
+bounds to explore arguments ruling out Siegel zeroes}, 20 October 2026.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/}
+{Challenge and discussion}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,50 @@
+New v5 certificate:
+PASS: Mellin parameters and positive coefficient beta
+PASS: 2000 <= q <= 4000 implies 44 < sqrt(q) < 64
+PASS: all primes <= 110 are inert throughout this interval
+PASS: both unrounded grid sides exceed 2000
+PASS: n < 4R and grid zero-count constant A/R < 0.00144
+PASS: strict nonsingularity condition uniformly for all R >= M
+PASS: T/R < 0.00102 < 1 throughout the interval
+PASS: S and J positive and R/S <= 110.001
+PASS: log(eta) < 0.0005
+PASS: Gram prefactor < 0.000001
+PASS: mean-derivative residual 2j T/R plus prefactor < 0.00002
+PASS: ordinary-prime constant is greater than -1.334
+PASS: A_pr(x) < 2 log(x) for every x >= 2 follows from theta
+PASS: small-prime sum a_110 < 3.546874
+PASS: theta(110) < 103 and W_110 > 0.759467
+PASS: prime-square tail b_110 < 0.00820476
+PASS: small-prime floor loss < 0.000005
+PASS: large-prime floor loss < 0.00004
+PASS: 0.0001 absorbs both prime floor losses
+PASS: determinant constant C_* < 3.982
+PASS: zeta(3) < 1.203 and -zeta_prime(3) < 1/4
+PASS: s < 1.02 and derivative coefficients bounded by 11 and 19
+PASS: uniform Epstein series error E_A < 0.0002
+PASS: uniform differentiated error E_N < 0.002
+PASS: zeta(2s) > 1.6 and 0 < c < 1.2
+PASS: 65 < kappa < 80
+PASS: rounded constants for the stated Euler-product bound
+PASS: rounded denominator and error constants are conservative
+PASS: 3 < F(q) < 5 throughout 2000 <= q <= 4000
+PASS: 1.6 < A0 < 1.7 and 0 < E0 < 0.003
+PASS: 6 < log(q/4) < 7 on the interval
+PASS: the upper prime bound has log-q derivative < -1
+PASS: the lower prime bound has log-q derivative > -1/4
+PASS: ramification upper bound log(q)/q^s decreases
+PASS: Mellin lower bound P(2000) > 27.696
+PASS: Euler-product upper bound U(2000) < 27.679
+PASS: new contradiction gap > 0.017
+
+All 37 new exact arithmetic checks passed.
+Certified new gap exceeds 17/1000 on 2000 <= q <= 4000.
+The cited, independently verified v4 paper excludes q >= 4000.
+Analytic cutoff established by the accompanying argument: q < 2000.
+PASS: exact valuation sums and tail inequalities in 2880 finite cases
+PASS: Frobenius row transformations, including p=2 and high derivatives, in 60000 cases
+Finite cases check implementation and identities; they do not replace the proof.
+PASS: primitive Euler factors agree with direct norm enumeration in 10000 coefficients across five class-number-one fields.
+
+TOTAL: 37 new exact arithmetic checks passed.
+Independent mathematical review of v5 remains pending.

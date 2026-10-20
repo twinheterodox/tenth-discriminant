@@ -27,19 +27,28 @@
       "analytic_cutoff": "q < 4,000",
       "mathematical_review": "independent verification passed; confirmed 2026-10-20",
       "change": "Green derivative determinant with sharpened nonsingularity and size estimates; 250-fold cutoff improvement"
+    },
+    "v0.5.0": {
+      "snapshot": "versions/v5",
+      "status": "research draft",
+      "analytic_cutoff": "q < 2,000",
+      "mathematical_review": "independent review pending",
+      "change": "Mellin averaging of the derivative determinant and primitive-norm Euler product; halves the v4 cutoff",
+      "earlier_version_input": "v0.4.0 excludes q >= 4,000"
     }
   },
   "sha256": {
     ".github/releases/v0.1.0.md": "4e71293c51df295ab48279d4f2097e80d7e336f395b88de1fdcc886252e30585",
     ".github/releases/v0.2.0.md": "aa9cb65adf0e6e6aee3dd004d881360c87317e2f2d06c6e509dd17f328b47ec8",
-    ".github/releases/v0.3.0.md": "e9822d3227cd141317f80b2a69a9940ec64068b1d5f430223fa30a33b58b7293",
-    ".github/releases/v0.3.1.md": "531c4566b6d0373eb61a41ba4057fedb5b16b2bc7b9a90f4e3d309595eef5cfb",
-    ".github/releases/v0.4.0.md": "845faae40b9358f8bfaadb73dc0d0ea2a42bac5477055d78bc3bab999a2e0328",
+    ".github/releases/v0.3.0.md": "ab5867f1e3a7fa5c19219dc96bc3bade1592f4e9e82b1ee0b92a8e03923507f3",
+    ".github/releases/v0.3.1.md": "39cc3482697b91f46a54d3f07a0e2e9bdfbc8a9e38167da27a9c7a6dad6e6cd2",
+    ".github/releases/v0.4.0.md": "df1537a0073a6c85e24a9ad613e14932eb3aa76db3ffcef4ac08d147311f6058",
+    ".github/releases/v0.5.0.md": "63236507d349ee173d4c57fe931f5b856f77f68a89bedf2a2dc05141d567462f",
     ".gitignore": "42902f3fa3a16917eabb81a605976aef99a46c87c141f36dd98cfb2f3dd31688",
-    "CHANGELOG.md": "b208c731f8b823be4c25cf214555a031d31892a463d4b19beaddc6d316ec6753",
-    "README.md": "33fc2ae455144b9a131824064cbb823db5674cced429ed5eab566503f2aed25b",
+    "CHANGELOG.md": "4f610ec7e943d08567199631c4b91290d982a03dc4baaa186ab8c733e62175d5",
+    "README.md": "03aece801fe2faad6425344f6e6ae107afe754b27136652dc2885f68688aaa55",
     "README.txt": "4eec44df8b332243aa75a46c04fc13158a99903bd8339bf3ca2eaf88abdf282a",
-    "REVIEW.md": "1ac1b0f5d5fb6b9eab68082c1baf0d877ff1373ed22df9e5a83ee25448cf732e",
+    "REVIEW.md": "c64496f554d2e09c033bb14e7eeae1abde7742f343f30b754c22370f21ae4c57",
     "output/pdf/proof.pdf": "2fac065b25181a2f9049dc4a78f66214114d846c1cf1c462f2571be90c69e682",
     "proof.tex": "7f84c8a79670a9892d550eabacf304848adde2a3effecbe504e306ae598d04ad",
     "sieve_cpp_output.txt": "a35b84bff2e4d80f319abed00a618fcbd3f475fe85f73f75c4673e4c0990f0b8",
@@ -115,6 +124,19 @@
     "versions/v4/sources.json": "873431055d9aa100474847fa33fd6c9938300f457d35a45c6856da7ade56be74",
     "versions/v4/tenth-discriminant-v0.4.0.zip": "c64af45209c08d6f49298a9fc1542b304636627d326b00c3537853b089ca3b9f",
     "versions/v4/verify_finite_range.py": "f907d42c80f4e360b337ab212b91ae3d4aab9c5c5b12da24e00ae91352cbb250",
-    "versions/v4/verify_green_bound.py": "2840890ef761c4f7a57191cb3e6c82deb7b14c54e0de646409c4a601ef671588"
+    "versions/v4/verify_green_bound.py": "2840890ef761c4f7a57191cb3e6c82deb7b14c54e0de646409c4a601ef671588",
+    "versions/v5/.gitignore": "42902f3fa3a16917eabb81a605976aef99a46c87c141f36dd98cfb2f3dd31688",
+    "versions/v5/README.md": "a84248e257fce93493ae2a366c6eea5dcebf69b2fc356354df457b77cabfbb83",
+    "versions/v5/REVIEW.md": "7f5d7bcfd12f0ec1bed118836dc1b505e866ddbbb8607009568b3f9d4de3f1eb",
+    "versions/v5/artifact-manifest.json": "3d1423c21944c7b5d2e42c85f7c882246f77c0b797f1c27c01784bcc9444c3e7",
+    "versions/v5/certificate_support.py": "39b433f4a8a613e3ccfadce73beeca9307f3fb08e0b8f993f35dbf9d6b1d8ffc",
+    "versions/v5/checks.txt": "541af4fdee41bb4c8bcdaba8b106f1511ab4f21dbe784e1d85598615bf3aaa39",
+    "versions/v5/finite_range_checks.txt": "47beb2c6fcb96b867e1633a48a3625eb7976dff5e5efc5fbabc62310582ed029",
+    "versions/v5/output/pdf/proof.pdf": "5dc3da40dc3d992ad5d0920771cdc92cf3e1b80e8238ffea76bcec482928f765",
+    "versions/v5/proof.tex": "6676364d5fd32a0179967da4752f67132714eeb69aa6cbc45c9c2eb8900d0d71",
+    "versions/v5/sources.json": "b98bd8ce80859763e40eff971cdb59570ea4e03cd6d76a150030a1ce70fb70b2",
+    "versions/v5/tenth-discriminant-v0.5.0.zip": "10863f647ad0b4fdbf83fc2029d99161d3e54fd7c86c1a53e6367e44ee7ac328",
+    "versions/v5/verify_finite_range.py": "36d553512c309ea513f77d5f351c697eeed3d065e46f4d385909c73510370fd4",
+    "versions/v5/verify_v5_bound.py": "50adf51e8dfced4e49c68ce8498661e3aa71127b1f5cef90c5157d3cfa033731"
   }
 }
