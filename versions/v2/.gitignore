@@ -1,0 +1,13 @@
+# Local build products and visual review material.
+/verify_sieve
+/tmp/
+/output/pdf/*.aux
+/output/pdf/*.log
+/output/pdf/*.out
+/output/pdf/*.synctex.gz
+__pycache__/
+*.pyc
+
+# Third-party research snapshots remain local; retain provenance only.
+/sources/*
+!/sources/manifest.json

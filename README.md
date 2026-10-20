@@ -1,3 +1,50 @@
+# Tenth-discriminant bounds — version index
+
+**Current research draft: v0.2.0, with analytic cutoff `q < 50,000,000`.**
+
+Each numbered version has its own complete paper and verification files.
+The original published snapshot is preserved unchanged. The original
+README is also retained below this index.
+
+| Version | Analytic cutoff | Paper and files | Mathematical review status |
+|---|---|---|---|
+| **v2 · v0.2.0** | **`q < 5 × 10^7`** | [Complete cumulative proof](versions/v2/output/pdf/proof.pdf) · [Source and reproduction](versions/v2/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.2.0) | 23 exact arithmetic checks pass; see the review record for scope |
+| **v1 · v0.1.0** | `q < 10^10` | [Original proof](versions/v1/output/pdf/proof.pdf) · [Unchanged original snapshot](versions/v1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.1.0) | Different-frontier-model cross-check reported by the repository owner; see the review record |
+
+[Mathematical changelog](CHANGELOG.md) · [Review record by version](REVIEW.md)
+
+The improvement changes the analytic cutoff, while both versions obtain
+`3, 4, 7, 8, 11, 19, 43, 67, 163` after finite exclusion. Version 1 takes
+Banks's Theorem 1.1 as an external input. Version 2 uses Banks's intermediate
+Lemma 4.2, Lemma 5.1, and Corollary 6.3, including their preceding
+construction and hypotheses. Neither version independently proves those
+external results.
+
+The v2 paper includes the original argument, a clearly identified
+refinement, and the finite classification. Its verification record
+separates new arithmetic checks from the reported cross-check of v1.
+Both releases are research drafts.
+
+## Fixed versions for citation
+
+- [v0.1.0: original published commit](https://github.com/twinheterodox/tenth-discriminant/tree/v0.1.0)
+- [v0.2.0: cumulative refined paper and files](https://github.com/twinheterodox/tenth-discriminant/tree/v0.2.0/versions/v2)
+
+The original proof, programs, outputs, and bundle remain at their existing
+root paths. The `versions/v1/` directory is an exact copy of all tracked
+files in the original commit `b30549663b6d2660b2df3c916822802774e2486d`.
+The [current repository manifest](artifact-manifest.json) records file
+checksums; each version also retains its own manifest.
+
+---
+
+## Original README — v1, as published
+
+> The following text is retained verbatim as a historical snapshot.
+> Its review and publication statements describe that snapshot. Subsequent
+> review information is recorded in [REVIEW.md](REVIEW.md); current work is
+> documented in [v2](versions/v2/README.md).
+
 # An explicit tenth-discriminant bound from Banks's zero-free theorem
 
 **Draft for mathematical review · 20 October 2026**

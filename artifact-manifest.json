@@ -1,14 +1,55 @@
 {
+  "versions": {
+    "v0.1.0": {
+      "original_commit": "b30549663b6d2660b2df3c916822802774e2486d",
+      "snapshot": "versions/v1"
+    },
+    "v0.2.0": {
+      "snapshot": "versions/v2",
+      "status": "research draft"
+    }
+  },
   "sha256": {
-    "README.md": "89dad550442e30a42dec35ef0f34b6282baf19411d48b5ca511143d640604534",
-    "README.txt": "710a18555a1f8495585eb72ec05b40b3810a126bf85fff5e71f2acbba7e426bc",
+    ".github/releases/v0.1.0.md": "4e71293c51df295ab48279d4f2097e80d7e336f395b88de1fdcc886252e30585",
+    ".github/releases/v0.2.0.md": "705958719a4095859137b16cb47bceaf694f616405450898fcc126147b13354b",
     ".gitignore": "42902f3fa3a16917eabb81a605976aef99a46c87c141f36dd98cfb2f3dd31688",
-    "proof.tex": "7f84c8a79670a9892d550eabacf304848adde2a3effecbe504e306ae598d04ad",
+    "CHANGELOG.md": "062d9a00615b7277116c9d0158e0f72fc5f54e018a5fe4650949185a82fecc80",
+    "README.md": "b9cb97d3478c6e351d0000bda1f6a1f43ee640377ee5843ec1fd597047b1b5b2",
+    "README.txt": "1f621f32f18255bb9298667a8b05f37ab7b9c7df6b0e6c8d4a7fc7374e521468",
+    "REVIEW.md": "453b36a451419b786956e1d6d08e297db5164036cf630e7a65407722c3d2cbcf",
     "output/pdf/proof.pdf": "2fac065b25181a2f9049dc4a78f66214114d846c1cf1c462f2571be90c69e682",
-    "verify_sieve.cpp": "553ee10a0235fe46005bb4756e84772395ce2f2e68d9aff6bdf06bf249b753b2",
-    "verify_independent.py": "21a213fba70e87171ffbf364a5a06c40678a6c42fe04df30efbf5e5392f3f789",
+    "proof.tex": "7f84c8a79670a9892d550eabacf304848adde2a3effecbe504e306ae598d04ad",
     "sieve_cpp_output.txt": "a35b84bff2e4d80f319abed00a618fcbd3f475fe85f73f75c4673e4c0990f0b8",
     "sieve_python_output.txt": "8d29b667467ac19170d4e977c707d2c7046d48992c3eeb1b98521d926b1f1a0d",
-    "sources/manifest.json": "b90fb0dfc6e9a9125a96a0eb855361e27188e942d38df414a26caf5d9bbf2e9b"
+    "sources/manifest.json": "b90fb0dfc6e9a9125a96a0eb855361e27188e942d38df414a26caf5d9bbf2e9b",
+    "tenth-discriminant-banks.zip": "3f53837e26d8b1bcdbfb4ff44d6c26ae4ef2a4a3197bdf9dcf903c22ccb08ad4",
+    "verify_independent.py": "21a213fba70e87171ffbf364a5a06c40678a6c42fe04df30efbf5e5392f3f789",
+    "verify_sieve.cpp": "553ee10a0235fe46005bb4756e84772395ce2f2e68d9aff6bdf06bf249b753b2",
+    "versions/v1/.gitignore": "42902f3fa3a16917eabb81a605976aef99a46c87c141f36dd98cfb2f3dd31688",
+    "versions/v1/README.md": "89dad550442e30a42dec35ef0f34b6282baf19411d48b5ca511143d640604534",
+    "versions/v1/README.txt": "710a18555a1f8495585eb72ec05b40b3810a126bf85fff5e71f2acbba7e426bc",
+    "versions/v1/artifact-manifest.json": "2fa005cba64e46ab1551af36faa1fdab6276b06e46be14afd904ebd4f57f7594",
+    "versions/v1/output/pdf/proof.pdf": "2fac065b25181a2f9049dc4a78f66214114d846c1cf1c462f2571be90c69e682",
+    "versions/v1/proof.tex": "7f84c8a79670a9892d550eabacf304848adde2a3effecbe504e306ae598d04ad",
+    "versions/v1/sieve_cpp_output.txt": "a35b84bff2e4d80f319abed00a618fcbd3f475fe85f73f75c4673e4c0990f0b8",
+    "versions/v1/sieve_python_output.txt": "8d29b667467ac19170d4e977c707d2c7046d48992c3eeb1b98521d926b1f1a0d",
+    "versions/v1/sources/manifest.json": "b90fb0dfc6e9a9125a96a0eb855361e27188e942d38df414a26caf5d9bbf2e9b",
+    "versions/v1/tenth-discriminant-banks.zip": "3f53837e26d8b1bcdbfb4ff44d6c26ae4ef2a4a3197bdf9dcf903c22ccb08ad4",
+    "versions/v1/verify_independent.py": "21a213fba70e87171ffbf364a5a06c40678a6c42fe04df30efbf5e5392f3f789",
+    "versions/v1/verify_sieve.cpp": "553ee10a0235fe46005bb4756e84772395ce2f2e68d9aff6bdf06bf249b753b2",
+    "versions/v2/.gitignore": "42902f3fa3a16917eabb81a605976aef99a46c87c141f36dd98cfb2f3dd31688",
+    "versions/v2/README.md": "f63362f4f0d9fd9041e8a2a3aa38ab9efcef5e47d5531f302410ca5f5b925d0d",
+    "versions/v2/REVIEW.md": "676b03fbdf58aea2e33603a10c39645a7891ff686afc36e9d2bb7a5d94ff3524",
+    "versions/v2/artifact-manifest.json": "52187f2ee786335bec60b63800c2cacbeee93d386f5da5e6e8577d9c1f69c8ee",
+    "versions/v2/improved_bound_checks.txt": "1203c8dd2104b59e367582b34ac33bb530e274ad801033e27d9b4a109d4bca3c",
+    "versions/v2/output/pdf/proof.pdf": "e7373e8d1202e251a16469e6bbde72658ca5df88cc1973d42c54c9ba4a918d02",
+    "versions/v2/proof.tex": "675ee4cc8e0b11ce1bc5e45258e719d64d48b27817077d540a62cacc17881ca0",
+    "versions/v2/sieve_cpp_output.txt": "a35b84bff2e4d80f319abed00a618fcbd3f475fe85f73f75c4673e4c0990f0b8",
+    "versions/v2/sieve_python_output.txt": "8d29b667467ac19170d4e977c707d2c7046d48992c3eeb1b98521d926b1f1a0d",
+    "versions/v2/sources/manifest.json": "b90fb0dfc6e9a9125a96a0eb855361e27188e942d38df414a26caf5d9bbf2e9b",
+    "versions/v2/tenth-discriminant-v0.2.0.zip": "58c92e4365f63cd132bbc16236091eb6e3a037f7113da73af3b1547e7c7d96c6",
+    "versions/v2/verify_improved_bound.py": "57bad871fe5d60c4734a9648ed23141be1ad828c01b80b2e89f3693e9ef45d60",
+    "versions/v2/verify_independent.py": "21a213fba70e87171ffbf364a5a06c40678a6c42fe04df30efbf5e5392f3f789",
+    "versions/v2/verify_sieve.cpp": "553ee10a0235fe46005bb4756e84772395ce2f2e68d9aff6bdf06bf249b753b2"
   }
 }

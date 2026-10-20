@@ -1,0 +1,350 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array}
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\OK}{\mathcal O_K}
+\newcommand{\zK}{\zeta_K}
+\newcommand{\tht}{\Theta}
+\newcommand{\norm}[1]{\lvert #1\rvert}
+\title{An explicit tenth-discriminant bound\\from Banks's zero-free theorem}
+\author{Research note prepared with Codex}
+\date{20 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Taking the explicit large-conductor theorem of Banks
+(\texttt{arXiv:2610.15483v1}, Theorem~1.1) as an external input, we show that
+an imaginary quadratic field of class number one has absolute fundamental
+discriminant less than \(10^{10}\).
+The additional analytic argument is a short, explicit application of
+Poisson summation to the integer lattice of the field.
+An exhaustive integer calculation using only primes at most \(109\)
+then recovers exactly the nine familiar fundamental discriminants.
+Two implementations, using different algorithms, give the same result.
+The argument does not use Heegner's solution, Heegner points, or a
+precomputed class-number table.
+\end{abstract}
+
+\section{Statement and dependency}
+
+Throughout, \(D<0\) is a \emph{fundamental discriminant},
+\(q=\norm{D}\), \(K=\Q(\sqrt D)\), and \(\chi_D\) is the primitive
+quadratic character of conductor \(q\). All logarithms are natural.
+In particular, \(q\) is the absolute field discriminant, not necessarily
+the squarefree integer appearing under a square root.
+
+The only recent theorem used is the following assertion of Banks~\cite{banks}:
+\begin{equation}\label{banks}
+ q\ge 10^{10},\quad L(\beta,\chi)=0,\quad 0<\beta<1
+ \quad\Longrightarrow\quad
+ (1-\beta)\log q\ge \frac{3}{1000}
+\end{equation}
+for every primitive real character \(\chi\) of conductor \(q\).
+Only this large-conductor assertion is needed. Its extension to smaller
+conductors by a separate computation is not used.
+
+\begin{theorem}\label{main}
+Assuming the external theorem \eqref{banks}, if \(h(K)=1\), then
+\[
+ q<10^{10}.
+\]
+Combining this bound with the finite verification described in
+Section~\ref{finite} gives
+\[
+ q\in\{3,4,7,8,11,19,43,67,163\}.
+\]
+Every discriminant on this list does have class number one.
+\end{theorem}
+
+The qualifier in the statement records the precise external dependency:
+this note does not supply an independent proof of Banks's theorem.
+The contribution here is the explicit passage from that theorem to the
+class-number-one problem, together with a reproducible finite exclusion.
+No novelty or optimality claim is made for the underlying classical
+theta-function argument.
+
+\section{Class number one produces a nearby real zero}
+
+\begin{lemma}\label{zero}
+If \(q\ge10^{10}\) and \(h(K)=1\), then \(L(s,\chi_D)\) has a real zero
+\[
+ 1-\frac{10}{\sqrt q}<\beta<1.
+\]
+\end{lemma}
+
+\begin{proof}
+Put
+\[
+ R=\sqrt q,\qquad y=\frac R2,\qquad
+ \Lambda=y^{-1/2}\OK\subset\mathbb C\simeq\mathbb R^2.
+\]
+The embedded integer lattice \(\OK\) has covolume \(y\), so
+\(\Lambda\) has covolume one. Define
+\[
+ \tht(t)=\sum_{\alpha\in\OK}
+       \exp\left(-\frac{\pi t\norm{\alpha}^2}{y}\right)
+       \qquad(t>0).
+\]
+For any planar lattice of covolume one, its Euclidean dual is a
+rotation by \(90\) degrees of the original lattice. For example, if
+the columns of \(A\) are an oriented basis and \(\det A=1\), then
+\(A^{-T}=JAJ^{-1}\), where \(J\) is rotation by \(90\) degrees
+and \(J^{-1}\Z^2=\Z^2\).
+Consequently, Poisson summation for the Gaussian gives
+\begin{equation}\label{thetafunctional}
+ \tht(t)=t^{-1}\tht(1/t).
+\end{equation}
+
+Since \(q>4\), the units of \(\OK\) are exactly \(\{\pm1\}\).
+Class number one implies that every nonzero integral ideal has
+exactly two generators in \(\OK\). Thus, initially for \(\Re s>1\),
+\[
+ \sum_{\alpha\in\OK\setminus\{0\}}\norm{\alpha}^{-2s}
+     =2\zK(s).
+\]
+Taking the Mellin transform and splitting its integral at \(t=1\),
+then using \eqref{thetafunctional} in the part below \(1\), gives
+\begin{equation}\label{mellin}
+ 2\Gamma(s)\left(\frac y\pi\right)^s\zK(s)
+ =
+ -\frac{1}{s(1-s)}
+ +\int_1^\infty(\tht(t)-1)
+       \left(t^{s-1}+t^{-s}\right)\,dt .
+\end{equation}
+The integral on the right converges locally uniformly for all complex
+\(s\), since \(\tht(t)-1\) decays exponentially as \(t\to\infty\).
+Hence \eqref{mellin} continues the initial identity meromorphically.
+For clarity, the rational term is
+\[
+ \int_0^1(t^{s-2}-t^{s-1})\,dt
+ =\frac{1}{s-1}-\frac1s=-\frac{1}{s(1-s)}.
+\]
+
+Set
+\[
+ \varepsilon=\frac{10}{R},\qquad s_0=1-\varepsilon,\qquad
+ A=\frac y\pi=\frac{R}{2\pi}.
+\]
+Here \(R\ge10^5\), \(0<s_0<1\), and \(A>1\).
+The two lattice points \(\alpha=1,-1\) alone give
+\[
+ \tht(t)-1\ge2e^{-\pi t/y}\ge\frac2e
+       \qquad(1\le t\le A).
+\]
+Dropping the nonnegative \(t^{-s_0}\) term and the part of the integral
+above \(A\), the integral in \eqref{mellin} is therefore at least
+\[
+ \frac2e\int_1^A t^{s_0-1}\,dt
+    =\frac{2}{e\,s_0}(A^{s_0}-1).
+\]
+It suffices to prove
+\begin{equation}\label{target}
+ \frac{2\varepsilon}{e}(A^{1-\varepsilon}-1)>1.
+\end{equation}
+
+All estimates needed for \eqref{target} can be made rational.
+The function \((\log R)/R\) decreases for \(R>e\), and
+\(\log(10^5)<12\). Hence
+\[
+ 0<\varepsilon\log A
+ \le\frac{10\log R}{R}<\frac{3}{2500}.
+\]
+Using \(e^{-u}\ge1-u\),
+\[
+ A^{1-\varepsilon}
+   = A e^{-\varepsilon\log A}
+   >\frac{R}{2\pi}\frac{2497}{2500}.
+\]
+The elementary bounds \(\pi<22/7\) and \(2<e<3\) now imply
+\begin{align*}
+ \frac{2\varepsilon}{e}(A^{1-\varepsilon}-1)
+ &>\frac{10}{\pi e}\frac{2497}{2500}-\frac{20}{eR}\\
+ &>\frac{35}{33}\frac{2497}{2500}-\frac{1}{10000}\\
+ &=\frac{31777}{30000}>1.
+\end{align*}
+For an entirely rational check of the logarithmic bound, use
+\(e>8/3\) and \(8^{12}>10^5\,3^{12}\).
+This proves \eqref{target}, and so \(\zK(s_0)>0\).
+
+As \(s\to1^-\), the rational term in \eqref{mellin} tends to
+\(-\infty\), while its integral stays finite. Thus \(\zK(s)<0\)
+sufficiently close to \(1\) from the left.
+Continuity gives a zero \(\beta\in(s_0,1)\).
+Finally \(\zK(s)=\zeta(s)L(s,\chi_D)\), and \(\zeta(s)\ne0\) for
+real \(0<s<1\). One elementary proof of the latter uses the positive
+alternating series
+\[
+ \eta(s)=\sum_{n\ge1}(-1)^{n-1}n^{-s}>0,\qquad
+ \zeta(s)=\frac{\eta(s)}{1-2^{1-s}}<0.
+\]
+Therefore \(L(\beta,\chi_D)=0\), as claimed.
+\end{proof}
+
+\begin{proof}[Proof of the analytic bound in Theorem~\ref{main}]
+If \(q\ge10^{10}\) and \(h(K)=1\), Lemma~\ref{zero} gives
+\[
+ (1-\beta)\log q < \frac{10\log q}{\sqrt q}.
+\]
+The function \((\log q)/\sqrt q\) decreases for \(q>e^2\).
+Using \(\log(10^{10})<24\), we obtain
+\[
+ (1-\beta)\log q
+ < \frac{10\cdot24}{10^5}
+ =\frac{3}{1250}<\frac{3}{1000}.
+\]
+This contradicts \eqref{banks}.
+\end{proof}
+
+\section{A finite exclusion with small primes}\label{finite}
+
+\begin{lemma}\label{inert}
+If \(h(K)=1\), then every prime \(p<q/4\) is inert in \(K\).
+\end{lemma}
+\begin{proof}
+If \(p\) splits or ramifies, there is an integral ideal of norm \(p\).
+It is principal when \(h(K)=1\), so it has a generator
+\(\alpha\in\OK\) with \(\norm{\alpha}^2=p\).
+A rational integer cannot have prime norm in a quadratic field.
+Every nonrational algebraic integer in \(K\) can be written
+\((a+b\sqrt{-q})/2\), with integers \(a,b\) and \(b\ne0\);
+the allowed parities depend on \(D\).
+Consequently,
+\[
+ p=\norm{\alpha}^2=\frac{a^2+qb^2}{4}\ge\frac q4,
+\]
+a contradiction.
+\end{proof}
+
+For \(q>8\), Lemma~\ref{inert} applies to \(p=2\).
+Thus \(2\) is inert, \(D\) is odd, and \(D\equiv5\pmod8\);
+equivalently, \(q\equiv3\pmod8\).
+The negative fundamental discriminants with \(q\le8\) are
+\(-3,-4,-7,-8\).
+
+For every remaining candidate, therefore, it is enough to examine
+\[
+ 11\le q<10^{10},\qquad q\equiv3\pmod8.
+\]
+For an odd prime \(p<q/4\), exclude \(q\) whenever \(-q\) is zero
+or a square modulo \(p\).
+The search deliberately includes nonfundamental \(q\), so no
+squarefreeness test can accidentally discard a valid candidate.
+
+\subsection*{Exact computation}
+Two programs accompany this note:
+\begin{itemize}
+\item \texttt{verify\_sieve.cpp} builds permitted residue classes using
+the Chinese remainder theorem, then checks candidates individually
+using tables of squares modulo primes.
+\item \texttt{verify\_independent.py} obtains the initial residue
+classes by direct scanning and Euler's criterion. It then checks
+whole arithmetic progressions using periodic integer bitsets.
+\end{itemize}
+
+Both first impose the conditions for \(2,3,5,7,11,13,17\).
+The resulting wheel has modulus
+\[
+ M=8\cdot3\cdot5\cdot7\cdot11\cdot13\cdot17
+   =2042040
+\]
+and \(1440\) permitted residue classes.
+For \(437\le q<10^{10}\), every prime at most \(109\) satisfies
+\(4p<q\). The programs check the remaining primes from \(19\)
+through \(109\), and find no surviving \(q\).
+For \(11\le q<437\), they apply only the prime conditions
+with \(4p<q\), and find exactly
+\[
+ 11,\quad19,\quad43,\quad67,\quad163.
+\]
+The endpoint \(10^{10}\) is excluded analytically, and is the
+exclusive upper endpoint in both programs.
+These calculations use exact integer arithmetic throughout.
+
+\subsection*{Checking the surviving fields}
+The Python verifier independently enumerates all primitive reduced
+positive binary quadratic forms of each remaining discriminant.
+The unique reduced form in each case is as follows:
+\[
+\begin{array}{c|rrrrrrrrr}
+q&3&4&7&8&11&19&43&67&163\\ \hline
+(a,b,c)&
+(1,1,1)&(1,0,1)&(1,1,2)&(1,0,2)&
+(1,1,3)&(1,1,5)&(1,1,11)&(1,1,17)&(1,1,41)
+\end{array}
+\]
+In the enumeration, \(\norm b\le a\le c\),
+\(b^2-4ac=-q\), \(\gcd(a,b,c)=1\), and \(b\ge0\) on
+the boundaries \(\norm b=a\) or \(a=c\).
+The standard bound \(a\le\sqrt{q/3}\) makes the enumeration finite.
+The classical correspondence with ideal classes verifies
+class number one for these nine fields.
+
+\section{Reproduction, scope, and audit}
+
+Run the following commands from the directory containing the sources:
+\begin{verbatim}
+g++ -O2 -std=c++17 -Wall -Wextra -pedantic \
+    verify_sieve.cpp -o verify_sieve
+./verify_sieve
+python3 verify_independent.py
+\end{verbatim}
+The programs require no number-theory library or external data.
+Their outputs are saved in \texttt{sieve\_cpp\_output.txt} and
+\texttt{sieve\_python\_output.txt}.
+The Python program also checks the exact rational inequalities in
+the analytic argument.
+
+The source snapshot and its SHA-256 hash are recorded in
+\texttt{sources/manifest.json}. The recent external dependency is
+Banks's stated Theorem~1.1 for \(q\ge10^{10}\); this note
+does not certify its full nineteen-page proof.
+Classical inputs are Poisson summation for a Gaussian,
+basic quadratic ideal theory and the factorization
+\(\zK=\zeta L\), and reduction of positive binary quadratic forms.
+The analytic lemma is proved above rather than imported with an
+unspecified error constant.
+
+The constant \(10\) in Lemma~\ref{zero} is chosen for a short proof
+with a comfortable margin. It is unrelated to the illustrative
+additive constant \(C_{\rm LS}=10\) in the blog comments.
+Sharpening this lemma alone would not lower the large-conductor
+threshold in the quoted form of Banks's theorem.
+The finite exclusion already gives the exact final classification.
+
+This is a candidate contribution to Tao's challenge~\cite{tao},
+with a clear external theorem dependency and reproducible arithmetic.
+It is not a claim to have independently established the new
+zero-free theorem, and no Lean formalization has been produced.
+
+\paragraph{AI disclosure.}
+The route selection, explicit estimates, proof text, and both verification
+programs were produced by Codex in this conversation.
+The two computations are algorithmically independent, but were written
+by the same AI assistant; they are not an independent human or
+independent-model review.
+The user has not yet reviewed or endorsed the mathematical argument.
+Nothing has been submitted to the blog or published externally.
+
+\begin{thebibliography}{9}
+\bibitem{banks}
+W.~D.~Banks,
+\emph{On the OpenAI proof that Landau--Siegel zeros do not exist},
+11 October 2026, arXiv:2610.15483v1, Theorem~1.1.
+\url{https://arxiv.org/html/2610.15483v1}.
+\bibitem{tao}
+T.~Tao,
+\emph{An experimental AI-math challenge: using tenth discriminant
+bounds to explore arguments ruling out Siegel zeroes},
+20 October 2026.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/}
+{Online challenge}.
+\end{thebibliography}
+\end{document}

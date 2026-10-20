@@ -1,0 +1,17 @@
+{
+  "version": "v0.2.0",
+  "sha256": {
+    ".gitignore": "42902f3fa3a16917eabb81a605976aef99a46c87c141f36dd98cfb2f3dd31688",
+    "README.md": "f63362f4f0d9fd9041e8a2a3aa38ab9efcef5e47d5531f302410ca5f5b925d0d",
+    "REVIEW.md": "676b03fbdf58aea2e33603a10c39645a7891ff686afc36e9d2bb7a5d94ff3524",
+    "improved_bound_checks.txt": "1203c8dd2104b59e367582b34ac33bb530e274ad801033e27d9b4a109d4bca3c",
+    "output/pdf/proof.pdf": "e7373e8d1202e251a16469e6bbde72658ca5df88cc1973d42c54c9ba4a918d02",
+    "proof.tex": "675ee4cc8e0b11ce1bc5e45258e719d64d48b27817077d540a62cacc17881ca0",
+    "sieve_cpp_output.txt": "a35b84bff2e4d80f319abed00a618fcbd3f475fe85f73f75c4673e4c0990f0b8",
+    "sieve_python_output.txt": "8d29b667467ac19170d4e977c707d2c7046d48992c3eeb1b98521d926b1f1a0d",
+    "sources/manifest.json": "b90fb0dfc6e9a9125a96a0eb855361e27188e942d38df414a26caf5d9bbf2e9b",
+    "verify_improved_bound.py": "57bad871fe5d60c4734a9648ed23141be1ad828c01b80b2e89f3693e9ef45d60",
+    "verify_independent.py": "21a213fba70e87171ffbf364a5a06c40678a6c42fe04df30efbf5e5392f3f789",
+    "verify_sieve.cpp": "553ee10a0235fe46005bb4756e84772395ce2f2e68d9aff6bdf06bf249b753b2"
+  }
+}

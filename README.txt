@@ -1,3 +1,25 @@
+TENTH-DISCRIMINANT BOUNDS — VERSION INDEX
+20 October 2026
+
+Current research draft: v0.2.0, analytic cutoff q < 50,000,000.
+
+v2: versions/v2/README.md
+    Complete cumulative paper: versions/v2/output/pdf/proof.pdf
+    23 exact arithmetic checks pass. See the review record for scope.
+    https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.2.0
+
+v1: versions/v1/README.md
+    Original cutoff q < 10^10. Exact snapshot of commit b305496.
+    Cross-check with a different frontier model reported by the owner.
+    https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.1.0
+
+See CHANGELOG.md for mathematical changes and REVIEW.md for review scope.
+The original root proof, programs, outputs, and bundle remain unchanged.
+
+ORIGINAL README — V1, AS PUBLISHED
+The following text is a historical snapshot; consult REVIEW.md for later
+review information and versions/v2/README.md for the current draft.
+
 EXPLICIT TENTH-DISCRIMINANT BOUND
 20 October 2026
 
