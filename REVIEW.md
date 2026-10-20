@@ -110,10 +110,14 @@ enumerates the reduced forms of the nine surviving fields. Both programs
 use only the Python standard library and reproduce the recorded outputs.
 The ten-page PDF has been compiled, rendered, and visually inspected.
 
-**Independent mathematical review of v4 is pending.** The completed
-checks of v3.0 and v3.1 do not cover this new argument. Codex developed
-the proof and verification programs; the arithmetic and finite sanity
-checks do not independently establish the general mathematical lemmas.
+**The v4 mathematical argument has passed independent verification.**
+Completion was confirmed on 20 October 2026. The reviewer/model and
+detailed report were not supplied for inclusion in this repository.
+This is a separate check of v4, subsequent to the checks of v3.0 and v3.1.
+The fixed proof, tag, bundle, and publication-time review record remain
+unchanged. Codex developed the proof and verification programs; their
+arithmetic and finite sanity checks alone do not establish the general
+mathematical lemmas.
 
 The [v4 review record at publication](versions/v4/REVIEW.md) identifies
 the scope of each check. The two stated Rosser–Schoenfeld estimates,

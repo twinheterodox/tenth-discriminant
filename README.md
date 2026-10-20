@@ -32,8 +32,8 @@ the review record identifies the checks completed for each version.
 [Source and reproduction](versions/v4/README.md) ·
 [v4 release and downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.4.0)
 
-Both v3 papers have passed independent mathematical cross-checks.
-**Independent mathematical review of the new v4 argument is pending.**
+**The v4 argument has passed independent mathematical verification.**
+Both v3 papers have also passed independent mathematical cross-checks.
 
 ## Versions and improvements
 
@@ -47,7 +47,7 @@ snapshot.
 
 | Version | Analytic cutoff | Paper and files | Mathematical review status |
 |---|---|---|---|
-| **v4 · v0.4.0** | **`q < 4,000`** | [Self-contained proof and finite classification](versions/v4/output/pdf/proof.pdf) · [Source and reproduction](versions/v4/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.4.0) | 39 exact arithmetic checks, 62,880 finite sanity cases, and an exhaustive check of 499 candidates pass; independent mathematical review pending |
+| **v4 · v0.4.0** | **`q < 4,000`** | [Self-contained proof and finite classification](versions/v4/output/pdf/proof.pdf) · [Source and reproduction](versions/v4/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.4.0) | Independent mathematical verification passed; 39 exact arithmetic checks, 62,880 finite sanity cases, and an exhaustive check of 499 candidates pass |
 | **v3 expanded · v0.3.1** | `q < 10^6` | [Expanded proof and finite classification](versions/v3.1/output/pdf/proof.pdf) · [Source and reproduction](versions/v3.1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.1) | Independent mathematical cross-check passed; arithmetic and complete finite checks pass |
 | **v3 original · v0.3.0** | `q < 10^6` | [Original v3 proof](versions/v3/output/pdf/proof.pdf) · [Source and reproduction](versions/v3/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.0) | Independent mathematical cross-check passed; 26 arithmetic checks and 22 finite sanity cases pass |
 | **v2 · v0.2.0** | `q < 5 × 10^7` | [Complete cumulative proof](versions/v2/output/pdf/proof.pdf) · [Source and reproduction](versions/v2/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.2.0) | Mathematical cross-check with a different frontier model passed; 23 exact arithmetic checks pass |
@@ -72,9 +72,9 @@ prime estimates, classical quadratic ideal theory, and reduction of
 binary quadratic forms remain external inputs. No earlier paper is
 needed to read v4.
 
-The independent mathematical checks of both v3.0 and v3.1 were confirmed
-on 20 October 2026 after publication. They do not cover the new v4
-argument. The [current review record](REVIEW.md) records subsequent
+The independent mathematical checks of both v3.0 and v3.1, and the
+separate independent verification of v4, were confirmed on
+20 October 2026 after publication. The [current review record](REVIEW.md) records subsequent
 checks; fixed release files retain their status at publication.
 All releases are research drafts.
 

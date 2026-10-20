@@ -1,5 +1,12 @@
 # Mathematical changelog
 
+## Subsequent verification of v0.4.0 — 20 October 2026
+
+- Independent mathematical verification of v4 passed.
+- Updates the current README, review record, and release descriptions.
+  The v4 paper, source, verification files, bundle, and fixed tag are
+  unchanged; the mathematical bound remains `q < 4,000`.
+
 ## v0.4.0 — 20 October 2026
 
 **Analytic cutoff: `q < 4,000` (previously `q < 1,000,000`).**
