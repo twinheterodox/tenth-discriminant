@@ -1,5 +1,43 @@
 # Mathematical changelog
 
+## v0.4.0 — 20 October 2026
+
+**Analytic cutoff: `q < 4,000` (previously `q < 1,000,000`).**
+
+- Improves the analytic cutoff by a factor of 250 using Green's derivative
+  determinant in the quadratic field, replacing Banks's quartic-field
+  determinant. The direct split-prime count from v3 is retained.
+- Proves the determinant argument in the paper, including a sharpened
+  resultant nonsingularity criterion. Uses an adapted lattice rectangle
+  and retains the decrease of polynomial degree under differentiation.
+- Chooses `R = q^4`, `S = floor(R/50)`, and `J = floor(R/55)`. The
+  determinant comparison gives a uniform contradiction for `q >= 4,000`,
+  with an exact rational gap greater than `0.007`.
+- Supplies a self-contained ten-page proof, 39 exact arithmetic checks,
+  and 62,880 finite sanity cases for the valuation identities and
+  derivative row transformations, including inert `p = 2`.
+- Checks all 499 remaining candidate integers below 4,000 and verifies
+  the nine surviving discriminants by reduced-form enumeration.
+- Records independent mathematical review of v4 as pending. The stated
+  Rosser–Schoenfeld estimates and classical quadratic theory remain
+  external inputs; the determinant argument is included in full.
+- Preserves all earlier version snapshots, tags, papers, and bundles.
+
+Paper and reproduction files: [versions/v4](versions/v4/README.md).
+Fixed release: [v0.4.0](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.4.0).
+
+## Review update for both v3 papers — 20 October 2026
+
+- Both the original v0.3.0 paper and the expanded v0.3.1 paper have passed
+  independent mathematical cross-checks.
+- Records completion in the current README, review log, and release
+  notes. The fixed papers, tags, bundles, and publication-time review
+  records remain unchanged. Reviewer/model details and full reports were
+  not supplied for inclusion in this repository.
+- These checks do not cover the new v4 argument.
+
+See the [current review record](REVIEW.md) for scope and provenance.
+
 ## v0.3.1 — 20 October 2026
 
 **Expanded v3 exposition; the analytic cutoff remains `q < 1,000,000`.**

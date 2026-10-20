@@ -1,0 +1,50 @@
+PASS: 8.294049 < log(4000) < 8.294050
+PASS: sqrt(4000) > 63.245553 > 60
+PASS: log(q) > 8 throughout the excluded range
+PASS: primitive density 768/1225
+PASS: boundary constants 88/35 and 192/35
+PASS: pi*rho/4 < 0.4926, using pi < 22/7
+PASS: 2 log(4)+2 < 4.773
+PASS: log(4)^2+2 log(4) > 4.694
+PASS: log(4)-1 > 0.386
+PASS: prime-sum constant B0 < 1.334
+PASS: A_pr(x) < 2 log(x) for x >= 2 follows from the theta estimate
+PASS: A(50) < 2.77035
+PASS: 40.9602 < theta(50) < 41
+PASS: small-prime determinant contribution W > 0.6732
+PASS: every prime <= 50 is inert under the class-number-one hypothesis
+PASS: largest prime <= 50 is 47
+PASS: tail bound B < 0.02426552 (equality for our rational upper bound)
+PASS: ceil rounding factor < 1.0001
+PASS: grid cardinality n <= 3R
+PASS: grid side A <= 2 q^(9/4)
+PASS: grid norm T < R
+PASS: R/S <= 50.001
+PASS: J is positive and J <= 2R+A
+PASS: coefficient margin in the rank condition is 1/1100
+PASS: nJ > 2RS + A(R+S) uniformly for q >= 4000
+PASS: R >= 319 and R >= q/4
+PASS: log(6) < 2 for the Gram norm prefactor
+PASS: Gram norm prefactor contributes < 10^-6
+PASS: large-prime floor loss contributes < 10^-6
+PASS: small-prime floor loss contributes < 10^-6
+PASS: all rounding and prefactor losses fit in 0.001
+PASS: log(4/3) > 0.28768
+PASS: Archimedean coefficients beta and delta
+PASS: 0 < K < 4.570
+PASS: split main term positive and decreasing for L >= 8
+PASS: split boundary terms positive and decreasing for L >= 8
+PASS: determinant coefficient > 1.641
+PASS: necessary right side < 1.634
+PASS: strict uniform contradiction gap > 0.007
+
+All 39 exact arithmetic checks passed.
+Exact rational contradiction gap: 9005354753627134276881213150153649469/1220360281225120299928204182414484490625
+Analytic cutoff established by the accompanying argument: q < 4000.
+
+Finite sanity checks:
+PASS: exact valuation sums and tail inequalities in 2880 finite cases
+PASS: Frobenius row transformations, including p=2 and high derivatives, in 60000 cases
+Finite cases check implementation and identities; they do not replace the proof.
+
+Independent mathematical review remains pending.

@@ -1,0 +1,24 @@
+limit_exclusive 4000
+method exhaustive_direct_residue_scan
+largest_prime 109
+candidate_integers_checked 499
+first_rejecting_prime 3 count 332
+first_rejecting_prime 5 count 99
+first_rejecting_prime 7 count 37
+first_rejecting_prime 11 count 15
+first_rejecting_prime 13 count 8
+first_rejecting_prime 17 count 2
+first_rejecting_prime 23 count 1
+survivors_above_8 [11, 19, 43, 67, 163]
+final_absolute_discriminants [3, 4, 7, 8, 11, 19, 43, 67, 163]
+reduced_forms 3 [(1, 1, 1)]
+reduced_forms 4 [(1, 0, 1)]
+reduced_forms 7 [(1, 1, 2)]
+reduced_forms 8 [(1, 0, 2)]
+reduced_forms 11 [(1, 1, 3)]
+reduced_forms 19 [(1, 1, 5)]
+reduced_forms 43 [(1, 1, 11)]
+reduced_forms 67 [(1, 1, 17)]
+reduced_forms 163 [(1, 1, 41)]
+PASS: exhaustive finite exclusion and nine class-number checks.
+The analytic cutoff and general mathematical argument are separate inputs.

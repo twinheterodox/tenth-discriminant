@@ -1,0 +1,15 @@
+{
+  "version": "v0.4.0",
+  "sha256": {
+    ".gitignore": "42902f3fa3a16917eabb81a605976aef99a46c87c141f36dd98cfb2f3dd31688",
+    "README.md": "851bac762674811cd89f9fc8c1b9a14a0d3adcf8619e4f96f18eec0e5ee0bf64",
+    "REVIEW.md": "45703cd31e8bf79d3e5ef150be0aa27b65de6093115d939f8d87b4aaeff7aafb",
+    "checks.txt": "c5c5aa7b2e9a67c4e1930034daaf710ef91bcbb887e3a3b4e1e9125802583e2a",
+    "finite_range_checks.txt": "c246fd9cd7adc890b61bd7fb6d85f82f6f414bef67a5fa80feaf1bc29e37c29c",
+    "output/pdf/proof.pdf": "acf8b943999c7f2a3ff7a47afffa8561df0d64b32670f8d16634c8f35c2db2fb",
+    "proof.tex": "e2adc42d54b9a078e2924169799ab3a1a13db75731692d2c07adedbd1a411a52",
+    "sources.json": "873431055d9aa100474847fa33fd6c9938300f457d35a45c6856da7ade56be74",
+    "verify_finite_range.py": "f907d42c80f4e360b337ab212b91ae3d4aab9c5c5b12da24e00ae91352cbb250",
+    "verify_green_bound.py": "2840890ef761c4f7a57191cb3e6c82deb7b14c54e0de646409c4a601ef671588"
+  }
+}

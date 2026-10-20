@@ -8,23 +8,32 @@ zeroes, without using Heegner's solution. The repository records the
 arguments, computations, and successive improvements so that they can be
 examined and cited in the discussion.
 
-For a negative fundamental discriminant `D`, write `q = |D|`. The versions
-develop different ways to combine the class-number-one assumption with
-results from [Banks, arXiv:2610.15483v1](https://arxiv.org/abs/2610.15483v1).
-Versions 1 and 2 construct a real zero using a classical theta integral
-and contradict a zero-free estimate. Version 3 instead counts primitive
-lattice points to bound split primes directly, then uses Banks's
-determinant argument to rule out large `q`. Each approach gives an explicit
-analytic cutoff. Exact integer sieves and reduced-form enumeration handle
-the remaining finite range, leaving the nine absolute fundamental
-discriminants `3, 4, 7, 8, 11, 19, 43, 67, 163`.
+For a negative fundamental discriminant `D`, write `q = |D|`. Versions 1
+and 2 combine a classical theta integral with results from
+[Banks, arXiv:2610.15483v1](https://arxiv.org/abs/2610.15483v1) to construct
+a real zero and contradict a zero-free estimate. Version 3 counts
+primitive lattice points to bound split primes directly, then uses
+Banks's determinant argument. Version 4 retains that split-prime count
+and uses Green's derivative determinant, with a sharper nonsingularity
+lemma and tighter size estimates. Its determinant argument is proved
+in the paper.
 
-The cited results from Banks are external inputs, with the precise
-dependencies stated in each version. Codex prepared the derivations,
-write-ups, and verification programs; the review record identifies the
-checks completed for each version.
+Each approach gives an explicit analytic cutoff. Exact integer sieves and
+reduced-form enumeration handle the remaining finite range, leaving the
+nine absolute fundamental discriminants
+`3, 4, 7, 8, 11, 19, 43, 67, 163`. Each paper states its external inputs.
+Codex prepared the derivations, write-ups, and verification programs;
+the review record identifies the checks completed for each version.
 
-**Current research draft: v0.3.1 (expanded v3), with analytic cutoff `q < 1,000,000`.**
+**Current research draft: v0.4.0, with analytic cutoff `q < 4,000` — a
+250-fold improvement over v3.**
+
+**[Read the self-contained v4 proof](versions/v4/output/pdf/proof.pdf)** ·
+[Source and reproduction](versions/v4/README.md) ·
+[v4 release and downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.4.0)
+
+Both v3 papers have passed independent mathematical cross-checks.
+**Independent mathematical review of the new v4 argument is pending.**
 
 ## Versions and improvements
 
@@ -38,33 +47,36 @@ snapshot.
 
 | Version | Analytic cutoff | Paper and files | Mathematical review status |
 |---|---|---|---|
-| **v3 expanded · v0.3.1** | **`q < 10^6`** | [Expanded proof and finite classification](versions/v3.1/output/pdf/proof.pdf) · [Source and reproduction](versions/v3.1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.1) | Original 26 arithmetic checks and 22 finite cases pass; new exhaustive check of 124,999 candidates passes; independent mathematical cross-check pending |
-| **v3 original · v0.3.0** | `q < 10^6` | [Original v3 proof](versions/v3/output/pdf/proof.pdf) · [Source and reproduction](versions/v3/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.0) | 26 exact arithmetic checks and 22 finite sanity cases pass; independent mathematical cross-check pending |
+| **v4 · v0.4.0** | **`q < 4,000`** | [Self-contained proof and finite classification](versions/v4/output/pdf/proof.pdf) · [Source and reproduction](versions/v4/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.4.0) | 39 exact arithmetic checks, 62,880 finite sanity cases, and an exhaustive check of 499 candidates pass; independent mathematical review pending |
+| **v3 expanded · v0.3.1** | `q < 10^6` | [Expanded proof and finite classification](versions/v3.1/output/pdf/proof.pdf) · [Source and reproduction](versions/v3.1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.1) | Independent mathematical cross-check passed; arithmetic and complete finite checks pass |
+| **v3 original · v0.3.0** | `q < 10^6` | [Original v3 proof](versions/v3/output/pdf/proof.pdf) · [Source and reproduction](versions/v3/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.0) | Independent mathematical cross-check passed; 26 arithmetic checks and 22 finite sanity cases pass |
 | **v2 · v0.2.0** | `q < 5 × 10^7` | [Complete cumulative proof](versions/v2/output/pdf/proof.pdf) · [Source and reproduction](versions/v2/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.2.0) | Mathematical cross-check with a different frontier model passed; 23 exact arithmetic checks pass |
 | **v1 · v0.1.0** | `q < 10^10` | [Original proof](versions/v1/output/pdf/proof.pdf) · [Unchanged original snapshot](versions/v1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.1.0) | Different-frontier-model cross-check reported by the repository owner; see the review record |
 
 [Mathematical changelog](CHANGELOG.md) · [Review record by version](REVIEW.md)
 
 The improvements change the analytic cutoff. The finite classification
-remains `3, 4, 7, 8, 11, 19, 43, 67, 163`, using the original finite
-verification. Version 1 takes Banks's Theorem 1.1 as an external input.
+remains `3, 4, 7, 8, 11, 19, 43, 67, 163`. Version 4 includes a short
+exhaustive verifier for the remaining 499 candidates below 4,000.
+Version 1 takes Banks's Theorem 1.1 as an external input.
 Version 2 uses Lemma 4.2, Lemma 5.1, and Corollary 6.3. Version 3 uses
 Lemma 4.2, Lemma 5.1, and Lemma 6.2 directly, together with explicit prime
 estimates from Rosser–Schoenfeld. Each use includes the preceding
 construction and hypotheses stated in the corresponding paper. These
-external results are not independently proved here.
+external results are not independently proved in those versions.
 
-The expanded v3 paper includes the setup, determinant inputs, analytic
-proof, and complete finite classification without requiring earlier papers.
-Its new direct verifier checks the exact remaining range below `10^6`;
-the original larger finite-verification programs and outputs are also
-included. The patch changes exposition and reproduction, while preserving
-the bound, analytic constants, and original v3 snapshot. Its independent
-mathematical cross-check is pending.
-The completed different-frontier-model cross-check of v2, confirmed on
-20 October 2026 after publication, applies to v2. The
-[current review record](REVIEW.md) records later checks; fixed release
-files retain their status at publication. All releases are research drafts.
+Version 4 includes the derivative determinant, its resultant proof of
+nonsingularity, and the full finite classification. It uses no Banks
+determinant theorem as an external input. The stated Rosser–Schoenfeld
+prime estimates, classical quadratic ideal theory, and reduction of
+binary quadratic forms remain external inputs. No earlier paper is
+needed to read v4.
+
+The independent mathematical checks of both v3.0 and v3.1 were confirmed
+on 20 October 2026 after publication. They do not cover the new v4
+argument. The [current review record](REVIEW.md) records subsequent
+checks; fixed release files retain their status at publication.
+All releases are research drafts.
 
 ## Fixed versions for citation
 
@@ -72,6 +84,7 @@ files retain their status at publication. All releases are research drafts.
 - [v0.2.0: cumulative refined paper and files](https://github.com/twinheterodox/tenth-discriminant/tree/v0.2.0/versions/v2)
 - [v0.3.0: direct split-prime proof and files](https://github.com/twinheterodox/tenth-discriminant/tree/v0.3.0/versions/v3)
 - [v0.3.1: expanded v3 proof and complete finite verification](https://github.com/twinheterodox/tenth-discriminant/tree/v0.3.1/versions/v3.1)
+- [v0.4.0: derivative determinant proof and verification](https://github.com/twinheterodox/tenth-discriminant/tree/v0.4.0/versions/v4)
 
 The original proof, programs, outputs, and bundle remain at their existing
 root paths. The `versions/v1/` directory is an exact copy of all tracked
@@ -86,7 +99,7 @@ checksums; each version also retains its own manifest.
 > The following text is retained verbatim as a historical snapshot.
 > Its review and publication statements describe that snapshot. Subsequent
 > review information is recorded in [REVIEW.md](REVIEW.md); current work is
-> documented in [expanded v3](versions/v3.1/README.md).
+> documented in [v4](versions/v4/README.md).
 
 # An explicit tenth-discriminant bound from Banks's zero-free theorem
 

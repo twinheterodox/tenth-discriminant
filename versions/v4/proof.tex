@@ -1,0 +1,677 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage{microtype}
+\hypersetup{pdftitle={A derivative determinant bound for the tenth discriminant},
+ pdfauthor={Research note prepared with Codex},
+ pdfsubject={Version 0.4.0: q < 4000}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\C}{\mathbb C}
+\newcommand{\OK}{\mathcal O_K}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\ord}{\operatorname{ord}}
+\title{A derivative determinant bound for the tenth discriminant\\
+\large Version 4: \(q<4\,000\)}
+\author{Research note prepared with Codex}
+\date{Version 0.4.0 --- 20 October 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We obtain the analytic cutoff \(q<4\,000\) for imaginary quadratic fields
+of class number one, a factor of 250 below the preceding cutoff \(10^6\).
+The direct split-prime estimate of v3 is combined with Green's derivative
+determinant, replacing Banks's quartic-field construction. We sharpen the
+nonsingularity criterion, choose points in a rectangle adapted to the
+quadratic integer lattice, and keep the decrease of polynomial degree
+under differentiation in the absolute-value estimate. The determinant
+argument is proved here, including the resultant estimate. Classical
+explicit prime estimates remain external inputs. An exact rational
+certificate checks the constants and uniform contradiction; an
+exhaustive integer check below the cutoff leaves the nine familiar
+discriminants. No earlier version is needed to read the proof.
+\end{abstract}
+
+\paragraph{Status and attribution.}
+This is an AI-assisted research draft.
+The new v4 mathematical argument has not yet had an independent
+cross-check. The supplied programs check arithmetic and finite cases;
+they do not formally verify the proof. The derivative determinant and
+the resultant method originate in Green's note \cite{green}. The
+refinements and explicit parameter choices below were developed with
+Codex. Both v3 papers have passed independent mathematical checks;
+those checks do not cover the new argument in this version.
+
+\section{Result, notation, and proof strategy}
+
+Let \(D<0\) be a fundamental discriminant, let
+\(K=\Q(\sqrt D)\), and put \(q=|D|\). The class number \(h(K)\)
+is the number of ideal classes of its ring of integers \(\OK\).
+Thus \(h(K)=1\) means that every nonzero integral ideal is principal.
+All logarithms in this paper are natural.
+
+\begin{theorem}\label{main}
+If \(h(K)=1\), then \(q<4\,000\).
+The finite verification supplied with this paper consequently gives
+\[
+ h(K)=1\quad\Longleftrightarrow\quad
+ q\in\{3,4,7,8,11,19,43,67,163\}.
+\]
+\end{theorem}
+
+The analytic cutoff, rather than the known classification by other
+methods, is the object of Tao's challenge \cite{tao}.
+The argument has four steps.
+\begin{enumerate}
+\item Under class number one, split primes are norms of primitive
+quadratic integers. Counting these integers bounds the weighted sum
+of split primes, so an explicit total prime sum forces many inert primes.
+\item We evaluate monomials and their derivatives at a finite set of
+quadratic integers. A resultant argument proves that the associated
+integer Gram determinant is positive.
+\item Frobenius at every inert prime forces a large prime-power divisor
+of this determinant. Its absolute value has a competing upper bound.
+For every \(q\ge4\,000\), the two bounds are inconsistent.
+\item A separate, small integer computation excludes the remaining
+candidates except the nine stated in the theorem.
+\end{enumerate}
+
+The proof uses quadratic ideal theory, elementary polynomial algebra,
+and the two Rosser--Schoenfeld estimates stated in
+Section~\ref{primes}. Reduction of positive binary quadratic forms is
+used only in the finite classification. The new determinant argument is
+included in full. We use neither a Heegner method nor computed
+zero-free regions for quadratic Dirichlet \(L\)-functions.
+
+To prove the cutoff, assume from now until Section~\ref{finite} that
+\[
+ h(K)=1,\qquad q\ge4\,000,\qquad L=\log q,\qquad u=\sqrt q.
+\]
+The symbols \(R,S,J\) below denote determinant parameters;
+in particular, \(R\) does \emph{not} denote \(\sqrt q\).
+
+\section{Class number one and a direct bound for split primes}
+
+For a prime \(p\), the quadratic character \(\chi_D(p)\) is respectively
+\(1,-1,0\) when \(p\) splits, is inert, or ramifies in \(K\).
+In the split or ramified case there is an integral ideal of norm \(p\).
+Under \(h(K)=1\), a generator \(\alpha\) of that ideal satisfies
+\(|N_{K/\Q}(\alpha)|=p\).
+
+In the standard integral basis \(1,\omega\), one has
+\(\operatorname{Im}\omega=u/2\) and
+\(\operatorname{Re}\omega\in\{0,1/2\}\). Hence every nonrational
+quadratic integer has norm at least \(q/4\); a rational integer has a
+square norm. It follows that
+\begin{equation}\label{small-inert}
+ p<q/4\quad\Longrightarrow\quad\chi_D(p)=-1.
+\end{equation}
+In particular, 2 is inert. The quadratic character at 2 then implies
+\(D\equiv5\pmod8\), or \(q\equiv3\pmod8\). We may therefore use
+\[
+ \omega=\frac{1+i\sqrt q}{2},\qquad
+ \OK=\Z+\Z\omega,\qquad
+ Q(a,b)=|a+b\omega|^2=(a+b/2)^2+qb^2/4.
+\]
+
+\subsection{The primitive lattice count}
+
+Let \(A(x)\) count pairs \((a,b)\in\Z\times\Z_{\ge1}\) with
+\(Q(a,b)\le x\). For fixed \(b\), the allowable real interval for \(a\)
+has length
+\(f(b)=2\sqrt{x-qb^2/4}\), when this is defined. Its integer-point
+count differs from its length by at most one. Since \(f\) is decreasing,
+comparison with its integral gives
+\begin{equation}\label{raw-count}
+ \frac{\pi x}{u}-2\sqrt x-\frac{2\sqrt x}{u}
+ \ \le A(x)\le\frac{\pi x}{u}+\frac{2\sqrt x}{u}.
+\end{equation}
+Here \(\int_0^{2\sqrt x/u}f(t)\,dt=\pi x/u\), and the lower
+integral comparison loses at most \(f(0)=2\sqrt x\).
+
+Sieve out common factors of \(a,b\) among \(2,3,5,7\). With \(P=210\),
+the resulting count is
+\[
+ A_P(x)=\sum_{d\mid P}\mu(d)A(x/d^2).
+\]
+Inserting the appropriate upper or lower estimate from
+\eqref{raw-count}, according to the sign of \(\mu(d)\), gives
+\begin{equation}\label{sieved-count}
+ A_P(x)\le\frac{\pi\rho x}{u}+B_q\sqrt x,
+ \qquad
+ \rho=\frac{768}{1225},\qquad
+ B_q=\frac{88}{35}+\frac{192}{35u}.
+\end{equation}
+Indeed, the three elementary products used here are
+\[
+ \prod_{p\mid P}(1-p^{-2})=\frac{768}{1225},\quad
+ \prod_{p\mid P}(1+p^{-1})=\frac{96}{35},\quad
+ \prod_{p\mid P}(1-p^{-1})=\frac{8}{35}.
+\]
+The coefficient of \(\sqrt x\) is the second product minus the third,
+plus \(2/u\) times the second.
+
+A split prime \(p\) has two distinct prime ideals of norm \(p\).
+Their generators give exactly two points with norm \(p\) and \(b>0\):
+the only units for \(q>4\) are \(\pm1\), and conjugation exchanges the
+two prime ideals. Each such point has \(\gcd(a,b)=1\), since otherwise
+a nontrivial square would divide \(p\). Thus, if \(\pi_+(x)\) counts
+split primes up to \(x\), then \(2\pi_+(x)\le A_P(x)\).
+
+\subsection{Partial summation}
+
+Set
+\[
+ S_+(X)=\sum_{\substack{p\le X\\\chi_D(p)=1}}\frac{\log p}{p},
+ \qquad a_0=q/4.
+\]
+There are no split primes below \(a_0\). Since \(a_0>e\), the function
+\(\log t/t\) is decreasing throughout the interval of integration.
+Partial summation applied to \eqref{sieved-count} gives, for \(X\ge a_0\),
+\begin{equation}\label{split-bound}
+ S_+(X)\le
+ \frac{\pi\rho}{4u}
+ \bigl((\log X)^2-(\log a_0)^2+2\log a_0\bigr)
+ +\frac{2B_q(\log a_0+1)}{u}.
+\end{equation}
+For completeness, the linear count contributes the first term exactly.
+The square-root count contributes
+\[
+ \frac{B_q(\log a_0+1)}{\sqrt{a_0}}
+ -\frac{B_q(\log X+2)}{2\sqrt X};
+\]
+discarding its last, negative term yields \eqref{split-bound}.
+
+Every ramified prime divides \(q\), and \eqref{small-inert} also
+applies to ramified primes. Therefore
+\begin{equation}\label{ramified}
+ S_0(X):=\sum_{\substack{p\le X\\p\mid q}}\frac{\log p}{p}
+ \le\frac4q\sum_{p\mid q}\log p\le\frac{4L}{q}.
+\end{equation}
+
+\section{The explicit ordinary-prime estimates}\label{primes}
+
+Write
+\(A_{\mathrm{pr}}(x)=\sum_{p\le x}\log p/p\) and
+\(\vartheta(x)=\sum_{p\le x}\log p\).
+Theorems 6 and 9 of Rosser--Schoenfeld \cite{rs} give a real constant
+\(c_0\) such that
+\begin{equation}\label{rs}
+ |A_{\mathrm{pr}}(x)-\log x-c_0|<\frac1{2\log x}\quad(x\ge319),
+ \qquad
+ \vartheta(x)<cx\quad(x>0),\quad c=1.01624.
+\end{equation}
+Evaluation of the finite prime sum at 319, with rigorous logarithm
+intervals, gives
+\[
+ \log319-A_{\mathrm{pr}}(319)+\frac1{2\log319}<1.334.
+\]
+Consequently \(c_0>-1.334\), so
+\begin{equation}\label{prime-total}
+ A_{\mathrm{pr}}(x)>\log x-1.334-\frac1{2\log x}\qquad(x\ge319).
+\end{equation}
+All finite numerical inequalities in this paper are checked by the
+accompanying exact arithmetic certificate.
+
+We will separate the primes at \(H=50\). Define
+\begin{align*}
+ a_H&=\sum_{p\le50}\frac{\log p}{p},&
+ \theta_H&=\sum_{p\le50}\log p,\\
+ W&=\sum_{p\le50}\left(\frac1{50}-\frac{p}{7500}\right)\log p.
+\end{align*}
+The required bounds are
+\begin{equation}\label{small-constants}
+ a_H<2.77035,\qquad40.9602<\theta_H<41,\qquad W>0.6732.
+\end{equation}
+Integration by parts in \eqref{rs} also gives
+\begin{equation}\label{prime-tail}
+ \sum_{p>50}\frac{\log p}{p^2}
+ =-\frac{\theta_H}{50^2}
+   +2\int_{50}^\infty\frac{\vartheta(t)}{t^3}\,dt
+ < b:=\frac{2c}{50}-\frac{40.9602}{50^2}=0.02426552.
+\end{equation}
+Finally, another partial summation gives
+\(A_{\mathrm{pr}}(x)\le c(1+\log(x/2))<2\log x\) for \(x\ge2\).
+
+\section{A sharpened derivative interpolation lemma}\label{rank}
+
+This section adapts Green's resultant proof \cite{green}. We retain the
+actual constant in the bound for the number of points on a curve, and
+retain the loss of \(w\)-degree when removing factors depending only on
+\(w\). These changes give the following useful criterion.
+
+\begin{lemma}\label{rank-lemma}
+Let \(P_i=(z_i,w_i)\in\C^2\), \(1\le i\le n\), with all \(w_i\)
+distinct. Suppose every nonzero polynomial \(F\in\C[z,w]\) satisfies
+\[
+ \#\{i:F(P_i)=0\}\le A\deg F.
+\]
+Let \(R,S,J\) be positive integers with
+\begin{equation}\label{rank-condition}
+ J\le2R+A,\qquad nJ>2RS+A(R+S).
+\end{equation}
+Then the \(RS\) vectors
+\[
+ v_{r,s}=\bigl(\partial_z^j(z^r w^s)(P_i)\bigr)_{
+                 1\le i\le n,\ 0\le j<J},
+ \qquad0\le r<R,\quad0\le s<S,
+\]
+are linearly independent over \(\C\).
+\end{lemma}
+
+\begin{proof}
+A dependence would give a nonzero polynomial of degrees less than
+\((R,S)\) whose first \(J\) derivatives in \(z\) vanish at every point.
+Factor it over \(\C\) as
+\[
+ F(z,w)=F_0(w)\prod_{\ell=1}^k F_\ell(z,w),
+\]
+where each \(F_\ell\) is irreducible and has positive \(z\)-degree
+\(d_\ell\); factors may be repeated. Write \(d'_\ell=\deg_w F_\ell\)
+and \(d'_0=\deg F_0\). We can use the weak bounds
+\(\sum d_\ell\le R\) and \(\sum d'_\ell\le S-d'_0\).
+
+For an irreducible factor of bidegree \((d,d')\) with \(d>0\), the
+polynomial \(T(w)=\Res_z(F_\ell,\partial_zF_\ell)\) is nonzero and
+has degree at most \(2dd'\). No specialization
+\(F_\ell(z,w_i)\) is identically zero: otherwise \(w-w_i\) would
+divide the irreducible polynomial. At a root of multiplicity \(m\),
+\begin{equation}\label{resultant-order}
+ m\le1+\ord_{w=w_i}T(w).
+\end{equation}
+Here is a direct justification. The Sylvester matrix has size \(2d-1\).
+After specialization at \(w_i\), both polynomials are divisible by
+\((z-z_i)^{m-1}\), so the matrix has rank deficiency at least \(m-1\).
+A constant invertible row transformation can make that many rows zero
+at \(w_i\). Each such row is then divisible by \(w-w_i\), so the
+determinant vanishes to order at least \(m-1\). Its entries have
+\(w\)-degree at most \(d'\), which also proves the degree bound.
+Nonvanishing follows from irreducibility and characteristic zero.
+
+The number of points where this factor vanishes is at most
+\(A(d+d')\). Summing \eqref{resultant-order} over these points, using
+distinct \(w_i\), bounds the sum of its specialized multiplicities by
+\(A(d+d')+2dd'\).
+
+There are at most \(d'_0\) indices where \(F_0(w_i)=0\). At every
+other index the specialization of \(F\) has multiplicity at least \(J\).
+Thus
+\begin{align*}
+ J(n-d'_0)
+ &\le A(R+S-d'_0)+2R(S-d'_0),\\
+ nJ
+ &\le A(R+S)+2RS+(J-A-2R)d'_0
+ \le A(R+S)+2RS.
+\end{align*}
+The last inequality uses \(J\le2R+A\), and contradicts
+\eqref{rank-condition}.
+\end{proof}
+
+\section{The integral determinant and its prime divisibility}\label{det}
+
+Take distinct points \(z_i\in\OK\) and \(w_i=\overline{z_i}\) satisfying
+Lemma~\ref{rank-lemma}. The derivative vectors lie in \(\OK^{nJ}\).
+Form the real Gram matrix
+\[
+ G_{(r,s),(r',s')}=
+ \Tr_{K/\Q}\!\left(\sum_{i,j}
+ (v_{r,s})_{i,j}\,\overline{(v_{r',s'})_{i,j}}\right).
+\]
+Every entry is an integer. The trace pairing on this imaginary
+quadratic field is the positive real inner product
+\(2\operatorname{Re}(\alpha\overline\beta)\). Complex linear
+independence of the vectors implies their real linear independence.
+Consequently
+\begin{equation}\label{positive-det}
+ \Delta:=\det G\in\Z_{>0}.
+\end{equation}
+
+\subsection{The absolute-value bound}
+
+Suppose \(|z_i|=|w_i|\le T\) and \(1\le T\le R\). An entry involving
+the \(j\)-th derivative has absolute value at most
+\[
+ R^j T^{r+s-j}\le T^{r+s}(R/T)^{J-1};
+\]
+when \(j>r\), it is zero. Hadamard's inequality for the Gram matrix
+therefore yields
+\begin{equation}\label{arch}
+ \frac{\log\Delta}{R^2S}
+ \le\frac{\log(2nJ)}R
+ +\left(1+\frac SR\right)\log T
+ +\frac{2J}R\log(R/T).
+\end{equation}
+In obtaining this slightly weaker expression, we used
+\(\sum_{r,s}2(r+s)=RS(R+S-2)\) and then discarded negative terms.
+Retaining the factor \(T^{-j}\) from differentiation is useful here.
+
+\subsection{The inert-prime bound, including the prime 2}
+
+If \(p\) is inert, \(\OK/p\OK\) is the field of \(p^2\) elements.
+Its Frobenius is the nontrivial quadratic automorphism, so
+\(z_i^p\equiv\overline{z_i}=w_i\pmod{p\OK}\).
+This applies to \(p=2\) as well as odd inert primes because we work
+in the full ring of integers. Put \(\psi=z^p-w\).
+Its value and all its positive \(z\)-derivatives at these points are
+in \(p\OK\): every nonzero derivative coefficient contains \(p\).
+
+For each pair \((r,s)\), let
+\(h_{r,s}=\min(\lfloor r/p\rfloor,S-1-s)\).
+Replace its polynomial by
+\(z^{r-ph_{r,s}}\psi^{h_{r,s}}w^s\).
+The binomial expansion has leading term \(z^r w^s\) and other terms
+\(z^{r-pi}w^{s+i}\), all with smaller \(r\) and still within the
+rectangle of indices. The induced row transformation is an integer
+triangular matrix with determinant one. Every derivative of the
+replacement polynomial is in \(p^{h_{r,s}}\OK\), by the product rule.
+Applying the same transformation to the Gram matrix and factoring
+from rows and columns proves
+\begin{equation}\label{valuation}
+ v_p(\Delta)\ge
+ 2\sum_{0\le r<R,\ 0\le s<S}\min(\lfloor r/p\rfloor,S-1-s).
+\end{equation}
+No division by derivative factorials is made in this argument.
+
+\subsection{Explicit lower bounds for the valuation sum}
+
+Let \(e(R,S,p)\) denote the right side of \eqref{valuation}, divided
+by \(R^2S\). Counting the pairs for which the minimum is at least
+\(h\) gives the exact identity
+\begin{equation}\label{layers}
+ e(R,S,p)=\frac2{R^2S}
+ \sum_{h=1}^{S-1}(S-h)\max(R-ph,0).
+\end{equation}
+When \(p(S-1)\le R-1\), summing this quadratic expression gives
+\begin{equation}\label{small-e}
+ e(R,S,p)=\frac{S-1}{R}-\frac{p(S^2-1)}{3R^2}.
+\end{equation}
+For a bound valid for all \(p\), use
+\(\sum_{s=0}^{S-1}\min(k,S-1-s)\ge Sk-k(k+1)/2\).
+Writing \(R=ap+b\), \(0\le b<p\), shows
+\[
+ \sum_{r=0}^{R-1}\lfloor r/p\rfloor
+ =\frac{R(R-p)}{2p}+\frac{b(p-b)}{2p}
+ \ge\frac{R(R-p)}{2p}.
+\]
+Also \(\lfloor r/p\rfloor(\lfloor r/p\rfloor+1)
+\le r^2/p^2+r/p\). Substitution gives
+\begin{equation}\label{tail-e}
+ e(R,S,p)\ge
+ \left(1-\frac{R-1}{2RS}\right)\frac1p
+ -\frac1R-\frac{(R-1)(2R-1)}{6RS\,p^2}.
+\end{equation}
+
+\section{Parameters and an adapted lattice rectangle}\label{params}
+
+Choose
+\begin{equation}\label{parameters}
+ R=q^4,\qquad S=\lfloor R/50\rfloor,\qquad
+ J=\lfloor R/55\rfloor.
+\end{equation}
+Let
+\[
+ X_0=\frac{3}{2\sqrt2}q^{9/4},\qquad
+ Y_0=\frac{3}{\sqrt2}q^{7/4},\qquad
+ N_x=\lceil X_0\rceil,\quad N_y=\lceil Y_0\rceil.
+\]
+Choose \(N_y\) consecutive integers \(b\), centered as closely as
+possible about zero, so \(|b|\le N_y/2\). For each such \(b\), choose
+\(N_x\) consecutive integers \(a\) so that
+\(|a+b/2|\le N_x/2\). Such a choice exists for either parity of \(b\).
+Use the \(n=N_xN_y\) points \(z=a+b\omega\).
+They satisfy
+\begin{equation}\label{point-size}
+ |z|^2\le\frac{N_x^2}{4}+\frac{qN_y^2}{16}.
+\end{equation}
+
+Both unrounded side lengths exceed \(q^{3/2}\ge240\,000\). Thus
+\(N_x<1.0001X_0\), \(N_y<1.0001Y_0\), and
+\begin{equation}\label{grid-bounds}
+ \frac94R\le n<3R,\qquad
+ A:=N_x\le2q^{9/4},\qquad
+ |z|\le T:=1.0001\,\frac34q^{9/4}<R.
+\end{equation}
+Here \(N_x\ge N_y\), since \(X_0/Y_0=\sqrt q/2>1\).
+
+We check the zero-count hypothesis in Lemma~\ref{rank-lemma}, including
+the fact that the horizontal integer intervals may depend on \(b\).
+The invertible linear substitution
+\((a,b)\mapsto(a+b\omega,a+b\overline\omega)\) preserves total degree.
+Suppose a polynomial of total degree \(d\) vanishes identically on
+\(k\) of the chosen horizontal lines. Factoring out these \(k\)
+linear factors leaves a polynomial of degree at most \(d-k\).
+On each other line it has at most \(d-k\) zeros. The total is at most
+\[
+ kN_x+(N_y-k)(d-k)\le N_xd=Ad.
+\]
+The coordinates \(w_i=\overline{z_i}\) are distinct because the
+quadratic integer representation is unique.
+
+The first rank condition, \(J\le2R+A\), is immediate.
+For the second, use \(n\ge9R/4\), \(J\ge R/55-1\),
+\(S\le R/50\), and \(A\le2q^{9/4}\). It suffices that
+\[
+ \frac1{1100}>
+ \frac{9}{4q^4}+\frac{51}{25q^{7/4}}.
+\]
+This holds uniformly for \(q\ge4\,000\), even on replacing
+\(q^{7/4}\) by the smaller bound \(240\,000\).
+Thus \(\Delta\) is a positive integer.
+
+\section{The uniform contradiction}\label{contradiction}
+
+\subsection{Upper bound for the determinant}
+
+Set
+\[
+ \beta=1+\frac1{50}-\frac2{55}=\frac{541}{550}.
+\]
+In \eqref{arch}, increasing \(S/R\) to \(1/50\) and \(J/R\) to
+\(1/55\) increases the right side, since \(T\ge1\) and \(R/T>1\).
+Using \eqref{grid-bounds} and \(\log(1.0001)<0.0001\), we get
+\begin{equation}\label{arch-final}
+ \frac{\log\Delta}{R^2S}
+ <\frac{5189}{2200}L+\beta\log(3/4)+0.000101.
+\end{equation}
+Indeed \(\log(2nJ)/R\le(2+8L)/q^4<10^{-6}\).
+
+\subsection{Lower bound for the determinant}
+
+Write
+\[
+ I=\sum_{\substack{50<p\le R\\\chi_D(p)=-1}}\frac{\log p}{p}.
+\]
+All primes up to 50 are inert by \eqref{small-inert}.
+For these primes \eqref{small-e} applies, because their largest value
+is 47 and \(S\le R/50\). Since \(S\ge R/50-1\), their total
+contribution to \(\log\Delta/(R^2S)\) is at least
+\[
+ W-\frac{2\theta_H}{R}>W-10^{-6}.
+\]
+For the larger inert primes, \eqref{tail-e} gives the lower bound
+\[
+ I-\frac{I}{2S}-\frac{\vartheta(R)}R
+       -\frac{R}{3S}\sum_{p>50}\frac{\log p}{p^2}.
+\]
+We have \(R/S\le50.001\), and
+\(I/(2S)<\log R/S\le50.001(4L)/q^4<10^{-6}\).
+Combining the bounds, using \eqref{positive-det}, \eqref{valuation},
+\eqref{rs}, and \eqref{prime-tail}, yields
+\begin{equation}\label{padic-final}
+ \frac{\log\Delta}{R^2S}
+ >I+W-c-16.667b-0.000002.
+\end{equation}
+
+By separating the three splitting types and using \eqref{prime-total}
+and \eqref{ramified},
+\[
+ I>4L-1.334-\frac1{8L}-a_H-S_+(q^4)-\frac{4L}{q}.
+\]
+Comparison with \eqref{arch-final} forces
+\begin{equation}\label{necessary}
+ \delta:=\frac{3611}{2200}
+ <\frac{S_+(q^4)}L+\frac4q+\frac KL+\frac1{8L^2},
+\end{equation}
+where we may use the following rational upper bound for the constant:
+\begin{align}
+ K={}&1.334+2.77035+c+16.667b-0.6732
+       -\beta(0.28768)+0.001\label{k}\\
+ ={}&\frac{628354500503}{137500000000}<4.570.\nonumber
+\end{align}
+Here \(\log(4/3)>0.28768\), and \(0.001\) exceeds all the losses
+\(0.000101+0.000002\) already displayed. In particular \(K>0\).
+
+\subsection{One endpoint controls the whole infinite range}
+
+Writing \(\ell=\log4\), equation \eqref{split-bound} at \(X=q^4\)
+becomes
+\[
+ \frac{S_+(q^4)}L\le
+ \frac{\pi\rho}{4u}
+ \left(15L+2\ell+2-\frac{\ell^2+2\ell}{L}\right)
+ +\frac{2B_q}{u}\left(1-\frac{\ell-1}{L}\right).
+\]
+Using \(\pi<22/7\) and rigorous bounds for \(\ell\), this is less than
+\begin{equation}\label{split-uniform}
+ F(q):=\frac{0.4926}{\sqrt q}
+ \left(15L+4.773-\frac{4.694}{L}\right)
+ +\frac{2}{\sqrt q}\left(\frac{88}{35}+\frac{192}{35\sqrt q}\right)
+ \left(1-\frac{0.386}{L}\right).
+\end{equation}
+Each term of \(F(q)\) decreases for \(L\ge8\). For the first term,
+the sign of its derivative with respect to \(L\) is the sign of
+\[
+ 15+\frac{4.694}{L^2}
+ -\frac12\left(15L+4.773-\frac{4.694}{L}\right),
+\]
+which is negative already using \(L\ge8\) in each factor.
+For the boundary terms, differentiate
+\(e^{-aL}(1-0.386/L)\) with \(a=1/2\) or \(1\); their derivatives
+are also negative for \(L\ge8\). Positivity of these factors is
+immediate. The other terms in
+\(F(q)+4/q+K/L+1/(8L^2)\) decrease as well.
+
+It is therefore enough to evaluate the right side at \(q=4\,000\).
+The exact certificate uses only the rational enclosures
+\[
+ 8.294049<\log4000<8.294050,\qquad
+ \sqrt{4000}>63.245553.
+\]
+Substitution gives
+\[
+ \delta>1.641,\qquad
+ F(4000)+\frac4{4000}+\frac{K}{\log4000}
+       +\frac1{8(\log4000)^2}<1.634.
+\]
+The certified gap is greater than \(0.007\).
+This contradicts \eqref{necessary} for every \(q\ge4\,000\),
+and proves the analytic assertion of Theorem~\ref{main}.
+
+\section{The remaining finite classification}\label{finite}
+
+For \(q>8\), the elementary norm argument in
+Section 2 already forces \(q\equiv3\pmod8\) and makes every prime
+\(p<q/4\) inert. Hence every remaining candidate is among the 499
+integers
+\[
+ 11\le q<4\,000,\qquad q\equiv3\pmod8.
+\]
+The program \texttt{verify\_finite\_range.py} checks every such integer.
+For each odd prime \(p\le109\) with \(4p<q\), it rejects \(q\) if
+\(-q\) is zero or a square modulo \(p\). These would respectively
+make \(p\) ramified or split, contrary to \eqref{small-inert}.
+Including nonfundamental integers in the scan makes the exclusion
+stronger; it cannot remove a possible field incorrectly.
+The surviving values are exactly
+\[
+ 11,19,43,67,163.
+\]
+The negative fundamental discriminants with \(q\le8\) give
+\(q=3,4,7,8\).
+
+To check class number one for each survivor, use the correspondence
+between ideal classes of discriminant \(-q\) and primitive positive
+binary quadratic forms \((a,b,c)\) of discriminant
+\(b^2-4ac=-q\). Each class has one reduced representative with
+\[
+ |b|\le a\le c,\qquad
+ b\ge0\ \text{if }|b|=a\text{ or }a=c.
+\]
+The bound \(a\le\sqrt{q/3}\) follows from
+\(q=4ac-b^2\ge3a^2\). Enumerating this finite range, retaining
+\(\gcd(a,b,c)=1\), gives exactly one reduced form for each of the
+nine survivors. Thus the finite program proves the remaining assertion
+of Theorem~\ref{main}, conditional only on the analytic argument above
+and the standard form-class correspondence.
+
+\section{Reproduction and scope of the checks}
+
+Both verification programs use only the Python standard library.
+Run them from the directory containing this paper:
+\begin{verbatim}
+python3 verify_green_bound.py --sanity
+python3 verify_finite_range.py
+\end{verbatim}
+The first program performs 39 exact arithmetic checks. Logarithms are
+bounded by range reduction and the positive series
+\[
+ \log x=2\sum_{k\ge0}\frac{t^{2k+1}}{2k+1},\qquad
+ t=\frac{x-1}{x+1},\quad1\le x\le2.
+\]
+After 60 terms, its remaining tail is at most
+\(2t^{121}/(121(1-t^2))\). Every acceptance decision uses integers
+or rational fractions, not floating-point arithmetic.
+The optional checks test the valuation identities in 2,880 finite
+cases and the derivative row transformations in 60,000 cases,
+including \(p=2\) and derivative orders at least \(p\).
+The second program performs the complete finite exclusion and
+reduced-form calculation.
+
+These checks establish the stated finite calculations and the numerical
+gap. They do not certify the general resultant, lattice-counting, or
+determinant arguments, nor do they reprove Rosser--Schoenfeld's
+theorems or quadratic ideal theory. Those mathematical steps remain
+subject to independent review. An exploratory floating-point optimizer
+was used to choose parameters; it is not an input to the proof or to
+the exact verification programs.
+
+\begin{thebibliography}{9}
+\bibitem{green}
+B.~Green, \emph{On Landau--Siegel zeros}, version 2, 2026.
+Source snapshot identified as \texttt{2610.00311v2},
+\href{https://hexagonmath.org/api/v1/works/2610.00311v2/source?path=no-siegel.tex}
+{\texttt{no-siegel.tex}}.
+The derivative determinant, Frobenius row operation, and resultant
+argument used here originate in this note.
+
+\bibitem{rs}
+J.~Barkley Rosser and L.~Schoenfeld,
+\emph{Approximate formulas for some functions of prime numbers},
+Illinois J. Math. \textbf{6} (1962), 64--94.
+\href{https://doi.org/10.1215/ijm/1255631807}{doi:10.1215/ijm/1255631807}.
+Theorems 6 and 9, printed pp.~70--71.
+
+\bibitem{tao}
+T.~Tao, \emph{An experimental AI math challenge: using tenth
+discriminant bounds to explore arguments ruling out Siegel zeroes},
+20 October 2026.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/}
+{Challenge and discussion}.
+
+\bibitem{v3}
+\emph{A direct split-prime bound for the tenth discriminant},
+version 0.3.1, 20 October 2026.
+\href{https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.1}
+{Archived preceding version}.
+The split-prime counting argument in Section 2 is retained from that
+version; its Banks determinant is replaced here.
+\end{thebibliography}
+\end{document}

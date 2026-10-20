@@ -1,0 +1,35 @@
+{
+  "version": "v0.4.0",
+  "analytic_cutoff": "q < 4000",
+  "date": "2026-10-20",
+  "sources": [
+    {
+      "author": "Ben Green",
+      "title": "On Landau--Siegel zeros",
+      "version": "2610.00311v2",
+      "source_url": "https://hexagonmath.org/api/v1/works/2610.00311v2/source?path=no-siegel.tex",
+      "snapshot_sha256": "829673fbbbd3ab0ff0655115218e2a45d7855bae3b429fe348488f9b37d59722",
+      "use": "Derivative Gram determinant, resultant nonsingularity proof, and Frobenius row transformation. The draft includes these arguments with the stated refinements.",
+      "availability_note": "The existing local source snapshot was read in full. A new unauthenticated source request on 2026-10-20 returned HTTP 403. The bibliography identifies the exact snapshot; the draft proves the determinant statements it uses."
+    },
+    {
+      "authors": [
+        "J. Barkley Rosser",
+        "Lowell Schoenfeld"
+      ],
+      "title": "Approximate formulas for some functions of prime numbers",
+      "doi": "10.1215/ijm/1255631807",
+      "source_url": "https://doi.org/10.1215/ijm/1255631807",
+      "retrieved_pdf_url": "https://denisevellachemla.eu/Rosser-Schoenfeld-1962.pdf",
+      "snapshot_sha256": "8e37b06f82e09421bceb2502578c47b61469141f0287e6acedb70e01765ab556",
+      "use": "Theorems 6 and 9, printed pages 70-71; external inputs, not reproved."
+    },
+    {
+      "title": "A direct split-prime bound for the tenth discriminant",
+      "version": "v0.3.1",
+      "source_url": "https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.1",
+      "use": "The lattice split-prime argument is restated and proved. The earlier Banks determinant is replaced."
+    }
+  ],
+  "review_status": "Independent mathematical review pending; same-assistant arithmetic and finite checks passed."
+}

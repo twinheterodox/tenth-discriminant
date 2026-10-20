@@ -56,11 +56,13 @@ The original finite-sieve code and recorded outputs are included
 byte-for-byte. Their existing coverage below `10^10` includes the new
 remaining interval; the finite sieve was not rerun for v3.
 
-**An independent mathematical cross-check of the new v3 argument is
-pending.** Codex produced the new argument and checker. The completed v2
-cross-check does not cover v3, and the finite checks do not establish the
-general analytic lemmas. No independent human review or Lean formalization
-of v3 is recorded here.
+**The v0.3.0 mathematical argument has passed an independent cross-check.**
+Completion was confirmed on 20 October 2026 together with the
+expanded v0.3.1 paper. The reviewer/model and detailed
+review reports were not supplied for inclusion in this repository.
+The proof, bundle, fixed tag, and publication-time review record are
+preserved unchanged. The finite checks alone do not establish the general
+analytic lemmas, and no Lean formalization is recorded here.
 
 The [v3 review record at publication](versions/v3/REVIEW.md) gives the
 scope of each check. Banks's determinant construction and cited lemmas,
@@ -82,12 +84,41 @@ original outputs apart from machine-dependent runtime.
 The PDF has a clean LaTeX build, and all ten pages were rendered and
 visually inspected. The generating assistant checked the expanded
 exposition against the original v3 deductions and the cited determinant
-estimates. **Independent mathematical review of v3 remains pending.**
-The completed v2 cross-check still applies to v2.
+estimates. **The expanded v0.3.1 paper has also passed an independent
+mathematical cross-check.** Completion for both v3 versions was confirmed
+on 20 October 2026. The reviewer/model and detailed reports were not
+supplied for inclusion in this repository. This subsequent review update
+does not change either fixed paper or its publication-time review record.
 
 The [patch review record](versions/v3.1/REVIEW.md) gives the scope of
 these checks. The original v0.3.0 publication and its review record
 remain unchanged.
+
+## v0.4.0 — derivative determinant argument
+
+The new argument gives the analytic cutoff `q < 4,000`, a factor of 250
+below v3. It retains the split-prime count but replaces Banks's determinant
+with Green's derivative determinant. The paper includes the determinant
+argument, a sharpened resultant nonsingularity criterion, the adapted
+quadratic-integer lattice rectangle, and tighter derivative estimates.
+
+All 39 exact arithmetic checks pass. The optional finite checks exercise
+the valuation identities in 2,880 cases and the derivative row
+transformations in 60,000 cases, including inert `p = 2`. A direct
+verifier checks all 499 remaining candidate integers below 4,000 and
+enumerates the reduced forms of the nine surviving fields. Both programs
+use only the Python standard library and reproduce the recorded outputs.
+The ten-page PDF has been compiled, rendered, and visually inspected.
+
+**Independent mathematical review of v4 is pending.** The completed
+checks of v3.0 and v3.1 do not cover this new argument. Codex developed
+the proof and verification programs; the arithmetic and finite sanity
+checks do not independently establish the general mathematical lemmas.
+
+The [v4 review record at publication](versions/v4/REVIEW.md) identifies
+the scope of each check. The two stated Rosser–Schoenfeld estimates,
+quadratic ideal theory, and classical reduction of binary quadratic
+forms remain external inputs. No Lean formalization is supplied.
 
 ## Recording future reviews
 
