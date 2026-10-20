@@ -47,4 +47,4 @@ Finite cases check implementation and identities; they do not replace the proof.
 PASS: primitive Euler factors agree with direct norm enumeration in 10000 coefficients across five class-number-one fields.
 
 TOTAL: 37 new exact arithmetic checks passed.
-Independent mathematical review of v5 remains pending.
+Mathematical audit and review scope: see REVIEW.md.

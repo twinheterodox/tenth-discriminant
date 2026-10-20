@@ -45,5 +45,11 @@
       "use": "Classical Euler--Maclaurin, gamma expansions, and zeta representations. The exact formulas and error bounds used are stated in the paper."
     }
   ],
-  "review_status": "Independent mathematical review of v5 pending; same-assistant arithmetic and finite checks passed. V4 independently verified."
+  "review_status": "V5 manual mathematical audit with exact computational checks passed; confirmed 2026-10-20. This revision applies the reported wording correction in Section 6.2. Not formal verification.",
+  "revision": {
+    "from": "v0.5.0",
+    "change": "Wording correction within v0.5.0: Section 6.2 explicitly bounds log(R)/S by 110.001 log(R)/R; audit status updated; numerical result and certificate calculations unchanged.",
+    "original_publication_commit": "7a883b764213cc52c76c9849925b823861eefc38",
+    "tag_note": "The v0.5.0 tag retains the original publication; the corrected PDF and bundle are attached to that release."
+  }
 }

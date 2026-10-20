@@ -27,17 +27,17 @@ nine absolute fundamental discriminants
 Codex prepared the derivations, write-ups, and verification programs;
 the review record identifies the checks completed for each version.
 
-**Current research draft: v0.5.1, with analytic cutoff `q < 2,000` — half
+**Current research draft: v0.5.0, with analytic cutoff `q < 2,000` — half
 the v4 cutoff.**
 
-**[Read the corrected v5 proof](versions/v5.1/output/pdf/proof.pdf)** ·
-[Source and reproduction](versions/v5.1/README.md) ·
-[v5.1 release and downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.1)
+**[Read the corrected v5 proof](versions/v5/output/pdf/proof.pdf)** ·
+[Source and reproduction](versions/v5/README.md) ·
+[v5 release and downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0)
 
 **V5 has passed a manual mathematical audit with exact computational
-checks.** V0.5.1 applies its minor wording correction in §6.2; the bound
+checks.** The paper applies its minor wording correction in §6.2; the bound
 and certificate calculations are unchanged. This is not formal
-verification. See the [audit finding and correction](versions/v5.1/AUDIT.md).
+verification. See the [audit finding and correction](versions/v5/AUDIT.md).
 V5 cites the independently verified v4 result for `q >= 4,000`;
 the new interval is treated in full, relative to the stated classical inputs.
 
@@ -53,8 +53,7 @@ snapshot.
 
 | Version | Analytic cutoff | Paper and files | Mathematical review status |
 |---|---|---|---|
-| **v5 corrected · v0.5.1** | **`q < 2,000`** | [Corrected proof](versions/v5.1/output/pdf/proof.pdf) · [Source and reproduction](versions/v5.1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.1) | Applies the v5 audit's §6.2 wording correction; all certificate calculations and numerical results unchanged; not formal verification |
-| **v5 original · v0.5.0** | `q < 2,000` | [Original v5 proof](versions/v5/output/pdf/proof.pdf) · [Source and reproduction](versions/v5/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0) | Manual mathematical audit with exact computational checks passed, with one wording correction applied in v0.5.1; original snapshot preserved |
+| **v5 · v0.5.0** | **`q < 2,000`** | [Corrected proof](versions/v5/output/pdf/proof.pdf) · [Source and reproduction](versions/v5/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0) | Manual mathematical audit with exact computational checks passed; §6.2 wording corrected within v0.5.0; calculations unchanged; not formal verification |
 | **v4 · v0.4.0** | **`q < 4,000`** | [Self-contained proof and finite classification](versions/v4/output/pdf/proof.pdf) · [Source and reproduction](versions/v4/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.4.0) | Independent mathematical verification passed; 39 exact arithmetic checks, 62,880 finite sanity cases, and an exhaustive check of 499 candidates pass |
 | **v3 expanded · v0.3.1** | `q < 10^6` | [Expanded proof and finite classification](versions/v3.1/output/pdf/proof.pdf) · [Source and reproduction](versions/v3.1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.1) | Independent mathematical cross-check passed; arithmetic and complete finite checks pass |
 | **v3 original · v0.3.0** | `q < 10^6` | [Original v3 proof](versions/v3/output/pdf/proof.pdf) · [Source and reproduction](versions/v3/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.0) | Independent mathematical cross-check passed; 26 arithmetic checks and 22 finite sanity cases pass |
@@ -91,9 +90,9 @@ identities and Rosser–Schoenfeld estimates remain external inputs.
 The independent mathematical checks of both v3.0 and v3.1, and the
 separate independent verification of v4, were confirmed on
 20 October 2026 after publication. The completed manual audit of v5 and
-its wording correction are recorded in v0.5.1. The
-[current review record](REVIEW.md) records subsequent checks; fixed
-release files retain their status at publication.
+its wording correction are recorded in v0.5.0. The
+[current review record](REVIEW.md) records subsequent checks; original
+publication snapshots retain their status at publication.
 All releases are research drafts.
 
 ## Fixed versions for citation
@@ -103,8 +102,13 @@ All releases are research drafts.
 - [v0.3.0: direct split-prime proof and files](https://github.com/twinheterodox/tenth-discriminant/tree/v0.3.0/versions/v3)
 - [v0.3.1: expanded v3 proof and complete finite verification](https://github.com/twinheterodox/tenth-discriminant/tree/v0.3.1/versions/v3.1)
 - [v0.4.0: derivative determinant proof and verification](https://github.com/twinheterodox/tenth-discriminant/tree/v0.4.0/versions/v4)
-- [v0.5.0: Mellin-averaged determinant proof and verification](https://github.com/twinheterodox/tenth-discriminant/tree/v0.5.0/versions/v5)
-- [v0.5.1: corrected v5 proof and audit finding](https://github.com/twinheterodox/tenth-discriminant/tree/v0.5.1/versions/v5.1)
+- [v0.5.0: original publication snapshot](https://github.com/twinheterodox/tenth-discriminant/tree/v0.5.0/versions/v5)
+
+The v0.5.0 tag retains the original publication. Its
+[release downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0)
+and [current source](versions/v5/README.md) include the minor wording
+correction dated 20 October 2026, under the same version number. The
+original files remain available through the tag and Git history.
 
 The original proof, programs, outputs, and bundle remain at their existing
 root paths. The `versions/v1/` directory is an exact copy of all tracked
@@ -119,7 +123,7 @@ checksums; each version also retains its own manifest.
 > The following text is retained verbatim as a historical snapshot.
 > Its review and publication statements describe that snapshot. Subsequent
 > review information is recorded in [REVIEW.md](REVIEW.md); current work is
-> documented in [v5.1](versions/v5.1/README.md).
+> documented in [v5](versions/v5/README.md).
 
 # An explicit tenth-discriminant bound from Banks's zero-free theorem
 

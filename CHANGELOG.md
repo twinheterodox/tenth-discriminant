@@ -1,25 +1,26 @@
 # Mathematical changelog
 
-## v0.5.1 — 20 October 2026
+## v0.5.0 — wording correction and completed audit, 20 October 2026
 
 **The bound remains `q < 2,000`.** V5 has passed a manual mathematical
 audit with exact computational checks; this is not formal verification.
 
-- Applies the audit's one minor wording correction in §6.2. The proof
-  now explicitly uses `(log R)/S <= 110.001 log(R)/R` and the decrease
+- Applies the audit's minor wording correction in §6.2. The proof
+  explicitly uses `(log R)/S <= 110.001 log(R)/R` and the decrease
   of `(log R)/R`, with `S = floor(R/110)`.
 - The certificate already uses this upper bound. Its calculations,
   numerical constants, and results are unchanged; only the final
   printed review-status sentence now points to the review record.
-- Records the supplied audit finding and the distinction between the
-  completed audit of v5 and this implementation of its correction.
-- Rebuilds the paper and preserves the original v0.5.0 paper, tag,
-  programs, outputs, and downloadable assets. The original release
-  links prominently to this correction.
+- Keeps version v0.5.0 for this minor correction and updates its existing
+  release downloads. The original v0.5.0 tag and Git commit preserve the
+  first publication, including its original paper and bundle.
+- Withdraws the briefly published v0.5.1 release and tag. All commits
+  remain in Git history.
 
-Paper and reproduction files: [versions/v5.1](versions/v5.1/README.md).
-Audit finding: [AUDIT.md](versions/v5.1/AUDIT.md).
-Fixed release: [v0.5.1](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.1).
+Current paper and reproduction files: [versions/v5](versions/v5/README.md).
+Audit finding: [AUDIT.md](versions/v5/AUDIT.md).
+Release: [v0.5.0](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0).
+Original snapshot: [7a883b7](https://github.com/twinheterodox/tenth-discriminant/tree/7a883b764213cc52c76c9849925b823861eefc38/versions/v5).
 
 ## v0.5.0 — 20 October 2026
 

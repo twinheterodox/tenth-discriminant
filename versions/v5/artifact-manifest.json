@@ -1,18 +1,20 @@
 {
   "version": "v0.5.0",
   "analytic_cutoff": "q < 2,000",
-  "mathematical_review": "independent review pending",
+  "revision": "Wording corrected on 2026-10-20 within v0.5.0; original publication is preserved at commit 7a883b764213cc52c76c9849925b823861eefc38 and the original v0.5.0 tag.",
+  "mathematical_review": "Manual mathematical audit with exact computational checks passed; Section 6.2 wording correction applied. Not formal verification.",
   "sha256": {
     ".gitignore": "42902f3fa3a16917eabb81a605976aef99a46c87c141f36dd98cfb2f3dd31688",
-    "README.md": "a84248e257fce93493ae2a366c6eea5dcebf69b2fc356354df457b77cabfbb83",
-    "REVIEW.md": "7f5d7bcfd12f0ec1bed118836dc1b505e866ddbbb8607009568b3f9d4de3f1eb",
+    "AUDIT.md": "3ef052b80abdf6928c4cfea3d908fd96eec33418fcfb8f39c17f76a6783936e3",
+    "README.md": "681fd02ec5828cf55819a50db2ee12ef254dda23e4800aa1d3b0c2b5acb96a63",
+    "REVIEW.md": "a15de5a09597a559d07428823c1c2e631f5b2e634b5626212f35e9897cffc9cc",
     "certificate_support.py": "39b433f4a8a613e3ccfadce73beeca9307f3fb08e0b8f993f35dbf9d6b1d8ffc",
-    "checks.txt": "541af4fdee41bb4c8bcdaba8b106f1511ab4f21dbe784e1d85598615bf3aaa39",
+    "checks.txt": "3edd5ff43c88352559dd718e720608899cd5752cb2bc91875287bd47fafa4e58",
     "finite_range_checks.txt": "47beb2c6fcb96b867e1633a48a3625eb7976dff5e5efc5fbabc62310582ed029",
-    "output/pdf/proof.pdf": "5dc3da40dc3d992ad5d0920771cdc92cf3e1b80e8238ffea76bcec482928f765",
-    "proof.tex": "6676364d5fd32a0179967da4752f67132714eeb69aa6cbc45c9c2eb8900d0d71",
-    "sources.json": "b98bd8ce80859763e40eff971cdb59570ea4e03cd6d76a150030a1ce70fb70b2",
+    "output/pdf/proof.pdf": "f30c62561be9637bfa0ab3ec2e90a7cc0066619ddc8dabb925c563428ab8a466",
+    "proof.tex": "d080fd1cbdea6e6426ff173124dd7be7c9984ad7ec2230cb9f9d5eb539d8f74f",
+    "sources.json": "3756e7bce1117270e55ec7668f1ca505ae6b1c70861ee2a13eeb6f45c2f595ad",
     "verify_finite_range.py": "36d553512c309ea513f77d5f351c697eeed3d065e46f4d385909c73510370fd4",
-    "verify_v5_bound.py": "50adf51e8dfced4e49c68ce8498661e3aa71127b1f5cef90c5157d3cfa033731"
+    "verify_v5_bound.py": "4c3c7bee24848f1084ac01eaa0cf7d1e4fb590976e61e2a835689fed61767dad"
   }
 }

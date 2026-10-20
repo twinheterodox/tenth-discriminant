@@ -153,18 +153,19 @@ already uses this bound, so the conclusion is unaffected.
 
 The reviewed release is v0.5.0, commit
 [7a883b7](https://github.com/twinheterodox/tenth-discriminant/commit/7a883b764213cc52c76c9849925b823861eefc38).
-The [supplied audit comment](versions/v5.1/AUDIT.md) is retained with the
+The [supplied audit comment](versions/v5/AUDIT.md) is retained with the
 correction. No reviewer identity or longer report was supplied. Codex
 developed the argument and programs and applied the reported wording
-correction in v0.5.1. The original v0.5.0 paper, tag, bundle, and
-publication-time review record are unchanged.
+correction within v0.5.0. The original publication tag and Git commit
+preserve the first paper, bundle, and publication-time review record.
+The release downloads now contain the corrected files.
 
-The [v5 review record at publication](versions/v5/REVIEW.md) specifies
+The [v5 review record at publication](https://github.com/twinheterodox/tenth-discriminant/blob/7a883b764213cc52c76c9849925b823861eefc38/versions/v5/REVIEW.md) specifies
 the checks. The stated Rosser–Schoenfeld estimates and classical
 quadratic and analytic identities remain external inputs. No Lean
 formalization is supplied.
 
-## v0.5.1 — wording correction following the v5 audit
+## v0.5.0 — wording correction following the audit
 
 The corrected §6.2 explicitly gives the chain
 `(log R)/S <= 110.001 log(R)/R <= 110.001 log(M)/M < 0.00004`
@@ -173,14 +174,14 @@ The generating assistant checked that the rest of the mathematical text
 is unchanged and confirmed the two relevant exact certificate checks.
 All certificate calculations and numerical results are retained; only
 the final printed review-status sentence changes. The full suite was
-not rerun for this wording patch. The PDF was rebuilt, rendered, and
+not rerun for this wording correction. The PDF was rebuilt, rendered, and
 visually inspected.
 
-The [v0.5.1 verification record](versions/v5.1/REVIEW.md) distinguishes
-the completed manual audit of v5 from the implementation of its finding.
-No separate independent audit of the patch release is claimed. The
-original v0.5.0 release prominently links to the corrected paper while
-preserving its original downloadable files.
+The [current v5 verification record](versions/v5/REVIEW.md) records
+the completed manual audit and the implementation of its finding.
+This minor correction retains version v0.5.0. The existing release and
+download links serve the corrected paper and bundle; the original files
+remain available from the original publication tag and Git commit.
 
 ## Recording future reviews
 

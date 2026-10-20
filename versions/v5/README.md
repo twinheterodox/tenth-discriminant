@@ -21,7 +21,30 @@ below the cutoff leaves exactly
 q = 3, 4, 7, 8, 11, 19, 43, 67, 163.
 ```
 
-## What changed mathematically
+## Correction following the v5 audit
+
+V5 has passed a **manual mathematical audit with exact computational
+checks**. This correction applies the audit's minor wording correction in
+§6.2. It is not formal verification. The bound `q < 2,000`, numerical
+constants, and certificate calculations are unchanged.
+
+With `S = floor(R/110)`, the paper now explicitly uses
+
+$$
+\frac{\log R}{S}\le 110.001\frac{\log R}{R}
+\le 110.001\frac{\log M}{M}<0.00004,
+\qquad R\ge M=50{,}000{,}000.
+$$
+
+It is `(log R)/R` that decreases on this range; `(log R)/S` increases
+between floor jumps. The certificate already used the correct upper
+bound. The [audit finding and correction](AUDIT.md) record the report
+and the precise scope of this correction. The original
+[publication snapshot](https://github.com/twinheterodox/tenth-discriminant/tree/7a883b764213cc52c76c9849925b823861eefc38/versions/v5)
+is preserved in Git history. The release PDF and bundle contain the
+correction under the same version number, v0.5.0.
+
+## V5's mathematical improvement
 
 The new argument averages Green's derivative determinant inequality
 over its size parameter. This gives a lower bound for a convergent
@@ -85,16 +108,18 @@ examples do not establish the general mathematical proof.
 
 ## Review and AI disclosure
 
-**Independent mathematical review of v5 is pending.** Codex developed
-the new derivation, exposition, and verification programs. The separate
-independent verification of v4 has passed, as have the checks of both
-v3 papers. Those checks do not cover the new v5 deductions.
+**The v5 mathematical argument has passed a manual audit with exact
+computational checks**, confirmed on 20 October 2026. This release
+implements its wording correction in §6.2. The audit is not formal
+verification. Codex developed the argument and programs and applied the
+reported correction. The separate checks of v4 and both v3 papers have
+also passed.
 
 The eleven-page PDF was compiled, rendered, and visually inspected.
-See the [version review record](REVIEW.md) and the
-[current repository review record](https://github.com/twinheterodox/tenth-discriminant/blob/main/REVIEW.md).
-This release preserves the mathematical text of the working v5 draft;
-the publication changes identify the version and package the files.
+See the [audit finding](AUDIT.md), [version review record](REVIEW.md),
+and [current repository review record](https://github.com/twinheterodox/tenth-discriminant/blob/main/REVIEW.md).
+The certificate's calculations and numerical outputs are unchanged;
+its final status message now refers to the review record.
 
 ## Rebuild the paper
 
@@ -109,6 +134,7 @@ pdflatex -interaction=nonstopmode -halt-on-error -output-directory=output/pdf pr
 [Source provenance](sources.json) records the fixed v4 dependency and
 primary sources. Third-party research snapshots are not redistributed.
 [Artifact checksums](artifact-manifest.json) identify this version's files;
-the [repository manifest](https://github.com/twinheterodox/tenth-discriminant/blob/v0.5.0/artifact-manifest.json)
-also covers the bundle. Earlier papers, tags, and release assets remain
-available unchanged at their original links.
+the [repository manifest](https://github.com/twinheterodox/tenth-discriminant/blob/main/artifact-manifest.json)
+also covers the current bundle. The v0.5.0 tag identifies the original
+publication; the corrected files are in this directory and the release
+downloads. Earlier versions remain unchanged.

@@ -337,4 +337,4 @@ if __name__ == '__main__':
         sanity_checks()
         primitive_euler_sanity()
     print(f'\nTOTAL: {new} new exact arithmetic checks passed.')
-    print('Independent mathematical review of v5 remains pending.')
+    print('Mathematical audit and review scope: see REVIEW.md.')

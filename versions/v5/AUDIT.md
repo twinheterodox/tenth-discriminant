@@ -3,7 +3,7 @@
 Completion of the v5 audit was confirmed on 20 October 2026. The
 reported review was a **manual mathematical audit with exact computational
 checks**, not formal verification. The reviewed release was
-[v0.5.0](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0),
+[original v0.5.0 snapshot](https://github.com/twinheterodox/tenth-discriminant/tree/7a883b764213cc52c76c9849925b823861eefc38/versions/v5),
 commit
 [7a883b7](https://github.com/twinheterodox/tenth-discriminant/commit/7a883b764213cc52c76c9849925b823861eefc38).
 No reviewer identity or longer report was supplied.
@@ -25,7 +25,7 @@ transcribed into LaTeX:
 > This is a manual mathematical audit with exact computational checks,
 > not formal verification.
 
-## Applied in v0.5.1
+## Correction within v0.5.0
 
 The corrected paper writes the complete chain
 
@@ -49,6 +49,8 @@ which now points to the review record.
 
 The generating assistant applied this correction and checked its scope
 against the original files. This records the completed audit of v5 and
-the implementation of its finding; it does not claim a separate audit
-of the patch release. The bound remains `q < 2,000`. The original paper,
-tag, programs, outputs, and downloadable assets remain unchanged.
+the implementation of its finding. The bound remains `q < 2,000`.
+The minor wording correction retains version v0.5.0. The release PDF
+and bundle were updated on 20 October 2026; the original publication tag
+and commit above preserve the original paper, programs, outputs, and
+bundle in Git history.

@@ -44,9 +44,10 @@ discriminants.
 \paragraph{Status and attribution.}
 This is an AI-assisted v5 research draft. Codex developed the new
 averaging argument, estimates, exposition, and verification programs.
-Independent mathematical verification of v4 has passed; independent
-review of v5 is pending. Arithmetic checks and finite examples do not
-establish the general proof. Green's note \cite{green} supplies the
+The v5 argument has passed a manual mathematical audit with exact
+computational checks. This revision applies its wording correction in
+Section 6.2; the bound and certificate are unchanged. This is not formal
+verification. Green's note \cite{green} supplies the
 derivative determinant, Frobenius row operation, and resultant method.
 The sharpened rank criterion and lattice construction are retained from
 v4 \cite{v4}; the averaging and primitive-norm comparison are the new
@@ -414,9 +415,13 @@ For the other inert primes, \eqref{tail-e} gives
 In detail, \(R/S\le110.001\), the small-prime floor loss is less than
 \(0.000005\), and
 \[
- \frac{I_R}{2S}<\frac{\log R}{S}<0.00004.
+ \frac{I_R}{2S}<\frac{\log R}{S}
+ \le110.001\frac{\log R}{R}
+ \le110.001\frac{\log M}{M}<0.00004.
 \]
-The last inequality holds at \(M\) and improves as \(R\) increases.
+Here \((\log R)/R\) decreases for \(R\ge M>e\).
+The final inequality is the one checked by the certificate; no
+monotonicity of \((\log R)/S\) is needed.
 The loss from \(\vartheta(R)/R\) is at most \(c\).
 These estimates explain the stated \(0.0001\) allowance.
 
@@ -717,10 +722,9 @@ with the Euler factors in five known class-number-one fields.
 These finite examples do not prove the general lemmas. The second command performs
 the exhaustive exclusion and reduced-form enumeration described below.
 
-The certificate verifies the arithmetic and the stated error bounds;
-the mathematical deductions, including Euler summation and the
-resultant lemma, remain subject to independent review. No formal
-verification or independent review of v5 is claimed.
+The certificate checks arithmetic and error bounds. V5 has also passed
+a manual mathematical audit with exact computational checks; this revision
+applies its Section 6.2 wording correction. No formal verification is claimed.
 
 \section{The remaining finite classification}\label{finite}
 
