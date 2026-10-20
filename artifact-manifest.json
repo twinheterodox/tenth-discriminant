@@ -1,0 +1,14 @@
+{
+  "sha256": {
+    "README.md": "89dad550442e30a42dec35ef0f34b6282baf19411d48b5ca511143d640604534",
+    "README.txt": "710a18555a1f8495585eb72ec05b40b3810a126bf85fff5e71f2acbba7e426bc",
+    ".gitignore": "42902f3fa3a16917eabb81a605976aef99a46c87c141f36dd98cfb2f3dd31688",
+    "proof.tex": "7f84c8a79670a9892d550eabacf304848adde2a3effecbe504e306ae598d04ad",
+    "output/pdf/proof.pdf": "2fac065b25181a2f9049dc4a78f66214114d846c1cf1c462f2571be90c69e682",
+    "verify_sieve.cpp": "553ee10a0235fe46005bb4756e84772395ce2f2e68d9aff6bdf06bf249b753b2",
+    "verify_independent.py": "21a213fba70e87171ffbf364a5a06c40678a6c42fe04df30efbf5e5392f3f789",
+    "sieve_cpp_output.txt": "a35b84bff2e4d80f319abed00a618fcbd3f475fe85f73f75c4673e4c0990f0b8",
+    "sieve_python_output.txt": "8d29b667467ac19170d4e977c707d2c7046d48992c3eeb1b98521d926b1f1a0d",
+    "sources/manifest.json": "b90fb0dfc6e9a9125a96a0eb855361e27188e942d38df414a26caf5d9bbf2e9b"
+  }
+}
