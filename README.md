@@ -8,27 +8,28 @@ zeroes, without using Heegner's solution. The repository records the
 arguments, computations, and successive improvements so that they can be
 examined and cited in the discussion.
 
-For a negative fundamental discriminant `D`, write `q = |D|`. The current
-approach combines a classical theta-integral argument with estimates from
-[Banks, arXiv:2610.15483v1](https://arxiv.org/abs/2610.15483v1).
-Class number one would force a real zero of the associated Dirichlet
-L-function sufficiently close to 1 to contradict those estimates for
-large `q`. This gives an explicit upper bound on `q`. Exact integer sieves
-and reduced-form enumeration then handle the remaining finite range,
-leaving the nine absolute fundamental discriminants
-`3, 4, 7, 8, 11, 19, 43, 67, 163`.
+For a negative fundamental discriminant `D`, write `q = |D|`. The versions
+develop different ways to combine the class-number-one assumption with
+results from [Banks, arXiv:2610.15483v1](https://arxiv.org/abs/2610.15483v1).
+Versions 1 and 2 construct a real zero using a classical theta integral
+and contradict a zero-free estimate. Version 3 instead counts primitive
+lattice points to bound split primes directly, then uses Banks's
+determinant argument to rule out large `q`. Each approach gives an explicit
+analytic cutoff. Exact integer sieves and reduced-form enumeration handle
+the remaining finite range, leaving the nine absolute fundamental
+discriminants `3, 4, 7, 8, 11, 19, 43, 67, 163`.
 
 The cited results from Banks are external inputs, with the precise
 dependencies stated in each version. Codex prepared the derivations,
 write-ups, and verification programs; the review record identifies the
 checks completed for each version.
 
-**Current research draft: v0.2.0, with analytic cutoff `q < 50,000,000`.**
+**Current research draft: v0.3.0, with analytic cutoff `q < 1,000,000`.**
 
 ## Versions and improvements
 
 As bounds improve, new results are added as numbered versions, each with
-its own complete paper and verification files. Published snapshots and
+its own proof and verification files. Published snapshots and
 release links are preserved, so earlier comments can continue to cite the
 exact argument they discussed. This README is the entry point to the
 latest result and the version history; the changelog records what changed
@@ -37,30 +38,34 @@ snapshot.
 
 | Version | Analytic cutoff | Paper and files | Mathematical review status |
 |---|---|---|---|
-| **v2 · v0.2.0** | **`q < 5 × 10^7`** | [Complete cumulative proof](versions/v2/output/pdf/proof.pdf) · [Source and reproduction](versions/v2/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.2.0) | Mathematical cross-check with a different frontier model passed; 23 exact arithmetic checks pass |
+| **v3 · v0.3.0** | **`q < 10^6`** | [Proof of the new cutoff](versions/v3/output/pdf/proof.pdf) · [Source and reproduction](versions/v3/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.0) | 26 exact arithmetic checks and 22 finite sanity cases pass; independent mathematical cross-check pending |
+| **v2 · v0.2.0** | `q < 5 × 10^7` | [Complete cumulative proof](versions/v2/output/pdf/proof.pdf) · [Source and reproduction](versions/v2/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.2.0) | Mathematical cross-check with a different frontier model passed; 23 exact arithmetic checks pass |
 | **v1 · v0.1.0** | `q < 10^10` | [Original proof](versions/v1/output/pdf/proof.pdf) · [Unchanged original snapshot](versions/v1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.1.0) | Different-frontier-model cross-check reported by the repository owner; see the review record |
 
 [Mathematical changelog](CHANGELOG.md) · [Review record by version](REVIEW.md)
 
-The improvement changes the analytic cutoff, while both versions obtain
-`3, 4, 7, 8, 11, 19, 43, 67, 163` after finite exclusion. Version 1 takes
-Banks's Theorem 1.1 as an external input. Version 2 uses Banks's intermediate
-Lemma 4.2, Lemma 5.1, and Corollary 6.3, including their preceding
-construction and hypotheses. Neither version independently proves those
-external results.
+The improvements change the analytic cutoff. The finite classification
+remains `3, 4, 7, 8, 11, 19, 43, 67, 163`, using the original finite
+verification. Version 1 takes Banks's Theorem 1.1 as an external input.
+Version 2 uses Lemma 4.2, Lemma 5.1, and Corollary 6.3. Version 3 uses
+Lemma 4.2, Lemma 5.1, and Lemma 6.2 directly, together with explicit prime
+estimates from Rosser–Schoenfeld. Each use includes the preceding
+construction and hypotheses stated in the corresponding paper. These
+external results are not independently proved here.
 
-The v2 paper includes the original argument, a clearly identified
-refinement, and the finite classification. The mathematical argument,
-including the v2 refinement, has been cross-checked with a different
-frontier model. Completion of the v2 check was confirmed on 20 October
-2026, after publication. The [current review record](REVIEW.md) records
-this update; the fixed release files retain their status at publication.
-Both releases are research drafts.
+The v3 paper proves the new analytic cutoff and reuses the earlier finite
+classification; its bundle includes the original finite-verification
+programs and outputs. Its independent mathematical cross-check is pending.
+The completed different-frontier-model cross-check of v2, confirmed on
+20 October 2026 after publication, applies to v2. The
+[current review record](REVIEW.md) records later checks; fixed release
+files retain their status at publication. All releases are research drafts.
 
 ## Fixed versions for citation
 
 - [v0.1.0: original published commit](https://github.com/twinheterodox/tenth-discriminant/tree/v0.1.0)
 - [v0.2.0: cumulative refined paper and files](https://github.com/twinheterodox/tenth-discriminant/tree/v0.2.0/versions/v2)
+- [v0.3.0: direct split-prime proof and files](https://github.com/twinheterodox/tenth-discriminant/tree/v0.3.0/versions/v3)
 
 The original proof, programs, outputs, and bundle remain at their existing
 root paths. The `versions/v1/` directory is an exact copy of all tracked
@@ -75,7 +80,7 @@ checksums; each version also retains its own manifest.
 > The following text is retained verbatim as a historical snapshot.
 > Its review and publication statements describe that snapshot. Subsequent
 > review information is recorded in [REVIEW.md](REVIEW.md); current work is
-> documented in [v2](versions/v2/README.md).
+> documented in [v3](versions/v3/README.md).
 
 # An explicit tenth-discriminant bound from Banks's zero-free theorem
 

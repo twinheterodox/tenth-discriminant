@@ -1,5 +1,33 @@
 # Mathematical changelog
 
+## v0.3.0 — 20 October 2026
+
+**Analytic cutoff: `q < 1,000,000` (previously `q < 50,000,000`).**
+
+- Improves the analytic cutoff by a factor of 50 using a direct bound on
+  the weighted sum of split primes under the class-number-one assumption.
+- Counts primitive lattice points, using inclusion–exclusion over
+  `2, 3, 5, 7`, in place of the theta-integral zero construction and the
+  zero-dependent prime-bias estimate.
+- Uses Banks's determinant construction and Lemmas 4.2, 5.1, and 6.2,
+  including the preceding interpolation results, together with
+  Rosser–Schoenfeld's explicit prime estimates. These remain external inputs.
+- Sets `H = 10^9`, `N = q^13`, and `M = N^(4/3)`. For `q >= 1,000,000`,
+  the determinant comparison requires a value greater than `4.238` to be
+  less than `4.216`; the certified rational gap exceeds `0.022`.
+- Adds a five-page proof of the new cutoff, 26 exact arithmetic checks,
+  and 22 finite sanity cases for the lattice formulas and prime-norm
+  multiplicities.
+- Includes the original finite-sieve code and outputs unchanged. Their
+  existing range covers the new remaining interval; the final list of
+  nine discriminants is unchanged.
+- Records the independent mathematical cross-check of v3 as pending.
+  The completed v2 check applies to v2.
+- Preserves v1 and v2 snapshots, tags, and release files.
+
+Paper and reproduction files: [versions/v3](versions/v3/README.md).
+Fixed release: [v0.3.0](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.0).
+
 ## Review update — 20 October 2026
 
 - The v2 mathematical argument passed an independent cross-check with a

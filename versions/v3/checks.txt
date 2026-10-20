@@ -1,0 +1,59 @@
+PASS: primitive density = 768/1225
+PASS: sum |mu(d)|/d = 96/35
+PASS: sum mu(d)/d = 8/35
+PASS: boundary coefficients = 88/35 and 192/35
+PASS: pi*rho/4 < 0.493, using pi < 22/7
+PASS: B_R < 2.52 for R >= 1000
+PASS: log(1,000,000) > 13.815
+PASS: log(1,000,000) < 13.816
+PASS: log(8) < 2.08
+PASS: log(4) > 1
+PASS: log(q/4) > 2 and q > exp(2) for q >= q0
+PASS: sqrt(q0) = 1000
+PASS: log(H)/log(q) <= 3/2 for q >= q0
+PASS: 1/log(H) < 0.049
+PASS: q0 >= 9 and 319 <= H < N(q0)
+PASS: H^(2/3) = 10^6
+PASS: Banks size hypothesis, using M >= N
+PASS: M > H, M >= q/4, and M >= q0, using N(q) >= q
+PASS: S23/S1 < 0.0073
+PASS: N^4 M/S1 < 0.038
+PASS: 26c/M < 10^-6 using M >= q0
+PASS: positive determinant coefficient
+PASS: left side = 127153/30000
+PASS: left side > 4.238
+PASS: right side < 4.216
+PASS: contradiction gap > 0.022
+
+All 26 exact arithmetic checks passed.
+Exact rational gap: 867907363/38375000000
+Conditional cutoff: q < 1,000,000 (50-fold improvement over v2).
+
+Finite lattice and prime-norm sanity checks:
+PASS: lattice and inclusion-exclusion, q=7, X=1
+PASS: lattice and inclusion-exclusion, q=7, X=7
+PASS: lattice and inclusion-exclusion, q=7, X=70
+PASS: lattice and inclusion-exclusion, q=8, X=2
+PASS: lattice and inclusion-exclusion, q=8, X=8
+PASS: lattice and inclusion-exclusion, q=8, X=80
+PASS: lattice and inclusion-exclusion, q=43, X=10
+PASS: lattice and inclusion-exclusion, q=43, X=43
+PASS: lattice and inclusion-exclusion, q=43, X=430
+PASS: lattice and inclusion-exclusion, q=163, X=40
+PASS: lattice and inclusion-exclusion, q=163, X=163
+PASS: lattice and inclusion-exclusion, q=163, X=1630
+PASS: lattice and inclusion-exclusion, q=1000003, X=250000
+PASS: lattice and inclusion-exclusion, q=1000003, X=1000003
+PASS: lattice and inclusion-exclusion, q=1000003, X=10000030
+PASS: prime-norm multiplicities for all primes <= 2000, q=7
+PASS: prime-norm multiplicities for all primes <= 2000, q=8
+PASS: prime-norm multiplicities for all primes <= 2000, q=11
+PASS: prime-norm multiplicities for all primes <= 2000, q=19
+PASS: prime-norm multiplicities for all primes <= 2000, q=43
+PASS: prime-norm multiplicities for all primes <= 2000, q=67
+PASS: prime-norm multiplicities for all primes <= 2000, q=163
+
+All 22 finite sanity cases passed.
+These finite examples are not a proof of the general counting lemmas.
+
+Banks's external results and the general analytic proof require mathematical review.

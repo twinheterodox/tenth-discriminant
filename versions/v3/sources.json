@@ -1,0 +1,22 @@
+{
+  "recorded_utc": "2026-10-20T20:02:23.192544+00:00",
+  "note": "Source snapshots are not redistributed. The primary paper by Rosser and Schoenfeld was read from the indicated mirror.",
+  "sources": [
+    {
+      "name": "Banks, arXiv:2610.15483v1",
+      "url": "https://arxiv.org/html/2610.15483v1",
+      "sha256": "172569c19a81aa95d66b9676bbdc6b42fad7b0f8239f89ea5ae4517a99427bf6"
+    },
+    {
+      "name": "Rosser and Schoenfeld (1962), Theorems 6 and 9",
+      "url": "https://doi.org/10.1215/ijm/1255631807",
+      "download_url": "https://denisevellachemla.eu/Rosser-Schoenfeld-1962.pdf",
+      "sha256": "8e37b06f82e09421bceb2502578c47b61469141f0287e6acedb70e01765ab556"
+    },
+    {
+      "name": "Previous fixed v2 proof",
+      "url": "https://github.com/twinheterodox/tenth-discriminant/blob/v0.2.0/versions/v2/output/pdf/proof.pdf",
+      "sha256": "e7373e8d1202e251a16469e6bbde72658ca5df88cc1973d42c54c9ba4a918d02"
+    }
+  ]
+}

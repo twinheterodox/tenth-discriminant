@@ -1,0 +1,330 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\OK}{\mathcal O_K}
+\title{A direct split-prime bound for the tenth discriminant\\
+\large Working refinement: \(q<10^6\)}
+\author{Research note prepared with Codex}
+\date{20 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Assuming the determinant construction and Lemmas 4.2, 5.1, and 6.2 of
+Banks, we obtain \(q<10^6\) for imaginary quadratic fields of class
+number one. This improves the preceding cutoff \(5\cdot10^7\) by a
+factor of 50. The new ingredient is a direct upper bound on the weighted
+sum of split primes, obtained by counting primitive lattice points.
+It replaces both the theta-integral zero construction and the
+zero-dependent prime-bias estimate. Banks's determinant argument remains
+an external input. No Heegner method or small-conductor zero computation
+is used.
+\end{abstract}
+
+\paragraph{Status.}
+This is a new working argument, with an exact rational certificate and
+finite checks of the lattice-counting formulas. The independent check
+of the preceding v2 argument does not cover this refinement. No new
+independent mathematical review is recorded here.
+
+\section{Result and inputs}
+
+Let \(D<0\) be a fundamental discriminant and put
+\[
+ q=|D|,\qquad K=\Q(\sqrt D),\qquad R=\sqrt q,\qquad L=\log q.
+\]
+All logarithms are natural. Write \(\chi_D\) for the associated
+quadratic character, so \(\chi_D(p)=1,-1,0\) according as a rational
+prime splits, is inert, or ramifies in \(K\).
+
+\begin{theorem}\label{main}
+Assume Banks's determinant construction and Lemmas 4.2, 5.1, and 6.2
+in \cite{banks}, including the interpolation results used in that
+construction. If \(h(K)=1\), then
+\[
+                         q<1\,000\,000.
+\]
+\end{theorem}
+
+We also use the classical explicit prime estimates of
+Rosser--Schoenfeld \cite[Theorems 6 and 9]{rs}. In particular, for
+\(X>H\ge319\),
+\begin{equation}\label{mertens}
+ \sum_{H<p\le X}\frac{\log p}{p}
+ >\log X-\log H-\frac1{\log H},
+ \qquad
+ \vartheta(X):=\sum_{p\le X}\log p<2X.
+\end{equation}
+The first follows by subtracting the two bounds in their Theorem 6;
+the constant term cancels. The second is weaker than their Theorem 9.
+
+Unlike the previous argument \cite{v2}, this proof uses neither Banks's
+Theorem 1.1 nor his Lemma 2.1 or Corollary 6.3. It uses the prime-power
+divisibility in Lemma 6.2 directly. It does not independently establish
+the cited determinant construction.
+
+\section{Counting nonrational integers}
+
+Choose the usual basis \(\OK=\Z+\Z\omega\), where
+\(\operatorname{Re}\omega=u\in\{0,1/2\}\) and
+\(\operatorname{Im}\omega=R/2\). Thus
+\[
+ Q(a,b):=|a+b\omega|^2=(a+ub)^2+\frac q4b^2.
+\]
+For \(x\ge0\), define
+\[
+ A(x)=\#\{(a,b)\in\Z\times\Z_{\ge1}:Q(a,b)\le x\}.
+\]
+The restriction \(b>0\) counts one half of the nonrational points.
+
+\begin{lemma}\label{lattice}
+For every \(x\ge0\),
+\[
+ \frac{\pi x}{R}-2\sqrt x-\frac{2\sqrt x}{R}
+ \le A(x)\le
+ \frac{\pi x}{R}+\frac{2\sqrt x}{R}.
+\]
+\end{lemma}
+\begin{proof}
+Put \(B=2\sqrt x/R\) and
+\(f(t)=2\sqrt{x-qt^2/4}\) on \([0,B]\).
+For each integer \(1\le b\le B\), the allowed real values of \(a\)
+form a closed interval of length \(f(b)\). Its integer count lies
+between \(f(b)-1\) and \(f(b)+1\). Since \(f\) is decreasing,
+\[
+ \int_0^B f(t)\,dt-f(0)
+ \le\sum_{b=1}^{\lfloor B\rfloor}f(b)
+ \le\int_0^B f(t)\,dt.
+\]
+The integral is \(\pi x/R\), and there are at most \(B\) intervals.
+This gives both bounds, including when \(B<1\).
+\end{proof}
+
+Only primitive pairs can have prime norm. A small sieve already captures
+enough of this restriction. Set
+\[
+ P=2\cdot3\cdot5\cdot7=210,\qquad
+ A_P(x)=\#\{(a,b):b\ge1,\ Q(a,b)\le x,\ \gcd(a,b,P)=1\}.
+\]
+
+\begin{lemma}\label{primitive}
+For every \(x\ge0\),
+\[
+ A_P(x)\le\frac{\pi\rho}{R}x+B_R\sqrt x,
+ \qquad
+ \rho=\frac{768}{1225},\quad
+ B_R=\frac{88}{35}+\frac{192}{35R}.
+\]
+\end{lemma}
+\begin{proof}
+Homogeneity of \(Q\) and inclusion--exclusion give the exact identity
+\[
+ A_P(x)=\sum_{d\mid P}\mu(d)A(x/d^2).
+\]
+For positive coefficients use the upper bound of Lemma~\ref{lattice};
+for negative coefficients use its lower bound. The area coefficient is
+\[
+ \sum_{d\mid P}\frac{\mu(d)}{d^2}
+   =\prod_{p\mid P}(1-p^{-2})=\rho.
+\]
+Write
+\[
+ T=\sum_{d\mid P}\frac{|\mu(d)|}{d}=\frac{96}{35},\qquad
+ U=\sum_{d\mid P}\frac{\mu(d)}d=\frac8{35}.
+\]
+The boundary coefficient is
+\(2\sum_{\mu(d)=-1}d^{-1}+2T/R=T-U+2T/R=B_R\).
+\end{proof}
+
+\section{Direct bounds on split and ramified primes}
+
+Assume \(h(K)=1\) and \(q\ge10^6\), and put \(a_0=q/4\).
+If \(p\) splits, its two prime ideals of norm \(p\) are principal.
+As the only units are \(\pm1\), there are exactly four generators
+of norm \(p\). They give two distinct pairs with \(b>0\).
+They are nonrational, and each satisfies \(\gcd(a,b,P)=1\), since
+\(d\mid a,b\) would force \(d^2\mid Q(a,b)=p\).
+Consequently,
+\begin{equation}\label{split-count}
+ S_+(X):=\sum_{\substack{p\le X\\\chi_D(p)=1}}\frac{\log p}{p}
+ \le\frac12\sum_{\substack{b\ge1,\ Q(a,b)\le X\\\gcd(a,b,P)=1}}
+                        \frac{\log Q(a,b)}{Q(a,b)}.
+\end{equation}
+
+All norms in this sum are at least \(a_0\). For \(X\ge a_0\),
+partial summation, followed by Lemma~\ref{primitive}, therefore gives
+\begin{align}
+ S_+(X)
+ &\le\frac12\left\{
+ A_P(X)\frac{\log X}{X}
+ +\int_{a_0}^X A_P(t)\frac{\log t-1}{t^2}\,dt\right\} \notag\\
+ &\le\frac{\pi\rho}{4R}
+       \bigl((\log X)^2-(\log a_0)^2+2\log a_0\bigr)
+   +\frac{B_R(\log a_0+1)}{\sqrt{a_0}}.\label{split-precise}
+\end{align}
+In the last line we dropped the nonpositive boundary term
+\(-B_R(\log X+2)/(2\sqrt X)\).
+Here \(\log a_0>2\), and \(\log a_0+1<L\) because \(\log4>1\).
+Also, for \(R\ge1000\),
+\[
+ \frac{\pi\rho}{4}<\frac{493}{1000},\qquad B_R<\frac{63}{25}.
+\]
+Thus the required direct split-prime bound is
+\begin{equation}\label{split-final}
+ S_+(X)<\frac{493}{1000R}(\log X)^2+\frac{126L}{25R}
+             \qquad(X\ge q/4).
+\end{equation}
+
+A ramified prime likewise has a principal prime ideal of norm \(p\).
+Its generator is nonrational, so \(p\ge q/4\). Hence
+\begin{equation}\label{ramified}
+ S_0(X):=\sum_{\substack{p\le X\\p\mid q}}\frac{\log p}{p}
+ \le\frac4q\sum_{p\mid q}\log p\le\frac{4L}{q}.
+\end{equation}
+Neither this estimate nor the split-prime count requires a separate
+reduction to prime discriminants.
+
+Combining \eqref{mertens}, \eqref{split-final}, and \eqref{ramified},
+for \(X>H\ge319\) and \(X\ge q/4\) we obtain
+\begin{equation}\label{inert}
+ \sum_{\substack{H<p\le X\\\chi_D(p)=-1}}\frac{\log p}{p}
+ >\log X-\log H-\frac1{\log H}
+  -\frac{493}{1000R}(\log X)^2
+  -\left(\frac{126}{25R}+\frac4q\right)L.
+\end{equation}
+
+\section{The determinant comparison}
+
+Take
+\[
+ H=10^9,\qquad N=q^{13},\qquad M=N^{4/3},\qquad
+ z=\frac{52}{3},\qquad \log M=zL.
+\]
+For \(q\ge10^6\), Banks's hypotheses
+\(q\ge9\), \(1\le H\le N\), and
+\(H^{2/3}N^{4/3}\ge2\cdot97^2\) hold, as do \(M>H\) and \(M\ge q/4\).
+Banks's determinant construction in \(E=K(\sqrt2)\) gives
+\(\Delta\ne0\), the nonzero integer
+\(J=\operatorname{N}_{E/\Q}(\Delta)\), and degree sums \(S_1,S_{23}\).
+Lemma 4.2 gives
+\[
+ \frac{S_{23}}{S_1}\le\frac{768\cdot97^2}{10^9}
+                  <r:=\frac{73}{10000},\qquad
+ \frac{N^4M}{S_1}\le\frac{4\cdot97^2}{10^6}
+                  <c:=\frac{19}{500}.
+\]
+Lemma 5.1 then implies
+\begin{equation}\label{arch}
+ \frac{\log|J|}{4S_1}
+ \le(1+r)\left(\log N+\frac L2+\log8\right)
+                         +\frac{2c\log N}{M}.
+\end{equation}
+
+For each prime \(p>H\) with \(\chi_D(p)=-1\), Lemma 6.2 supplies
+\(p^{4E_p}\mid J\), where
+\(E_p=\sum_{\alpha\in\mathcal A}\lfloor\alpha_1/p\rfloor
+\ge S_1/p-N^4\). Multiplying the divisibilities for \(p\le M\), and
+using \(\vartheta(M)<2M\), gives directly
+\begin{equation}\label{padic}
+ \frac{\log|J|}{4S_1}
+ \ge\sum_{\substack{H<p\le M\\\chi_D(p)=-1}}\frac{\log p}{p}-2c.
+\end{equation}
+This step uses no zero-dependent corollary.
+
+Compare \eqref{arch} with \eqref{padic} and insert \eqref{inert}
+at \(X=M\). Since \(\log N=\tfrac34\log M\), division by \(L\)
+gives the necessary inequality
+\begin{align}
+ \left(\frac14-\frac{3r}{4}\right)z
+ &\le \frac{493}{1000}z^2\frac{L}{R}
+       +\frac{1+r}{2}+\frac{126}{25R}+\frac4q \notag\\
+ &\quad+\frac{\log H+(1+r)\log8+1/\log H+2c}{L}
+       +\frac{26c}{M}.\label{necessary}
+\end{align}
+
+\section{A uniform rational contradiction}
+
+The function \((\log q)/\sqrt q\) decreases for \(q>e^2\).
+Using \(q\ge10^6\), we have the uniform estimates
+\[
+ \begin{gathered}
+ \frac LR<\frac{13.816}{1000},\qquad L>13.815,\qquad R\ge1000,\qquad
+ \frac{\log H}{L}\le\frac32,\\
+ \log8<2.08,\qquad \frac1{\log H}<0.049,\qquad
+ \frac{26c}{M}<10^{-6}.
+ \end{gathered}
+\]
+The last inequality follows already from \(M\ge10^6\) and
+\(26c=0.988<1\). The logarithmic estimates are certified by rational
+Taylor bounds for the exponential function in the accompanying program.
+
+The left side of \eqref{necessary} equals
+\[
+ \left(\frac14-\frac34\frac{73}{10000}\right)\frac{52}{3}
+                  =\frac{127153}{30000}>4.238.
+\]
+Its right side is strictly less than the rational number
+\begin{align*}
+ \mathcal R={}&\frac{493}{1000}\left(\frac{52}{3}\right)^2
+                       \frac{13.816}{1000}
+             +\frac{1.0073}{2}+\frac32\\
+ &+\frac{1.0073(2.08)+0.049+0.076}{13.815}
+             +\frac{5.04}{1000}+\frac4{10^6}+\frac1{10^6}
+             <4.216.
+\end{align*}
+Every terminating decimal here denotes its exact rational value.
+The gap is greater than \(0.022\). This contradicts
+\eqref{necessary}, proving Theorem~\ref{main}.
+
+\clearpage
+\section{Relation to earlier versions and verification}
+
+The preceding v2 bound was \(q<5\cdot10^7\). It combined a theta-integral
+zero with a zero-free estimate extracted from Banks. The present proof
+instead obtains the necessary inert-prime mass directly from class
+number one. Its small sieve removes lattice points whose two coordinates
+share a factor among \(2,3,5,7\); it is not an exhaustive search through
+discriminants.
+
+The earlier finite-discriminant sieve covers \(q<10^{10}\), so its
+unchanged certificates already cover the remaining interval below
+\(10^6\). They leave \(3,4,7,8,11,19,43,67,163\). That finite
+classification is separate from the analytic cutoff proved here.
+
+All 26 exact arithmetic checks and 22 finite sanity cases pass.
+To reproduce the exact rational certificate, run
+\begin{verbatim}
+python3 verify_direct_prime.py
+\end{verbatim}
+Add \texttt{--sanity} to enumerate lattice points in finite examples,
+compare inclusion--exclusion with direct counting, and check that each
+split prime has two generators with positive imaginary part in the
+seven known fields of class number one with \(q>4\).
+
+The finite checks do not prove the analytic lemmas or audit Banks's
+interpolation argument. Codex generated the new derivation, this note,
+and the checker. The preceding v2 cross-check remains scoped to v2.
+
+\begin{thebibliography}{9}
+\bibitem{banks}
+W.~D.~Banks, manuscript \href{https://arxiv.org/abs/2610.15483v1}
+{arXiv:2610.15483v1}, especially the determinant construction in
+Sections 3--4 and Lemmas 4.2, 5.1, and 6.2.
+\bibitem{rs}
+J.~B.~Rosser and L.~Schoenfeld,
+\emph{Approximate formulas for some functions of prime numbers},
+Illinois J. Math. \textbf{6} (1962), 64--94, Theorems 6 and 9.
+\href{https://doi.org/10.1215/ijm/1255631807}{doi:10.1215/ijm/1255631807}.
+\bibitem{v2}
+\emph{An explicit tenth-discriminant bound, version 2},
+\href{https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.2.0}
+{fixed release v0.2.0}, 20 October 2026.
+\end{thebibliography}
+\end{document}

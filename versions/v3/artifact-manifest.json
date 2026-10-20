@@ -1,0 +1,17 @@
+{
+  "version": "v0.3.0",
+  "sha256": {
+    ".gitignore": "42902f3fa3a16917eabb81a605976aef99a46c87c141f36dd98cfb2f3dd31688",
+    "README.md": "35c9d07785e41f36f1aef5a2b6021b2bc053d0902cd34a91b77ee1ae907a12ba",
+    "REVIEW.md": "76d6bcede09ca24363d3ac8fa23717387f4d2ccda5ed360c7235c4df2f75c351",
+    "checks.txt": "29a296efea697643dac24aa5c18d3b1f27d3569104da3e9823ebb9f6a5462ad7",
+    "output/pdf/proof.pdf": "1ea8c4522f8e603195b258c3a18622e53a0b20b4ab07a033a21b3d48125aec75",
+    "proof.tex": "7eb0a2e47cb300d3e1fd5789e7f94c609139eb4d0db94508eacafc431568e36f",
+    "sieve_cpp_output.txt": "a35b84bff2e4d80f319abed00a618fcbd3f475fe85f73f75c4673e4c0990f0b8",
+    "sieve_python_output.txt": "8d29b667467ac19170d4e977c707d2c7046d48992c3eeb1b98521d926b1f1a0d",
+    "sources.json": "18389fab1e811288122e12f411160b28363be573a07d9c71835248bb48679e37",
+    "verify_direct_prime.py": "94faba2270d4b9cbda7b25ae1897df6a2a1db8c7c9211f3bef6abc91b7d078ae",
+    "verify_independent.py": "21a213fba70e87171ffbf364a5a06c40678a6c42fe04df30efbf5e5392f3f789",
+    "verify_sieve.cpp": "553ee10a0235fe46005bb4756e84772395ce2f2e68d9aff6bdf06bf249b753b2"
+  }
+}

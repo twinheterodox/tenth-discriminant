@@ -1,7 +1,7 @@
 # Review and verification by version
 
 This log records the scope of available evidence. It does not certify
-Banks's external theorem or intermediate lemmas.
+the external theorems or intermediate lemmas cited by each version.
 
 ## v0.1.0 — original argument
 
@@ -42,6 +42,29 @@ The mathematical result and proof files have not changed in this update.
 
 Banks's cited results remain external inputs. No independent human review
 or Lean formalization is recorded here.
+
+## v0.3.0 — direct split-prime argument
+
+The new argument gives an analytic cutoff of `q < 1,000,000` using primitive
+lattice counts and Banks's determinant estimates. All 26 exact arithmetic
+checks and 22 finite sanity cases pass. The latter comprise 15 lattice
+counting cases and prime-norm multiplicity checks through 2,000 in seven
+known fields. The five-page PDF was compiled, rendered, and visually
+inspected.
+
+The original finite-sieve code and recorded outputs are included
+byte-for-byte. Their existing coverage below `10^10` includes the new
+remaining interval; the finite sieve was not rerun for v3.
+
+**An independent mathematical cross-check of the new v3 argument is
+pending.** Codex produced the new argument and checker. The completed v2
+cross-check does not cover v3, and the finite checks do not establish the
+general analytic lemmas. No independent human review or Lean formalization
+of v3 is recorded here.
+
+The [v3 review record at publication](versions/v3/REVIEW.md) gives the
+scope of each check. Banks's determinant construction and cited lemmas,
+and Rosser–Schoenfeld's prime estimates, remain external inputs.
 
 ## Recording future reviews
 
