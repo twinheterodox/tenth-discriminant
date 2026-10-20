@@ -1,5 +1,15 @@
 # Mathematical changelog
 
+## Review update — 20 October 2026
+
+- The v2 mathematical argument passed an independent cross-check with a
+  different frontier model.
+- Updates the current README, review record, and release notes to record
+  completion. The bound, proof, verification programs, and fixed version
+  snapshots are unchanged.
+
+See the [current review record](REVIEW.md) for scope and provenance.
+
 ## v0.2.0 — 20 October 2026
 
 **Analytic cutoff: `q < 50,000,000` (previously `q < 10^10`).**
@@ -18,9 +28,9 @@
 - Adds a certificate with 23 exact rational checks of the new constants.
 - Reuses the original finite-sieve code and outputs without changing them.
   The final list of nine fields is unchanged.
-- Records that the refinement has not yet received a separate-model
-  mathematical cross-check. The reported cross-check of v1 remains scoped
-  to v1.
+- At publication, recorded that the refinement was awaiting a separate-model
+  mathematical cross-check. The completed check is recorded in the review
+  update above.
 
 Paper and reproduction files: [versions/v2](versions/v2/README.md).
 Fixed release: [v0.2.0](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.2.0).

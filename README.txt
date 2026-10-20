@@ -5,7 +5,8 @@ Current research draft: v0.2.0, analytic cutoff q < 50,000,000.
 
 v2: versions/v2/README.md
     Complete cumulative paper: versions/v2/output/pdf/proof.pdf
-    23 exact arithmetic checks pass. See the review record for scope.
+    Mathematical cross-check with a different frontier model passed.
+    23 exact arithmetic checks pass. See REVIEW.md for the current record.
     https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.2.0
 
 v1: versions/v1/README.md
@@ -14,6 +15,8 @@ v1: versions/v1/README.md
     https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.1.0
 
 See CHANGELOG.md for mathematical changes and REVIEW.md for review scope.
+The v2 cross-check passed after publication, as confirmed on 20 October
+2026. The fixed release files retain their status at publication.
 The original root proof, programs, outputs, and bundle remain unchanged.
 
 ORIGINAL README — V1, AS PUBLISHED

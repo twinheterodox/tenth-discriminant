@@ -26,12 +26,22 @@ sieve programs and outputs are reused byte-for-byte and cover the entire
 remaining range. The cumulative PDF has been compiled, rendered, and
 visually inspected.
 
-**The new refinement has not yet received a separate-model mathematical
-cross-check.** The reported v1 cross-check does not cover the new estimates
-or the new application of Banks's intermediate lemmas.
+**The v2 mathematical argument has been cross-checked with a different
+frontier model. The independent check passed.** Completion was confirmed
+by the repository owner on 20 October 2026. A model name and detailed
+review report are not bundled in this repository.
 
-See the [v2 verification record](versions/v2/REVIEW.md) for component-level
-scope. No independent human review or Lean formalization is recorded here.
+This is a subsequent review update for
+[v0.2.0](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.2.0),
+published at commit
+[`e54a64e`](https://github.com/twinheterodox/tenth-discriminant/commit/e54a64e8212f1e4bc1acfcb1aa0657dc98a18e67).
+At publication, the refinement was awaiting this check. The fixed paper,
+bundle, and [v2 verification record at publication](versions/v2/REVIEW.md)
+retain that historical status; this log records the completed check.
+The mathematical result and proof files have not changed in this update.
+
+Banks's cited results remain external inputs. No independent human review
+or Lean formalization is recorded here.
 
 ## Recording future reviews
 

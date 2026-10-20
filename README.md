@@ -37,7 +37,7 @@ snapshot.
 
 | Version | Analytic cutoff | Paper and files | Mathematical review status |
 |---|---|---|---|
-| **v2 · v0.2.0** | **`q < 5 × 10^7`** | [Complete cumulative proof](versions/v2/output/pdf/proof.pdf) · [Source and reproduction](versions/v2/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.2.0) | 23 exact arithmetic checks pass; see the review record for scope |
+| **v2 · v0.2.0** | **`q < 5 × 10^7`** | [Complete cumulative proof](versions/v2/output/pdf/proof.pdf) · [Source and reproduction](versions/v2/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.2.0) | Mathematical cross-check with a different frontier model passed; 23 exact arithmetic checks pass |
 | **v1 · v0.1.0** | `q < 10^10` | [Original proof](versions/v1/output/pdf/proof.pdf) · [Unchanged original snapshot](versions/v1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.1.0) | Different-frontier-model cross-check reported by the repository owner; see the review record |
 
 [Mathematical changelog](CHANGELOG.md) · [Review record by version](REVIEW.md)
@@ -50,8 +50,11 @@ construction and hypotheses. Neither version independently proves those
 external results.
 
 The v2 paper includes the original argument, a clearly identified
-refinement, and the finite classification. Its verification record
-separates new arithmetic checks from the reported cross-check of v1.
+refinement, and the finite classification. The mathematical argument,
+including the v2 refinement, has been cross-checked with a different
+frontier model. Completion of the v2 check was confirmed on 20 October
+2026, after publication. The [current review record](REVIEW.md) records
+this update; the fixed release files retain their status at publication.
 Both releases are research drafts.
 
 ## Fixed versions for citation
