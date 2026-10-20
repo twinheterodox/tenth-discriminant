@@ -1,10 +1,39 @@
-# Tenth-discriminant bounds — version index
+# Tenth-discriminant bounds
+
+This is an AI-assisted contribution to
+[Terence Tao's tenth-discriminant challenge](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/).
+The aim is to obtain explicit bounds for a hypothetical tenth imaginary
+quadratic field of class number one from arguments ruling out Siegel
+zeroes, without using Heegner's solution. The repository records the
+arguments, computations, and successive improvements so that they can be
+examined and cited in the discussion.
+
+For a negative fundamental discriminant `D`, write `q = |D|`. The current
+approach combines a classical theta-integral argument with estimates from
+[Banks, arXiv:2610.15483v1](https://arxiv.org/abs/2610.15483v1).
+Class number one would force a real zero of the associated Dirichlet
+L-function sufficiently close to 1 to contradict those estimates for
+large `q`. This gives an explicit upper bound on `q`. Exact integer sieves
+and reduced-form enumeration then handle the remaining finite range,
+leaving the nine absolute fundamental discriminants
+`3, 4, 7, 8, 11, 19, 43, 67, 163`.
+
+The cited results from Banks are external inputs, with the precise
+dependencies stated in each version. Codex prepared the derivations,
+write-ups, and verification programs; the review record identifies the
+checks completed for each version.
 
 **Current research draft: v0.2.0, with analytic cutoff `q < 50,000,000`.**
 
-Each numbered version has its own complete paper and verification files.
-The original published snapshot is preserved unchanged. The original
-README is also retained below this index.
+## Versions and improvements
+
+As bounds improve, new results are added as numbered versions, each with
+its own complete paper and verification files. Published snapshots and
+release links are preserved, so earlier comments can continue to cite the
+exact argument they discussed. This README is the entry point to the
+latest result and the version history; the changelog records what changed
+mathematically. The original v1 README is retained below as a historical
+snapshot.
 
 | Version | Analytic cutoff | Paper and files | Mathematical review status |
 |---|---|---|---|
