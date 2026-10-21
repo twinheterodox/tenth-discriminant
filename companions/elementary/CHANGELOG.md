@@ -1,5 +1,14 @@
 # Elementary companion changelog
 
+## elementary-v0.1.0 - authorship correction, 21 October 2026
+
+- Uses only `Research note prepared with Codex` as the paper's byline.
+- Removes the account name from the suggested citation and release
+  metadata, and from the citation to v6, which has the same unnamed byline.
+- Leaves the mathematical argument, programs, and results unchanged.
+- Updates the existing release downloads under the same version number.
+  The original tag and Git history preserve the first publication.
+
 ## elementary-v0.1.0 - 21 October 2026
 
 First publication of *An elementary determinant bound for the tenth

@@ -2,8 +2,6 @@
 
 **Analytic cutoff: `q < 32,768 = 2^15`.**
 
-**twinheterodox**
-
 Research note prepared with Codex
 
 **[Read the eight-page paper](output/pdf/elementary-companion.pdf)** ·
@@ -100,13 +98,18 @@ and review status.
 
 For citation, use:
 
-> twinheterodox, *An elementary determinant bound for the tenth discriminant*,
+> *An elementary determinant bound for the tenth discriminant*,
 > elementary-v0.1.0, 21 October 2026. Research note prepared with Codex.
 
-[Fixed source snapshot](https://github.com/twinheterodox/tenth-discriminant/tree/elementary-v0.1.0/companions/elementary) ·
+[Original publication snapshot](https://github.com/twinheterodox/tenth-discriminant/tree/elementary-v0.1.0/companions/elementary) ·
 [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/elementary-v0.1.0) ·
 [Companion changelog](CHANGELOG.md)
 
-The supplied paper and verification programs are unchanged from the
-completed local draft. Earlier local experiments are not inputs to this
-release or part of its bundle.
+The current paper and release downloads include the authorship correction
+dated 21 October 2026: the byline is solely "Research note prepared with
+Codex." The account name is also omitted from the citation to v6, whose
+paper uses the same byline. The mathematical argument, verification
+programs, and results are unchanged. This correction retains
+`elementary-v0.1.0`; the original publication tag and Git history preserve
+the first files. Earlier local experiments are not inputs to this release
+or part of its bundle.

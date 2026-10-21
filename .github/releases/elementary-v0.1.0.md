@@ -1,8 +1,6 @@
 **q < 32,768 = 2^15**, with a simpler, self-contained determinant proof.
 
-[Read the eight-page paper](https://github.com/twinheterodox/tenth-discriminant/releases/download/elementary-v0.1.0/elementary-v0.1.0.pdf) · [Download the proof and verification bundle](https://github.com/twinheterodox/tenth-discriminant/releases/download/elementary-v0.1.0/elementary-v0.1.0.zip) · [Source and reproduction](https://github.com/twinheterodox/tenth-discriminant/tree/elementary-v0.1.0/companions/elementary)
-
-**twinheterodox**
+[Read the eight-page paper](https://github.com/twinheterodox/tenth-discriminant/releases/download/elementary-v0.1.0/elementary-v0.1.0.pdf) · [Download the proof and verification bundle](https://github.com/twinheterodox/tenth-discriminant/releases/download/elementary-v0.1.0/elementary-v0.1.0.zip) · [Source and reproduction](https://github.com/twinheterodox/tenth-discriminant/tree/main/companions/elementary)
 
 Research note prepared with Codex
 
@@ -26,13 +24,20 @@ argument. The acknowledgements retain the sources' AI attributions.
 The exact constant checks pass, with final margin `1009/55200`. An
 exhaustive integer sieve tests 4,095 candidates using primes through 31,
 and reduced-form enumeration confirms the nine surviving discriminants.
-An isolated run of the release bundle reproduces the recorded outputs.
+At first publication, an isolated run of the release bundle reproduced
+the recorded outputs. The computation files are unchanged.
 
 **Independent mathematical review is pending.** The checks were performed
 in the same Codex session that developed the note; they are not an
 independent audit or formal verification. See the
-[review record](https://github.com/twinheterodox/tenth-discriminant/blob/elementary-v0.1.0/companions/elementary/REVIEW.md).
+[review record](https://github.com/twinheterodox/tenth-discriminant/blob/main/companions/elementary/REVIEW.md).
 
 The PDF, source, verification programs, results, and checksums are included.
 This is a research prerelease. Future companion revisions will retain
 the `elementary-` prefix; the numbered version history remains intact.
+
+The downloads include the authorship correction of 21 October 2026, under
+the same version number: the byline now reads only "Research note prepared
+with Codex." The mathematical argument, programs, and results are unchanged.
+The [original publication tag](https://github.com/twinheterodox/tenth-discriminant/tree/elementary-v0.1.0/companions/elementary)
+and Git history preserve the first files.

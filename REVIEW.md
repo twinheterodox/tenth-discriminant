@@ -241,6 +241,16 @@ The [companion review record](companions/elementary/REVIEW.md) gives its
 scope and publication checks. It has its own version history, starting at
 [elementary-v0.1.0](https://github.com/twinheterodox/tenth-discriminant/releases/tag/elementary-v0.1.0).
 
+The authorship correction dated 21 October 2026 retains the same version
+number and the byline "Research note prepared with Codex." Only the
+byline and the account-name attribution in the citation to v6 change in
+the source; the mathematics, programs, and results are unchanged. The PDF
+was rebuilt, rendered, and visually inspected, and the bundle checksums
+were updated. The unchanged computation files were compared with the
+original release; the mathematical checks were not rerun. The release
+downloads contain the corrected files, while the original tag and Git
+history preserve the first publication.
+
 ## Recording future reviews
 
 Record the reviewed version or commit, date, reviewer/model when available,

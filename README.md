@@ -163,13 +163,20 @@ All releases are research drafts.
 - [v0.4.0: derivative determinant proof and verification](https://github.com/twinheterodox/tenth-discriminant/tree/v0.4.0/versions/v4)
 - [v0.5.0: original publication snapshot](https://github.com/twinheterodox/tenth-discriminant/tree/v0.5.0/versions/v5)
 - [v0.6.0: smoothed Frobenius determinant proof and verification](https://github.com/twinheterodox/tenth-discriminant/tree/v0.6.0/versions/v6)
-- [elementary-v0.1.0: self-contained elementary companion and verification](https://github.com/twinheterodox/tenth-discriminant/tree/elementary-v0.1.0/companions/elementary)
+- [elementary-v0.1.0: original elementary companion publication](https://github.com/twinheterodox/tenth-discriminant/tree/elementary-v0.1.0/companions/elementary)
 
 The v0.5.0 tag retains the original publication. Its
 [release downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0)
 and [current source](versions/v5/README.md) include the minor wording
 correction dated 20 October 2026, under the same version number. The
 original files remain available through the tag and Git history.
+
+The elementary companion's [current paper and source](companions/elementary/README.md)
+and [release downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/elementary-v0.1.0)
+include the authorship correction dated 21 October 2026, under the same
+version number. Its byline is "Research note prepared with Codex."
+The original publication tag preserves the first files; the mathematics
+and verification programs are unchanged.
 
 The original proof, programs, outputs, and bundle remain at their existing
 root paths. The `versions/v1/` directory is an exact copy of all tracked

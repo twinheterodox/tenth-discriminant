@@ -28,11 +28,11 @@ testing examples or compute the determinant.
 - The residue tables agree with Euler's criterion. Reduced-form enumeration
   gives class number one for each of the nine surviving fundamental
   discriminants, including `3, 4, 7, 8` below 9.
-- Both programs have been run from an isolated extraction of the release
-  bundle, reproducing `verification.txt` exactly.
+- At first publication, both programs were run from an isolated extraction
+  of the release bundle, reproducing `verification.txt` exactly.
 - The eight-page PDF was compiled without unresolved references or
   typesetting warnings and visually inspected. Its bibliography links
-  were checked. The source author block reads `twinheterodox` followed by
+  were checked. The source author block reads
   `Research note prepared with Codex`.
 
 The generating Codex assistant performed these checks in the development
@@ -40,11 +40,19 @@ session. They are not an independent mathematical audit.
 
 ## Publication integrity
 
-The paper, LaTeX source, both verification programs, and recorded results
-are byte-identical to the completed local draft. Publication adds the
-companion README, review record, changelog, and checksum manifest. The
-bundle manifest covers its payload; the downloadable release checksums
-identify the PDF and ZIP assets.
+The first publication copied the completed local paper, source, programs,
+and results without changes. The authorship correction of 21 October 2026
+removes the account name from the byline and the citation to v6, whose
+paper also uses "Research note prepared with Codex." The mathematical
+text, programs, and recorded results are unchanged. The PDF was rebuilt,
+rendered, and visually inspected; the bundle and checksums were regenerated.
+The unchanged computation files were checked against the original release;
+the mathematical checks were not rerun for this authorship-only correction.
+
+This correction retains `elementary-v0.1.0`. Its release downloads contain
+the corrected files; the original tag and Git history preserve the first
+publication. The bundle manifest covers its payload; the downloadable
+release checksums identify the PDF and ZIP assets.
 
 ## Recording subsequent reviews
 
