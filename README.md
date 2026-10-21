@@ -5,8 +5,20 @@ This is an AI-assisted contribution to
 The aim is to obtain explicit bounds for a hypothetical tenth imaginary
 quadratic field of class number one from arguments ruling out Siegel
 zeroes, without using Heegner's solution. The repository records the
-arguments, computations, and successive improvements so that they can be
+arguments, computations, and revisions so that they can be
 examined and cited in the discussion.
+
+The work has two complementary aims, with separate publication series:
+
+- **Sharper bounds:** the numbered versions, v1, v2, and so on, record
+  progressively smaller analytic cutoffs and revisions of those arguments.
+- **Simpler proofs:** [companion papers](#companion-papers) pursue objectives
+  such as reducing the machinery or giving a self-contained exposition.
+  Each companion has its own version history and release tags.
+
+A companion can have a larger cutoff while offering a shorter or more
+elementary proof. It is a separate contribution alongside the numbered
+series. Review status is recorded for each paper and revision separately.
 
 For a negative fundamental discriminant `D`, write `q = |D|`. Versions 1
 and 2 combine a classical theta integral with results from
@@ -30,7 +42,7 @@ nine absolute fundamental discriminants
 Codex prepared the derivations, write-ups, and verification programs;
 the review record identifies the checks completed for each version.
 
-**Current research draft: v0.6.0, with analytic cutoff `q < 570`
+**Strongest bound in the numbered series: v0.6.0, with analytic cutoff `q < 570`
 (previously `q < 2,000`).**
 
 **[Read the v6 proof](versions/v6/output/pdf/proof.pdf)** ·
@@ -49,15 +61,35 @@ checks**; its [corrected proof](versions/v5/output/pdf/proof.pdf) and
 [audit record](versions/v5/AUDIT.md) remain available. The v6 argument
 uses no quasi-Riemann hypothesis or quadratic zero-free theorem.
 
+## Companion papers
+
+The **elementary determinant companion**, with cutoff **`q < 32,768 = 2^15`**,
+prioritizes a simple, self-contained proof. It proves its ordinary-prime
+estimates using factorials and binomial coefficients, uses a rectangular
+interpolation grid, and concludes with one endpoint comparison. Its proof
+is independent of v1-v6. The remaining finite range is small enough for an
+elementary residue sieve.
+
+**Status: local draft, not yet published; independent mathematical review
+pending.** Its exact constant checks and exhaustive sieve of 4,095 candidate
+integers pass.
+
+The first release will use **`elementary-v0.1.0`**, with the paper, source,
+and verification files under `companions/elementary/`. Subsequent revisions
+will retain the `elementary-` prefix and their own citation snapshots.
+The next numbered version, v7, remains available for a further improvement
+in the analytic cutoff. Published release links and earlier snapshots in
+both series will remain available for citation.
+
 ## Versions and improvements
 
-As bounds improve, new results are added as numbered versions, each with
-its own proof and verification files. Published snapshots and
+In the numbered series, improved bounds are added as new versions, each
+with its own proof and verification files. Published snapshots and
 release links are preserved, so earlier comments can continue to cite the
-exact argument they discussed. This README is the entry point to the
-latest result and the version history; the changelog records what changed
-mathematically. The original v1 README is retained below as a historical
-snapshot.
+exact argument they discussed. This README is the entry point to both
+series and their histories; the changelog records what changed
+mathematically in the numbered series. The original v1 README is retained
+below as a historical snapshot.
 
 | Version | Analytic cutoff | Paper and files | Mathematical review status |
 |---|---|---|---|
