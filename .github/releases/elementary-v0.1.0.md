@@ -27,17 +27,19 @@ and reduced-form enumeration confirms the nine surviving discriminants.
 At first publication, an isolated run of the release bundle reproduced
 the recorded outputs. The computation files are unchanged.
 
-**Independent mathematical review is pending.** The checks were performed
-in the same Codex session that developed the note; they are not an
-independent audit or formal verification. See the
+**The elementary companion has passed independent mathematical verification,**
+confirmed on 21 October 2026. The computations above were performed in the
+development session and are separate from the reported independent check.
+No formal verification is supplied. See the
 [review record](https://github.com/twinheterodox/tenth-discriminant/blob/main/companions/elementary/REVIEW.md).
 
 The PDF, source, verification programs, results, and checksums are included.
 This is a research prerelease. Future companion revisions will retain
 the `elementary-` prefix; the numbered version history remains intact.
 
-The downloads include the authorship correction of 21 October 2026, under
-the same version number: the byline now reads only "Research note prepared
-with Codex." The mathematical argument, programs, and results are unchanged.
+The downloads include the authorship correction and completed-verification
+status of 21 October 2026, under the same version number. The byline reads
+only "Research note prepared with Codex." The mathematical argument,
+programs, and results are unchanged.
 The [original publication tag](https://github.com/twinheterodox/tenth-discriminant/tree/elementary-v0.1.0/companions/elementary)
 and Git history preserve the first files.

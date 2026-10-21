@@ -228,15 +228,17 @@ fields, Hadamard's inequality, and elementary analysis are background inputs.
 
 The exact constant checks pass, with final margin `1009/55200`. The finite
 sieve checks 4,095 candidate integers using primes through 31; reduced-form
-enumeration confirms the nine surviving discriminants. A run from an
-isolated extraction of the release bundle reproduces both programs'
-recorded outputs exactly. The paper, source, programs, and results are
-byte-identical to the completed local draft; publication adds documentation
-and checksums.
+enumeration confirms the nine surviving discriminants. At first
+publication, a run from an isolated extraction of the release bundle
+reproduced both programs' recorded outputs exactly. The first publication
+copied the paper, source, programs, and results from the completed local
+draft and added documentation and checksums.
 
-**Independent mathematical review is pending.** These checks were performed
-in the same Codex session that developed the note and are not formal
-verification. Reviews of the numbered papers do not cover this companion.
+**The elementary companion has passed independent mathematical verification,**
+as confirmed by the repository owner on 21 October 2026. No reviewer/model
+identity or detailed report was supplied. The computations above were
+performed in the development session and are separate from the reported
+independent verification. No formal verification is supplied.
 The [companion review record](companions/elementary/REVIEW.md) gives its
 scope and publication checks. It has its own version history, starting at
 [elementary-v0.1.0](https://github.com/twinheterodox/tenth-discriminant/releases/tag/elementary-v0.1.0).
@@ -250,6 +252,13 @@ were updated. The unchanged computation files were compared with the
 original release; the mathematical checks were not rerun. The release
 downloads contain the corrected files, while the original tag and Git
 history preserve the first publication.
+
+The subsequent review-status update records the independent verification
+in the paper and documentation, with no change to the mathematical
+argument, programs, or results. At confirmation, the current publication
+was [c46f45b](https://github.com/twinheterodox/tenth-discriminant/commit/c46f45b710e9887e4e19c0da66584d04792a77ad).
+The original tag retains the status at first publication; the release
+downloads include the completed-verification status under the same version.
 
 ## Recording future reviews
 

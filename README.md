@@ -74,10 +74,12 @@ elementary residue sieve.
 [Source and reproduction](companions/elementary/README.md) ·
 [elementary-v0.1.0 release and downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/elementary-v0.1.0)
 
-**Independent mathematical review is pending.** Its exact constant checks
-and exhaustive sieve of 4,095 candidate integers pass; an isolated run of
-the release bundle reproduces the recorded outputs. These checks are not
-an independent mathematical audit or formal verification.
+**The elementary companion has passed independent mathematical verification,**
+confirmed on 21 October 2026. Its exact constant checks and exhaustive
+sieve of 4,095 candidate integers also pass; an isolated run of the release
+bundle reproduces the recorded outputs. The [review record](companions/elementary/REVIEW.md)
+records the independent verification separately from those computations.
+No formal verification is supplied.
 
 The first release is **`elementary-v0.1.0`**, with the paper, source,
 and verification files under `companions/elementary/`. Subsequent revisions
@@ -173,8 +175,9 @@ original files remain available through the tag and Git history.
 
 The elementary companion's [current paper and source](companions/elementary/README.md)
 and [release downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/elementary-v0.1.0)
-include the authorship correction dated 21 October 2026, under the same
-version number. Its byline is "Research note prepared with Codex."
+include the authorship correction and completed-verification status dated
+21 October 2026, under the same version number. Its byline is
+"Research note prepared with Codex."
 The original publication tag preserves the first files; the mathematics
 and verification programs are unchanged.
 

@@ -1,5 +1,13 @@
 # Elementary companion changelog
 
+## elementary-v0.1.0 - independent verification, 21 October 2026
+
+- Records that the elementary companion passed independent mathematical
+  verification, as confirmed on 21 October 2026.
+- Updates the paper, documentation, and existing release downloads under
+  the same version number. The mathematics, programs, and results are unchanged.
+- Retains the original tag and Git history, including the status at publication.
+
 ## elementary-v0.1.0 - authorship correction, 21 October 2026
 
 - Uses only `Research note prepared with Codex` as the paper's byline.

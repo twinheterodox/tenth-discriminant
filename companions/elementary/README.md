@@ -16,10 +16,11 @@ has absolute fundamental discriminant `q < 32,768`. An integer residue
 sieve and reduced-form enumeration leave the nine absolute discriminants
 `3, 4, 7, 8, 11, 19, 43, 67, 163`.
 
-**Independent mathematical review is pending.** The exact constant checks
-and exhaustive finite sieve pass. These are checks performed in the same
-Codex session that developed the note, not an independent audit or formal
-verification. [Review scope and results](REVIEW.md).
+**The elementary companion has passed independent mathematical verification,**
+confirmed on 21 October 2026. The exact constant checks and exhaustive
+finite sieve also pass. The [review record](REVIEW.md) distinguishes the
+reported independent verification from the computations performed in the
+development session. No formal verification is supplied.
 
 ## The argument
 
@@ -106,10 +107,11 @@ For citation, use:
 [Companion changelog](CHANGELOG.md)
 
 The current paper and release downloads include the authorship correction
-dated 21 October 2026: the byline is solely "Research note prepared with
-Codex." The account name is also omitted from the citation to v6, whose
-paper uses the same byline. The mathematical argument, verification
-programs, and results are unchanged. This correction retains
+and completed-verification status dated 21 October 2026: the byline is
+solely "Research note prepared with Codex." The account name is also
+omitted from the citation to v6, whose paper uses the same byline. The
+mathematical argument, verification programs, and results are unchanged.
+These updates retain
 `elementary-v0.1.0`; the original publication tag and Git history preserve
 the first files. Earlier local experiments are not inputs to this release
 or part of its bundle.

@@ -4,17 +4,25 @@
   "title": "An elementary determinant bound for the tenth discriminant",
   "authorship_note": "Research note prepared with Codex",
   "analytic_cutoff": "q < 32,768 = 2^15",
-  "mathematical_review": "Independent mathematical review pending; exact computational checks passed; not formal verification.",
+  "mathematical_review": "Independent mathematical verification passed; confirmed 2026-10-21; not formal verification.",
   "sha256": {
     ".gitignore": "fe4cc5a6cab925396d406eb96a710f218a10be332367e075102f01a989e442ec",
-    "CHANGELOG.md": "5d767c61be52a0e0c59dc0191f2c6faf3cd69c58891a1a1a56bdd4d06b0f5d8d",
-    "README.md": "142bdb85185e2be23428a74013b578f2e68eb65455809f97e7ddf3d7e7cc6db5",
-    "REVIEW.md": "43262d403a65494c322aca8e1fc824e623ebe9cee10dfdfdbdad068fbcbf0b56",
-    "output/pdf/elementary-companion.pdf": "18ff423b78ae6f24ca2b9d8c04b47f14a97aa18d2ed5c6158b79effd0ab20c99",
-    "proof.tex": "4dc4db04a57ef36aa3a7bed693a538c7613da3093a1c386eac056b15190482b8",
+    "CHANGELOG.md": "5dee9b7bf8f05756828e0cc9fe15120d8d2553bf92cc2cec095098894f0091d9",
+    "README.md": "246fecf24986168efe09956b79e0b8a7150e0429c622d6abaf611343a5dd3682",
+    "REVIEW.md": "870dec74b1a6f66b3ad7cbbf71ccb5640795cc4a2094b5eecf818981689f8b93",
+    "output/pdf/elementary-companion.pdf": "3aad955007d33f77ad9f52a1b54bf64e77720590d63f1e0a01725019e93ccbf3",
+    "proof.tex": "53b6259284dffe44e89a50d11bac16c761aca53f58b469095e6092032ce536f7",
     "verification.txt": "911186fd4e58ccedbf317313770eb8b20fb4eb309bdb9d1e8139a6cbb72214b1",
     "verify_constants.py": "c00e8758918125e0c889b8e649bd71fed2464e4b4bbc3e9a5b9983c303213520",
     "verify_finite.py": "7a9359f8e1a1c3f389019a952816e237f3be0152e5cfec0c851aab7896e23cd7"
   },
-  "revision": "Authorship correction, 2026-10-21: byline and citation to v6 omit the account name; mathematics, programs, and results unchanged. Original publication preserved by tag elementary-v0.1.0."
+  "revision": "Authorship correction and completed-verification status, 2026-10-21; mathematics, programs, and results unchanged. Original publication preserved by tag elementary-v0.1.0.",
+  "review_confirmation": {
+    "date": "2026-10-21",
+    "source": "Repository owner",
+    "statement": "elementary passed independent verification",
+    "publication_at_confirmation": "c46f45b710e9887e4e19c0da66584d04792a77ad",
+    "reviewer_or_model": "Not supplied",
+    "detailed_report": "Not supplied"
+  }
 }

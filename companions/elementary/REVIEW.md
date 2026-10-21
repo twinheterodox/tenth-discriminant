@@ -1,8 +1,21 @@
 # Review and verification: elementary-v0.1.0
 
-**Independent mathematical review is pending.** This companion is a
-research draft; checks of other papers in the repository do not cover it.
-No formal verification is supplied.
+**The elementary companion has passed independent mathematical verification,**
+confirmed on 21 October 2026. No formal verification is supplied.
+
+## Independent verification
+
+The repository owner confirmed on 21 October 2026:
+
+> elementary passed independent verification
+
+At confirmation, the current publication was
+[commit c46f45b](https://github.com/twinheterodox/tenth-discriminant/commit/c46f45b710e9887e4e19c0da66584d04792a77ad).
+Its mathematical argument and verification programs are unchanged from
+the original `elementary-v0.1.0` publication; the intervening revision
+changed authorship attributions only. No reviewer/model identity or
+detailed review report was supplied. The reported independent verification
+is distinct from the development-session checks listed below.
 
 ## Mathematical scope
 
@@ -53,6 +66,12 @@ This correction retains `elementary-v0.1.0`. Its release downloads contain
 the corrected files; the original tag and Git history preserve the first
 publication. The bundle manifest covers its payload; the downloadable
 release checksums identify the PDF and ZIP assets.
+
+The subsequent review-status update of 21 October 2026 records the
+completed independent verification in the paper and documentation under
+the same version number. It changes no mathematics, programs, or numerical
+results. The PDF was rebuilt and visually checked, and the bundle and
+checksums were updated. The original tag retains the status at publication.
 
 ## Recording subsequent reviews
 
