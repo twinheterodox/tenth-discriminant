@@ -1,0 +1,120 @@
+{
+  "version": "v0.6.1",
+  "review_status": "Independent mathematical audit pending; not formal verification.",
+  "revision": "Revised exposition, 21 October 2026; bound and certificates unchanged.",
+  "source_snapshot": "https://github.com/twinheterodox/tenth-discriminant/tree/v0.6.0/versions/v6",
+  "files": {
+    "EDITORIAL.md": {
+      "bytes": 3013,
+      "sha256": "edbc7849c8dcff73ad4cc5fbaa39b51af8a6b8c1ebed01b609b1be2b3f46a993"
+    },
+    "EDITORIAL_CHECKS.json": {
+      "bytes": 2370,
+      "sha256": "e14a4633dc195c765c982455cd96d05ce83a4e0fcf1aa08a3a44432ee150b257"
+    },
+    "README.md": {
+      "bytes": 6989,
+      "sha256": "9c599492c49d06f9909c96adca82d4b9d62bacfe26e73f01700994da20fb95b6"
+    },
+    "REPRODUCTION.json": {
+      "bytes": 1158,
+      "sha256": "bfa35a90461d9f660425c2fda59614ece24bec48e7032bb522c9aa0d6c376a6c"
+    },
+    "RESEARCH.md": {
+      "bytes": 6302,
+      "sha256": "5b3826c3f4bc5127c73ab3f5eb1eaf560a5ecbf276f1455f65aa0f0e8da8039e"
+    },
+    "REVIEW.md": {
+      "bytes": 3494,
+      "sha256": "ec502a378900a3a0df36c1f75097457f75a3be940ea15682cfd2bff2f7c4de35"
+    },
+    "archive_check.txt": {
+      "bytes": 1168,
+      "sha256": "aa88796c3a20c43d330ae61694578a77fea0fcbc364b10de22db0538aa18b93e"
+    },
+    "build_numerical_table.py": {
+      "bytes": 1688,
+      "sha256": "b567b57e0fca11a4879dc5ae8b7e805aa4ce7490cffd808fb72a784e024084c0"
+    },
+    "certificate_1050_2000.json": {
+      "bytes": 485179,
+      "sha256": "c75f613610921565431972019af3cb22950e50e4ef73ac68652ca59130b12645"
+    },
+    "certificate_570_580.json": {
+      "bytes": 415408,
+      "sha256": "bb023f29d31609e74b13aa332493fdad67632396d0cd06b36615b6213c24d5c5"
+    },
+    "certificate_580_600.json": {
+      "bytes": 414475,
+      "sha256": "226b432f90d045af2e2c98bd8306495b89d404554141439b277a8f2f774748f0"
+    },
+    "certificate_600_700.json": {
+      "bytes": 402517,
+      "sha256": "af081baadcc9d6f045293f0767fa79e0eb34270f7278bb6b8160f1be66ef8141"
+    },
+    "certificate_700_1050.json": {
+      "bytes": 402018,
+      "sha256": "a6349b37cf18452082e43ff185939a32a9dc0f463c57739b2ebd84ef3e28f075"
+    },
+    "certificate_output.txt": {
+      "bytes": 1008,
+      "sha256": "2f874208dc53c8331a595e27d7576054599fb9f6a314b9d05ecab98b7343009f"
+    },
+    "certificate_results.json": {
+      "bytes": 2232291,
+      "sha256": "c1d7d9b65864b4e01b378687ab77610436203b4dac18edeb163101b57bee2fbf"
+    },
+    "certificate_support.py": {
+      "bytes": 1212,
+      "sha256": "2fb3135c86d5b60c6dd2e5326029ab0b6689cc4b97224571670942235e2d11d6"
+    },
+    "exact_arithmetic.py": {
+      "bytes": 2849,
+      "sha256": "9514b9589cf4288b3d705248b87c088989b8094ddfdc2a41795938ff55323303"
+    },
+    "exact_high.py": {
+      "bytes": 2060,
+      "sha256": "c1b3b57dd303646e5816a3659f0db835d95f0839fcfdd29a3c9469d8d975e9e1"
+    },
+    "finite_checks.txt": {
+      "bytes": 740,
+      "sha256": "937c48be2eadad8fdf5d9740b4462272836e2710d79047adcfb82a0a61fc2bf5"
+    },
+    "numerical_table.tex": {
+      "bytes": 724,
+      "sha256": "e64a5534755c9a7b9538e82015a6366bd6038950c8e13678b30504918ac2b7c5"
+    },
+    "output/pdf/proof.pdf": {
+      "bytes": 415209,
+      "sha256": "c871d5f1291bb3d38cc7b4353a2d0916fd2859b1509e45a9d05030905a1a1d6c"
+    },
+    "parameters.json": {
+      "bytes": 35683,
+      "sha256": "602f67c93c097ca07af0897d82397ad8d02b491bc57a2e791fc8d266411292b7"
+    },
+    "proof.tex": {
+      "bytes": 50513,
+      "sha256": "1a706146eb28fcddf4c5c5ca399978dbe34194fe5de21d3b9e31fe1eb118ab11"
+    },
+    "sources.json": {
+      "bytes": 6214,
+      "sha256": "32b1d89c15cd15f8b50075f320defc914d852da06f810de986af74a1c1ea7210"
+    },
+    "structural_checks.txt": {
+      "bytes": 274,
+      "sha256": "6ba95687a0db4e670919784d994d2841fb2fbab4061c02bbedcc8a3fee6e1274"
+    },
+    "verify_finite.py": {
+      "bytes": 3398,
+      "sha256": "f42a65ab3b56f4d2200488a0fcddc2bf37319c05614465ed7b089b3d9638c7e5"
+    },
+    "verify_structures.py": {
+      "bytes": 3265,
+      "sha256": "07b5d6039974fb4d03e9a9a2cf2bdfef3ecacad40b4dcd2b9c79c2104de33744"
+    },
+    "verify_v6.py": {
+      "bytes": 14152,
+      "sha256": "29c2d5436e44e1e5d1433a66c67b250fb7a4c6111a3b4e4cde2cb136f5b8deba"
+    }
+  }
+}

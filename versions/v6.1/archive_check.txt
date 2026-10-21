@@ -1,0 +1,15 @@
+PASS: complete certificate rerun from a ZIP-extracted isolated snapshot.
+PASS: all mathematical input files match the recorded SHA-256 hashes.
+PASS: all five exact band results, including all refinement stages, match the previous complete run.
+PASS: 429 grouped exact checks; 1258 log-q interval cells.
+PASS: 101524 finite structural cases; 70 finite discriminant candidates.
+PASS: the fifteen-page PDF compiled without warnings and every rendered page was visually inspected.
+These checks were performed within the same Codex session; independent mathematical audit remains pending.
+PASS: ZIP integrity, every manifest checksum, and all reproduced input hashes verified.
+
+Publication preparation for v0.6.0:
+PASS: mathematical manuscript body unchanged from the reproduced consolidated draft.
+PASS: all mathematical inputs, programs, numerical outputs, and the table match the reproduced draft.
+PASS: publication PDF rebuilt without warnings and visually inspected; rendered pages 2-15 are identical to the draft.
+PASS: all 82 earlier-version files and the original v1 README are unchanged.
+Publication changes do not constitute a new independent mathematical audit.

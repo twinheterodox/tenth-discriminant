@@ -1,0 +1,20 @@
+{
+  "method": "Complete certificate rerun from a ZIP-extracted isolated input snapshot, within the same Codex session.",
+  "independent_mathematical_audit": false,
+  "python_version": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "input_sha256": {
+    "verify_v6.py": "29c2d5436e44e1e5d1433a66c67b250fb7a4c6111a3b4e4cde2cb136f5b8deba",
+    "verify_structures.py": "07b5d6039974fb4d03e9a9a2cf2bdfef3ecacad40b4dcd2b9c79c2104de33744",
+    "verify_finite.py": "f42a65ab3b56f4d2200488a0fcddc2bf37319c05614465ed7b089b3d9638c7e5",
+    "exact_arithmetic.py": "9514b9589cf4288b3d705248b87c088989b8094ddfdc2a41795938ff55323303",
+    "exact_high.py": "c1b3b57dd303646e5816a3659f0db835d95f0839fcfdd29a3c9469d8d975e9e1",
+    "certificate_support.py": "2fb3135c86d5b60c6dd2e5326029ab0b6689cc4b97224571670942235e2d11d6",
+    "parameters.json": "602f67c93c097ca07af0897d82397ad8d02b491bc57a2e791fc8d266411292b7"
+  },
+  "grouped_exact_checks": 429,
+  "log_q_cells": 1258,
+  "finite_structural_cases": 101524,
+  "finite_discriminant_candidates": 70,
+  "all_five_band_results_identical_to_prior_complete_run": true,
+  "pdf_pages_rendered_and_visually_inspected": 15
+}

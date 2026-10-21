@@ -1,0 +1,113 @@
+{
+  "version": "v0.6.1",
+  "analytic_cutoff": "q < 570",
+  "review_status": "Independent mathematical audit pending; not formal verification.",
+  "sources": [
+    {
+      "author": "Ben Green",
+      "title": "On Landau-Siegel zeros",
+      "version": "2610.00311v2",
+      "url": "https://hexagonmath.org/2610.00311v2",
+      "use": "Derivative determinant and Frobenius divisibility; required statements are proved in the manuscript.",
+      "provenance": "The source credits ChatGPT for the mathematical arguments and Green for the exposition."
+    },
+    {
+      "author": "Roelof van Dijk",
+      "title": "A Frobenius determinant proof of the non-existence of Landau-Siegel zeros",
+      "version": "2610.00409v1",
+      "url": "https://hexagonmath.org/2610.00409v1",
+      "use": "Auxiliary inert prime nonvanishing; the needed argument is proved in full."
+    },
+    {
+      "author": "Terence Tao",
+      "title": "Tenth-discriminant challenge and discussion",
+      "url": "https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/",
+      "use": "Problem and request for lighter machinery; final reread included 25 comments through 698497."
+    },
+    {
+      "author": "Ben Green",
+      "comment": 698463,
+      "url": "https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/#comment-698463",
+      "use": "Auxiliary-prime route and attribution of related unpublished work to Jacob Pescador; that unpublished text was not used."
+    },
+    {
+      "author": "Kyle Pratt",
+      "comment": 698476,
+      "url": "https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/#comment-698476",
+      "use": "Auxiliary inert prime from norm counts, stronger divisibility, and disk interpolation."
+    },
+    {
+      "author": "Bryce Kerr",
+      "comment": 698475,
+      "url": "https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/#comment-698475",
+      "paper_url": "https://arxiv.org/abs/2610.21099",
+      "use": "Higher Frobenius relations and monomial-region ideas; not the quartic-field or Masser inputs."
+    },
+    {
+      "author": "michaelmross",
+      "comment": 698466,
+      "url": "https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/#comment-698466",
+      "use": "Discussion of the classical one-coordinate Poisson expansion of the principal norm form."
+    },
+    {
+      "author": "Terence Tao",
+      "comment": 698471,
+      "url": "https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/#comment-698471",
+      "use": "Poisson/Chowla-Selberg discussion and request for lighter methods. The QRH conclusions are not used."
+    },
+    {
+      "authors": [
+        "J. Barkley Rosser",
+        "Lowell Schoenfeld"
+      ],
+      "title": "Approximate formulas for some functions of prime numbers",
+      "year": 1962,
+      "doi": "10.1215/ijm/1255631807",
+      "url": "https://doi.org/10.1215/ijm/1255631807",
+      "retrieved_pdf_url": "https://denisevellachemla.eu/Rosser-Schoenfeld-1962.pdf",
+      "snapshot_sha256": "8e37b06f82e09421bceb2502578c47b61469141f0287e6acedb70e01765ab556",
+      "use": "Theorems 4, 6, 9, 14, and Table I on printed page 90; external ordinary-prime inputs. The table was visually checked."
+    },
+    {
+      "title": "A Mellin-averaged determinant bound for the tenth discriminant",
+      "version": "v0.5.0, with wording correction",
+      "url": "https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0",
+      "corrected_source_commit": "6f781492afd06de32997c2c89d4e228a78bab7fc",
+      "corrected_source_url": "https://github.com/twinheterodox/tenth-discriminant/tree/6f781492afd06de32997c2c89d4e228a78bab7fc/versions/v5",
+      "local_pdf_sha256": "f30c62561be9637bfa0ab3ec2e90a7cc0066619ddc8dabb925c563428ab8a466",
+      "use": "The published implication h=1 => q<2000. V5 cites the v4 infinite-range exclusion for q>=4000. No intermediate unpublished v6 draft is a dependency.",
+      "review_status": "Manual mathematical audit with exact computational checks passed, as reported by the user. Not formal verification."
+    },
+    {
+      "author": "Louis M. Gaudet",
+      "title": "Sifting for small split primes of an imaginary quadratic field in a given ideal class",
+      "url": "https://arxiv.org/abs/2408.01610",
+      "use": "Alternative sieve approach considered; not used as a theorem input."
+    },
+    {
+      "title": "NIST Digital Library of Mathematical Functions",
+      "urls": [
+        "https://dlmf.nist.gov/2.10",
+        "https://dlmf.nist.gov/5.11",
+        "https://dlmf.nist.gov/25.2",
+        "https://dlmf.nist.gov/18.37"
+      ],
+      "use": "Classical summation and special-function formulas; disk polynomial background for an exploratory alternative."
+    },
+    {
+      "author": "L. Silberman",
+      "comment": 698449,
+      "url": "https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/#comment-698449",
+      "use": "Small-prime inertness and weighted prime sums; cited at the norm obstruction in the editorial revision."
+    },
+    {
+      "author": "Kyle Pratt",
+      "comment": 698460,
+      "url": "https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/#comment-698460",
+      "use": "Small-prime congruences and finite sieving; cited at the explanation of the existing finite check in the editorial revision."
+    }
+  ],
+  "publication_date": "2026-10-21",
+  "original_publication_date": "2026-10-20",
+  "revision": "Revised exposition of v0.6.0; mathematics and certificate files unchanged."
+}

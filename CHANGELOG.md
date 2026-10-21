@@ -3,6 +3,28 @@
 This changelog records the numbered series of improving bounds. Companion
 papers have separate histories: [elementary companion](companions/elementary/CHANGELOG.md).
 
+## v0.6.1 — revised exposition, 21 October 2026
+
+**The analytic cutoff remains `q < 570`.**
+
+- Reorganizes v6 around construction of the determinant, a lower bound
+  for the smoothed prime sum, and its contradiction with a positive
+  norm-series average.
+- Adds a proof roadmap and explanations of the purpose of each technical
+  estimate. Places citations beside the ideas used, moves numerical
+  remainder bounds to an appendix, and explains the existing finite check.
+- Preserves all 81 displayed mathematical blocks, the theorem and lemma,
+  verification code, fixed parameters, exact outputs, and numerical table.
+- Supplies a seventeen-page paper with a clean LaTeX build and checked
+  layout. Records editorial preservation checks separately from the
+  unchanged original review and reproduction records.
+- Preserves the v0.6.0 directory, tag, paper, and download assets. The
+  revised paper has its own v0.6.1 tag and release; audit status is unchanged.
+
+Paper and reproduction files: [versions/v6.1](versions/v6.1/README.md).
+Section mapping and checks: [EDITORIAL.md](versions/v6.1/EDITORIAL.md).
+Fixed release: [v0.6.1](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.1).
+
 ## v0.6.0 — 20 October 2026
 
 **Analytic cutoff: `q < 570` (previously `q < 2,000`).**

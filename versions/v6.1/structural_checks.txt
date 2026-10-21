@@ -1,0 +1,4 @@
+PASS residual Frobenius entries, coupling, and triangularity: 64224
+PASS residual Frobenius cell-integral bounds: 4410
+PASS smoothed floor identity, valuation bound, and factorial feedback: 32890
+These are finite exact checks, not formal verification or independent review.
