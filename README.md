@@ -70,13 +70,19 @@ interpolation grid, and concludes with one endpoint comparison. Its proof
 is independent of v1-v6. The remaining finite range is small enough for an
 elementary residue sieve.
 
-**Status: local draft, not yet published; independent mathematical review
-pending.** Its exact constant checks and exhaustive sieve of 4,095 candidate
-integers pass.
+**[Read the eight-page elementary proof](companions/elementary/output/pdf/elementary-companion.pdf)** ·
+[Source and reproduction](companions/elementary/README.md) ·
+[elementary-v0.1.0 release and downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/elementary-v0.1.0)
 
-The first release will use **`elementary-v0.1.0`**, with the paper, source,
+**Independent mathematical review is pending.** Its exact constant checks
+and exhaustive sieve of 4,095 candidate integers pass; an isolated run of
+the release bundle reproduces the recorded outputs. These checks are not
+an independent mathematical audit or formal verification.
+
+The first release is **`elementary-v0.1.0`**, with the paper, source,
 and verification files under `companions/elementary/`. Subsequent revisions
-will retain the `elementary-` prefix and their own citation snapshots.
+will retain the `elementary-` prefix and their own citation snapshots;
+the [companion changelog](companions/elementary/CHANGELOG.md) records that history.
 The next numbered version, v7, remains available for a further improvement
 in the analytic cutoff. Published release links and earlier snapshots in
 both series will remain available for citation.
@@ -157,6 +163,7 @@ All releases are research drafts.
 - [v0.4.0: derivative determinant proof and verification](https://github.com/twinheterodox/tenth-discriminant/tree/v0.4.0/versions/v4)
 - [v0.5.0: original publication snapshot](https://github.com/twinheterodox/tenth-discriminant/tree/v0.5.0/versions/v5)
 - [v0.6.0: smoothed Frobenius determinant proof and verification](https://github.com/twinheterodox/tenth-discriminant/tree/v0.6.0/versions/v6)
+- [elementary-v0.1.0: self-contained elementary companion and verification](https://github.com/twinheterodox/tenth-discriminant/tree/elementary-v0.1.0/companions/elementary)
 
 The v0.5.0 tag retains the original publication. Its
 [release downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0)

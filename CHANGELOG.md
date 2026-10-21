@@ -1,5 +1,8 @@
 # Mathematical changelog
 
+This changelog records the numbered series of improving bounds. Companion
+papers have separate histories: [elementary companion](companions/elementary/CHANGELOG.md).
+
 ## v0.6.0 — 20 October 2026
 
 **Analytic cutoff: `q < 570` (previously `q < 2,000`).**

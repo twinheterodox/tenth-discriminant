@@ -1,0 +1,538 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage{microtype,xurl}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\OK}{\mathcal O_K}
+\newcommand{\blog}{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/}
+\title{An elementary determinant bound\\for the tenth discriminant\\
+\large A proof with cutoff \(q<2^{15}\)}
+\author{twinheterodox\\[3pt]\small Research note prepared with Codex}
+\date{Draft of 21 October 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove that an imaginary quadratic field of class number one has
+absolute fundamental discriminant \(q<32768\). A count of quadratic
+norms supplies an auxiliary inert prime, at which a derivative
+interpolation determinant is nonzero. Frobenius congruences at the
+inert primes then force more divisibility than its complex absolute
+value permits. The prime estimates are proved using factorials and
+binomial coefficients, and the numerical argument consists of one
+endpoint comparison. A separate integer sieve, using primes at most
+31, excludes all remaining possibilities outside the nine classical
+discriminants. The proof is independent of the earlier versions in
+this project; its verification requires no numerical parameter search.
+\end{abstract}
+
+\section{Introduction and arithmetic preliminaries}
+
+Tao's tenth-discriminant challenge \cite{tao} asks for explicit bounds
+extracted from recent arguments concerning Landau--Siegel zeros,
+including bounds that favor simple, human-verifiable proofs over
+numerical strength. We give such a bound here. The smaller cutoff
+\(q<570\) in \cite{v6} uses substantially more refinement; no result
+from that note is an input below.
+
+For a negative fundamental discriminant \(D\), put \(q=|D|\) and
+\(K=\Q(\sqrt D)\).
+\begin{theorem}\label{main}
+If \(h(K)=1\), then \(q<32768=2^{15}\).
+\end{theorem}
+
+The argument uses standard quadratic ideal theory, finite fields,
+Hadamard's inequality, and elementary analysis. All estimates specific
+to the proof are established below. The determinant is never computed:
+the supplementary code checks rational constants and a finite residue
+sieve.
+
+We begin with the classical inertness obstruction emphasized by
+Silberman \cite{silberman}. Every nonrational element of \(\OK\) has
+norm at least \(q/4\), by its imaginary part in the usual integral
+basis. If \(h(K)=1\), a noninert rational prime \(p\) has a principal
+integral ideal of norm \(p\). Its generator cannot be a rational
+integer, whose norm would be a square. Consequently
+\begin{equation}\label{small-inert}
+ p<q/4\quad\Longrightarrow\quad p\text{ is inert}.
+\end{equation}
+
+For the proof of Theorem~\ref{main}, suppose henceforth that
+\(h(K)=1\) and \(q\ge q_0:=32768\). Then \(q\) is odd, since
+otherwise 2 ramifies. It is also prime: an odd fundamental
+discriminant is squarefree, and a composite \(q\) would have a
+ramified prime factor at most \(\sqrt q<q/4\). Inertness of 2 gives
+\(q\equiv3\pmod8\). Thus the only ramified prime is \(q\), the units
+are \(\pm1\). Put \(u=\sqrt q\). Then
+\begin{equation}\label{norm-form}
+ \OK=\Z+\Z\omega,\qquad \omega=(1+iu)/2,\qquad
+ Q(a,b)=|a+b\omega|^2=(a+b/2)^2+qb^2/4.
+\end{equation}
+Write \(L=\log q\); all logarithms are natural.
+We will use the elementary endpoint bounds
+\begin{equation}\label{endpoint}
+ \frac{207}{20}<\log q_0<\frac{21}{2},\qquad
+ \sqrt{q_0}>180.
+\end{equation}
+Indeed, \(q_0=2^{15}\), \(69/100<\log2<7/10\), and
+\(180^2<32768\). The function \((\log q)/\sqrt q\) decreases for
+\(\log q>2\), so for every \(q\ge q_0\),
+\begin{equation}\label{uniform-endpoint}
+ L>207/20,\qquad \frac Lu<\frac7{120}.
+\end{equation}
+
+\section{Elementary prime estimates}\label{primes}
+
+Write
+\[
+ \vartheta(x)=\sum_{p\le x}\log p,\qquad
+ A(x)=\sum_{p\le x}\frac{\log p}{p},\qquad
+ B=\sum_p\frac{\log p}{p^2}.
+\]
+A letter \(p\) under a sum always denotes a rational prime. The
+following Chebyshev-style estimates suffice; no lower bound for
+\(\vartheta\) is required.
+
+\begin{lemma}\label{primelemma}
+For \(x\ge1\) and integers \(m\ge2\),
+\begin{equation}\label{prime-estimates}
+ \vartheta(x)<\frac32x,\qquad
+ \log m-\frac73<A(m)<\log m+\frac32,\qquad B<\frac23.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Write \(n=2k\) or \(n=2k+1\). Every prime in
+\((\lceil n/2\rceil,n]\) divides the central binomial coefficient
+\(\binom n{\lfloor n/2\rfloor}\). This coefficient is at most
+\(2^{2k}\): in the odd case there are two equal central coefficients.
+Thus
+\[
+ \vartheta(n)-\vartheta(\lceil n/2\rceil)
+ \le 2\lfloor n/2\rfloor\log2.
+\]
+Starting at \(n=1\), induction gives \(\vartheta(n)<2n\log2\).
+Taking \(n=\lfloor x\rfloor\), and using \(\log2<7/10<3/4\),
+proves the first assertion.
+
+Every prime other than 2 is odd, and \(f(x)=\log x/x^2\) decreases
+for \(x\ge3\). For each odd integer \(n\ge5\),
+\(f(n)\le\tfrac12\int_{n-2}^n f(x)\,dx\). Hence
+\begin{align*}
+ B&\le\frac{\log2}{4}+\frac{\log3}{9}
+                  +\frac12\int_3^\infty\frac{\log x}{x^2}\,dx\\
+  &=\frac{\log2}{4}+\frac5{18}\log3+\frac16
+    <\frac{233}{360}<\frac23,
+\end{align*}
+using \(\log3<11/10\).
+
+The factorial valuation formula and integral comparison give
+\[
+ m\log m-m<\log(m!)
+ \le mA(m)+m\sum_p\frac{\log p}{p(p-1)}
+ \le mA(m)+2mB<mA(m)+\frac43m.
+\]
+This proves the lower bound for \(A(m)\). In the other direction,
+\(\log(m!)\ge mA(m)-\vartheta(m)\) and
+\(\log(m!)\le m\log m\) prove the upper bound.
+\end{proof}
+
+\section{Norm counts and an auxiliary inert prime}\label{norms}
+
+Pratt \cite{pratt} suggested using class number one to bound split
+primes by norm representations, then using the resulting supply of
+inert primes in a determinant argument. We implement this with an
+unsieved norm count and a weighted interval of ordinary primes.
+
+Let \(\pi_+(x)\) count split rational primes at most \(x\). For each
+integer \(b>0\), the real interval of \(a\) satisfying
+\(Q(a,b)\le x\) has length \(2\sqrt{x-qb^2/4}\), when nonempty.
+Bounding the number of integers by length plus 1, and the decreasing
+length sum by its integral, gives
+\[
+ \#\{(a,b)\in\Z\times\Z_{>0}:Q(a,b)\le x\}
+ \le\frac{\pi x}{u}+\frac{2\sqrt x}{u}.
+\]
+Each split prime has two generators with \(b>0\), one for each prime
+ideal above it: each ideal has generators \(\pm\alpha\), exactly one
+of which has positive \(b\). Consequently
+\begin{equation}\label{split-count}
+ \pi_+(x)\le\frac{\pi x}{2u}+\frac{\sqrt x}{u}.
+\end{equation}
+
+For \(X\ge Y\ge q/4\), partial summation, followed by
+\eqref{split-count}, yields
+\begin{align}
+ \sum_{\substack{Y<p\le X\\p\text{ split}}}\frac{\log p}{p}
+ &\le\frac{\pi}{4u}
+       \bigl((\log X)^2-(\log Y)^2+2\log Y\bigr)
+       +\frac{2(\log Y+1)}{u\sqrt Y}.\label{interval-weight}
+\end{align}
+To see the boundary terms explicitly, start with
+\[
+ \frac{\log X}{X}\pi_+(X)-\frac{\log Y}{Y}\pi_+(Y)
+ +\int_Y^X\pi_+(t)\frac{\log t-1}{t^2}\,dt.
+\]
+Discard the nonpositive lower boundary term. Substitution of
+\eqref{split-count} then gives the right side of
+\eqref{interval-weight}, together with the further nonpositive term
+\(-(\log X+2)/(u\sqrt X)\).
+
+Put \(S_+(X)=\sum_{p\le X,\ p\text{ split}}\log p/p\).
+There are no split primes at or below \(q/4\), by
+\eqref{small-inert} and the fact that \(q/4\) is not an integer.
+Taking \(Y=q/4\) in \eqref{interval-weight}, and using
+\(\log(q/4)>2\) and \(\pi<16/5\), gives
+\begin{equation}\label{split-weight}
+ S_+(X)\le\frac4{5u}(\log X)^2+\frac{4(L+1)}q
+ \qquad(X\ge q/4).
+\end{equation}
+
+\begin{lemma}\label{auxiliary}
+There is an inert prime \(R\) with \(q^4<R\le q^5\).
+\end{lemma}
+\begin{proof}
+Lemma~\ref{primelemma} shows that the total weight \(\log p/p\)
+of primes in \((q^4,q^5]\) is greater than \(L-23/6\).
+By \eqref{interval-weight}, the split-prime weight there is at most
+\[
+ \frac4{5u}(9L^2+8L)+\frac{2(4L+1)}{u q^2}.
+\]
+It is therefore enough to check
+\begin{equation}\label{aux-inequality}
+ \frac{23}{6L}+\frac4{5u}(9L+8)
+             +\frac{2(4+1/L)}{u q^2}<1.
+\end{equation}
+Each term decreases as \(q\) increases in our range. For the middle
+term, differentiation with respect to \(L\) gives a factor
+\(9-(9L+8)/2<0\); the other terms plainly decrease.
+At \(q=q_0\), \eqref{endpoint} bounds the left side by
+\[
+ \frac{10}{27}+\frac{41}{90}
+       +\frac{2(4+20/207)}{180\cdot32768^2}
+ <\frac{10}{27}+\frac{41}{90}+\frac1{1000}<\frac56.
+\]
+The only ramified prime, \(q\), is below the interval. Since the
+split primes cannot account for its full weight, an inert prime exists.
+\end{proof}
+
+\section{The derivative determinant}\label{determinant}
+
+We use Green's derivative matrix \cite[\S2]{green}, with a
+rectangular set of algebraic integers. Choose \(R\) as in
+Lemma~\ref{auxiliary} and put
+\[
+ S=\lfloor R/12\rfloor,\qquad J=\lceil R/48\rceil,\qquad
+ N=RS,\qquad T=2\sqrt{Ru}.
+\]
+Take all points
+\[
+ z=a+b\omega,\qquad
+ |a|\le A_0:=\lceil\sqrt{Ru}\rceil,\qquad
+ |b|\le B_0:=\lceil\sqrt{R/u}\rceil.
+\]
+Their number is \(n=(2A_0+1)(2B_0+1)\ge4R\), so \(nJ\ge RS\).
+Since \(|\omega|\le3u/5\), \(u>1\), and \(R>q^4>100u\),
+\[
+ |z|\le\frac85\sqrt{Ru}+1+\frac35u
+       \le\frac{44}{25}\sqrt{Ru}<T.
+\]
+Here \(\sqrt{Ru}>10u\). Also \(2T<R\) and \(1<T<R\).
+
+Form the matrix whose rows are indexed by \((r,s)\),
+\(0\le r<R\), \(0\le s<S\), and whose columns are indexed by a
+point \(z_i\) and an order \(0\le k<J\). The entry is
+\begin{equation}\label{matrix-entry}
+ \left.\partial_z^k(z^r w^s)\right|_{(z_i,\bar z_i)}.
+\end{equation}
+These are ordinary derivatives, without division by factorials.
+
+\subsection{Nonvanishing over a finite field}
+
+The following argument is the auxiliary-prime method of van Dijk
+\cite{vandijk}, highlighted in Green's comment \cite{greencomment}.
+Green also reports essentially the same method in unpublished work
+of Jacob Pescador; the present note uses the public argument and does
+not rely on that manuscript.
+
+Reduce \eqref{matrix-entry} modulo the inert prime ideal \(R\OK\).
+The residue field has \(R^2\) elements. The nodes remain distinct:
+every nonzero element of \(R\OK\) has modulus at least \(R\),
+because a nonzero algebraic integer has positive integral norm,
+whereas any difference of two nodes has modulus less than \(2T<R\).
+Frobenius gives \(\bar z_i=z_i^R\) in this field.
+
+If a nonzero row combination vanished, let \(F(z,w)\) be its
+polynomial and substitute \(w=z^R\). The exponents \(r+Rs\) are
+distinct, so \(F(z,z^R)\) is nonzero and has degree at most \(RS-1\).
+Its derivatives agree with the prescribed partial derivatives,
+because the derivative of \(z^R\) is zero in characteristic \(R\).
+Since \(J\le R\) and \(k!\ne0\) for \(0\le k<J\), each node is
+a root of multiplicity at least \(J\). This contradicts \(nJ\ge RS\).
+
+The matrix therefore has full row rank. Fix one nonzero \(N\)-square
+minor \(D_0\in\OK\), and set
+\[
+ \Delta=D_0\overline{D_0}\in\Z_{>0}.
+\]
+Only this minor is used from now on.
+
+\subsection{The complex absolute-value bound}
+
+Each entry in row \((r,s)\) has modulus at most
+\(T^{r+s}(R/T)^J\): the derivative contributes at most \(R^k\),
+and an entry with \(k>r\) is zero. Hadamard's inequality gives
+\[
+ \frac{\log\Delta}{R^2S}
+ \le\frac{\log N}{R}+\left(1+\frac SR\right)\log T
+                           +\frac{2J}{R}\log(R/T).
+\]
+Now \(S/R\le1/12\), \(J/R\le1/48+1/R\), and \(N<R^2\).
+Thus the coefficient of \(\log T\), after combining the main
+terms, is \(25/24\). Since
+\(\log T=\log2+\tfrac12\log R+\tfrac14L\), we obtain
+\begin{equation}\label{upper-det}
+ \frac{\log\Delta}{R^2S}
+ \le\frac9{16}\log R+\frac{25}{96}L
+       +\frac{25}{24}\log2+\frac{4\log R}{R}.
+\end{equation}
+
+\subsection{Divisibility at the inert primes}
+
+We use Green's triangular Frobenius transformation
+\cite[Lemma~5.1]{green}, the stronger divisibility input suggested
+by Pratt \cite{pratt}. The argument below applies also to \(p=2\).
+For an inert prime \(p\), put
+\[
+ h_{r,s}=\min(\lfloor r/p\rfloor,S-1-s)
+\]
+and replace each row polynomial \(z^rw^s\) by
+\[
+ z^{r-ph_{r,s}}(z^p-w)^{h_{r,s}}w^s.
+\]
+The leading term is \(z^rw^s\), and every other term has smaller
+\(z\)-degree while remaining in the rectangle of row indices.
+Ordering rows by \(z\)-degree makes this an integer triangular
+transformation of determinant one.
+
+At each node \(z_i^p-\bar z_i\in p\OK\), by Frobenius. Every
+positive ordinary derivative of \(z^p-w\) is also divisible by
+\(p\). By the product rule, all entries in the transformed row
+are therefore divisible by \(p^{h_{r,s}}\). Taking norms gives
+\begin{equation}\label{valuation}
+ v_p(\Delta)\ge2\sum_{r,s}h_{r,s}.
+\end{equation}
+The row transformation may depend on \(p\); each divisibility is
+nevertheless a statement about the same integer \(\Delta\).
+
+We bound this sum with generous constants. Direct summation gives,
+for every integer \(k\ge0\),
+\[
+ \sum_{s<S}\min(k,S-1-s)\ge Sk-\frac{k(k+1)}2.
+\]
+Writing \(R=ap+b\), \(0\le b<p\), gives
+\[
+ \sum_{r<R}\lfloor r/p\rfloor
+ =\frac{R(R-p)+b(p-b)}{2p}\ge\frac{R(R-p)}{2p}.
+\]
+Also \(\lfloor r/p\rfloor(\lfloor r/p\rfloor+1)
+\le r^2/p^2+r/p\). Substituting these estimates yields
+\begin{equation}\label{valuation-bound}
+ \frac{2\sum_{r,s}h_{r,s}}{R^2S}
+ \ge\left(1-\frac{R-1}{2RS}\right)\frac1p-\frac1R
+                  -\frac{(R-1)(2R-1)}{6RS p^2}.
+\end{equation}
+Let \(I=\sum_{p\le R,\ p\text{ inert}}\log p/p\). Summing
+\eqref{valuation-bound}, weighted by \(\log p\), and using
+\(S\ge R/13\) and Lemma~\ref{primelemma}, we find
+\begin{align}
+ \frac{\log\Delta}{R^2S}
+ &\ge I-\frac{I}{2S}-\frac{\vartheta(R)}R-\frac{R}{3S}B\notag\\
+ &>I-\frac{I}{2S}-\frac32-\frac{26}{9}
+  =I-\frac{I}{2S}-\frac{79}{18}.\label{lower-det}
+\end{align}
+Here \(S\ge R/12-1\ge R/13\), since \(R>156\).
+
+\section{One endpoint comparison}
+
+Separating the three splitting types in \(A(R)\), and noting that
+the only ramified contribution is \(L/q\), gives
+\[
+ I>\log R-\frac73-S_+(R)-\frac Lq,
+ \qquad I<\log R+\frac32.
+\]
+Combine this with \eqref{upper-det}, \eqref{lower-det}, and
+\eqref{split-weight}. If
+\[
+ G(x)=\frac7{16}x-\frac{25}{96}L-\frac4{5u}x^2,
+\]
+the resulting necessary inequality is
+\begin{equation}\label{G-upper}
+ G(\log R)<\frac{121}{18}+\frac{25}{24}\log2+E,
+ \qquad
+ E=\frac{5L+4}q+\frac{I}{2S}+\frac{4\log R}{R}.
+\end{equation}
+All boundary and rounding terms are included in \(E\). In fact
+\begin{equation}\label{error-bound}
+ E<\frac{5L+4}q+\frac{(21/2)\log R+39/4}{R}
+ <\frac{113}{65536}+\frac{1719}{4\cdot10^{16}}<\frac1{500}.
+\end{equation}
+For the second inequality, the first function decreases with \(q\)
+in our range, so use \eqref{endpoint} at \(q=q_0\).
+The second decreases with \(R\); use \(R>q_0^4>10^{16}\) and
+\(\log(10^{16})<40\). Thus \(\log2<7/10\) gives
+\begin{equation}\label{G-simple}
+ G(\log R)<\frac{121}{18}+\frac{35}{48}+\frac1{500}
+ <\frac{15}{2}.
+\end{equation}
+
+On the other hand, \(4L<\log R\le5L\) by
+Lemma~\ref{auxiliary}, and \(G\) is concave. Its minimum on
+\([4L,5L]\) is therefore at an endpoint. By
+\eqref{uniform-endpoint},
+\[
+ G(5L)-G(4L)
+ =L\left(\frac7{16}-\frac{36}{5}\frac Lu\right)
+ >\frac7{400}L>0.
+\]
+It follows that
+\[
+ G(\log R)\ge G(4L)
+ =\frac{143}{96}L-\frac{64}{5}\frac{L^2}{u}.
+\]
+Together with \eqref{G-simple}, this forces
+\[
+ \frac{143}{96}
+ <\frac{64}{5}\frac Lu+\frac{15}{2L}
+ <\frac{56}{75}+\frac{50}{69}
+ =\frac{846}{575}<\frac{143}{96},
+\]
+a contradiction. This proves Theorem~\ref{main}.
+
+\section{The remaining finite range}\label{finite}
+
+The residue sieve is the elementary small-prime method discussed by
+Pratt \cite{prattsieve}. For \(q>8\), \eqref{small-inert} at 2
+forces \(q\equiv3\pmod8\), without requiring the large-discriminant
+assumption used above. For each odd prime \(p<q/4\), inertness
+requires \(-q\) to be a nonzero nonsquare modulo \(p\).
+
+There are 4095 integers \(q\equiv3\pmod8\) with
+\(8<q<32768\). Test all of them, including nonfundamental values,
+against the primes
+\[
+ 3,5,7,11,13,17,19,23,29,31.
+\]
+The following complete integer computation returns exactly the list
+shown in its assertion:
+\begin{verbatim}
+primes = (3, 5, 7, 11, 13, 17, 19, 23, 29, 31)
+squares = {p: {a*a % p for a in range(p)} for p in primes}
+survivors = [q for q in range(11, 32768, 8)
+             if all(4*p >= q or (-q) % p not in squares[p]
+                    for p in primes)]
+assert survivors == [11, 19, 43, 67, 163]
+\end{verbatim}
+The negative fundamental discriminants with \(q\le8\) have
+absolute values \(3,4,7,8\). We have therefore proved, with the
+finite computation just specified:
+\begin{corollary}
+If \(D<0\) is a fundamental discriminant and \(h(D)=1\), then
+\[
+ |D|\in\{3,4,7,8,11,19,43,67,163\}.
+\]
+\end{corollary}
+As an additional check of the familiar converse, the supplied script
+enumerates primitive reduced positive definite forms of each of these
+discriminants. Using \(|b|\le a\le c\) and \(b\ge0\) when
+\(|b|=a\) or \(a=c\), it finds one form in each case. This uses the
+classical correspondence between reduced forms and ideal classes;
+it is separate from the exclusion argument.
+
+\section*{Reproducibility}
+
+The supplementary files use only the Python standard library. Run
+\begin{verbatim}
+python3 verify_constants.py
+python3 verify_finite.py
+\end{verbatim}
+The first checks the numerical inequalities by rational arithmetic.
+For logarithms it uses 16 terms of
+\[
+ \log y=2\sum_{j\ge0}\frac{t^{2j+1}}{2j+1},\qquad
+ t=\frac{y-1}{y+1},\qquad 1\le y\le2,
+\]
+with tail at most \(2t^{33}/[33(1-t^2)]\), after reduction by powers
+of 2. The elementary identity
+\(\pi/4=\arctan(1/2)+\arctan(1/3)\), with three terms of each
+alternating series, verifies \(\pi<16/5\). These also verify
+\(69/100<\log2<7/10\), \(\log3<11/10\), and \(\log10<5/2\),
+the only logarithmic inputs to the proof.
+
+The second script performs the exhaustive residue check, verifies
+its residue tables by Euler's criterion, and enumerates the nine
+reduced-form lists. The scripts and their recorded outputs accompany
+this note. The monotonicity arguments in the text cover the infinite
+range; the scripts check its endpoints, not samples of that range.
+These computations are not formal verification, and independent
+mathematical review of this draft is pending.
+
+\section*{Acknowledgements and AI disclosure}
+
+The author thanks the participants in Tao's discussion for making
+their arguments and suggestions available. Their specific mathematical
+contributions are cited where used above. This note, including its
+derivation, exposition, and verification code, was developed with
+OpenAI Codex. Green \cite{green} credits ChatGPT for the mathematical
+arguments in his source paper; van Dijk \cite{vandijk} credits
+GPT-6 Astra and Opus 5.5 for his new arguments.
+
+\clearpage
+\begin{thebibliography}{9}
+
+\bibitem{green}
+B.~Green, \emph{On Landau--Siegel zeros}, version 2 (2026),
+\href{https://hexagonmath.org/2610.00311v2}{hexagon:2610.00311v2}.
+
+\bibitem{greencomment}
+B.~Green, Comment on Tao's tenth-discriminant challenge,
+20 October 2026, 12:07 pm,
+\href{\blog\#comment-698463}{comment 698463}.
+
+\bibitem{prattsieve}
+K.~Pratt, Comment on small-prime congruences and finite sieving,
+20 October 2026, 11:15 am,
+\href{\blog\#comment-698460}{comment 698460}.
+
+\bibitem{pratt}
+K.~Pratt, Comment on norm counts, auxiliary inert primes, and
+determinant divisibility, 20 October 2026, 1:58 pm,
+\href{\blog\#comment-698476}{comment 698476}.
+
+\bibitem{silberman}
+L.~Silberman, Comment on small-prime inertness and weighted prime
+sums, 20 October 2026, 8:49 am,
+\href{\blog\#comment-698449}{comment 698449}.
+
+\bibitem{tao}
+T.~Tao, \emph{An experimental AI-math challenge: using tenth
+discriminant bounds to explore arguments ruling out Siegel zeroes},
+20 October 2026, \href{\blog}{What's new}.
+
+\bibitem{v6}
+twinheterodox, \emph{A smoothed Frobenius determinant bound for the
+tenth discriminant}, version 0.6.0 (2026),
+\href{https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.0}{GitHub release}.
+
+\bibitem{vandijk}
+R.~van Dijk, \emph{A Frobenius determinant proof of the non-existence
+of Landau--Siegel zeros}, version 1 (2026),
+\href{https://hexagonmath.org/2610.00409v1}{hexagon:2610.00409v1}.
+
+\end{thebibliography}
+\end{document}

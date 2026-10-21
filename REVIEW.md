@@ -1,4 +1,4 @@
-# Review and verification by version
+# Review and verification by paper and version
 
 This log records the scope of available evidence. It does not certify
 the external theorems or intermediate lemmas cited by each version.
@@ -218,6 +218,28 @@ and mathematical audit targets. The
 [research record](versions/v6/RESEARCH.md) and
 [source record](versions/v6/sources.json) document attribution,
 tested alternatives, and remaining possibilities.
+
+## elementary-v0.1.0 — elementary companion
+
+The companion gives a self-contained determinant proof of `q < 32,768`,
+independent of v1-v6. Its ordinary-prime estimates are proved by elementary
+factorial and binomial arguments. Standard quadratic ideal theory, finite
+fields, Hadamard's inequality, and elementary analysis are background inputs.
+
+The exact constant checks pass, with final margin `1009/55200`. The finite
+sieve checks 4,095 candidate integers using primes through 31; reduced-form
+enumeration confirms the nine surviving discriminants. A run from an
+isolated extraction of the release bundle reproduces both programs'
+recorded outputs exactly. The paper, source, programs, and results are
+byte-identical to the completed local draft; publication adds documentation
+and checksums.
+
+**Independent mathematical review is pending.** These checks were performed
+in the same Codex session that developed the note and are not formal
+verification. Reviews of the numbered papers do not cover this companion.
+The [companion review record](companions/elementary/REVIEW.md) gives its
+scope and publication checks. It has its own version history, starting at
+[elementary-v0.1.0](https://github.com/twinheterodox/tenth-discriminant/releases/tag/elementary-v0.1.0).
 
 ## Recording future reviews
 

@@ -1,0 +1,40 @@
+$ python3 verify_constants.py
+log(2) in (69/100, 7/10)
+log(3) in (1, 11/10)
+log(10) in (2, 5/2)
+pi < 16/5
+207/20 < log(32768) < 21/2; sqrt(32768) > 180
+uniformly for q >= 32768: log(q)/sqrt(q) < 7/120
+prime-square sum < 233/360 < 2/3
+auxiliary-prime inequality < 10/27 + 41/90 + 1/1000 < 5/6
+rectangular grid and determinant coefficients checked
+all boundary and rounding errors < 1/500; G(log R) < 15/2
+final endpoint < 846/575 < 143/96; margin 1009/55200
+PASS: all numerical constants; the uniform argument is in proof.tex.
+
+$ python3 verify_finite.py
+limit_exclusive 32768
+candidate_integers_checked 4095
+largest_prime 31
+first_rejecting_prime 3 count 2729
+first_rejecting_prime 5 count 818
+first_rejecting_prime 7 count 312
+first_rejecting_prime 11 count 127
+first_rejecting_prime 13 count 62
+first_rejecting_prime 17 count 20
+first_rejecting_prime 19 count 10
+first_rejecting_prime 23 count 7
+first_rejecting_prime 29 count 4
+first_rejecting_prime 31 count 1
+final_absolute_discriminants [3, 4, 7, 8, 11, 19, 43, 67, 163]
+reduced_forms 3 [(1, 1, 1)]
+reduced_forms 4 [(1, 0, 1)]
+reduced_forms 7 [(1, 1, 2)]
+reduced_forms 8 [(1, 0, 2)]
+reduced_forms 11 [(1, 1, 3)]
+reduced_forms 19 [(1, 1, 5)]
+reduced_forms 43 [(1, 1, 11)]
+reduced_forms 67 [(1, 1, 17)]
+reduced_forms 163 [(1, 1, 41)]
+PASS: exhaustive finite exclusion and nine class-number checks.
+The analytic cutoff is a separate input proved in proof.tex.

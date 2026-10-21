@@ -1,0 +1,5 @@
+/tmp/
+/output/pdf/*.aux
+/output/pdf/*.log
+/output/pdf/*.out
+/output/pdf/*.synctex.gz

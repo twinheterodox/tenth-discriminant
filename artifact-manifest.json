@@ -50,7 +50,19 @@
       "finite_candidates": 70
     }
   },
+  "companions": {
+    "elementary-v0.1.0": {
+      "snapshot": "companions/elementary",
+      "status": "research draft",
+      "analytic_cutoff": "q < 32,768",
+      "mathematical_review": "Independent mathematical audit pending; exact computational checks passed; not formal verification.",
+      "finite_candidates": 4095,
+      "largest_sieve_prime": 31,
+      "change": "First elementary companion: self-contained determinant proof with elementary prime estimates and one endpoint comparison; independent of v1-v6."
+    }
+  },
   "sha256": {
+    ".github/releases/elementary-v0.1.0.md": "4f5bb00b93ac9b20113b111b6aa5a860e8d1ada02d18976d09b6687eb8b3da6c",
     ".github/releases/v0.1.0.md": "4e71293c51df295ab48279d4f2097e80d7e336f395b88de1fdcc886252e30585",
     ".github/releases/v0.2.0.md": "aa9cb65adf0e6e6aee3dd004d881360c87317e2f2d06c6e509dd17f328b47ec8",
     ".github/releases/v0.3.0.md": "32cf9a087650829477585c6d1b8331d2671e3c931159c1464e335264099fe345",
@@ -59,10 +71,21 @@
     ".github/releases/v0.5.0.md": "7847113e441e439ef8ee92c72b07095fa8fcda557de3683d3969649b616b3367",
     ".github/releases/v0.6.0.md": "4da3732555a41659d6455340e4c76ad8a0eb95eaa5f6e5489cffe96552dc5d8b",
     ".gitignore": "42902f3fa3a16917eabb81a605976aef99a46c87c141f36dd98cfb2f3dd31688",
-    "CHANGELOG.md": "550a7ce4252e5230ecc12d369c51646d1b892911178fe469d04660625444c283",
-    "README.md": "c8bc10cb66af79c87c38a5b4064701fbd28becba919a6792b67388ebcae37ce5",
+    "CHANGELOG.md": "765a58e6991a02ffb62bd44195cdedb2b6e50dce062540fa2f5a8a313a5df2a0",
+    "README.md": "b958153bf10194f9c81b065f220559bb6a61662e77e6ce3515b678aaa48a3473",
     "README.txt": "4eec44df8b332243aa75a46c04fc13158a99903bd8339bf3ca2eaf88abdf282a",
-    "REVIEW.md": "b1b72f2917b13a77d5751154503a6f25e928da3f600f62f132565f3761d6af56",
+    "REVIEW.md": "edb2490fab32ffdf9d678df1128b98a69b869b6b7a3910e63593457c6e0bc2bf",
+    "companions/elementary/.gitignore": "fe4cc5a6cab925396d406eb96a710f218a10be332367e075102f01a989e442ec",
+    "companions/elementary/CHANGELOG.md": "318292f3e192dbd97c42e33e301c795a578cc19f0780ac4fed9cb87c8eb361fd",
+    "companions/elementary/MANIFEST.json": "0d4ffb58fd4231d222e61808f12ae324b5e02e4bfb291ddc2332a72a5282890d",
+    "companions/elementary/README.md": "7fad4e5a2d11ab236021db2139f2f2fac67a483d3a7b6bd7f636d450c2a1093b",
+    "companions/elementary/REVIEW.md": "905ddd4de2d3f3eb66aec1a50d0e45811d48064726180e93d92220d063b27ac0",
+    "companions/elementary/elementary-v0.1.0.zip": "3727f1ad143779ff3a82645753728dc49c5a0fadc8c6e04b4f6f1f53e86f3b2c",
+    "companions/elementary/output/pdf/elementary-companion.pdf": "be5e4cab4cabfa259d9353a852a660c842d609c355ce9fb5ff443822a64c9ce0",
+    "companions/elementary/proof.tex": "ea6aa9beac8925523572a245ca2daa5875def348d62a12989c0d6f9e06d4ae9a",
+    "companions/elementary/verification.txt": "911186fd4e58ccedbf317313770eb8b20fb4eb309bdb9d1e8139a6cbb72214b1",
+    "companions/elementary/verify_constants.py": "c00e8758918125e0c889b8e649bd71fed2464e4b4bbc3e9a5b9983c303213520",
+    "companions/elementary/verify_finite.py": "7a9359f8e1a1c3f389019a952816e237f3be0152e5cfec0c851aab7896e23cd7",
     "output/pdf/proof.pdf": "2fac065b25181a2f9049dc4a78f66214114d846c1cf1c462f2571be90c69e682",
     "proof.tex": "7f84c8a79670a9892d550eabacf304848adde2a3effecbe504e306ae598d04ad",
     "sieve_cpp_output.txt": "a35b84bff2e4d80f319abed00a618fcbd3f475fe85f73f75c4673e4c0990f0b8",
