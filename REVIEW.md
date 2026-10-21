@@ -183,6 +183,42 @@ This minor correction retains version v0.5.0. The existing release and
 download links serve the corrected paper and bundle; the original files
 remain available from the original publication tag and Git commit.
 
+## v0.6.0 — smoothed Frobenius determinant argument
+
+The analytic cutoff is `q < 570`. The new paper excludes the entire real
+interval `[570,2,000]` through a smoothed prime-sum comparison, stronger
+Frobenius divisibility, eight acyclic factorial refinements, joint
+derivative/radius bounds, and a positive squared-polynomial kernel.
+The audited v5 result supplies `q >= 2,000`. The new interval proof is
+self-contained relative to its stated classical inputs; it does not
+depend on intermediate unpublished drafts.
+
+All 429 grouped exact rational checks pass, including 1,258 interval
+cells. Five band certificates use 184 auxiliary-prime parameter rows;
+the smallest contradiction margin exceeds `0.010389` after the stated
+error allowances. A complete run from an isolated ZIP extraction
+reproduces all exact band outputs and refinement stages. The structural
+checker passes 101,524 finite cases, and the finite discriminant scan
+checks 70 candidates below 570 and verifies the nine surviving fields.
+
+The publication copy changes only documentation and title-page labels
+from the fully reproduced consolidated draft. Mathematical inputs,
+programs, numerical outputs, and the numerical table are byte-identical;
+the mathematical body of the paper is unchanged. The fifteen-page PDF
+was rebuilt, rendered, and visually inspected. The lengthy certificate
+was not rerun for these publication-only changes.
+
+**Independent mathematical audit of v6 is pending.** The previous reviews
+of v3, v4, and v5 do not cover this argument. The computations and
+manuscript checks were performed within the same Codex session and are
+not formal verification. No optimality claim is made for the cutoff.
+
+The [v6 review record](versions/v6/REVIEW.md) gives the per-band margins
+and mathematical audit targets. The
+[research record](versions/v6/RESEARCH.md) and
+[source record](versions/v6/sources.json) document attribution,
+tested alternatives, and remaining possibilities.
+
 ## Recording future reviews
 
 Record the reviewed version or commit, date, reviewer/model when available,

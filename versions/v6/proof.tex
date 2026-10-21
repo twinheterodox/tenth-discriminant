@@ -1,0 +1,972 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,longtable}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage{microtype,xurl}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\OK}{\mathcal O_K}
+\newcommand{\pos}[1]{\left(#1\right)_+}
+\newcommand{\Tn}{\mathcal T}
+\title{A smoothed Frobenius determinant bound\\for the tenth discriminant\\
+\large Version 0.6.0: \(q<570\)}
+\author{Research note prepared with Codex}
+\date{20 October 2026 --- independent mathematical review pending}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We obtain \(q<570\) for an imaginary quadratic field of class number
+one. The new argument excludes \(570\le q\le2000\); the previously
+audited v5 result supplies the range above 2000. The proof retains a
+smoothed prime sum already present in the determinant valuation,
+uses it directly in an acyclic factorial refinement, and adds compatible
+higher Frobenius factors. A pointwise inequality couples derivative
+orders with interpolation radii. A positive kernel formed from a squared
+polynomial completes the comparison with the quadratic norm series.
+All determinant parameters are fixed, apart from the scale and its
+auxiliary-prime interval. The numerical certificate uses rational
+intervals and Python's standard library. The external number-theoretic
+inputs are quadratic ideal theory and explicit ordinary-prime estimates
+of Rosser and Schoenfeld. No quasi-Riemann hypothesis or zero-free theorem
+for quadratic Dirichlet functions is used.
+\end{abstract}
+
+\section{Scope, provenance, and the result}
+For a negative fundamental discriminant \(D\), put \(q=|D|\) and
+\(K=\Q(\sqrt D)\). We address Tao's request for tenth-discriminant
+bounds obtained without the stronger zero-location machinery discussed
+in the comments to his challenge \cite{tao,taocomment}.
+
+\begin{theorem}\label{main}
+If \(h(K)=1\), then \(q<570\).
+\end{theorem}
+
+The sole earlier-version input is the independently audited implication
+\(h(K)=1\Rightarrow q<2000\) from v5 \cite{v5}. The entire new exclusion
+of \([570,2000]\) is proved here, relative to the classical prime estimates
+stated below. None of the intermediate unpublished 1600, 1100, or 1050
+drafts is a dependency. Discriminants in the new interval are not
+enumerated to obtain the analytic cutoff.
+
+The framework is Green's derivative determinant \cite{green}, with
+van Dijk's auxiliary inert prime for nonvanishing \cite{vandijk}.
+Green's comment also records a related unpublished argument of Jacob
+Pescador \cite{greencomment}; we have not used that unpublished text.
+Pratt proposed combining auxiliary inert primes from quadratic norm
+counts, Green's stronger divisibility, and disk interpolation
+\cite{pratt}. Kerr's suggestion to retain higher Frobenius relations,
+including the ninth-power relation at 3, also informed the valuation
+refinements \cite{kerrcomment}. The smoothed comparison, direct factorial
+refinement, compatible residual factors, and joint archimedean estimate
+below were developed in this AI-assisted research session. No priority
+claim is made for these refinements.
+The Poisson expansion of the quadratic norm series is classical;
+Ross and Tao discussed its usefulness in this challenge
+\cite{ross,taocomment}. We use it in the half-plane \(s>1\), with
+an explicit error bound for the signed kernel comparison.
+
+This v6 draft has not yet had an independent mathematical audit. Exact
+computational checks are distinct from an audit of the general argument
+and from formal verification. Earlier versions retain their own review
+records; those reviews do not cover this draft.
+
+\section{Elementary consequences of class number one}
+Assume henceforth that \(h(K)=1\) and \(570\le q\le2000\).
+Every nonrational algebraic integer has norm at least \(q/4\).
+A noninert rational prime has an integral ideal of norm \(p\);
+under class number one its generator is nonrational. Consequently
+\begin{equation}\label{small-inert}
+ p<q/4\quad\Longrightarrow\quad p\text{ is inert}.
+\end{equation}
+In particular \(q\) is an odd prime: an even discriminant has a small
+ramified prime 2, and a composite odd discriminant has a ramified prime
+at most \(\sqrt q<q/4\). Inertness of 2 gives \(q\equiv3\pmod8\).
+The only units are \(\pm1\), and
+\[
+ \OK=\Z+\Z\omega,\qquad \omega=(1+i\sqrt q)/2,\qquad
+ Q_q(a,b)=|a+b\omega|^2=(a+b/2)^2+qb^2/4.
+\]
+Write
+\[
+ v=\sqrt q/2,\qquad \rho=\tfrac12\sqrt{1+v^2}.
+\]
+The lattice has covolume \(v\) and a rectangular tiling of covering
+radius \(\rho\). Its disk count \(N(r)\) therefore satisfies
+\begin{equation}\label{disk}
+ \frac{\pi\max(r-\rho,0)^2}{v}\le N(r)
+ \le\frac{\pi(r+\rho)^2}{v}.
+\end{equation}
+Every principal ideal of norm \(m\) is a rotation and dilation by
+\(\sqrt m\) of this lattice.
+
+\section{The ordinary-prime inputs}
+Put \(\vartheta(x)=\sum_{p\le x}\log p\) and
+\(A(x)=\sum_{p\le x}\log p/p\). We use Rosser--Schoenfeld
+\cite{rs}, with \(c_0=1.01624\):
+\begin{align}
+ \vartheta(x)&<c_0x,\label{theta-global}\\
+ x\left(1-\frac1{2\log x}\right)&<\vartheta(x)
+       \quad(x\ge563),\label{theta-lower}\\
+ \vartheta(x)&<x\left(1+\frac1{2\log x}\right)\quad(x>1),\label{theta-upper}\\
+ A(x)&>\log x-1.334-\frac1{2\log x}\quad(x\ge319).
+ \label{mertens}
+\end{align}
+The last constant follows from their Theorem 6 and the explicit prime
+sum at 319: the certificate checks
+\(\log319-A(319)+1/(2\log319)<1.334\).
+
+For sharper bounds at our scales, Table I on printed page 90 gives
+pairs \((b,\epsilon_b)\) such that
+\((1-\epsilon_b)x<\psi(x)<(1+\epsilon_b)x\) for \(x\ge e^b\).
+The corollary to their Theorem 14 gives
+\(0\le\psi(x)-\vartheta(x)<1.02\sqrt x+3x^{1/3}\).
+Thus, uniformly for \(\log x\ge m\ge b\),
+\begin{equation}\label{tabletheta}
+ 1-\epsilon_b-1.02e^{-m/2}-3e^{-2m/3}
+ <\frac{\vartheta(x)}x<1+\epsilon_b.
+\end{equation}
+Let \(c(m),d(m)\) be any certified upper and lower bounds obtained
+by taking the best of these inequalities and
+\eqref{theta-global}--\eqref{theta-upper}. The table entries used are
+included as exact decimals in \texttt{parameters.json}.
+
+We also use \(A(R)<2\log R\) at our scales. This follows without a
+further prime estimate: \(\log(R!)\ge RA(R)-\vartheta(R)\), so
+\(A(R)\le\log R+c_0<2\log R\).
+
+\section{A sieve providing the auxiliary inert prime}\label{sieve}
+Fix one band \(Q_0\le q\le Q_1\). Form the fixed, finite list of pairs
+\begin{equation}\label{normlist}
+ b>0,\quad 2a+b>0,\quad \gcd(a,b)=1,\quad
+ Q_{Q_1}(a,b)<(Q_0/4)^2,
+\end{equation}
+ordered by \((Q_{Q_1}(a,b),a,b)\). Write \(p_j(q)=Q_q(a_j,b_j)\),
+\(p_j^-=Q_{Q_0}(a_j,b_j)\), and \(p_j^+=Q_{Q_1}(a_j,b_j)\).
+
+Each \(p_j(q)\) is prime. A composite norm below \((q/4)^2\) has a
+prime factor below \(q/4\); inertness would force that prime to divide
+both coordinates. It is split rather than ramified: generators of the
+unique prime ideal above \(q\) have zero real part. These primes are
+distinct, because the four generators of a split prime norm are
+\(\alpha,-\alpha,\bar\alpha,-\bar\alpha\), and the chosen quadrant
+contains exactly one of them.
+
+Choose the first \(n\) such split primes, and the first \(h\) rational
+primes \(r>7\) with \(r<Q_0/4\). Sieve by the two prime ideals above
+each selected \(p_j\), and by each ideal \(r\OK\). Their norms are
+\(p_j,p_j,r^2\), and they are pairwise coprime. Also impose the exact
+condition \(\gcd(a,b,210)=1\).
+
+If an element belongs to \(k\) of the selected ideals, then
+\(1-k+\binom{k}{2}\) is an upper bound for the indicator that it
+belongs to none. Apply this second Bonferroni inequality, multiplied
+by the exact 210 indicator, to the annulus
+\(U<|\alpha|^2\le\kappa U\). A split prime in this interval has four
+generators. Assume \(U>Q_1\) and \(U>\max_{j\le n}p_j^+\), so the
+sieving primes themselves are not counted.
+
+For an ideal of norm \(m\), the disk estimate gives an annulus count
+with area term \(\pi(\kappa-1)U/(vm)\), boundary error at most
+\(2\pi\rho(1+\sqrt\kappa)\sqrt U/(v\sqrt m)\), and constant error
+at most \(2\pi\rho^2/v\). The 210 expansion has
+\[
+ \sum_{d\mid210}\frac{\mu(d)}{d^2}=\frac{768}{1225},\qquad
+ \sum_{d\mid210}\frac{|\mu(d)|}{d}=\frac{96}{35},\qquad
+ \sum_{d\mid210}|\mu(d)|=16.
+\]
+Define
+\begin{align*}
+ u&=2\sum_{j\le n}(p_j^+)^{-1}+\sum_{r}r^{-2},&
+ u_2&=2\sum_{j\le n}(p_j^+)^{-2}+\sum_r r^{-4},\\
+ z&=2\sum_{j\le n}(p_j^-)^{-1/2}+\sum_r r^{-1},&
+ z_2&=2\sum_{j\le n}(p_j^-)^{-1}+\sum_r r^{-2},
+ \qquad m_0=2n+h.
+\end{align*}
+The certificate checks that the analogous \(u\) at the minus endpoints
+is less than 1. The area polynomial then decreases in every reciprocal
+ideal norm, since its partial derivative is \(-1\) plus the sum of
+the other reciprocals. Therefore uniform upper bounds for the number
+of split primes in \((U,\kappa U]\) are
+\begin{equation}\label{split-annulus}
+ A_*(\kappa-1)U+B_*(1+\sqrt\kappa)\sqrt U+C_*,
+\end{equation}
+where \(v_-=\sqrt{Q_0}/2\), \(v_+=\sqrt{Q_1}/2\), and
+\begin{align*}
+ A_*&=\frac{\pi}{4v_-}\frac{768}{1225}
+          \left(1-u+\frac{u^2-u_2}{2}\right),\\
+ B_*&=\frac\pi4\sqrt{1+v_-^{-2}}\frac{96}{35}
+          \left(1+z+\frac{z^2-z_2}{2}\right),\\
+ C_*&=2\pi(v_++v_+^{-1})
+          \left(1+\frac{m_0(m_0+1)}2\right).
+\end{align*}
+
+For a parameter row, put \(M=2^a\), and let
+\(2^a\le U\le2^b\). Set \(d=d(\log M)\), \(c=c(\log M)\).
+An inert prime exists in \((U,\kappa U]\) if
+\begin{equation}\label{sieve-margin}
+ G(x)=\kappa d-c-(x+\log\kappa)
+ \{A_*(\kappa-1)+B_*(1+\sqrt\kappa)e^{-x/2}+C_*e^{-x}\}>0,
+ \quad x=\log U.
+\end{equation}
+Indeed, the total prime logarithmic weight exceeds the possible split
+weight, and the ramified prime is below the interval. Since
+\(x+\log\kappa>4\), the function \(G\) is concave. It suffices to
+check its two endpoints. These are exact rational interval checks in
+the certificate; all \(\kappa,n,h,a,b\) are in the parameter file.
+
+\section{Nonvanishing with the prime as monomial width}\label{rank}
+Take an inert prime \(p_0\in(U,\kappa U]\), and set \(R=p_0\).
+Throughout the new proof use the fixed constants
+\begin{equation}\label{fixed}
+ t=\frac3{64},\qquad C=\frac{27}{64},\qquad
+ S=\lfloor tR\rfloor,\qquad J=\lceil R/9\rceil,
+ \qquad T=\sqrt{CRv/\pi}+\rho.
+\end{equation}
+Use all \(n\) lattice points \(z_i\) in the disk of radius \(T\).
+Then \(n\ge CR\), so \(nJ\ge tR^2\ge RS\).
+The matrix has rows \(0\le r<R,0\le s<S\), columns \((i,k)\),
+\(0\le k<J\), and entries
+\[
+ \partial_z^k(z^r w^s)\big|_{(z_i,\bar z_i)}.
+\]
+
+\begin{lemma}\label{nonzero}
+If \(2T<R\) and \(J\le R\), this matrix has full row rank.
+\end{lemma}
+\begin{proof}
+Reduce modulo \(p_0\OK\), a field of \(p_0^2\) elements. The points
+are distinct: a nonzero element of \(p_0\OK\) has modulus at least
+\(p_0\), whereas two points in the disk differ by less than \(2T\).
+Frobenius gives \(\bar z_i=z_i^{p_0}\).
+If a nonzero row combination vanished, substitute \(w=z^{p_0}\) in
+its polynomial. The exponents \(r+p_0s\) are distinct, so the result
+is a nonzero polynomial of degree at most \(RS-1\). For \(k<J\le p_0\),
+its ordinary derivatives agree with the specified \(z\)-derivatives
+in characteristic \(p_0\). Each node is thus a zero of multiplicity
+at least \(J\), since \(k!\ne0\) for \(k<p_0\). This gives at least
+\(nJ\ge RS\) zeros, a contradiction. Full rank after reduction
+implies full rank in characteristic zero.
+\end{proof}
+
+Fix a nonzero \(RS\)-square minor \(\mathcal D\), and put
+\(N=RS\) and \(\Delta=|\mathcal D|^2\in\Z_{>0}\).
+Different triangular row changes below may be used for different
+primes: they leave this same determinant unchanged.
+
+\section{The smoothed prime sum already in the valuation}
+For \(0<u\le1\), put
+\begin{equation}\label{fdef}
+ f(u)=2au-a(a+1)u^2,\qquad a=\lfloor1/u\rfloor;
+ \qquad f(u)=0\ (u>1),\quad f(0)=1.
+\end{equation}
+This is continuous, nonnegative, nonincreasing, and at most 1. Also
+\begin{equation}\label{fidentity}
+ f(u)=2u\sum_{m\ge1}(1-mu)_+,\qquad
+ \frac2{R^2}\sum_{r=0}^{R-1}\left\lfloor\frac rp\right\rfloor
+       =\frac{f(p/R)}p.
+\end{equation}
+Define the noninert sum
+\begin{equation}\label{Tdef}
+ \Tn(X)=\sum_{p\text{ noninert}}\frac{\log p}{p}f(p/X).
+\end{equation}
+It is nonnegative and nondecreasing in \(X\), and is at most the
+ordinary cumulative noninert sum.
+
+Green's triangular change, using
+\(a_{r,s}=\min(\lfloor r/p\rfloor,S-1-s)\), replaces \(z^rw^s\) by
+\(z^{r-pa_{r,s}}(z^p-w)^{a_{r,s}}w^s\). For inert \(p\), every
+ordinary derivative of \(z^p-w\) is divisible by \(p\), so
+\[
+ v_p(\Delta)\ge2\sum_{r,s}a_{r,s}.
+\]
+Write this normalized valuation as \(e(R,S,p)\). Counting layers gives
+\begin{equation}\label{elayers}
+ e(R,S,p)=\frac2{R^2S}\sum_{h=1}^{S-1}(S-h)(R-ph)_+.
+\end{equation}
+For \(p(S-1)\le R-1\), this equals
+\((S-1)/R-p(S^2-1)/(3R^2)\). In general,
+\begin{equation}\label{etail}
+ e(R,S,p)\ge\frac{f(p/R)}p
+       -\frac{R-1}{2RSp}
+       -\frac{(R-1)(2R-1)}{6RSp^2}.
+\end{equation}
+Indeed, sum
+\(\sum_{s<S}\min(k,S-1-s)\ge Sk-k(k+1)/2\), then use
+\(k(k+1)\le r^2/p^2+r/p\) and \eqref{fidentity}.
+
+The main term in the inert-prime sum in \eqref{etail} is exactly
+\[
+ \sum_p\frac{\log p}{p}f(p/R)-\Tn(R).
+\]
+Keeping \(\Tn\), instead of replacing it by the larger ordinary
+cumulative sum, is an important improvement.
+
+\subsection{The all-prime floor remainder}
+If \(R=ap+b\), the exact floor identity gives
+\[
+ \frac{f(p/R)}p=\frac1p-\frac1R+\frac1R\delta_a(p/R),\qquad
+ \delta_a(u)=2a+1-u^{-1}-a(a+1)u.
+\]
+On \([1/(a+1),1/a]\), \(\delta_a\) is nonnegative, vanishes at
+the endpoints, and has one maximum. Partial summation with
+\(d_*x\le\vartheta(x)\le c_*x\), valid for \(x\ge M/33\), gives
+\begin{equation}\label{Gfloor}
+ G_{\rm floor}=\max(0,Bd_*-Ac_*),\quad
+ A=\frac{\log33-H_{33}+1}{2},\quad
+ B=\frac{H_{32}-\log33}{2}.
+\end{equation}
+Here \(H_n=\sum_{j\le n}1/j\). The increasing and decreasing pieces
+contribute integrals
+\(\frac12\log(1+1/a)-\frac1{2(a+1)}\) and
+\(\frac1{2a}-\frac12\log(1+1/a)\), respectively; sum for
+\(1\le a\le32\). Thus
+\begin{equation}\label{allf}
+ \sum_p\frac{\log p}{p}f(p/R)
+ \ge A(R)-c(\log M)+G_{\rm floor}\qquad(R\ge M).
+\end{equation}
+
+\subsection{Removing known noninert primes from the quadratic loss}
+Put \(H=\lfloor1/t\rfloor=21\),
+\[
+ a_H=\sum_{p\le H}\frac{\log p}p,\quad
+ \theta_H=\sum_{p\le H}\log p,\quad
+ W_H=\sum_{p\le H}\log p\,(t-pt^2/3).
+\]
+Let \(B_H\) be a certified upper bound for
+\(\sum_{p>H}\log p/p^2\). Specifically, with \(P=10000\),
+partial summation and \eqref{theta-global} give
+\[
+ B_H=\sum_{H<p\le P}\frac{\log p}{p^2}
+               +\frac{2c_0}{P}-\frac{\vartheta(P)}{P^2}
+ >\sum_{p>H}\frac{\log p}{p^2}.
+\]
+With all pairs in \eqref{normlist}, define
+\begin{equation}\label{Ktwo}
+ K_2=\sum_j\frac{\log p_j^+}{(p_j^+)^2}
+             +\frac{\log Q_1}{Q_1^2}.
+\end{equation}
+The summands decrease with the prime, so the inert quadratic tail
+is at most \(B_H-K_2\). Combining \eqref{etail}, \eqref{allf}, the
+exact small-prime formula, and \(A(R)<2\log R\), gives
+\begin{align}\label{basevaluation}
+ \frac{\log\Delta}{NR}\ge{}&
+ A(R)-c(\log M)+G_{\rm floor}-\Tn(R)-a_H+W_H\\
+ &-\frac{B_H-K_2}{3(t-1/M)}
+ -\frac{2\theta_H}{M}-\frac{\log M}{(t-1/M)M}.
+ \notag
+\end{align}
+The next two sections give compatible additional gains.
+
+\section{Compatible higher Frobenius factors}\label{frobenius}
+At an inert prime use
+\[
+ G=z^p-w,\qquad H_1=z^{p^2}-z,\qquad H_2=w^{p^2}-w.
+\]
+For each row let
+\[
+ a=\min(\lfloor r/p\rfloor,S-1-s),\quad
+ c=\lfloor(r-pa)/p^2\rfloor,\quad b=\lfloor s/p^2\rfloor,
+\]
+and replace the row polynomial by
+\begin{equation}\label{threefactor}
+ z^{r-pa-p^2c}G^aH_1^c\,w^{s-p^2b}H_2^b.
+\end{equation}
+Its leading term is \(z^rw^s\); all other terms have smaller
+lexicographic index and remain in the rectangle, since their
+\(z\)-degree is at most \(r\) and their \(w\)-degree at most
+\(s+a\le S-1\).
+
+All three factors have values divisible by \(p\). A Hasse derivative
+can lose a factor \(G\) only at order \(p\), and a factor \(H_1\)
+only at order 1 or \(p^2\). At total order \(k\), the number of lost
+factors is therefore at most
+\[
+ L=\min(k,c)+\left\lfloor\frac{k-\min(k,c)}p\right\rfloor.
+\]
+Ordinary differentiation supplies \(k!\). The elementary inequality
+\[
+ c+\lfloor k/p\rfloor-L\ge\lfloor c/p\rfloor
+\]
+holds both for \(k\ge c\) and \(k<c\). Consequently the entry
+valuation is at least
+\begin{equation}\label{newval}
+ a+b+\lfloor c/p\rfloor+\sum_{e\ge2}\lfloor k/p^e\rfloor.
+\end{equation}
+The additional residual row factor is
+\(\lfloor(r-pa)/p^3\rfloor\). Moreover, beyond this bound one may
+retain
+\begin{equation}\label{coupled-entry}
+ \max\left(0,(1-1/p)(c-k)-1\right).
+\end{equation}
+For \(k<c\), this follows by bounding \(\lfloor k/p\rfloor\)
+below by \(k/p-1\); for \(k\ge c\), \eqref{newval} suffices.
+
+\subsection{Explicit gains used by the certificate}
+Suppose \(R\ge M\), put \(\varepsilon=1/M\), and choose
+\(b_0\le S/n\). At most \(n\) columns have each derivative order.
+Their mean order is at least \((b_0R-1)/2\), and at most \(j_*R\),
+where
+\begin{equation}\label{jstar}
+ j=1/9+\varepsilon,\qquad j_*=j-b_0/2+b_0/M.
+\end{equation}
+The latter is a conservative consequence of sorting the orders:
+the \(i\)th is at most \(J-1-\lfloor(N-1-i)/n\rfloor\).
+
+The \(b\) and higher-column terms in \eqref{newval} give
+\begin{equation}\label{Gsmall}
+ G_{\rm small}=\sum_{p<Q_0/4}\log p\left\{
+ \sum_{\substack{e\ge2\\p^e<M}}
+       \left(\frac{b_0-\varepsilon}{p^e}-2\varepsilon\right)_+
+ +\left(\frac{t-\varepsilon}{p^2}-3\varepsilon\right)_+
+ \right\}.
+\end{equation}
+For the residual factor, define
+\[
+ A_p(t)=
+ \begin{cases}
+  1/(2p^2)-t/(2p)+t^2/6,&pt\le1,\\
+  1/(6tp^3),&pt\ge1.
+ \end{cases}
+\]
+Then the further gains are
+\begin{align}
+ G_{\rm res}&=\sum_{p<Q_0/4}\log p
+       \left(\frac{2A_p(t)}p-(2+2/p^3)\varepsilon\right)_+,
+       \label{Gres}\\
+ G_{\rm coup}&=2\sum_{p<Q_0/4}\log p
+       \left((1-1/p)\{A_p(t)-(1+1/p^2)\varepsilon-j_*\}
+                         -\varepsilon\right)_+.
+       \label{Gcoup}
+\end{align}
+Here is a direct integral justification. Put \(x_r=r/R\) and
+\(y_s=(S-1-s)/R\). We have
+\(c/R\ge (x_r-py_s)_+/p^2-1/R\).
+On the cell \([x_r,x_r+1/R]\times[y_s,y_s+1/R]\),
+\((x-py)_+\le(x_r-py_s)_++1/R\).
+The average of \((x-py)_+/p^2\) over
+\([0,1]\times[0,S/R]\) equals \(A_p(S/R)\), which decreases
+as \(S/R\) increases. Thus the normalized mean of
+\(c\) is at least \(A_p(t)-(1+1/p^2)/M\).
+For \eqref{Gres}, use the exact identity
+\(\lfloor c/p\rfloor=\lfloor(r-pa)/p^3\rfloor\).
+The same cell argument, now divided by \(p^3\), bounds its
+normalized mean below by \(A_p(t)/p-(1+1/p^3)/M\).
+The mean of a positive part is at least the positive
+part of its mean, so \eqref{coupled-entry} and \eqref{jstar} give
+\eqref{Gcoup}. All these terms are added to \eqref{basevaluation}.
+
+\section{The factorial refinement uses the same smoothed sum}
+At a split prime, replace \(w^s\) by its falling factorial
+\((w)_s\). Since \(\OK/p^e\OK\simeq(\Z/p^e\Z)^2\),
+\(p^{v_p(s!)}\) divides its value. The column factor \(k!\) remains.
+At the ramified prime keep the column factorial only. These row
+changes are triangular, and therefore bound the same determinant.
+
+Suppose a nonnegative nondecreasing function \(\Phi\) is already
+known to satisfy \(\Tn(e^x)\ge\Phi(x)\) throughout the band.
+The first-power part of the split row factorial contributes exactly
+\((S/R)\Tn_{\rm split}(S)\), by \eqref{fidentity}. It is therefore
+at least
+\[
+ (t-\varepsilon)
+ \left(\Phi(\log(M(t-\varepsilon)))-\frac{\log Q_0}{Q_0}\right)_+.
+\]
+For the columns put \(K_0=\lfloor b_0R\rfloor\). The increasing
+chosen orders are at least \(\lfloor i/n\rfloor\).
+Since \(N/n\ge K_0\), the average of \(\lfloor k/p\rfloor\)
+over these columns is at least its average for \(0\le k<K_0\).
+Using \eqref{fidentity} again gives a contribution at least
+\((K_0/R)\Tn(K_0)\). Hence a compatible total gain is
+\begin{align}\label{Gfeedback}
+ G_{\rm fb}={}&(b_0-\varepsilon)
+       \Phi(\log(M(b_0-\varepsilon)))\\
+ &+(t-\varepsilon)
+       \left(\Phi(\log(M(t-\varepsilon)))-\frac{\log Q_0}{Q_0}\right)_+.
+ \notag
+\end{align}
+There is no fractional-part approximation in this step. We start
+with \(\Phi=0\), compute a new lower bound, and repeat eight times.
+Every stage uses only the preceding stage, so the procedure is acyclic.
+
+\section{A joint bound for derivative orders and radii}\label{arch}
+We give the pointwise inequality underlying the archimedean estimate.
+Fix \(\tau=3/10\), and, for \(0\le k\le u\le1\), put
+\[
+ F(u,k)=u\log u-(u-k)\log(u-k)-k,\qquad
+ \phi(u)=\tau(u\log u-u).
+\]
+At zero use the continuous values. For \(0<a\le1\), define
+\(\psi(k,a)=\max_{k\le u\le1}\{(u-k)\log a+F(u,k)-\phi(u)\}\).
+The maximized function is strictly concave. If \(a\le1-k\), its
+critical point satisfies \(u-k=au^{1-\tau}\), and
+\[
+ \psi(k,a)=\tau u+(1-\tau)k\log u-k.
+\]
+If \(a\ge1-k\), the maximum is at 1 and
+\[
+ \psi(k,a)=(1-k)\log\frac a{1-k}-k+\tau.
+\]
+Differentiation shows that \(\psi\) decreases in \(k\), increases in
+\(a\), and is 1-Lipschitz in \(a\). In particular, for \(k\le j\),
+\[
+ \psi(k,a)+B\ge0,\qquad B=(1-\tau)j(1-\log j).
+\]
+
+Let \(I(k)=\int_0^1 2a\psi(k,a)\,da\) and
+\(K(j)=\int_0^j I(k)\,dk\). We have \(I(0)=2\tau^2/(2\tau+1)\).
+Changing variables from \(a\) to the critical point gives
+\[
+ I'(k)=-(1-\tau)\int_k^1(u-k)^2u^{2\tau-3}\,du
+               +\log(1-k)+k-k^2/2.
+\]
+Thus, writing \(A=2\tau\),
+\begin{align}\label{Kformula}
+ K(j)={}&j\frac{2\tau^2}{2\tau+1}
+ -(1-\tau)\left\{\frac{j^2}{2A}-\frac{j^3}{3(A-1)}
+ +\frac{j^4}{12(A-2)}
+ -\frac{2j^{A+2}}{A(A-1)(A-2)(A+1)(A+2)}\right\}\\
+ &+\frac j2-\frac{3j^2}4+\frac{(1-j)^2}2\log(1-j)
+        +\frac{j^3}6-\frac{j^4}{24}.
+ \notag
+\end{align}
+
+For an actual row and derivative order, take \(u=(r+1)/R\) and
+\(k'=k/R\). Increasing-log integration gives
+\(\log(r)_k\le k\log R+RF(u,k')\).
+Clip the normalized radius to \(a=\max(1,|z|)/T\). A nonzero entry
+satisfies
+\begin{align*}
+ \log|\partial_z^k(z^rw^s)|\le{}&
+ (r+s)\log T+k\log(R/T)\\
+ &+R\{\phi(u)+\psi(k',a)\}+s\log a-\log a.
+\end{align*}
+The final term is at most \(\log T\). Since \(\phi\) decreases, its
+right Riemann sum gives a normalized row contribution at most
+\(-3\tau/2\) to \(\log\Delta/(NR)\).
+
+For uniform estimates set \(\varepsilon=1/M\),
+\begin{equation}\label{geometry}
+ r_* =\sqrt{CMv_+/\pi},\quad e\ge\rho_+/r_*,\quad
+ \nu=C(1+2e)^2,\quad b_0\le(t-\varepsilon)/\nu,
+ \quad g=\tfrac12\log(C/(2\pi))+\log(1+e).
+\end{equation}
+Here \(v_+=\sqrt{Q_1}/2\), \(\rho_+=\sqrt{1+v_+^2}/2\).
+Then \(n\le\nu R\), \(b_0\le S/n\), and
+\(\log T\le\frac12\log R+\frac14\log q+g\).
+The monotonicity of \(\rho/\sqrt v=\frac12\sqrt{v+v^{-1}}\)
+justifies use of the upper band endpoint.
+
+Lattice-cell integration, using nonnegativity and the Lipschitz property,
+gives for each order
+\[
+ \sum_{|z|\le T}\{\psi(k/R,a_z)+B\}
+ \le\nu R\left\{I(k/R)+B+\frac{5e}{3(1+e)}\right\}.
+\]
+Indeed, cells lie in the disk of radius \(T+\rho\). Its normalized
+radial argument is \(((1+2e)a+e)/(1+e)\), whose difference from
+\(a\) is \(e(1+a)/(1+e)\). Integrating against \(2a\,da\) gives
+the displayed error. Clipping at 1 only improves the estimate;
+\(\rho\ge1\) also covers the clipped origin.
+
+We may fill in unchosen columns before subtracting \(NB\).
+Since \(I\) decreases and \(I+B\ge0\), the order sum is at most
+\[
+ R\left\{K(j)+j\left(B+\frac{5e}{3(1+e)}\right)\right\}+I(0)+B.
+\]
+It follows that the normalized joint contribution is at most
+\begin{equation}\label{Djoint}
+ D_*=-\frac{3\tau}2+
+ \frac{2\nu}{t-\varepsilon}
+ \left\{K(j)+j\left(B+\frac{5e}{3(1+e)}\right)
+                  +\varepsilon(I(0)+B)\right\}-2B.
+\end{equation}
+
+\subsection{The unused \texorpdfstring{\(s\)}{s}-radius contribution}
+At least \(\lambda(a)N\) chosen columns have radius at most \(aT\), where
+\[
+ \lambda(a)=\left(1-\frac{jC}{t-\varepsilon}
+   \{(1+2e)^2-\max(a(1+e)-e,0)^2\}\right)_+.
+\]
+Among that many distinct rows the normalized sum of the \(s\)'s is
+at least \(((t-\varepsilon)\lambda(a)^2-\varepsilon)/2\).
+Put
+\[
+ \delta=\frac{jC}{t-\varepsilon}
+       \left\{(1+2e)^2+\frac e{2+e}\right\}-1.
+\]
+Since \(\max(a(1+e)-e,0)^2\ge a^2-e/(2+e)\) and
+\(jC/(t-\varepsilon)\ge1\), we have
+\(\lambda(a)\ge(a^2-\delta)_+\).
+The certificate checks \(0<\delta<1\) and \(\delta\ge e\), so
+\(\sqrt\delta\ge1/T\). Integrating from \(\sqrt\delta\) to 1 gives
+the additional saving
+\begin{equation}\label{Gs}
+ G_s=\left((t-\varepsilon)
+       \left\{\frac14-\delta+\frac{3\delta^2}4
+                    -\frac{\delta^2}2\log\delta\right\}
+                     +\frac\varepsilon2\log\delta\right)_+.
+\end{equation}
+
+There are at most \(N!\) terms in the determinant. Using
+\(\log N!\le N\log N\), \eqref{jstar}, and \(1<T<R\), we obtain
+\begin{equation}\label{arch-final}
+ \frac{\log\Delta}{NR}\le
+ (1-\alpha)\log R+\frac\beta4\log q+\beta g
+       +D_*+\frac{2\log M}{M}-G_s+\frac{2\log(tM^2)}M,
+\end{equation}
+where
+\(\alpha=(1-t)/2-j_*\), \(\beta=1+t-2j_*\).
+The functions \((\log R)/R\) and \(\log(tR^2)/R\) decrease on the
+certified ranges. Notice that the joint estimate replaces the former
+separate derivative and radius estimates; incompatible savings are
+not added.
+
+\section{The certified affine bounds and finite iteration}\label{affine}
+Combine \eqref{basevaluation}, \eqref{mertens},
+\eqref{Gsmall}--\eqref{Gcoup}, \eqref{Gfeedback}, and
+\eqref{arch-final}. This gives
+\begin{equation}\label{Tline}
+ \Tn(R)\ge\alpha\log R-\frac\beta4\log q-\mathcal K,
+\end{equation}
+where the fully explicit constant is
+\begin{align*}
+ \mathcal K={}&a_H-W_H+c(\log M)
+ +\frac{B_H-K_2}{3(t-\varepsilon)}+\beta g+D_*
+ +\frac{2\log M}{M}-G_s\\
+ &+\frac{2\theta_H}{M}+\frac{\log M}{(t-\varepsilon)M}
+ +\frac{2\log(tM^2)}M+1.334+\frac1{2\log M}\\
+ &-G_{\rm floor}-G_{\rm small}-G_{\rm res}-G_{\rm coup}-G_{\rm fb}.
+\end{align*}
+For every \(U\in[2^a,2^b]\), the auxiliary prime satisfies
+\(U<R\le\kappa U\). Monotonicity of \(\Tn\) and \(\alpha>0\)
+therefore transfer \eqref{Tline} to \(X=\kappa U\), with the
+additional intercept cost \(\alpha\log\kappa\).
+
+The certificate rounds slopes down and intercept costs up, obtaining
+\[
+ \Tn(e^x)\ge A_i x-D_i-\gamma\log(q/Q_0),\qquad
+ \gamma=3/10,
+\]
+on the indicated finite interval. It checks \(\beta/4<\gamma\).
+At a finite endpoint the endpoint value remains a lower bound at
+all later \(x\). The maximum with zero is nondecreasing.
+For each of eight refinement stages, use this preceding maximum
+minus \(\gamma\log(Q_1/Q_0)\), clipped at zero, as \(\Phi\) in
+\eqref{Gfeedback}. The initial stage uses \(\Phi=0\).
+
+Write \(L(x)\) for a certified piecewise affine selection from the
+final bounds at \(Q_0\), including zero and frozen endpoint values.
+Then throughout the band,
+\begin{equation}\label{Luniform}
+ \Tn(e^x)\ge L(x)-\gamma\log(q/Q_0).
+\end{equation}
+The exact parameter and output files record all lines, stages, and
+selected segments. No optimizer is part of the certificate.
+
+\section{Positive kernels and the quadratic norm series}\label{mellin}
+Choose positive rational \(d,e\) and a nonzero integer polynomial
+\(P\), and normalize
+\[
+ h(x)=Z^{-1}e^{-dx}P(e^{-ex})^2\quad(x\ge0),\qquad
+ Z=\int_0^\infty e^{-dx}P(e^{-ex})^2\,dx.
+\]
+Then \(h\ge0\) and \(\int h=1\). Expand
+\(h(x)=\sum_i c_i d_i e^{-d_i x}\), with \(d_i=d+ie\).
+All \(c_i\) and \(Z\) are exact rationals. Integrating
+\eqref{Luniform} gives
+\begin{equation}\label{weightedlower}
+ \int_0^\infty h(x)\Tn(e^x)\,dx
+ \ge\sum_i c_i\!\int_0^\infty d_i e^{-d_i x}L(x)\,dx
+             -\gamma\log(q/Q_0).
+\end{equation}
+One and the same \(L\) is used in every signed term.
+
+Define
+\[
+ W(y)=\int_y^\infty h(x)f(e^{y-x})\,dx.
+\]
+This is nonnegative, nonincreasing, and at most 1. Tonelli's theorem
+and \eqref{fidentity} show that
+\begin{equation}\label{multiplier}
+ W(y)=\sum_i c_i F(d_i)e^{-d_i y},\qquad
+ F(d)=\int_0^1 d\,u^{d-1}f(u)\,du
+       =\frac{2d\zeta(1+d)}{(1+d)(2+d)}.
+\end{equation}
+The right side follows by integrating each
+\(2d\,u^d(1-mu)_+\) from 0 to \(1/m\).
+Thus the left side of \eqref{weightedlower} is
+\(\sum_{p\text{ noninert}}(\log p)/p\,W(\log p)\).
+
+For \(s>1\), put
+\[
+ \mathcal A_q(s)=\sum_{b\ge1}\sum_{a\in\Z}Q_q(a,b)^{-s},\qquad
+ B_q(s)=1+\mathcal A_q(s)/\zeta(2s).
+\]
+Class number one and the unit group give
+\(\zeta_K(s)=\zeta(2s)+\mathcal A_q(s)\). Its Euler product implies
+\[
+ -\frac{B_q'(s)}{2B_q(s)}
+ =\sum_{p\text{ split}}\sum_{\substack{m\ge1\\m\text{ odd}}}
+      \frac{\log p}{p^{ms}}
+ +\frac{\log q}{2}\sum_{m\ge1}(-1)^{m-1}q^{-ms}.
+\]
+Multiply by the signed coefficients \(c_iF(d_i)\) and sum at
+\(s_i=1+d_i\). Since \(W\ge0\), the discarded higher odd powers
+have nonnegative weights. Adding
+\(\frac12\log q\sum_{m\ge1}q^{-m}W(m\log q)\) also covers the
+ramified first-power term. It is at most
+\begin{equation}\label{ramerror}
+ \frac{\log Q_0}{2(Q_0-1)}.
+\end{equation}
+
+\section{A small explicit norm-series error}\label{poisson}
+Set
+\[
+ C(s)=\sqrt\pi\frac{\Gamma(s-1/2)}{\Gamma(s)},\quad
+ g(s)=\psi(s)-\psi(s-1/2),\quad
+ \mathcal F_q(s)=C(s)v^{1-2s}\zeta(2s-1).
+\]
+Poisson summation in the real coordinate gives a particularly small
+error for \(\mathcal A_q-\mathcal F_q\). We supply a bound suitable
+for the signed kernel coefficients.
+
+Choose any rational \(0<a_0<v_-\). For
+\(f_{s,t}(x)=(x^2+t^2)^{-s}\), shift the Fourier contour by
+\(y=t-a_0\), where \(t=bv\). Since
+\[
+ |(x+iy)^2+t^2|\ge x^2+a_0^2,
+\]
+the nonzero Fourier coefficients are bounded by
+\(C(s)a_0^{1-2s}e^{-2\pi n(t-a_0)}\). Summing both signs and
+all \(b,n\ge1\), put
+\[
+ z=e^{-2\pi v_-},\quad y_0=e^{-2\pi(v_--a_0)},\qquad
+ E_A=\frac{2C(s)a_0^{1-2s}y_0}{(1-z)(1-y_0)}.
+\]
+Then \(|\mathcal A_q(s)-\mathcal F_q(s)|\le E_A\) uniformly in
+the band.
+
+For the \(s\)-derivative, the complex argument of
+\((x+iy)^2+t^2\) has absolute value at most \(\pi/2\), and its
+logarithm is bounded in modulus by
+\[
+ \log(1+x^2/a_0^2)+2\log(2t)+2|\log a_0|+\pi/2.
+\]
+The integral of the first term against
+\((x^2+a_0^2)^{-s}\) is
+\(C(s)a_0^{1-2s}g(s)\). Using \(\log b\le b-1\) in the remaining
+geometric sum therefore gives
+\begin{equation}\label{EN}
+ |\mathcal A_q'(s)-\mathcal F_q'(s)|\le E_N,
+ \quad E_N=E_A\left\{2\log(2v_+)+2|\log a_0|+g(s)+\frac\pi2
+                                      +\frac{2z}{1-z}\right\}.
+\end{equation}
+The contour shift is justified by decay at infinity for \(s>1\);
+the same decay with an extra logarithm justifies differentiation.
+
+Put \(d=s-1\), \(z_2=\zeta(2s)\),
+\(c_s=-2\zeta'(2s)/\zeta(2s)\), and
+\[
+ \kappa_d=g(s)-2\frac{\zeta'(2s-1)}{\zeta(2s-1)}-c_s.
+\]
+The main upper term is
+\begin{equation}\label{Hmain}
+ H_q(d)=\frac{\mathcal F_q(s)\{\log(q/4)+\kappa_d\}}
+                   {2\{z_2+\mathcal F_q(s)\}}.
+\end{equation}
+The certificate checks that \(H_q(d)>0\) and decreases with \(q\)
+for each exponent used. Since \(z_2>1\), the logarithmic-derivative
+error is at most
+\begin{equation}\label{Herror}
+ E_H(d)=\frac{E_N+(c_s+2H_{Q_0}(d))E_A}{2(1-E_A)}.
+\end{equation}
+Consequently a uniform upper bound for the weighted noninert sum is
+\begin{equation}\label{weightedupper}
+ U(q)=\sum_i c_iF(d_i)H_q(d_i)
+       +\sum_i|c_i|F(d_i)E_H(d_i)
+       +\frac{\log Q_0}{2(Q_0-1)}.
+\end{equation}
+The error is bounded after all coefficient magnitudes are included.
+
+\section{Exact certification and completion of the proof}\label{certificate}
+The certificate uses the five bands
+\[
+ [570,580],\quad[580,600],\quad[600,700],\quad[700,1050],\quad[1050,2000].
+\]
+The first uses a polynomial of degree 16 with \(d=3/10,e=1/25\);
+the others use degree 12 with \(d=2/5,e=1/20\). The integer
+polynomial coefficients, auxiliary-prime rows, and eight-stage
+refinement schedule are fixed in \texttt{parameters.json}.
+
+For completeness, the dependence on \(q\) is certified over each
+entire band. Write \(Y=\log(q/Q_0)\),
+\(a_i=1/2+d_i\), and
+\(r_i=\mathcal F_{Q_0}(s_i)/\zeta(2s_i)\). Expand
+\[
+ H_q(d_i)=\frac12(\log(Q_0/4)+Y+\kappa_{d_i})
+       \sum_{\ell\ge1}(-1)^{\ell+1}r_i^\ell e^{-\ell a_iY}.
+\]
+The certificate bounds the differentiated geometric tail explicitly.
+For each retained \(\ell\), the signed finite sum is evaluated as
+a polynomial in \(1-e^{-\ell eY}\), with its coefficients computed
+by exact interval arithmetic. This avoids naive interval cancellation.
+Cells of width \(1/1000\) cover the entire \(Y\)-interval. On every
+cell the derivative of the main sum in \eqref{weightedupper} is
+strictly less than \(-\gamma\). The two error bounds in that equation
+are uniform constants, so they require no differentiation.
+
+\IfFileExists{numerical_table.tex}{\input{numerical_table.tex}}{}
+
+At \(q=Q_0\), the exact lower endpoint of
+\eqref{weightedlower} is strictly greater than the exact upper
+endpoint of \eqref{weightedupper}. Since the latter decreases faster
+than \(-\gamma\log(q/Q_0)\), \eqref{Luniform} proves a contradiction
+throughout the band. The five bands exclude \([570,2000]\); the
+audited v5 implication excludes \(q\ge2000\), proving
+Theorem~\ref{main}.
+
+The numerical proof uses integer and rational intervals throughout.
+Logarithms use a convergent positive series after range reduction;
+exponentials use a Taylor series with an explicit tail; square roots
+use integer square roots. Zeta values and derivatives use
+Euler--Maclaurin with the periodic-Bernoulli remainder, while gamma
+and digamma use positive-real Stirling expansions with remainder
+bounds. These are evaluations in \(\Re s>1\), not zero-location
+inputs. Acceptance never depends on a floating-point optimizer.
+
+Run, without Python's \texttt{-O} option,
+\begin{verbatim}
+python3 verify_v6.py
+python3 verify_structures.py
+python3 verify_finite.py
+\end{verbatim}
+The first command certifies the inequalities and writes exact
+endpoints to JSON. The second checks finite instances of the new
+algebraic identities and divisibility statements; these tests do not
+replace their proofs. The third is a separate finite check below the
+analytic cutoff and is not used to establish that cutoff.
+
+\subsection{Numerical remainder bounds}
+Here are the remainder formulas used in the certificate; the integer
+parameters in this paragraph are numerical evaluation parameters,
+independent of the determinant dimensions.
+For \(s>1\), Euler--Maclaurin with \(N_0=64\), \(m=18\) gives
+\begin{align*}
+ \zeta(s)={}&\sum_{n<N_0}n^{-s}+\frac{N_0^{1-s}}{s-1}
+      +\frac12N_0^{-s}
+      +\sum_{k=1}^{m}\frac{B_{2k}(s)_{2k-1}}{(2k)!}
+                      N_0^{1-s-2k}+\mathcal R,\\
+ |\mathcal R|\le{}&E=
+ \frac{|B_{2m}|(s)_{2m}}{(2m)!(s+2m-1)}N_0^{1-s-2m},\\
+ |\mathcal R'|\le{}&E\left\{\log N_0+
+       \sum_{j=0}^{2m-1}\frac1{s+j}+\frac1{s+2m-1}\right\}.
+\end{align*}
+Here \((s)_j\) denotes the rising factorial. These bounds follow
+from the periodic-Bernoulli integral and its derivative.
+For log gamma and digamma, shift to \(z=x+64\), retain the terms
+\(1\le k<20\) in the positive-real Stirling expansions, and use
+the first omitted term as an absolute remainder bound
+\cite{dlmf}:
+\[
+ |R_{\log\Gamma}|\le\frac{|B_{40}|}{40\cdot39\,z^{39}},
+ \qquad |R_\psi|\le\frac{|B_{40}|}{40z^{40}}.
+\]
+The recurrence formulas then recover the values at \(x\).
+
+After range reduction to \(1\le y\le2\), logarithms use 80 terms
+of \(2\sum_{k\ge0}t^{2k+1}/(2k+1)\), where
+\(t=(y-1)/(y+1)\), and tail
+\(2t^{161}/(161(1-t^2))\). Exponentials are reduced to
+\(0\le x\le1\); the series through degree 80 has positive tail
+at most \(82/(81\cdot81!)\). Repeated squaring and reciprocation
+undo the reduction. Machin's formula with 60 arctangent terms
+encloses \(\pi\). Elementary interval operations round outward
+to 65 decimal places; square roots use integer bounds.
+
+For the differentiated geometric series above, the tail after
+\(L\) terms is at most
+\[
+ \frac12\sum_i |c_i|F(d_i)r_i^{L+1}
+ \left\{\frac1{1-r_i}+a_i E_*
+       \left(\frac{L+1}{1-r_i}+\frac{r_i}{(1-r_i)^2}\right)\right\},
+ \qquad E_*=\max_i\{\log(Q_1/4)+\kappa_{d_i}\}.
+\]
+The certificate increases \(L\) until this bound is below
+\(10^{-10}\), then includes it in every derivative cell test.
+
+\section{Directions tested and the stopping point}
+The research continued beyond the first successful lighter-method
+bound. The retained improvements include disk interpolation, the
+prime itself as monomial width, a mixed ideal sieve, higher Frobenius
+factors, the smoothed valuation sum, direct finite factorial refinement,
+the joint radius/order inequality, and optimized positive kernels.
+
+Other routes were examined but are not inputs to this proof.
+Weighted monomial regions suggested by Kerr lose the exact packing
+of the degrees \(r+p_0s\) used here. Numerical tests with disk
+orthogonal polynomials gave only a small further improvement over
+the joint monomial estimate. Finer transport bounds and more elaborate
+kernels offered diminishing returns, with increasingly difficult
+signed-sum error control. The sieve work of Gaudet \cite{gaudet}
+was also considered; its additional class-group analytic inputs and
+unspecified numerical exponent did not supply a useful replacement
+for the present explicit argument. The quartic-field/Masser and
+quadratic zero-free approaches were not imported.
+
+The cutoff 570 is a practical stopping point for this research pass,
+not an optimality theorem about these methods. The package records
+the final proof and certificate as one v6 result, and preserves the
+distinction between exact arithmetic, mathematical audit, and formal
+verification.
+
+\begin{thebibliography}{99}
+\bibitem{tao} T.~Tao, \emph{An experimental AI-math challenge: using
+tenth-discriminant bounds to explore arguments ruling out Siegel zeroes},
+20 October 2026.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/}{Challenge and discussion}.
+\bibitem{taocomment} T.~Tao, comment 698471 on \cite{tao}.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/\#comment-698471}{Request for bounds using lighter machinery}.
+\bibitem{green} B.~Green, \emph{On Landau--Siegel zeros}, v2, 2026.
+\href{https://hexagonmath.org/2610.00311v2}{hexagon:2610.00311v2}.
+Its provenance statement credits the mathematical arguments to ChatGPT
+and the exposition to Green.
+\bibitem{vandijk} R.~van Dijk, \emph{A Frobenius determinant proof of
+the non-existence of Landau--Siegel zeros}, v1, 2026.
+\href{https://hexagonmath.org/2610.00409v1}{hexagon:2610.00409v1}.
+The finite-field argument required here is proved in Section~\ref{rank}.
+\bibitem{greencomment} B.~Green, comment 698463 on \cite{tao}.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/\#comment-698463}{Auxiliary-prime rank argument and Pescador attribution}.
+\bibitem{pratt} K.~Pratt, comment 698476 on \cite{tao}.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/\#comment-698476}{Norm counts, stronger divisibility, and disk interpolation}.
+\bibitem{kerrcomment} B.~Kerr, comment 698475 on \cite{tao}.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/\#comment-698475}{Monomial regions and higher Frobenius relations}.
+See also \emph{A simpler proof that there are no Landau--Siegel zeros},
+\href{https://arxiv.org/abs/2610.21099}{arXiv:2610.21099}.
+\bibitem{ross} michaelmross, comment 698466 on \cite{tao}.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/\#comment-698466}{Poisson expansion of the principal quadratic form}.
+\bibitem{rs} J.~Barkley Rosser and L.~Schoenfeld,
+\emph{Approximate formulas for some functions of prime numbers},
+Illinois J. Math. \textbf{6} (1962), 64--94.
+\href{https://doi.org/10.1215/ijm/1255631807}{doi:10.1215/ijm/1255631807}.
+Theorems 4, 6, 9 and 14, and Table I on printed page 90.
+\bibitem{v5} \emph{A Mellin-averaged determinant bound for the tenth
+discriminant}, version 0.5.0.
+\href{https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0}{Published v5 release},
+including its minor Section 6.2 wording correction. The audited
+implication \(h(K)=1\Rightarrow q<2000\) is the earlier-version input.
+The corrected source is pinned at
+\href{https://github.com/twinheterodox/tenth-discriminant/tree/6f781492afd06de32997c2c89d4e228a78bab7fc/versions/v5}{commit 6f781492}.
+\bibitem{gaudet} L.~M.~Gaudet, \emph{Sifting for small split primes of
+an imaginary quadratic field in a given ideal class},
+\href{https://arxiv.org/abs/2408.01610}{arXiv:2408.01610}.
+\bibitem{dlmf} NIST Digital Library of Mathematical Functions,
+\href{https://dlmf.nist.gov/2.10}{Section 2.10 (Euler--Maclaurin)} and
+\href{https://dlmf.nist.gov/5.11}{Section 5.11 (Stirling expansions
+and positive-real remainder bounds)}.
+\end{thebibliography}
+\end{document}

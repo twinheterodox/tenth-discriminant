@@ -1,5 +1,39 @@
 # Mathematical changelog
 
+## v0.6.0 — 20 October 2026
+
+**Analytic cutoff: `q < 570` (previously `q < 2,000`).**
+
+- Retains the smoothed noninert-prime sum from the exact determinant
+  floor valuation and feeds it into the row and column factorials through
+  eight acyclic refinements.
+- Combines compatible residual Frobenius factors with an additional
+  derivative-order divisibility gain, joint derivative/radius bounds,
+  and a further contribution from the second monomial exponent.
+- Uses an auxiliary inert prime as the monomial width, a mixed ideal
+  sieve to find it, and a positive squared-polynomial averaging kernel.
+  Signed coefficients and the Poisson norm-series error are bounded
+  explicitly.
+- Fixes `t = 3/64`, `C = 27/64`, and `tau = 3/10`. Five band certificates
+  exclude the whole interval `[570,2,000]`, using 184 auxiliary-prime
+  parameter rows. The smallest certified gap exceeds `0.010389`.
+- Passes 429 grouped exact rational checks, including 1,258 interval
+  cells, and 101,524 finite structural cases. A complete isolated rerun
+  reproduces the exact band outputs and refinement stages. The finite
+  scan checks 70 candidates below 570 and verifies the nine survivors.
+- Supplies a fifteen-page proof of the new interval relative to its
+  stated classical inputs, with no dependency on intermediate unpublished
+  drafts. The audited v5 implication supplies `q >= 2,000`.
+- Uses no quasi-Riemann hypothesis, quadratic zero-free theorem,
+  quartic-field determinant, or Masser theorem. Attributes the external
+  ideas and records the alternatives explored and remaining possibilities.
+- Records independent mathematical audit of v6 as pending. Preserves all
+  earlier version files, tags, and downloadable assets.
+
+Paper and reproduction files: [versions/v6](versions/v6/README.md).
+Research and attribution: [RESEARCH.md](versions/v6/RESEARCH.md).
+Fixed release: [v0.6.0](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.0).
+
 ## v0.5.0 — wording correction and completed audit, 20 October 2026
 
 **The bound remains `q < 2,000`.** V5 has passed a manual mathematical

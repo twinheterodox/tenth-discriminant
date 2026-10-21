@@ -18,7 +18,10 @@ and uses Green's derivative determinant, with a sharper nonsingularity
 lemma and tighter size estimates. Version 5 averages the derivative
 determinant inequality over its size parameter and compares the resulting
 prime sum with the Euler product of primitive quadratic norms, accounting
-for composite norms. The determinant arguments are proved in the papers.
+for composite norms. Version 6 retains a smoothed prime sum, strengthens
+the Frobenius divisibility and size estimates, and uses an auxiliary inert
+prime with a positive averaging kernel. The determinant arguments are
+proved in the papers.
 
 Each approach gives an explicit analytic cutoff. Exact integer sieves and
 reduced-form enumeration handle the remaining finite range, leaving the
@@ -27,19 +30,24 @@ nine absolute fundamental discriminants
 Codex prepared the derivations, write-ups, and verification programs;
 the review record identifies the checks completed for each version.
 
-**Current research draft: v0.5.0, with analytic cutoff `q < 2,000` — half
-the v4 cutoff.**
+**Current research draft: v0.6.0, with analytic cutoff `q < 570`
+(previously `q < 2,000`).**
 
-**[Read the corrected v5 proof](versions/v5/output/pdf/proof.pdf)** ·
-[Source and reproduction](versions/v5/README.md) ·
-[v5 release and downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0)
+**[Read the v6 proof](versions/v6/output/pdf/proof.pdf)** ·
+[Source and reproduction](versions/v6/README.md) ·
+[v6 release and downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.0)
 
-**V5 has passed a manual mathematical audit with exact computational
-checks.** The paper applies its minor wording correction in §6.2; the bound
-and certificate calculations are unchanged. This is not formal
-verification. See the [audit finding and correction](versions/v5/AUDIT.md).
-V5 cites the independently verified v4 result for `q >= 4,000`;
-the new interval is treated in full, relative to the stated classical inputs.
+**Independent mathematical review of v6 is pending.** Its 429 grouped
+exact rational checks and 101,524 finite structural cases pass; an isolated
+rerun reproduced the exact certificate outputs. These computations are
+not an independent mathematical audit or formal verification.
+
+The fifteen-page paper treats the new interval `570 <= q <= 2,000`
+in full relative to its stated classical inputs and cites v5 above that
+range. **V5 has passed a manual mathematical audit with exact computational
+checks**; its [corrected proof](versions/v5/output/pdf/proof.pdf) and
+[audit record](versions/v5/AUDIT.md) remain available. The v6 argument
+uses no quasi-Riemann hypothesis or quadratic zero-free theorem.
 
 ## Versions and improvements
 
@@ -53,6 +61,7 @@ snapshot.
 
 | Version | Analytic cutoff | Paper and files | Mathematical review status |
 |---|---|---|---|
+| **v6 · v0.6.0** | **`q < 570`** | [Proof](versions/v6/output/pdf/proof.pdf) · [Source and reproduction](versions/v6/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.0) | Independent mathematical audit pending; 429 grouped exact checks, 101,524 finite structural cases, and 70 finite discriminant candidates pass |
 | **v5 · v0.5.0** | **`q < 2,000`** | [Corrected proof](versions/v5/output/pdf/proof.pdf) · [Source and reproduction](versions/v5/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0) | Manual mathematical audit with exact computational checks passed; §6.2 wording corrected within v0.5.0; calculations unchanged; not formal verification |
 | **v4 · v0.4.0** | **`q < 4,000`** | [Self-contained proof and finite classification](versions/v4/output/pdf/proof.pdf) · [Source and reproduction](versions/v4/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.4.0) | Independent mathematical verification passed; 39 exact arithmetic checks, 62,880 finite sanity cases, and an exhaustive check of 499 candidates pass |
 | **v3 expanded · v0.3.1** | `q < 10^6` | [Expanded proof and finite classification](versions/v3.1/output/pdf/proof.pdf) · [Source and reproduction](versions/v3.1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.1) | Independent mathematical cross-check passed; arithmetic and complete finite checks pass |
@@ -63,8 +72,8 @@ snapshot.
 [Mathematical changelog](CHANGELOG.md) · [Review record by version](REVIEW.md)
 
 The improvements change the analytic cutoff. The finite classification
-remains `3, 4, 7, 8, 11, 19, 43, 67, 163`. Version 5 includes a short
-exhaustive verifier for the remaining 249 candidates below 2,000.
+remains `3, 4, 7, 8, 11, 19, 43, 67, 163`. Version 6 includes a short
+exhaustive verifier for the remaining 70 candidates below 570.
 Version 1 takes Banks's Theorem 1.1 as an external input.
 Version 2 uses Lemma 4.2, Lemma 5.1, and Corollary 6.3. Version 3 uses
 Lemma 4.2, Lemma 5.1, and Lemma 6.2 directly, together with explicit prime
@@ -87,10 +96,22 @@ exact arithmetic checks certify a gap greater than `0.017` throughout
 `2,000 <= q <= 4,000`. The stated classical quadratic and analytic
 identities and Rosser–Schoenfeld estimates remain external inputs.
 
+Version 6 cites v5 for `q >= 2,000`. It consolidates the full new interval
+argument, including the auxiliary-prime sieve, residual Frobenius factors,
+eight acyclic factorial refinements, joint derivative/radius estimates,
+and positive-kernel comparison with an explicit Poisson error. Five exact
+interval certificates cover `[570,2,000]`, with a smallest certified gap
+greater than `0.010389`. No intermediate unpublished draft is needed.
+The stated ordinary-prime estimates and classical quadratic and analytic
+identities remain external inputs. The
+[research and attribution record](versions/v6/RESEARCH.md) describes the
+contributions from the challenge discussion and the alternatives tested.
+
 The independent mathematical checks of both v3.0 and v3.1, and the
 separate independent verification of v4, were confirmed on
 20 October 2026 after publication. The completed manual audit of v5 and
-its wording correction are recorded in v0.5.0. The
+its wording correction are recorded in v0.5.0. These checks do not cover
+v6, whose independent mathematical audit is pending. The
 [current review record](REVIEW.md) records subsequent checks; original
 publication snapshots retain their status at publication.
 All releases are research drafts.
@@ -103,6 +124,7 @@ All releases are research drafts.
 - [v0.3.1: expanded v3 proof and complete finite verification](https://github.com/twinheterodox/tenth-discriminant/tree/v0.3.1/versions/v3.1)
 - [v0.4.0: derivative determinant proof and verification](https://github.com/twinheterodox/tenth-discriminant/tree/v0.4.0/versions/v4)
 - [v0.5.0: original publication snapshot](https://github.com/twinheterodox/tenth-discriminant/tree/v0.5.0/versions/v5)
+- [v0.6.0: smoothed Frobenius determinant proof and verification](https://github.com/twinheterodox/tenth-discriminant/tree/v0.6.0/versions/v6)
 
 The v0.5.0 tag retains the original publication. Its
 [release downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0)
@@ -123,7 +145,7 @@ checksums; each version also retains its own manifest.
 > The following text is retained verbatim as a historical snapshot.
 > Its review and publication statements describe that snapshot. Subsequent
 > review information is recorded in [REVIEW.md](REVIEW.md); current work is
-> documented in [v5](versions/v5/README.md).
+> documented in [v6](versions/v6/README.md).
 
 # An explicit tenth-discriminant bound from Banks's zero-free theorem
 
