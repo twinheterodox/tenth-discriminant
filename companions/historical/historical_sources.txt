@@ -1,0 +1,145 @@
+HISTORICAL DEPENDENCIES: DOCUMENTATION FOR THE 1830 DRAFT
+Prepared 21 October 2026
+
+Claim and interpretation
+------------------------
+The note gives a mathematical proof and proposes a historical cutoff of
+1830. These are separate claims. Its interpretation of Tao's restriction
+on "results and concepts" allows new constructions and deductions using
+objects, operations and results documented by 1830. An elementary definition
+or proof alone does not establish the historical eligibility of a concept.
+
+In particular, the note treats the finite array of polynomial derivatives
+as a construction from determinants, polynomials, derivatives and quadratic
+congruences. Its properties are established directly, without a general
+theorem about interpolation determinants. The historical judgement is
+whether this is an admissible new use of old concepts. The foundation
+dates below provide evidence for that judgement; correctness of the
+mathematical proof alone does not decide it.
+
+The note does not claim that this construction or proof was known in 1830,
+or that an earlier year is impossible. References H1-H4 document historical
+foundations; M1-M8 give modern attribution and context. In-context footnotes
+headed "Modern attribution" identify contemporary sources of the argument.
+Every mathematical assertion taken from a modern source and needed in the
+proof is derived in the paper. This file is not an independent audit verdict.
+
+1. Gauss, Disquisitiones arithmeticae (1801)
+-----------------------------------------
+Original edition: ETH-Bibliothek Zurich, Rar 5186.
+https://doi.org/10.3931/e-rara-4025
+https://www.e-rara.ch/zut/content/titleinfo/1254642?lang=en
+Searchable OCR of the original (some OCR errors):
+https://www.e-rara.ch/zut/download/ftpack/plain/1254642
+
+Section V begins at printed page 165, Article 153, with integral binary
+quadratic forms in Gauss's ax^2+2bxy+cy^2 convention. Articles 154 onward
+treat representation and the determinant b^2-ac. Articles 157-159 treat
+integral substitutions and proper/improper equivalence. Articles 171-175
+treat reduction, finite enumeration, and equivalence classes.
+
+The note uses Ax^2+Bxy+Cy^2 and D=B^2-4AC. For odd B, doubling the whole
+form produces Gauss's integral triple (2A,B,2C); for even B use (A,B/2,C).
+Scaling preserves proper equivalence. The modern word "fundamental" is
+used only for the explicit squarefreeness/congruence restriction given
+in the paper. No later theorem relating forms to ideals is needed.
+
+The small-prime obstruction is proved directly by displaying a primitive
+form that represents p and invoking the hypothesis that there is only
+one proper class. The proof neither assumes nor proves ideal factorization.
+The nine surviving discriminants are checked by a reduction argument
+given in full, followed by a search with leading coefficient at most 7.
+
+2. Cauchy, Cours d'analyse (1821)
+--------------------------------
+Text of the 1882 collected-works reprint (its title page gives 1821):
+https://fr.wikisource.org/wiki/Cours_d%E2%80%99analyse_de_l%E2%80%99%C3%A9cole_royale_polytechnique
+Relevant determinant chapter:
+https://fr.wikisource.org/wiki/Cours_d%E2%80%99analyse_de_l%E2%80%99%C3%A9cole_royale_polytechnique/Chapitre_III
+
+Chapter III, section 2, constructs the alternating determinant expression
+by replacing exponents in a Vandermonde expansion with indices, discusses
+its alternating property, and applies it to general linear equations.
+Chapter IV treats polynomial interpolation. Chapters VI-VIII document
+series, complex expressions and their moduli, and complex polynomial
+functions. The note needs only permutation expansion, elimination, the
+triangle inequality, and elementary polynomial identities.
+
+Hadamard's inequality has been removed. The substitute is
+|det M| <= N! times the product of rowwise entry bounds, with N! <= N^N.
+This raises the determinant error from 4 log R/R to 6 log R/R. The final
+cutoff is still 32768, as checked in the note and verify_constants.py.
+
+3. Cauchy, Resume des lecons ... sur le calcul infinitesimal (1823)
+----------------------------------------------------------------
+Original edition: ETH-Bibliothek Zurich, Rar 10369.
+https://doi.org/10.3931/e-rara-25962
+https://www.e-rara.ch/zut/content/titleinfo/8350182
+Original OCR:
+https://www.e-rara.ch/zut/download/ftpack/plain/8350182
+
+Lessons 3-10 treat derivatives, partial derivatives and differentiation.
+Lessons 21-25 treat definite integrals, their evaluation and geometric
+interpretation. These support the integral comparisons, polynomial
+derivatives, elementary monotonicity and logarithmic bounds used here.
+The partial-summation identity in the note is explicitly derived by
+summing f(p)=f(X)-integral_p^X f'(t) dt over finitely many primes.
+The logarithm and arctangent estimates are also derived in the paper.
+
+4. Galois, Sur la theorie des nombres (June 1830)
+------------------------------------------------
+Bulletin des sciences mathematiques, physiques et chimiques 13 (1830),
+428-435; reprinted in Oeuvres mathematiques (1897), pages 15-23.
+https://fr.wikisource.org/wiki/%C5%92uvres_math%C3%A9matiques/5
+
+The text introduces expressions a+a_1 i+...+a_(nu-1)i^(nu-1), where i
+satisfies an irreducible congruence modulo p, counts the p^nu expressions,
+and treats their arithmetic. It derives alpha^(p^nu)=alpha and describes
+the p-power conjugates. It explicitly uses the derivative of a polynomial
+congruence to discuss repeated roots. The first source footnote identifies
+the original publication as volume XIII, page 428, June 1830. Thus 1897
+is the reprint date, not the date assigned to these concepts.
+
+Our note uses only degree two, explains inverses by the polynomial
+Euclidean algorithm, and proves z^p=conjugate(z). Polynomial root counts
+and the derivative/multiplicity statement are also explained. No modern
+classification of finite fields, Galois theory, or ideal quotient theorem
+is invoked. The name "Frobenius" is modern shorthand for the displayed
+p-power congruence already present in Galois's 1830 treatment.
+
+5. Prime estimates and finite calculation
+-----------------------------------------
+There is no appeal to a published Chebyshev, Mertens, or prime number
+theorem. The prime estimates are new deductions here from binomial
+coefficients, factorization of factorials, and integral comparison.
+Counting multiples proves the factorial valuation identity directly.
+The final exclusion is a 30-row CRT table containing 104 witnesses, plus
+15 witnesses below 164. The CRT step is explained by Bezout's identity.
+No electronic or mechanical computation is a premise of the proof.
+The optional code checks the displayed tables and constants exactly.
+
+6. Modern provenance
+---------------------
+Question: Tao's comment reporting Ben Green's historical variant:
+https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/#comment-698559
+
+The derivative determinant and triangular congruence transformation are
+from Green, On Landau-Siegel zeros, v2 (2026):
+https://hexagonmath.org/2610.00311v2
+
+Auxiliary-prime nonvanishing is from van Dijk (2026):
+https://hexagonmath.org/2610.00409v1
+
+The paper cites Silberman's small-prime obstruction and Pratt's norm
+counts, auxiliary-prime, divisibility and finite-sieve suggestions in
+"Modern attribution" footnotes at their points of use, with links to the
+individual comments. Green and van Dijk are credited in the same way.
+The base elementary companion is acknowledged, but is not a mathematical premise:
+https://github.com/twinheterodox/tenth-discriminant/tree/main/companions/elementary
+
+Removing these attribution notes would leave the mathematical argument
+complete, but that check alone would not settle historical eligibility.
+This reconstruction does not assign historical priority for the proof
+to Gauss, Cauchy, or Galois. Assessing its eligibility under the intended
+meaning of "concepts", and finding an earlier documented collection of
+concepts if possible, are separate historical questions.

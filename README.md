@@ -8,17 +8,26 @@ zeroes, without using Heegner's solution. The repository records the
 arguments, computations, and revisions so that they can be
 examined and cited in the discussion.
 
-The work has two complementary aims, with separate publication series:
+The work has three complementary aims, with separate publication series:
 
 - **Sharper bounds:** the numbered versions, v1, v2, and so on, record
   progressively smaller analytic cutoffs and revisions of those arguments.
 - **Simpler proofs:** [companion papers](#companion-papers) pursue objectives
   such as reducing the machinery or giving a self-contained exposition.
   Each companion has its own version history and release tags.
+- **Historical reconstruction:** the [historical companion](#historical-companion)
+  addresses how early the necessary results and concepts were available.
+  It gives a complete proof and separately assesses the proposed date.
 
 A companion can have a larger cutoff while offering a shorter or more
 elementary proof. It is a separate contribution alongside the numbered
 series. Review status is recorded for each paper and revision separately.
+
+**New: [historical-v0.1.0](https://github.com/twinheterodox/tenth-discriminant/releases/tag/historical-v0.1.0)**
+proposes a reconstruction using tools documented by **1830**, with
+`q < 32,768` and a complete printed finite certificate.
+[Read the fourteen-page paper](companions/historical/output/pdf/historical-1830.pdf) ·
+[Historical scope and reproduction](companions/historical/README.md).
 
 For a negative fundamental discriminant `D`, write `q = |D|`. Versions 1
 and 2 combine a classical theta integral with results from
@@ -93,14 +102,45 @@ will retain the `elementary-` prefix and their own citation snapshots;
 the [companion changelog](companions/elementary/CHANGELOG.md) records that history.
 The next numbered version, v7, remains available for a further improvement
 in the analytic cutoff. Published release links and earlier snapshots in
-both series will remain available for citation.
+each series will remain available for citation.
+
+### Historical companion
+
+The **historical reconstruction** addresses
+[Tao's variant, communicated by Ben Green](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/#comment-698559):
+the earliest year in which a self-contained proof of no tenth
+discriminant could use only results and concepts already in the literature.
+It proposes **1830**, retains **`q < 32,768`**, and eliminates the finite
+remainder with 119 printed modular witnesses and a reduced-form table.
+
+**[Read the fourteen-page historical reconstruction](companions/historical/output/pdf/historical-1830.pdf)** ·
+[Source, historical scope, and reproduction](companions/historical/README.md) ·
+[historical-v0.1.0 release and downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/historical-v0.1.0)
+
+Explicit quadratic forms replace ideal theory, determinant permutation
+expansion replaces Hadamard's inequality, and the required quadratic
+congruence arithmetic is proved directly. The paper distinguishes
+historical references documenting available foundations from modern
+attribution at the points where ideas enter. Section 1.1 explains the
+interpretation of "results and concepts" underlying the date claim.
+It does not claim that the proof was known in 1830 or that the year is optimal.
+
+**The mathematical proof and historical eligibility require separate
+review; no independent audit verdict is asserted for this reconstruction.**
+Its exact constant checks, printed certificate, and separate sieve of
+4,095 candidates pass, with outputs reproduced from the release bundle.
+The [review record](companions/historical/REVIEW.md) gives the scope.
+
+This companion uses the **`historical-`** release prefix, beginning with
+**`historical-v0.1.0`**. Its [own changelog](companions/historical/CHANGELOG.md)
+records later revisions, including any improvement to the proposed year.
 
 ## Versions and improvements
 
 In the numbered series, improved bounds are added as new versions, each
 with its own proof and verification files. Published snapshots and
 release links are preserved, so earlier comments can continue to cite the
-exact argument they discussed. This README is the entry point to both
+exact argument they discussed. This README is the entry point to all
 series and their histories; the changelog records mathematical changes
 and editorial revisions in the numbered series. The original v1 README is retained
 below as a historical snapshot.
@@ -177,6 +217,7 @@ All releases are research drafts.
 - [v0.6.0: smoothed Frobenius determinant proof and verification](https://github.com/twinheterodox/tenth-discriminant/tree/v0.6.0/versions/v6)
 - [v0.6.1: revised v6 exposition, with the same bound and certificates](https://github.com/twinheterodox/tenth-discriminant/tree/v0.6.1/versions/v6.1)
 - [elementary-v0.1.0: original elementary companion publication](https://github.com/twinheterodox/tenth-discriminant/tree/elementary-v0.1.0/companions/elementary)
+- [historical-v0.1.0: reconstruction using tools documented by 1830](https://github.com/twinheterodox/tenth-discriminant/tree/historical-v0.1.0/companions/historical)
 
 The v0.6.0 directory, tag, and downloadable assets retain the original
 paper. V0.6.1 is a separate release containing the revised exposition;

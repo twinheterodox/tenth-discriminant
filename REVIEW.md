@@ -260,6 +260,26 @@ was [c46f45b](https://github.com/twinheterodox/tenth-discriminant/commit/c46f45b
 The original tag retains the status at first publication; the release
 downloads include the completed-verification status under the same version.
 
+## historical-v0.1.0 - historical reconstruction
+
+The historical companion gives the cutoff `q < 32,768`, a complete
+printed finite certificate, and a proposed historical cutoff of 1830.
+Its mathematical proof and historical eligibility require separate
+review. No independent audit verdict is asserted for this reconstruction;
+the elementary companion's completed verification does not automatically
+cover these adaptations or the date claim.
+
+Exact rational checks and all 119 printed modular witnesses pass. A
+separate Euler-criterion sieve of 4,095 candidates agrees with the
+certificate, and reduced-form enumeration verifies the nine survivors.
+An isolated run of the release bundle reproduces the recorded outputs.
+The fourteen-page PDF was compiled, rendered, and visually inspected;
+publication preserves the revised manuscript and PDF unchanged.
+These computational and production checks are not formal verification.
+
+See the [historical companion's review record](companions/historical/REVIEW.md)
+and [historical source documentation](companions/historical/historical_sources.txt).
+
 ## Recording future reviews
 
 Record the reviewed version or commit, date, reviewer/model when available,

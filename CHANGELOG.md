@@ -1,7 +1,8 @@
 # Mathematical changelog
 
 This changelog records the numbered series of improving bounds. Companion
-papers have separate histories: [elementary companion](companions/elementary/CHANGELOG.md).
+papers have separate histories: [elementary companion](companions/elementary/CHANGELOG.md)
+and [historical reconstruction](companions/historical/CHANGELOG.md).
 
 ## v0.6.1 — revised exposition, 21 October 2026
 

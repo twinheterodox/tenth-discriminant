@@ -1,0 +1,947 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage{microtype,xurl,array,longtable,float}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\OK}{\mathcal A}
+\newcommand{\attribution}[1]{\footnote{\emph{Modern attribution.} #1}}
+\newcommand{\blog}{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/}
+\title{No tenth discriminant\\
+\large A modern reconstruction using tools documented by 1830}
+\author{Research note prepared with Codex}
+\date{Draft of 21 October 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove that a negative fundamental discriminant of class number one
+has absolute value \(q<32768\), and then exclude every possibility
+outside \(3,4,7,8,11,19,43,67,163\) by explicit residue tables.
+The proof uses binary quadratic forms, elementary calculus and
+prime estimates, determinant expansion, and arithmetic modulo an
+irreducible quadratic congruence. These foundations were available
+in print by 1830. Ideal theory and Hadamard's determinant inequality
+are replaced by elementary arguments. The tables and all numerical
+inequalities can be checked from the paper; software is supplementary.
+We distinguish the historical sources documenting those tools from the
+2026 sources to which we owe the argument. The proposed 1830 cutoff
+uses the interpretation of ``results and concepts'' stated in
+Section~\ref{historical-scope}. We do not claim that the proof was
+known then or that 1830 is the earliest possible year.
+\end{abstract}
+
+\section{The historical question and the theorem}\label{history}
+
+Tao, reporting a question of Ben Green \cite{tao}, asks how early
+one could have proved the nonexistence of a tenth discriminant using
+only results and concepts already in the literature. We adapt the
+elementary companion \cite{companion} to this question. The essential
+changes are to replace ideal theory by explicit quadratic forms,
+replace Hadamard's inequality by the permutation expansion of a
+determinant, and replace a computer sieve by a printed certificate.
+The proof below is complete independently of that companion. Contemporary
+sources are cited for attribution and context, with the convention
+explained below.
+
+Throughout, a \emph{negative fundamental discriminant} means an
+integer \(D<0\) satisfying either: \(D\) is squarefree and
+\(D\equiv1\pmod4\); or \(D=4d\), where \(d\) is squarefree and
+\(d\equiv2\) or \(3\pmod4\). Put \(q=-D\). We use the original
+quadratic-form formulation of the class-number problem: \(h(D)\)
+is the number of proper equivalence classes of primitive positive
+definite forms
+\[
+ Ax^2+Bxy+Cy^2,\qquad B^2-4AC=D.
+\]
+Here primitive means \(\gcd(A,B,C)=1\), and proper equivalence means
+an integral change of variables of determinant one. Equivalent forms
+represent exactly the same integers. In particular, if \(h(D)=1\),
+every such form is equivalent to the principal form. We will need
+no composition law for forms.
+
+\begin{theorem}\label{main}
+If \(D<0\) is fundamental and \(h(D)=1\), then \(q<32768=2^{15}\).
+\end{theorem}
+\begin{theorem}\label{classification}
+For a negative fundamental discriminant \(D\),
+\[
+ h(D)=1\quad\Longleftrightarrow\quad
+ |D|\in\{3,4,7,8,11,19,43,67,163\}.
+\]
+\end{theorem}
+
+\subsection{Historical scope and citation conventions}\label{historical-scope}
+
+The mathematical statements above and the proposed historical cutoff
+are separate claims. Our interpretation of the challenge permits new
+constructions and deductions using objects, operations and results
+documented by 1830. It does not permit importing a later concept
+merely because its definition or a theorem about it can be written
+in elementary terms.
+
+In particular, we treat the finite array of polynomial derivatives
+in Section~\ref{determinant} as a new construction from determinants,
+polynomials, derivatives and quadratic congruences. We exhibit that
+array and prove its nonvanishing, size and divisibility properties
+directly. We assume no general theorem about interpolation
+determinants. The strategic use of this construction is modern;
+our historical claim concerns the concepts needed to formulate and
+justify it. Whether that distinction meets the challenge's intended
+meaning of ``concepts'' is a separate historical judgement.
+
+References labelled H document the availability of the foundations.
+References labelled M identify modern sources of the argument or
+the context of the question. Attributions beside the proof appear in
+footnotes headed \emph{Modern attribution}; they give credit without
+serving as substitutes for proofs. Every mathematical assertion taken
+from a modern source and needed here is proved in the text. Removing
+the modern attribution notes would therefore leave the mathematical
+argument complete, although that test alone would not establish its
+historical eligibility. We make no claim that the construction was
+known in 1830, or that it could not be reconstructed from earlier tools.
+
+\subsection{Historical foundations}\label{historical-foundations}
+
+Gauss's 1801 treatment
+\cite[Section V]{gauss} supplies the language of forms, integral
+substitutions, representation and reduction. We use the modern
+middle-coefficient convention \(B\), whereas Gauss writes \(2b\). For odd \(B\), double our whole form to
+obtain his integral triple \((2A,B,2C)\); for even \(B\), use
+\((A,B/2,C)\). Scaling all forms in a fixed case preserves proper
+equivalence. The squarefreeness condition in our definition is also
+an explicit arithmetic restriction, not an input from ideal theory. Cauchy's 1821 text
+\cite[Chapters III, VI--VIII]{cauchy} documents determinant algebra,
+series and complex absolute values; ordinary differential and
+integral calculus is also in his 1823 lectures \cite{calculus}.
+Galois's published 1830 paper \cite{galois} explicitly treats
+arithmetic with roots of irreducible polynomial congruences,
+\(p\)-power conjugation, and differentiation of those polynomials.
+Only the quadratic case is used here, and it is proved below.
+
+The resulting dependency dates are summarized in
+Table~\ref{dependency-table}. The terms ``field'' and ``Frobenius''
+abbreviate the explicit quadratic arithmetic explained in
+Section~\ref{arithmetic}; no later structural theorem is required.
+All estimates for primes
+are derived from factorials and binomial coefficients. In particular,
+we do not use an externally supplied prime-distribution theorem.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}p{.43\linewidth}p{.47\linewidth}@{}}
+\toprule
+Foundation used & Pre-1831 source or explicit reduction \\
+\midrule
+Forms, congruences, integer factorization & Gauss (1801), Sections I--V \\
+Determinants and linear equations & Cauchy (1821), Chapter III \\
+Complex moduli, series, elementary calculus & Cauchy (1821), Chapters VI--VIII; lectures (1823) \\
+Arithmetic modulo an irreducible quadratic; polynomial derivatives & Galois (1830); elementary details in Section~\ref{arithmetic} \\
+Prime estimates, determinant estimates and finite exclusion & Proved here from those foundations \\
+\bottomrule
+\end{tabular}
+\caption{Dates concern available foundations, not discovery of the present proof.}
+\label{dependency-table}
+\end{table}
+
+\section{Arithmetic with forms and quadratic congruences}\label{arithmetic}
+
+\subsection{The small-prime obstruction without ideals}
+
+We first establish the small-prime obstruction directly from
+quadratic forms.\attribution{The obstruction was emphasized by
+Silberman \cite{silberman}; the derivation here uses explicit forms
+in place of ideal theory.}
+First suppose \(D=-4m\) is even and
+fundamental, so \(m\) is squarefree and \(m\equiv1\) or \(2\pmod4\).
+The principal form is \(x^2+my^2\). If \(m\equiv2\pmod4\), the
+form with coefficients \((2,0,m/2)\) is primitive and has discriminant
+\(-4m\). If \(m\equiv1\pmod4\), use \((2,2,(m+1)/2)\) instead.
+Both represent 2. If \(h(D)=1\), so must \(x^2+my^2\), which is
+impossible when \(m>2\). Thus \(q>8\) forces \(q\) to be odd.
+
+Now \(q\) is squarefree and \(q\equiv3\pmod4\). Put
+\begin{equation}\label{norm-form}
+ u=\sqrt q,\quad \omega=(1+iu)/2,\quad
+ Q(a,b)=|a+b\omega|^2=a^2+ab+\frac{q+1}{4}b^2
+ =(a+b/2)^2+qb^2/4.
+\end{equation}
+This is the principal form of discriminant \(-q\).
+If \(p\) is an odd prime and \(-q\) is a square modulo \(p\)
+(including zero), choose an odd integer \(B\) with
+\(B^2\equiv-q\pmod p\). Then
+\[
+ \left(p,B,\frac{B^2+q}{4p}\right)
+\]
+is an integral positive definite form of discriminant \(-q\),
+representing \(p\). It is primitive: when \(p\nmid q\), we have
+\(p\nmid B\); when \(p\mid q\), squarefreeness gives
+\(p\nmid(B^2+q)/(4p)\). Consequently \(h(D)=1\) forces
+\(p=Q(a,b)\). Here \(b\ne0\), since a prime is not a square,
+and hence \(p\ge q/4\).
+
+If \(q\equiv7\pmod8\), the primitive form
+\((2,1,(q+1)/8)\) represents 2. The same reasoning contradicts
+\(q>8\). We have therefore proved, for every \(q>8\) of class
+number one,
+\begin{equation}\label{small-inert}
+ q\equiv3\pmod8,\qquad
+ p<q/4, p\text{ odd prime}\ \Longrightarrow\
+ -q\text{ is a nonzero nonsquare modulo }p.
+\end{equation}
+This statement alone will suffice for the finite certificate.
+
+For Theorem~\ref{main}, assume from now until Section~\ref{finite}
+that \(h(D)=1\) and \(q\ge q_0:=32768\).
+Then \(q\) is prime: a composite squarefree \(q\) would have a
+prime divisor \(p\le\sqrt q<q/4\), contrary to
+\eqref{small-inert}. For this prime \(q\), we call an odd prime
+\(p\ne q\) \emph{split} or \emph{inert} according as \(-q\) is a
+square or nonsquare modulo \(p\). We also call 2 inert, and call
+\(q\) ramified. These are just names for the three congruence cases.
+All noninert primes are at least \(q/4\).
+
+\subsection{The required arithmetic modulo an inert prime}
+
+Let \(\OK=\Z+\Z\omega\). The identities
+\[
+ \omega^2=\omega-(q+1)/4,\qquad \bar\omega=1-\omega
+\]
+show directly that \(\OK\) is closed under addition, multiplication
+and conjugation. Every nonzero \(z=a+b\omega\) has positive integer
+norm \(z\bar z=Q(a,b)\), hence \(|z|\ge1\). We write
+\(z\equiv z'\pmod p\) when both coefficients of \(z-z'\) are
+multiples of \(p\); this definition respects addition and multiplication.
+
+For inert \(p\), the polynomial
+\(f(X)=X^2-X+(q+1)/4\) is irreducible modulo \(p\): for odd
+\(p\) its discriminant is the nonsquare \(-q\); for \(p=2\)
+it is \(X^2+X+1\). Arithmetic with the \(p^2\) expressions
+\(a+b\omega\), \(a,b\) taken modulo \(p\), is thus a field.
+Indeed the polynomial Euclidean algorithm gives an inverse modulo
+\(f\) for every nonzero polynomial of degree at most one.
+This is exactly the kind of arithmetic described by Galois in 1830
+\cite{galois}; it does not require ideals or abstract field theory.
+
+In this arithmetic,
+\begin{equation}\label{frobenius}
+ z^p=\bar z\quad\text{for every }z\in\OK.
+\end{equation}
+To prove this, the binomial theorem modulo \(p\) and Fermat's
+congruence show that \(\omega^p\) is a root of \(f\).
+It cannot equal \(\omega\): the polynomial \(X^p-X\) already
+has all \(p\) scalar residues as roots, and a nonzero polynomial
+of degree \(p\) over a field has at most \(p\) roots. (Successive
+division by \(X-a\) proves this root count.) Therefore
+\(\omega^p=1-\omega\), the other root of \(f\). Applying the
+binomial theorem once more proves \eqref{frobenius}.
+This proof includes \(p=2\).
+
+\subsection{Endpoint constants}
+
+Write \(L=\log q\); all logarithms are natural. The elementary
+bounds used below are proved in Appendix~\ref{constants}.
+In particular,
+\begin{equation}\label{endpoint}
+ \frac{207}{20}<\log q_0<\frac{21}{2},\qquad
+ \sqrt{q_0}>180.
+\end{equation}
+Indeed \(q_0=2^{15}\), \(69/100<\log2<7/10\), and
+\(180^2<32768\). Since \((\log q)/\sqrt q\) decreases when
+\(\log q>2\), for every \(q\ge q_0\) we have
+\begin{equation}\label{uniform-endpoint}
+ L>207/20,\qquad L/u<7/120.
+\end{equation}
+
+\section{Elementary prime estimates}\label{primes}
+
+Write
+\[
+ \vartheta(x)=\sum_{p\le x}\log p,\qquad
+ A(x)=\sum_{p\le x}\frac{\log p}{p},\qquad
+ B=\sum_p\frac{\log p}{p^2}.
+\]
+A letter \(p\) under a sum always denotes a rational prime. The
+following estimates suffice; no lower bound for
+\(\vartheta\) is required.
+
+\begin{lemma}\label{primelemma}
+For \(x\ge1\) and integers \(m\ge2\),
+\begin{equation}\label{prime-estimates}
+ \vartheta(x)<\frac32x,\qquad
+ \log m-\frac73<A(m)<\log m+\frac32,\qquad B<\frac23.
+\end{equation}
+\end{lemma}
+\nopagebreak[4]
+\begin{proof}
+Write \(n=2k\) or \(n=2k+1\). Every prime in
+\((\lceil n/2\rceil,n]\) divides the central binomial coefficient
+\(\binom n{\lfloor n/2\rfloor}\). This coefficient is at most
+\(2^{2k}\): in the odd case there are two equal central coefficients.
+Thus
+\[
+ \vartheta(n)-\vartheta(\lceil n/2\rceil)
+ \le 2\lfloor n/2\rfloor\log2.
+\]
+Starting at \(n=1\), induction gives \(\vartheta(n)<2n\log2\).
+Taking \(n=\lfloor x\rfloor\), and using \(\log2<7/10<3/4\),
+proves the first assertion.
+
+Every prime other than 2 is odd, and \(f(x)=\log x/x^2\) decreases
+for \(x\ge3\). For each odd integer \(n\ge5\),
+\(f(n)\le\tfrac12\int_{n-2}^n f(x)\,dx\). Hence
+\begin{align*}
+ B&\le\frac{\log2}{4}+\frac{\log3}{9}
+                  +\frac12\int_3^\infty\frac{\log x}{x^2}\,dx\\
+  &=\frac{\log2}{4}+\frac5{18}\log3+\frac16
+    <\frac{233}{360}<\frac23,
+\end{align*}
+using \(\log3<11/10\).
+
+Counting the multiples of \(p,p^2,\ldots\) among \(1,\ldots,m\)
+gives \(v_p(m!)=\sum_{j\ge1}\lfloor m/p^j\rfloor\), where
+\(v_p\) denotes the exponent of \(p\) in an integer. Thus integral
+comparison and \(1/(p(p-1))\le2/p^2\) give
+\[
+ m\log m-m<\log(m!)
+ \le mA(m)+m\sum_p\frac{\log p}{p(p-1)}
+ \le mA(m)+2mB<mA(m)+\frac43m.
+\]
+This proves the lower bound for \(A(m)\). In the other direction,
+\(\log(m!)\ge mA(m)-\vartheta(m)\) and
+\(\log(m!)\le m\log m\) prove the upper bound.
+\end{proof}
+
+\section{Norm counts and an auxiliary inert prime}\label{norms}
+
+Counting norm representations will bound the number of split primes
+and yield an auxiliary inert prime.\attribution{Pratt \cite{pratt}
+suggested this combination of norm counts and a supply of inert
+primes. The estimates needed here are derived below.}
+We use an unsieved norm count and a weighted interval of ordinary primes.
+
+Let \(\pi_+(x)\) count split rational primes at most \(x\). For each
+integer \(b>0\), the real interval of \(a\) satisfying
+\(Q(a,b)\le x\) has length \(2\sqrt{x-qb^2/4}\), when nonempty.
+Bounding the number of integers by length plus 1, and the decreasing
+length sum by its integral, gives
+\[
+ \#\{(a,b)\in\Z\times\Z_{>0}:Q(a,b)\le x\}
+ \le\frac{\pi x}{u}+\frac{2\sqrt x}{u}.
+\]
+Every split prime \(p\) is represented by \(Q\), as proved in
+Section~\ref{arithmetic}. Choose a representing \(z=a+b\omega\)
+with \(b>0\). Then \(-\bar z\) is another such point. They are
+distinct: equality would give \(2a+b=0\), hence \(b=2k\) and
+\(p=qk^2\), impossible for a split prime. Thus each split prime
+supplies at least two points with \(b>0\), and consequently
+\begin{equation}\label{split-count}
+ \pi_+(x)\le\frac{\pi x}{2u}+\frac{\sqrt x}{u}.
+\end{equation}
+
+For \(X\ge Y\ge q/4\), partial summation, followed by
+\eqref{split-count}, yields
+\begin{align}
+ \sum_{\substack{Y<p\le X\\p\text{ split}}}\frac{\log p}{p}
+ &\le\frac{\pi}{4u}
+       \bigl((\log X)^2-(\log Y)^2+2\log Y\bigr)
+       +\frac{2(\log Y+1)}{u\sqrt Y}.\label{interval-weight}
+\end{align}
+For clarity, this is only an identity obtained by summing
+\(f(p)=f(X)-\int_p^X f'(t)\,dt\), with \(f(t)=\log t/t\),
+over a finite set of primes and subtracting the contribution below
+\(Y\). It gives
+\[
+ \frac{\log X}{X}\pi_+(X)-\frac{\log Y}{Y}\pi_+(Y)
+ +\int_Y^X\pi_+(t)\frac{\log t-1}{t^2}\,dt.
+\]
+Discard the nonpositive lower boundary term. Substitution of
+\eqref{split-count} then gives the right side of
+\eqref{interval-weight}, together with the further nonpositive term
+\(-(\log X+2)/(u\sqrt X)\).
+
+Put \(S_+(X)=\sum_{p\le X,\ p\text{ split}}\log p/p\).
+There are no split primes at or below \(q/4\), by
+Section~\ref{arithmetic} and the fact that \(q/4\) is not an integer.
+Taking \(Y=q/4\) in \eqref{interval-weight}, and using
+\(\log(q/4)>2\) and \(\pi<16/5\), gives
+\begin{equation}\label{split-weight}
+ S_+(X)\le\frac4{5u}(\log X)^2+\frac{4(L+1)}q
+ \qquad(X\ge q/4).
+\end{equation}
+
+\begin{lemma}\label{auxiliary}
+There is an inert prime \(R\) with \(q^4<R\le q^5\).
+\end{lemma}
+\nopagebreak[4]
+\begin{proof}
+Lemma~\ref{primelemma} shows that the total weight \(\log p/p\)
+of primes in \((q^4,q^5]\) is greater than \(L-23/6\).
+By \eqref{interval-weight}, the split-prime weight there is at most
+\[
+ \frac4{5u}(9L^2+8L)+\frac{2(4L+1)}{u q^2}.
+\]
+It is therefore enough to check
+\begin{equation}\label{aux-inequality}
+ \frac{23}{6L}+\frac4{5u}(9L+8)
+             +\frac{2(4+1/L)}{u q^2}<1.
+\end{equation}
+Each term decreases as \(q\) increases in our range. For the middle
+term, differentiation with respect to \(L\) gives a factor
+\(9-(9L+8)/2<0\); the other terms plainly decrease.
+At \(q=q_0\), \eqref{endpoint} bounds the left side by
+\[
+ \frac{10}{27}+\frac{41}{90}
+       +\frac{2(4+20/207)}{180\cdot32768^2}
+ <\frac{10}{27}+\frac{41}{90}+\frac1{1000}<\frac56.
+\]
+The only ramified prime, \(q\), is below the interval. Since the
+split primes cannot account for its full weight, an inert prime exists.
+\end{proof}
+
+\section{The derivative determinant}\label{determinant}
+
+We construct a determinant of polynomial derivatives evaluated on
+a rectangular set of elements of \(\OK\).\attribution{This
+construction is adapted from Green \cite[\S2]{green}.}
+Choose \(R\) as in
+Lemma~\ref{auxiliary} and put
+\[
+ S=\lfloor R/12\rfloor,\qquad J=\lceil R/48\rceil,\qquad
+ N=RS,\qquad T=2\sqrt{Ru}.
+\]
+Take all points
+\[
+ z=a+b\omega,\qquad
+ |a|\le A_0:=\lceil\sqrt{Ru}\rceil,\qquad
+ |b|\le B_0:=\lceil\sqrt{R/u}\rceil.
+\]
+Their number is \(n=(2A_0+1)(2B_0+1)\ge4R\), so \(nJ\ge RS\).
+Since \(|\omega|\le3u/5\), \(u>1\), and \(R>q^4>100u\),
+\[
+ |z|\le\frac85\sqrt{Ru}+1+\frac35u
+       \le\frac{44}{25}\sqrt{Ru}<T.
+\]
+Here \(\sqrt{Ru}>10u\). Also \(2T<R\) and \(1<T<R\).
+
+Form the matrix whose rows are indexed by \((r,s)\),
+\(0\le r<R\), \(0\le s<S\), and whose columns are indexed by a
+point \(z_i\) and an order \(0\le k<J\). The entry is
+\begin{equation}\label{matrix-entry}
+ \left.\partial_z^k(z^r w^s)\right|_{(z_i,\bar z_i)}.
+\end{equation}
+These are ordinary derivatives, without division by factorials.
+
+\subsection{Nonvanishing over a finite field}
+
+We prove nonvanishing by reducing the array modulo the auxiliary
+prime.\attribution{This argument follows van Dijk \cite{vandijk},
+as highlighted by Green \cite{greencomment}. Green also attributes
+essentially the same method to unpublished work of Jacob Pescador.
+Our source is the public argument.}
+
+Reduce \eqref{matrix-entry} modulo the inert prime \(R\), in the
+quadratic arithmetic of Section~\ref{arithmetic}. This field has
+\(R^2\) elements. The nodes remain distinct:
+every nonzero element of \(R\OK\) has modulus at least \(R\),
+by the positive integral norm proved in Section~\ref{arithmetic},
+whereas any difference of two nodes has modulus less than \(2T<R\).
+Equation~\eqref{frobenius} gives \(\bar z_i=z_i^R\) in this field.
+
+If a nonzero row combination vanished, let \(F(z,w)\) be its
+polynomial and substitute \(w=z^R\). The exponents \(r+Rs\) are
+distinct, so \(F(z,z^R)\) is nonzero and has degree at most \(RS-1\).
+Its derivatives agree with the prescribed partial derivatives,
+because the derivative of \(z^R\) is zero in characteristic \(R\).
+Since \(J\le R\) and \(k!\ne0\) for \(0\le k<J\), each node is
+a root of multiplicity at least \(J\): the coefficient of
+\((z-z_i)^k\) in the translated polynomial is its \(k\)-th derivative
+at \(z_i\), divided by \(k!\). Successive polynomial division then
+forces its degree to be at least \(nJ\ge RS\), a contradiction.
+
+The rows are therefore linearly independent over this field.
+Ordinary elimination (using only field operations) selects \(N\)
+columns with nonzero determinant modulo \(R\). Fix this nonzero \(N\)-square
+minor \(D_0\in\OK\), and set
+\[
+ \Delta=D_0\overline{D_0}\in\Z_{>0}.
+\]
+Only this minor is used from now on.
+
+\subsection{The complex absolute-value bound}
+
+Each entry in row \((r,s)\) has modulus at most
+\(T^{r+s}(R/T)^J\): the derivative contributes at most \(R^k\),
+and an entry with \(k>r\) is zero. Expand the determinant as the
+signed sum of its \(N!\) permutation products, and use the triangle
+inequality and \(N!\le N^N\). This elementary determinant algebra
+is documented in Cauchy \cite[Chapter III, \S2]{cauchy}.
+We obtain
+\[
+ |D_0|\le N!\prod_{r,s}T^{r+s}(R/T)^J,
+\]
+and hence, after squaring and summing \(r+s\),
+\[
+ \frac{\log\Delta}{R^2S}
+ \le\frac{2\log N}{R}+\left(1+\frac SR\right)\log T
+                           +\frac{2J}{R}\log(R/T).
+\]
+Now \(S/R\le1/12\), \(J/R\le1/48+1/R\), and \(N<R^2\).
+Thus the coefficient of \(\log T\), after combining the main
+terms, is \(25/24\). Since
+\(\log T=\log2+\tfrac12\log R+\tfrac14L\), we obtain
+\begin{equation}\label{upper-det}
+ \frac{\log\Delta}{R^2S}
+ \le\frac9{16}\log R+\frac{25}{96}L
+       +\frac{25}{24}\log2+\frac{6\log R}{R}.
+\end{equation}
+
+\subsection{Divisibility at the inert primes}
+
+A triangular change of row polynomials will force divisibility at
+each inert prime.\attribution{The transformation is adapted from
+Green \cite[Lemma~5.1]{green}; Pratt \cite{pratt} suggested using
+this stronger divisibility estimate.}
+We give the full argument, including \(p=2\).
+For an inert prime \(p\), put
+\[
+ h_{r,s}=\min(\lfloor r/p\rfloor,S-1-s)
+\]
+and replace each row polynomial \(z^rw^s\) by
+\[
+ z^{r-ph_{r,s}}(z^p-w)^{h_{r,s}}w^s.
+\]
+The leading term is \(z^rw^s\), and every other term has smaller
+\(z\)-degree while remaining in the rectangle of row indices.
+Ordering rows by \(z\)-degree makes this an integer triangular
+transformation of determinant one.
+
+At each node \(z_i^p-\bar z_i\in p\OK\), by \eqref{frobenius}. Every
+positive ordinary derivative of \(z^p-w\) is also divisible by
+\(p\). By the product rule, all entries in the transformed row
+are therefore divisible by \(p^{h_{r,s}}\). Taking norms gives
+\begin{equation}\label{valuation}
+ v_p(\Delta)\ge2\sum_{r,s}h_{r,s}.
+\end{equation}
+The row transformation may depend on \(p\); each divisibility is
+nevertheless a statement about the same integer \(\Delta\).
+
+We bound this sum with generous constants. Direct summation gives,
+for every integer \(k\ge0\),
+\[
+ \sum_{s<S}\min(k,S-1-s)\ge Sk-\frac{k(k+1)}2.
+\]
+Writing \(R=ap+b\), \(0\le b<p\), gives
+\[
+ \sum_{r<R}\lfloor r/p\rfloor
+ =\frac{R(R-p)+b(p-b)}{2p}\ge\frac{R(R-p)}{2p}.
+\]
+Also \(\lfloor r/p\rfloor(\lfloor r/p\rfloor+1)
+\le r^2/p^2+r/p\). Substituting these estimates yields
+\begin{equation}\label{valuation-bound}
+ \frac{2\sum_{r,s}h_{r,s}}{R^2S}
+ \ge\left(1-\frac{R-1}{2RS}\right)\frac1p-\frac1R
+                  -\frac{(R-1)(2R-1)}{6RS p^2}.
+\end{equation}
+Let \(I=\sum_{p\le R,\ p\text{ inert}}\log p/p\). Summing
+\eqref{valuation-bound}, weighted by \(\log p\), and using
+\(S\ge R/13\) and Lemma~\ref{primelemma}, we find
+\begin{align}
+ \frac{\log\Delta}{R^2S}
+ &\ge I-\frac{I}{2S}-\frac{\vartheta(R)}R-\frac{R}{3S}B\notag\\
+ &>I-\frac{I}{2S}-\frac32-\frac{26}{9}
+  =I-\frac{I}{2S}-\frac{79}{18}.\label{lower-det}
+\end{align}
+Here \(S\ge R/12-1\ge R/13\), since \(R>156\).
+
+\section{One endpoint comparison}
+
+Separating the three splitting types in \(A(R)\), and noting that
+the only ramified contribution is \(L/q\), gives
+\[
+ I>\log R-\frac73-S_+(R)-\frac Lq,
+ \qquad I<\log R+\frac32.
+\]
+Combine this with \eqref{upper-det}, \eqref{lower-det}, and
+\eqref{split-weight}. If
+\[
+ G(x)=\frac7{16}x-\frac{25}{96}L-\frac4{5u}x^2,
+\]
+the resulting necessary inequality is
+\begin{equation}\label{G-upper}
+ G(\log R)<\frac{121}{18}+\frac{25}{24}\log2+E,
+ \qquad
+ E=\frac{5L+4}q+\frac{I}{2S}+\frac{6\log R}{R}.
+\end{equation}
+All boundary and rounding terms are included in \(E\). In fact
+\begin{equation}\label{error-bound}
+ E<\frac{5L+4}q+\frac{(25/2)\log R+39/4}{R}
+ <\frac{113}{65536}+\frac{2039}{4\cdot10^{16}}<\frac1{500}.
+\end{equation}
+For the second inequality, the first function decreases with \(q\)
+in our range, so use \eqref{endpoint} at \(q=q_0\).
+The second decreases with \(R\); use \(R>q_0^4>10^{16}\) and
+\(\log(10^{16})<40\). Thus \(\log2<7/10\) gives
+\begin{equation}\label{G-simple}
+ G(\log R)<\frac{121}{18}+\frac{35}{48}+\frac1{500}
+ <\frac{15}{2}.
+\end{equation}
+
+On the other hand, \(4L<\log R\le5L\) by
+Lemma~\ref{auxiliary}, and \(G\) is concave. Its minimum on
+\([4L,5L]\) is therefore at an endpoint. By
+\eqref{uniform-endpoint},
+\[
+ G(5L)-G(4L)
+ =L\left(\frac7{16}-\frac{36}{5}\frac Lu\right)
+ >\frac7{400}L>0.
+\]
+It follows that
+\[
+ G(\log R)\ge G(4L)
+ =\frac{143}{96}L-\frac{64}{5}\frac{L^2}{u}.
+\]
+Together with \eqref{G-simple}, this forces
+\[
+ \frac{143}{96}
+ <\frac{64}{5}\frac Lu+\frac{15}{2L}
+ <\frac{56}{75}+\frac{50}{69}
+ =\frac{846}{575}<\frac{143}{96},
+\]
+a contradiction. This proves Theorem~\ref{main}.
+
+\section{The remaining finite range: a printed certificate}\label{finite}
+
+We now drop the assumption \(q\ge32768\). Theorem~\ref{main}
+and \eqref{small-inert} reduce the exclusion problem to
+\(8<q<32768\), \(q\equiv3\pmod8\). We exclude the remaining
+candidates by explicit small-prime congruences.\attribution{This
+finite-sieve strategy was proposed by Pratt \cite{prattsieve}.}
+For any odd prime \(p\) and integer \(a\),
+\begin{equation}\label{witness}
+ 4p<q\quad\text{and}\quad p\mid(q+a^2)
+ \quad\Longrightarrow\quad h(-q)\ne1
+\end{equation}
+when \(-q\) is fundamental. The tables may include nonfundamental
+values; excluding those extra values causes no problem.
+
+\subsection{The thirty residue classes above 163}
+
+For \(q>163\), every prime at most 31 satisfies \(4p<q\).
+The condition that \(-q\) be a nonzero nonsquare, first at
+\(3,5,7,11\), leaves exactly
+\begin{equation}\label{crt-sets}
+\begin{split}
+ q&\equiv3\pmod8,\qquad q\bmod3\in\{1\},\qquad
+ q\bmod5\in\{2,3\},\\
+ q\bmod7&\in\{1,2,4\},\qquad
+ q\bmod11\in\{1,3,4,5,9\}.
+\end{split}
+\end{equation}
+The Chinese remainder theorem gives exactly
+\(1\cdot1\cdot2\cdot3\cdot5=30\) residue classes modulo
+\(M=8\cdot3\cdot5\cdot7\cdot11=9240\).
+For completeness, this use of the theorem requires only Bezout's
+identity: for coprime \(m,n\), the numbers \(a+mk\),
+\(0\le k<n\), run through all residues modulo \(n\); iterate.
+The thirty distinct representatives \(0\le r<M\) in
+Table~\ref{large-table} each satisfy \eqref{crt-sets}, so they are
+the complete list.
+
+Every remaining candidate is \(q=r+9240t\) with
+\(t\in\{0,1,2,3\}\), since \(4M>32768\). In the column for
+\(t\), an entry \(p:a\) certifies that \(q+a^2\) is divisible by
+\(p\). All the listed \(p\)'s are primes between 13 and 31. A dash
+means \(q\le163\) or \(q\ge32768\). Thus the table has a witness
+for every candidate in \(163<q<32768\). It contains only 104
+witnesses. For example, the entry \(29:8\) in the row \(2347\),
+column 3, checks
+\[
+ 2347+3\cdot9240+8^2=30131=29\cdot1039.
+\]
+This completes the exclusion above 163 by integer arithmetic.
+
+\clearpage
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.35}
+\begin{longtable}{@{}rrrrr@{}}
+\caption{Complete certificate for \(163<q<32768\), with
+\(q=r+9240t\). Entries are \(p:a\); see \eqref{witness}.}
+\label{large-table}\\
+\toprule
+\(r\) & \(t=0\) & \(t=1\) & \(t=2\) & \(t=3\) \\
+\midrule
+\endfirsthead
+\toprule
+\(r\) & \(t=0\) & \(t=1\) & \(t=2\) & \(t=3\) \\
+\midrule
+\endhead
+% BEGIN certificate_table
+% Static certificate: q = r + 9240 t. Each p:a means p divides q+a^2.
+67 & - & 13:1 & 13:2 & 17:5 \\
+163 & - & 13:3 & 13:5 & 19:3 \\
+883 & 13:1 & 13:2 & 17:0 & 13:6 \\
+907 & 13:4 & 17:6 & 13:3 & 13:5 \\
+1387 & 13:2 & 17:7 & 13:6 & 13:0 \\
+1747 & 17:2 & 29:2 & 13:1 & 13:2 \\
+2083 & 13:6 & 13:0 & 13:4 & 17:7 \\
+2227 & 13:3 & 13:5 & 17:4 & 19:4 \\
+2347 & 17:4 & 13:3 & 13:5 & 29:8 \\
+3067 & 13:1 & 13:2 & 17:3 & 13:6 \\
+3403 & 13:4 & 19:7 & 13:3 & 13:5 \\
+3523 & 13:0 & 13:4 & 23:10 & 13:3 \\
+3763 & 23:3 & 13:6 & 13:0 & 13:4 \\
+4027 & 13:4 & 23:2 & 13:3 & 13:5 \\
+4603 & 13:5 & 23:7 & 23:3 & 31:14 \\
+4867 & 19:4 & 29:4 & 13:1 & 13:2 \\
+5083 & 13:0 & 13:4 & 17:4 & - \\
+5107 & 19:2 & 17:1 & 17:3 & - \\
+5443 & 13:2 & 19:2 & 13:6 & - \\
+5707 & 13:0 & 13:4 & 17:2 & - \\
+5923 & 19:9 & 17:1 & 17:3 & - \\
+6043 & 17:3 & 17:0 & 17:5 & - \\
+6427 & 17:4 & 29:14 & 13:1 & - \\
+6763 & 13:6 & 13:0 & 13:4 & - \\
+7627 & 13:2 & 19:9 & 13:6 & - \\
+7723 & 13:5 & 19:2 & 19:6 & - \\
+8563 & 13:2 & 17:8 & 13:6 & - \\
+8803 & 23:11 & 13:1 & 13:2 & - \\
+8947 & 13:6 & 13:0 & 13:4 & - \\
+9067 & 23:8 & 13:6 & 13:0 & - \\
+% END certificate_table
+\bottomrule
+\end{longtable}
+\end{center}
+\clearpage
+
+\subsection{The twenty candidates up to 163}
+
+Among \(q=11,19,\ldots,163\), the fifteen values in
+Table~\ref{small-table} have witnesses satisfying \eqref{witness}.
+The only survivors are \(11,19,43,67,163\).
+The negative fundamental discriminants with \(q\le8\) have
+absolute values \(3,4,7,8\). This proves the forward implication
+of Theorem~\ref{classification}.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}rr@{}}
+\toprule
+\(q\) & \(p:a\) \\
+\midrule
+% BEGIN small_certificate
+% Static certificate for 11 <= q <= 163, excluding the five survivors.
+27 & 3:0 \\
+35 & 3:1 \\
+51 & 3:0 \\
+59 & 3:1 \\
+75 & 3:0 \\
+83 & 3:1 \\
+91 & 5:2 \\
+99 & 3:0 \\
+107 & 3:1 \\
+115 & 5:0 \\
+123 & 3:0 \\
+131 & 3:1 \\
+139 & 5:1 \\
+147 & 3:0 \\
+155 & 3:1 \\
+% END small_certificate
+\bottomrule
+\end{tabular}
+\caption{The fifteen excluded values with \(11\le q\le163\).}
+\label{small-table}
+\end{table}
+
+\subsection{Checking that the nine survivors have class number one}
+
+Here is a short reduction argument, in the setting of Gauss
+\cite[Section V]{gauss}. In any proper equivalence class, choose a
+form with the least possible positive leading coefficient \(A\).
+An integral substitution \(x\mapsto x+ky\) then arranges
+\(-A<B\le A\). The determinant-one substitution
+\((x,y)\mapsto(-y,x)\) shows that \(A\le C\), by minimality.
+If \(A=C\), the same substitution permits \(B\ge0\).
+Consequently every class has a representative satisfying
+\[
+ |B|\le A\le C,\qquad B\ge0\text{ if }|B|=A\text{ or }A=C.
+\]
+Such a representative has \(q=4AC-B^2\ge3A^2\).
+For each of our nine values, check \(1\le A\le\lfloor\sqrt{q/3}\rfloor\),
+\(-A\le B\le A\), retaining only
+\[
+ C=(B^2+q)/(4A)\in\Z,\quad C\ge A,\quad\gcd(A,B,C)=1,
+\]
+and the boundary convention just stated. Table~\ref{reduced-table}
+records all the resulting triples; the largest \(A\) to check is 7.
+Each discriminant has just one such form, so every class is its
+class. This proves the converse, without a theorem about ideal classes
+or uniqueness of reduction.
+
+\begin{table}[H]
+\centering\small
+\begin{tabular}{@{}rrl@{}}
+\toprule
+\(q\) & \(\lfloor\sqrt{q/3}\rfloor\) & All reduced triples \((A,B,C)\) \\
+\midrule
+3 & 1 & \((1,1,1)\) \\
+4 & 1 & \((1,0,1)\) \\
+7 & 1 & \((1,1,2)\) \\
+8 & 1 & \((1,0,2)\) \\
+11 & 1 & \((1,1,3)\) \\
+19 & 2 & \((1,1,5)\) \\
+43 & 3 & \((1,1,11)\) \\
+67 & 4 & \((1,1,17)\) \\
+163 & 7 & \((1,1,41)\) \\
+\bottomrule
+\end{tabular}
+\caption{A finite check with \(A\le7\) establishes the converse.}
+\label{reduced-table}
+\end{table}
+
+\section*{Reproducibility and status}
+
+The paper, including its tables and Appendix~\ref{constants},
+is the proof. Supplementary Python code checks the printed
+tables directly in the LaTeX source, the rational inequalities, and the nine reduced-form
+lists. It also cross-checks the certificate by a direct sieve of all
+4095 candidates \(q\equiv3\pmod8\), \(8<q<32768\).
+No determinant of the enormous size occurring in the existence
+argument needs to be evaluated. The code uses only the Python
+standard library:
+\begin{verbatim}
+python3 verify_constants.py
+python3 verify_certificate.py
+\end{verbatim}
+These are exact arithmetic checks supporting a mathematical proof,
+not formal verification. They do not test the historical eligibility
+of its concepts. The mathematical argument and the proposed 1830
+cutoff require separate review; no independent audit verdict is
+asserted for this draft.
+
+\clearpage
+\section*{Acknowledgements and AI disclosure}
+
+The author thanks Tao and Green for the historical question, and the
+participants in Tao's discussion for their public arguments and
+suggestions. The mathematical contributions used here are cited
+where they enter the proof. This note and its supplementary code were
+prepared with OpenAI Codex. Green \cite{green} credits ChatGPT for
+the mathematical arguments in his source paper; van Dijk
+\cite{vandijk} credits GPT-6 Astra and Opus 5.5 for his new arguments.
+
+\appendix
+\section{Elementary bounds for the numerical constants}\label{constants}
+
+For \(0<t<1\), integration of a finite geometric series, with its
+remainder bounded by a geometric tail, gives
+\[
+ \log\frac{1+t}{1-t}
+ =2\sum_{j=0}^{m-1}\frac{t^{2j+1}}{2j+1}+E_m,
+ \qquad 0<E_m<\frac{2t^{2m+1}}{(2m+1)(1-t^2)}.
+\]
+At \(t=1/3\), use two terms for a lower bound and one term plus
+the tail for an upper bound. At \(t=1/2\), use two terms plus the
+tail. These give
+\[
+ \frac{69}{100}<\frac{56}{81}<\log2<\frac{25}{36}<\frac7{10},
+ \qquad
+ \log3<1+\frac1{12}+\frac1{60}=\frac{11}{10}.
+\]
+Consequently \(\log10<\log12=\log3+2\log2<5/2\).
+
+For the harmless geometric constant, the tangent addition identity
+gives \(\pi/4=\arctan(1/2)+\arctan(1/3)\). Integrating
+\(1/(1+x^2)=1-x^2+x^4-x^6/(1+x^2)\) gives
+\(\arctan x<x-x^3/3+x^5/5\), for \(x>0\). Therefore
+\[
+ \pi<4\left(\frac12-\frac{(1/2)^3}{3}+\frac{(1/2)^5}{5}
+              +\frac13-\frac{(1/3)^3}{3}+\frac{(1/3)^5}{5}\right)
+ =\frac{6115}{1944}<\frac{16}{5}.
+\]
+All remaining comparisons in the proof are between displayed rational
+numbers. For example, the final margin is
+\[
+ \frac{143}{96}-\left(\frac{56}{75}+\frac{50}{69}\right)
+ =\frac{1009}{55200}>0.
+\]
+
+\clearpage
+\renewcommand{\refname}{Historical sources}
+\begin{thebibliography}{H4}
+
+\bibitem[H1]{gauss}
+C.~F.~Gauss, \emph{Disquisitiones arithmeticae}, Leipzig, 1801,
+Sections I--V (especially Articles 153--159 and 171--175).
+\href{https://doi.org/10.3931/e-rara-4025}{Original edition, ETH-Bibliothek}.
+
+\bibitem[H2]{cauchy}
+A.-L.~Cauchy, \emph{Cours d'analyse de l'\'Ecole royale polytechnique},
+Paris, 1821, Chapters III and VI--VIII.
+\href{https://fr.wikisource.org/wiki/Cours_d\%E2\%80\%99analyse_de_l\%E2\%80\%99\%C3\%A9cole_royale_polytechnique}{Text of the 1882 reprint}.
+
+\bibitem[H3]{calculus}
+A.-L.~Cauchy, \emph{R\'esum\'e des le\c{c}ons donn\'ees \`a l'\'Ecole
+royale polytechnique sur le calcul infinit\'esimal}, tome I, Paris, 1823,
+in particular Lessons 3--10 and 21--25.
+\href{https://doi.org/10.3931/e-rara-25962}{Original edition, ETH-Bibliothek}.
+
+\bibitem[H4]{galois}
+\'E.~Galois, \emph{Sur la th\'eorie des nombres}, Bulletin des sciences
+math\'ematiques, physiques et chimiques \textbf{13} (June 1830),
+428--435; reprinted in \emph{\OE uvres math\'ematiques} (1897), 15--23.
+\href{https://fr.wikisource.org/wiki/\%C5\%92uvres_math\%C3\%A9matiques/5}{Text of the reprint}.
+
+\end{thebibliography}
+
+\renewcommand{\refname}{Modern sources and attribution}
+\begin{thebibliography}{M8}
+
+\bibitem[M1]{green}
+B.~Green, \emph{On Landau--Siegel zeros}, version 2 (2026),
+\href{https://hexagonmath.org/2610.00311v2}{hexagon:2610.00311v2}.
+
+\bibitem[M2]{greencomment}
+B.~Green, Comment on Tao's tenth-discriminant challenge,
+20 October 2026, 12:07 pm,
+\href{\blog\#comment-698463}{comment 698463}.
+
+\bibitem[M3]{prattsieve}
+K.~Pratt, Comment on small-prime congruences and finite sieving,
+20 October 2026, 11:15 am,
+\href{\blog\#comment-698460}{comment 698460}.
+
+\bibitem[M4]{pratt}
+K.~Pratt, Comment on norm counts, auxiliary inert primes, and
+determinant divisibility, 20 October 2026, 1:58 pm,
+\href{\blog\#comment-698476}{comment 698476}.
+
+\bibitem[M5]{silberman}
+L.~Silberman, Comment on small-prime inertness and weighted prime
+sums, 20 October 2026, 8:49 am,
+\href{\blog\#comment-698449}{comment 698449}.
+
+\bibitem[M6]{tao}
+T.~Tao, \emph{An experimental AI-math challenge: using tenth
+discriminant bounds to explore arguments ruling out Siegel zeroes},
+20 October 2026, \href{\blog}{What's new}; historical variant
+communicated by Ben Green, \href{\blog\#comment-698559}{comment of 21 October 2026, 1:10 pm}.
+
+\bibitem[M7]{companion}
+\emph{An elementary determinant bound for the tenth discriminant:
+a proof with cutoff \(q<2^{15}\)}, 21 October 2026,
+\href{https://github.com/twinheterodox/tenth-discriminant/tree/main/companions/elementary}{elementary companion and supporting code}.
+
+\bibitem[M8]{vandijk}
+R.~van Dijk, \emph{A Frobenius determinant proof of the non-existence
+of Landau--Siegel zeros}, version 1 (2026),
+\href{https://hexagonmath.org/2610.00409v1}{hexagon:2610.00409v1}.
+
+\end{thebibliography}
+\end{document}

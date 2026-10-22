@@ -1,0 +1,44 @@
+Exact computational checks, 21 October 2026
+Not an independent audit or formal verification.
+
+Command: python3 verify_constants.py
+log(2) in (69/100, 7/10)
+log(3) in (1, 11/10)
+log(10) in (2, 5/2)
+pi < 16/5
+short rational bounds printed in Appendix A checked
+207/20 < log(32768) < 21/2; sqrt(32768) > 180
+uniformly for q >= 32768: log(q)/sqrt(q) < 7/120
+prime-square sum < 233/360 < 2/3
+auxiliary-prime inequality < 10/27 + 41/90 + 1/1000 < 5/6
+rectangular grid and determinant coefficients checked
+all boundary and rounding errors < 1/500; G(log R) < 15/2
+final endpoint < 846/575 < 143/96; margin 1009/55200
+PASS: all numerical constants; the uniform argument is in proof.tex.
+
+Command: python3 verify_certificate.py
+PASS: all 30 CRT rows and 104 printed large-range witnesses.
+PASS: all 15 small-range witnesses; five survivors up to 163.
+PASS: independent Euler-criterion sieve of all 4095 candidates.
+q=3: all reduced forms = [(1, 1, 1)]
+q=4: all reduced forms = [(1, 0, 1)]
+q=7: all reduced forms = [(1, 1, 2)]
+q=8: all reduced forms = [(1, 0, 2)]
+q=11: all reduced forms = [(1, 1, 3)]
+q=19: all reduced forms = [(1, 1, 5)]
+q=43: all reduced forms = [(1, 1, 11)]
+q=67: all reduced forms = [(1, 1, 17)]
+q=163: all reduced forms = [(1, 1, 41)]
+PASS: all nine reduced-form lists; checked tables come directly from proof.tex.
+PASS: complete finite certificate. No independent audit is claimed.
+
+Citation revision: mathematical displays and both modular certificate tables are unchanged.
+
+Production checks for the citation revision:
+PASS: final LaTeX build has no warnings, overfull boxes or underfull boxes.
+PASS: all 14 final PDF pages rendered and visually inspected.
+PASS: all 119 printed modular witnesses match the LaTeX source.
+PASS: historical labels H1-H4 and modern labels M1-M8 resolve.
+PASS: historical source links and the historical-challenge comment link are preserved.
+The mathematical displays and certificate tables match the preceding draft.
+These production checks do not constitute a new independent audit.
