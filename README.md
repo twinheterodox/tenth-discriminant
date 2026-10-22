@@ -8,6 +8,8 @@ zeroes, without using Heegner's solution. The repository records the
 arguments, computations, and revisions so that they can be
 examined and cited in the discussion.
 
+**[Compare all papers and versions](#versions-and-improvements)**
+
 The work has three complementary aims, with separate publication series:
 
 - **Sharper bounds:** the numbered versions, v1, v2, and so on, record
@@ -145,8 +147,15 @@ series and their histories; the changelog records mathematical changes
 and editorial revisions in the numbered series. The original v1 README is retained
 below as a historical snapshot.
 
-| Version | Analytic cutoff | Paper and files | Mathematical review status |
+The table includes all three series: the numbered bounds, the elementary
+companion focused on proof simplicity, and the historical reconstruction
+focused on the date of the available foundations. Each companion retains
+its own version history and review status.
+
+| Series and version | Analytic cutoff | Paper and files | Review status |
 |---|---|---|---|
+| **Historical companion · historical-v0.1.0** | **`q < 32,768`** | [Historical reconstruction: tools documented by 1830](companions/historical/output/pdf/historical-1830.pdf) · [Source and reproduction](companions/historical/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/historical-v0.1.0) | No independent audit verdict recorded; mathematical proof and historical eligibility require separate review; exact checks pass ([review record](companions/historical/REVIEW.md)) |
+| **Elementary companion · elementary-v0.1.0** | **`q < 32,768 = 2^15`** | [Elementary proof](companions/elementary/output/pdf/elementary-companion.pdf) · [Source and reproduction](companions/elementary/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/elementary-v0.1.0) | Independent mathematical verification passed; exact constant checks and the sieve of 4,095 candidates pass ([review record](companions/elementary/REVIEW.md)) |
 | **v6 revised · v0.6.1** | **`q < 570`** | [Revised proof](versions/v6.1/output/pdf/proof.pdf) · [Source and reproduction](versions/v6.1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.1) | Review status unchanged; editorial revision preserves all displayed equations, certificate code, parameters, and results |
 | **v6 original · v0.6.0** | `q < 570` | [Original proof](versions/v6/output/pdf/proof.pdf) · [Source and reproduction](versions/v6/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.0) | Independent mathematical audit pending; 429 grouped exact checks, 101,524 finite structural cases, and 70 finite discriminant candidates pass |
 | **v5 · v0.5.0** | **`q < 2,000`** | [Corrected proof](versions/v5/output/pdf/proof.pdf) · [Source and reproduction](versions/v5/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0) | Manual mathematical audit with exact computational checks passed; §6.2 wording corrected within v0.5.0; calculations unchanged; not formal verification |
