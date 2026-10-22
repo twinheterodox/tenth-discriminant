@@ -4,6 +4,11 @@ This changelog records the numbered series of improving bounds. Companion
 papers have separate histories: [elementary companion](companions/elementary/CHANGELOG.md)
 and [historical reconstruction](companions/historical/CHANGELOG.md).
 
+On 22 October 2026, the historical companion was replaced within
+`historical-v0.1.0` by the Weber reconstruction proposing 1891 and
+`q < 196`. Its own changelog records the superseded 1830 claim and the
+retained original publication snapshot.
+
 ## v0.6.1 — revised exposition, 21 October 2026
 
 **The analytic cutoff remains `q < 570`.**

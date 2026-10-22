@@ -260,25 +260,33 @@ was [c46f45b](https://github.com/twinheterodox/tenth-discriminant/commit/c46f45b
 The original tag retains the status at first publication; the release
 downloads include the completed-verification status under the same version.
 
-## historical-v0.1.0 - historical reconstruction
+## historical-v0.1.0 - Weber replacement, 22 October 2026
 
-The historical companion gives the cutoff `q < 32,768`, a complete
-printed finite certificate, and a proposed historical cutoff of 1830.
-Its mathematical proof and historical eligibility require separate
-review. No independent audit verdict is asserted for this reconstruction;
-the elementary companion's completed verification does not automatically
-cover these adaptations or the date claim.
+The replacement develops Weber's modular route with proposed historical
+cutoff `N ≤ 1891`, gives `q < 196`, and completes the finite classification.
+**No independent mathematical audit verdict is asserted.** Mathematical
+correctness and historical admissibility require separate review.
 
-Exact rational checks and all 119 printed modular witnesses pass. A
-separate Euler-criterion sieve of 4,095 candidates agrees with the
-certificate, and reduced-form enumeration verifies the nine survivors.
-An isolated run of the release bundle reproduces the recorded outputs.
-The fourteen-page PDF was compiled, rendered, and visually inspected;
-publication preserves the revised manuscript and PDF unchanged.
-These computational and production checks are not formal verification.
+The exact checker passes the multiplier conversion in 1,024 admissible
+matrix residue classes, complete root-selection residue calculations,
+representative modular matrix identities, cubic resultants, descent
+identities, the rational exponential bound, finite exclusions, and all
+nine reduced-form lists. An isolated extraction of the replacement bundle
+reproduces the recorded output. These checks do not establish the analytic
+modular toolkit, the infinite descent, or the historical criterion.
 
-See the [historical companion's review record](companions/historical/REVIEW.md)
-and [historical source documentation](companions/historical/historical_sources.txt).
+The manuscript's date label is the only change from the completed local
+Weber draft; the mathematical text and checker are unchanged. The
+fourteen-page PDF was rebuilt, rendered, and visually checked. No formal
+verification is supplied. See the [companion review record](companions/historical/REVIEW.md)
+and [source audit](companions/historical/historical_sources.txt).
+
+The earlier 1830 determinant reconstruction is superseded because its
+historical claim does not meet the revised criterion. Its original
+computational checks and review status remain in the
+[original publication snapshot](https://github.com/twinheterodox/tenth-discriminant/tree/5d358722319d90f9458a7e95fb76c4044e24f486/companions/historical).
+The current release downloads contain the Weber reconstruction under the
+same version number; the original tag and Git history are preserved.
 
 ## Recording future reviews
 

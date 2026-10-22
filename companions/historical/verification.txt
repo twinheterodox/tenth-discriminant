@@ -1,0 +1,6 @@
+PASS: Weber multiplier conversion (1024 residue matrices).
+PASS: complete root-selection residue calculation; modular matrix identities.
+PASS: cubic resultants, coefficient substitution, Euler descent identities.
+PASS: exact exponential bound, finite exclusions, and nine reduced-form lists.
+These checks do not certify the analytic modular inputs, the infinite descent,
+or the historical cutoff. No independent audit or formal verification is claimed.

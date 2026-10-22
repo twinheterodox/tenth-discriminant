@@ -1,6 +1,29 @@
 # Historical companion changelog
 
-## historical-v0.1.0 - 21 October 2026
+## historical-v0.1.0 - replacement, 22 October 2026
+
+Replaces the 1830 determinant reconstruction with *Could the
+class-number-one theorem have been proved in 1891? A reconstruction from
+Weber's modular theory*, under the same release name and download URLs.
+
+- Supersedes the 1830 historical claim because the determinant method
+  does not meet the revised criterion for published concepts and methods.
+- Develops Pratt's proposed 1891 cutoff using Weber's original edition.
+- States the imported modular toolkit and supplies the special root-control
+  repair, Heegner's cubic comparison, Euler's descent, and finite finish.
+- Gives `q < 196` and the complete class-number-one classification.
+- Retains contextual attribution and H/M references, with a source audit
+  distinguishing the mathematical proof from historical admissibility.
+- Replaces the former proof's checkers with the Weber-specific exact checks.
+  No independent audit verdict or formal verification is claimed.
+- Preserves the original tag and Git history. The release downloads and
+  current companion directory contain the replacement. The old PDF path
+  is retained as a byte-identical compatibility copy of the new paper.
+
+The date label is the only manuscript change from the completed local
+Weber draft; its mathematical body and checker are unchanged.
+
+## historical-v0.1.0 - original publication, 21 October 2026 (superseded)
 
 First publication of *No tenth discriminant: a modern reconstruction
 using tools documented by 1830*.
@@ -21,4 +44,4 @@ using tools documented by 1830*.
 This is a separate companion series. Its year is a proposed historical
 cutoff, while `q` denotes the absolute discriminant.
 
-[Fixed release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/historical-v0.1.0).
+[Original publication snapshot](https://github.com/twinheterodox/tenth-discriminant/tree/5d358722319d90f9458a7e95fb76c4044e24f486/companions/historical).

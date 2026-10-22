@@ -2,11 +2,12 @@
 
 This is an AI-assisted contribution to
 [Terence Tao's tenth-discriminant challenge](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/).
-The aim is to obtain explicit bounds for a hypothetical tenth imaginary
-quadratic field of class number one from arguments ruling out Siegel
-zeroes, without using Heegner's solution. The repository records the
-arguments, computations, and revisions so that they can be
-examined and cited in the discussion.
+The numbered series obtains explicit bounds for a hypothetical tenth
+imaginary quadratic field of class number one from arguments ruling out
+Siegel zeroes, without using Heegner's solution. Companion papers explore
+simpler proofs and the historical availability of methods; the historical
+variant permits the modular approach later used by Heegner. The repository
+records arguments, computations, and revisions for examination and citation.
 
 **[Compare all papers and versions](#versions-and-improvements)**
 
@@ -25,10 +26,11 @@ A companion can have a larger cutoff while offering a shorter or more
 elementary proof. It is a separate contribution alongside the numbered
 series. Review status is recorded for each paper and revision separately.
 
-**New: [historical-v0.1.0](https://github.com/twinheterodox/tenth-discriminant/releases/tag/historical-v0.1.0)**
-proposes a reconstruction using tools documented by **1830**, with
-`q < 32,768` and a complete printed finite certificate.
-[Read the fourteen-page paper](companions/historical/output/pdf/historical-1830.pdf) ·
+**Updated: [historical-v0.1.0](https://github.com/twinheterodox/tenth-discriminant/releases/tag/historical-v0.1.0)**
+now develops the **Weber route with a proposed historical cutoff of 1891**,
+`q < 196`, and a complete finite classification. It replaces the earlier
+1830 determinant reconstruction under the same release name.
+[Read the fourteen-page paper](companions/historical/output/pdf/historical-1891.pdf) ·
 [Historical scope and reproduction](companions/historical/README.md).
 
 For a negative fundamental discriminant `D`, write `q = |D|`. Versions 1
@@ -110,32 +112,38 @@ each series will remain available for citation.
 
 The **historical reconstruction** addresses
 [Tao's variant, communicated by Ben Green](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/#comment-698559):
-the earliest year in which a self-contained proof of no tenth
-discriminant could use only results and concepts already in the literature.
-It proposes **1830**, retains **`q < 32,768`**, and eliminates the finite
-remainder with 119 printed modular witnesses and a reduced-form table.
+how early one could prove there is no tenth discriminant using results
+and concepts already in the literature. It develops
+[Pratt's proposed cutoff of **1891**](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/#comment-698625)
+using Weber's modular theory, gives **`q < 196`**, and completes the
+finite classification.
 
-**[Read the fourteen-page historical reconstruction](companions/historical/output/pdf/historical-1830.pdf)** ·
+**[Read the fourteen-page Weber reconstruction](companions/historical/output/pdf/historical-1891.pdf)** ·
 [Source, historical scope, and reproduction](companions/historical/README.md) ·
 [historical-v0.1.0 release and downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/historical-v0.1.0)
 
-Explicit quadratic forms replace ideal theory, determinant permutation
-expansion replaces Hadamard's inequality, and the required quadratic
-congruence arithmetic is proved directly. The paper distinguishes
-historical references documenting available foundations from modern
-attribution at the points where ideas enter. Section 1.1 explains the
-interpretation of "results and concepts" underlying the date claim.
-It does not claim that the proof was known in 1830 or that the year is optimal.
+The paper states its imported classical modular toolkit explicitly. It
+supplies the special root-control repair of Weber's argument, Heegner's
+cubic comparison, Euler's descent, and the finite finish. Weber's section
+76 already describes the product construction used in the repair.
+Historical and modern references are separated and placed in context.
+The proposed date permits new applications of published methods; it does
+not claim that the proof was known in 1891 or that 1891 is the earliest
+possible year.
 
-**The mathematical proof and historical eligibility require separate
-review; no independent audit verdict is asserted for this reconstruction.**
-Its exact constant checks, printed certificate, and separate sieve of
-4,095 candidates pass, with outputs reproduced from the release bundle.
-The [review record](companions/historical/REVIEW.md) gives the scope.
+**Replacement dated 22 October 2026, retaining `historical-v0.1.0`.**
+The earlier 1830 historical claim is superseded: the determinant method
+does not meet the revised criterion merely because it can be developed
+from older foundations. The current paper, source, and release downloads
+contain the Weber reconstruction. The original tag and Git history retain
+the earlier paper, and the [companion changelog](companions/historical/CHANGELOG.md)
+records the replacement.
 
-This companion uses the **`historical-`** release prefix, beginning with
-**`historical-v0.1.0`**. Its [own changelog](companions/historical/CHANGELOG.md)
-records later revisions, including any improvement to the proposed year.
+**No independent audit verdict is recorded for the Weber reconstruction.**
+The exact algebra and finite checks pass and reproduce from the release
+bundle. Those checks do not establish the analytic modular toolkit or
+historical admissibility, and they are not formal verification. The
+[review record](companions/historical/REVIEW.md) gives their scope.
 
 ## Versions and improvements
 
@@ -154,7 +162,7 @@ its own version history and review status.
 
 | Series and version | Analytic cutoff | Paper and files | Review status |
 |---|---|---|---|
-| **Historical companion · historical-v0.1.0** | **`q < 32,768`** | [Historical reconstruction: tools documented by 1830](companions/historical/output/pdf/historical-1830.pdf) · [Source and reproduction](companions/historical/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/historical-v0.1.0) | No independent audit verdict recorded; mathematical proof and historical eligibility require separate review; exact checks pass ([review record](companions/historical/REVIEW.md)) |
+| **Historical companion · historical-v0.1.0 (replaced 22 October 2026)** | **`q < 196`** | [Weber reconstruction: proposed historical cutoff 1891](companions/historical/output/pdf/historical-1891.pdf) · [Source and reproduction](companions/historical/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/historical-v0.1.0) | No independent audit verdict recorded; mathematical proof and historical eligibility require separate review; exact algebra and finite checks pass ([review record](companions/historical/REVIEW.md)) |
 | **Elementary companion · elementary-v0.1.0** | **`q < 32,768 = 2^15`** | [Elementary proof](companions/elementary/output/pdf/elementary-companion.pdf) · [Source and reproduction](companions/elementary/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/elementary-v0.1.0) | Independent mathematical verification passed; exact constant checks and the sieve of 4,095 candidates pass ([review record](companions/elementary/REVIEW.md)) |
 | **v6 revised · v0.6.1** | **`q < 570`** | [Revised proof](versions/v6.1/output/pdf/proof.pdf) · [Source and reproduction](versions/v6.1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.1) | Review status unchanged; editorial revision preserves all displayed equations, certificate code, parameters, and results |
 | **v6 original · v0.6.0** | `q < 570` | [Original proof](versions/v6/output/pdf/proof.pdf) · [Source and reproduction](versions/v6/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.0) | Independent mathematical audit pending; 429 grouped exact checks, 101,524 finite structural cases, and 70 finite discriminant candidates pass |
@@ -226,7 +234,7 @@ All releases are research drafts.
 - [v0.6.0: smoothed Frobenius determinant proof and verification](https://github.com/twinheterodox/tenth-discriminant/tree/v0.6.0/versions/v6)
 - [v0.6.1: revised v6 exposition, with the same bound and certificates](https://github.com/twinheterodox/tenth-discriminant/tree/v0.6.1/versions/v6.1)
 - [elementary-v0.1.0: original elementary companion publication](https://github.com/twinheterodox/tenth-discriminant/tree/elementary-v0.1.0/companions/elementary)
-- [historical-v0.1.0: reconstruction using tools documented by 1830](https://github.com/twinheterodox/tenth-discriminant/tree/historical-v0.1.0/companions/historical)
+- [historical-v0.1.0: original 1830 reconstruction, superseded by the Weber replacement](https://github.com/twinheterodox/tenth-discriminant/tree/historical-v0.1.0/companions/historical)
 
 The v0.6.0 directory, tag, and downloadable assets retain the original
 paper. V0.6.1 is a separate release containing the revised exposition;
@@ -245,6 +253,15 @@ include the authorship correction and completed-verification status dated
 "Research note prepared with Codex."
 The original publication tag preserves the first files; the mathematics
 and verification programs are unchanged.
+
+The historical companion's [current paper and source](companions/historical/README.md)
+and [release downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/historical-v0.1.0)
+contain the Weber reconstruction, substituted on 22 October 2026 under
+`historical-v0.1.0`. The original tag and GitHub's automatic source archives
+retain the superseded 1830 reconstruction. Use the attached replacement
+bundle or the replacement commit linked in the release notes to cite the
+Weber paper. The previous PDF path also serves the replacement so older
+links remain usable.
 
 The original proof, programs, outputs, and bundle remain at their existing
 root paths. The `versions/v1/` directory is an exact copy of all tracked

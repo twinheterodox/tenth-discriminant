@@ -1,145 +1,161 @@
-HISTORICAL DEPENDENCIES: DOCUMENTATION FOR THE 1830 DRAFT
-Prepared 21 October 2026
+WEBER 1891: SOURCE AUDIT AND HISTORICAL ASSESSMENT
+22 October 2026. Research note prepared with Codex.
 
-Claim and interpretation
-------------------------
-The note gives a mathematical proof and proposes a historical cutoff of
-1830. These are separate claims. Its interpretation of Tao's restriction
-on "results and concepts" allows new constructions and deductions using
-objects, operations and results documented by 1830. An elementary definition
-or proof alone does not establish the historical eligibility of a concept.
+This is a source and mathematical audit performed in the drafting session,
+not an independent audit verdict and not formal verification.
 
-In particular, the note treats the finite array of polynomial derivatives
-as a construction from determinants, polynomials, derivatives and quadratic
-congruences. Its properties are established directly, without a general
-theorem about interpolation determinants. The historical judgement is
-whether this is an admissible new use of old concepts. The foundation
-dates below provide evidence for that judgement; correctness of the
-mathematical proof alone does not decide it.
-
-The note does not claim that this construction or proof was known in 1830,
-or that an earlier year is impossible. References H1-H4 document historical
-foundations; M1-M8 give modern attribution and context. In-context footnotes
-headed "Modern attribution" identify contemporary sources of the argument.
-Every mathematical assertion taken from a modern source and needed in the
-proof is derived in the paper. This file is not an independent audit verdict.
-
-1. Gauss, Disquisitiones arithmeticae (1801)
------------------------------------------
-Original edition: ETH-Bibliothek Zurich, Rar 5186.
-https://doi.org/10.3931/e-rara-4025
-https://www.e-rara.ch/zut/content/titleinfo/1254642?lang=en
-Searchable OCR of the original (some OCR errors):
-https://www.e-rara.ch/zut/download/ftpack/plain/1254642
-
-Section V begins at printed page 165, Article 153, with integral binary
-quadratic forms in Gauss's ax^2+2bxy+cy^2 convention. Articles 154 onward
-treat representation and the determinant b^2-ac. Articles 157-159 treat
-integral substitutions and proper/improper equivalence. Articles 171-175
-treat reduction, finite enumeration, and equivalence classes.
-
-The note uses Ax^2+Bxy+Cy^2 and D=B^2-4AC. For odd B, doubling the whole
-form produces Gauss's integral triple (2A,B,2C); for even B use (A,B/2,C).
-Scaling preserves proper equivalence. The modern word "fundamental" is
-used only for the explicit squarefreeness/congruence restriction given
-in the paper. No later theorem relating forms to ideals is needed.
-
-The small-prime obstruction is proved directly by displaying a primitive
-form that represents p and invoking the hypothesis that there is only
-one proper class. The proof neither assumes nor proves ideal factorization.
-The nine surviving discriminants are checked by a reduction argument
-given in full, followed by a search with leading coefficient at most 7.
-
-2. Cauchy, Cours d'analyse (1821)
---------------------------------
-Text of the 1882 collected-works reprint (its title page gives 1821):
-https://fr.wikisource.org/wiki/Cours_d%E2%80%99analyse_de_l%E2%80%99%C3%A9cole_royale_polytechnique
-Relevant determinant chapter:
-https://fr.wikisource.org/wiki/Cours_d%E2%80%99analyse_de_l%E2%80%99%C3%A9cole_royale_polytechnique/Chapitre_III
-
-Chapter III, section 2, constructs the alternating determinant expression
-by replacing exponents in a Vandermonde expansion with indices, discusses
-its alternating property, and applies it to general linear equations.
-Chapter IV treats polynomial interpolation. Chapters VI-VIII document
-series, complex expressions and their moduli, and complex polynomial
-functions. The note needs only permutation expansion, elimination, the
-triangle inequality, and elementary polynomial identities.
-
-Hadamard's inequality has been removed. The substitute is
-|det M| <= N! times the product of rowwise entry bounds, with N! <= N^N.
-This raises the determinant error from 4 log R/R to 6 log R/R. The final
-cutoff is still 32768, as checked in the note and verify_constants.py.
-
-3. Cauchy, Resume des lecons ... sur le calcul infinitesimal (1823)
-----------------------------------------------------------------
-Original edition: ETH-Bibliothek Zurich, Rar 10369.
-https://doi.org/10.3931/e-rara-25962
-https://www.e-rara.ch/zut/content/titleinfo/8350182
-Original OCR:
-https://www.e-rara.ch/zut/download/ftpack/plain/8350182
-
-Lessons 3-10 treat derivatives, partial derivatives and differentiation.
-Lessons 21-25 treat definite integrals, their evaluation and geometric
-interpretation. These support the integral comparisons, polynomial
-derivatives, elementary monotonicity and logarithmic bounds used here.
-The partial-summation identity in the note is explicitly derived by
-summing f(p)=f(X)-integral_p^X f'(t) dt over finitely many primes.
-The logarithm and arctangent estimates are also derived in the paper.
-
-4. Galois, Sur la theorie des nombres (June 1830)
-------------------------------------------------
-Bulletin des sciences mathematiques, physiques et chimiques 13 (1830),
-428-435; reprinted in Oeuvres mathematiques (1897), pages 15-23.
-https://fr.wikisource.org/wiki/%C5%92uvres_math%C3%A9matiques/5
-
-The text introduces expressions a+a_1 i+...+a_(nu-1)i^(nu-1), where i
-satisfies an irreducible congruence modulo p, counts the p^nu expressions,
-and treats their arithmetic. It derives alpha^(p^nu)=alpha and describes
-the p-power conjugates. It explicitly uses the derivative of a polynomial
-congruence to discuss repeated roots. The first source footnote identifies
-the original publication as volume XIII, page 428, June 1830. Thus 1897
-is the reprint date, not the date assigned to these concepts.
-
-Our note uses only degree two, explains inverses by the polynomial
-Euclidean algorithm, and proves z^p=conjugate(z). Polynomial root counts
-and the derivative/multiplicity statement are also explained. No modern
-classification of finite fields, Galois theory, or ideal quotient theorem
-is invoked. The name "Frobenius" is modern shorthand for the displayed
-p-power congruence already present in Galois's 1830 treatment.
-
-5. Prime estimates and finite calculation
------------------------------------------
-There is no appeal to a published Chebyshev, Mertens, or prime number
-theorem. The prime estimates are new deductions here from binomial
-coefficients, factorization of factorials, and integral comparison.
-Counting multiples proves the factorial valuation identity directly.
-The final exclusion is a 30-row CRT table containing 104 witnesses, plus
-15 witnesses below 164. The CRT step is explained by Bezout's identity.
-No electronic or mechanical computation is a premise of the proof.
-The optional code checks the displayed tables and constants exactly.
-
-6. Modern provenance
+Historical conclusion
 ---------------------
-Question: Tao's comment reporting Ben Green's historical variant:
-https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/#comment-698559
+1891 is a defensible upper-bound proposal under the stated rule allowing
+new problem-specific deductions and repairs using an already published
+organizing method. It is not a proved earliest year, a claim that the proof
+was published in 1891, or an assessment of the probability of discovery.
 
-The derivative determinant and triangular congruence transformation are
-from Green, On Landau-Siegel zeros, v2 (2026):
-https://hexagonmath.org/2610.00311v2
+The actual theorem is Heegner's (1952); the repair of the critical modular
+step is due to Stark (1969). Pratt's 22 October 2026 comment points out that
+the relevant material occurs in Weber's 1891 book, rather than only the
+later Lehrbuch volume cited by Stark:
+https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/#comment-698625
 
-Auxiliary-prime nonvanishing is from van Dijk (2026):
-https://hexagonmath.org/2610.00409v1
+The strongest source evidence for the METHOD, as opposed to statements
+or elementary prerequisites, is Weber section 76, pp. 267-269. He explicitly
+describes constructing transformation equations from functions permuted by
+z -> z+2 and z -> -1/z, with coefficients rational in f(z)^24. This is the
+product construction used by Stark. Section 95, p. 368 already compares
+coefficients and factors the equations for known singular values through
+degrees 24, 12, 6, and 3. Heegner's missing observation makes those
+restrictions exhaustive rather than merely calculating known examples.
 
-The paper cites Silberman's small-prime obstruction and Pratt's norm
-counts, auxiliary-prime, divisibility and finite-sieve suggestions in
-"Modern attribution" footnotes at their points of use, with links to the
-individual comments. Green and van Dijk are credited in the same way.
-The base elementary companion is acknowledged, but is not a mathematical premise:
-https://github.com/twinheterodox/tenth-discriminant/tree/main/companions/elementary
+Resolution of the modular-equation gap
+-------------------------------------
+The previous inability to retrieve Stark's full paper has been resolved.
+The original and the repository OCR were obtained from Michigan's current
+public repository API. The full 12-page article was read; the critical
+formula pages 23-25 were also rendered and inspected. The earlier local research note recorded the access limitation; it is
+no longer the current state of the investigation.
 
-Removing these attribution notes would leave the mathematical argument
-complete, but that check alone would not settle historical eligibility.
-This reconstruction does not assign historical priority for the proof
-to Gauss, Cauchy, or Galois. Assessing its eligibility under the intended
-meaning of "concepts", and finding an earlier documented collection of
-concepts if possible, are separate historical questions.
+Stark's gap is precise: Weber's Schlafli relation is not shown to have ONLY
+the required transformed values as roots. A polynomial relation with extra
+roots would invalidate the gcd step. Stark replaces it by an explicit
+product, proves the coefficient functions are polynomials in f^24, proves
+rationality through cyclotomic automorphisms, and substitutes back without
+adding nonzero roots. This is not an appeal to modern class field theory.
+
+The new paper specializes that construction to a prime q:
+
+  F=f^3, U=f^24;
+  M_infinity(z)=qz, M_nu(z)=(z+16nu)/q, 0<=nu<q;
+  product_M [X-F(Mz)^e F(z)^(23qe)] = Sigma_{q,e}(X,U(z)), e=1,8;
+  R_{q,e}(X)=Sigma_{q,e}(X^(23q+1),X^(8/e)).
+
+It proves the transformations under S and T^2 explicitly, rather than
+leaving the multiplier permutation implicit. The specialized root test is
+an equivalence. The two gcd calculations isolate f^24 and f^6; Weber's
+gamma_2 invariant then gives f^8 and hence f^2.
+
+The exact multiplier in modern matrix notation is
+
+  F((az+b)/(cz+d))/F(z)
+    = exp(-pi i [db+ca+2d^2-2dc-2da]/8)
+
+for the theta subgroup. This was derived from Weber's scanned p. 107,
+including his different matrix convention, and checked on all 1024
+admissible matrix residue classes modulo 16. The root selection at
+theta+2j, j=0,...,7, gives the multiplier (-i)^j and hence exactly j=0,4.
+
+Historical inputs and their precise places
+------------------------------------------
+H1: Gauss, Disquisitiones arithmeticae (1801), Section V, Articles
+153-159 (forms and equivalence), 171-175 (reduction). The paper supplies
+its small-prime form obstruction and finite reduction directly.
+https://doi.org/10.3931/e-rara-4025
+
+H2: Euler, Theorematum quorundam arithmeticorum demonstrationes,
+Commentarii academiae scientiarum Petropolitanae 10, 125-146, Theorem 10.
+Written 1738, published 1747; publication is the cutoff date used.
+https://scholarlycommons.pacific.edu/euler-works/98/
+Original scan successfully downloaded from:
+https://math.dartmouth.edu/~euler/docs/originals/E098.pdf
+German translation successfully downloaded from:
+https://download.uni-mainz.de/mathematik/Algebraische%20Geometrie/Euler-Kreis%20Mainz/98.pdf
+
+Euler's original argument is brief about the strict decrease. The new
+appendix gives that decrease, sign choices avoiding the extra mod-3 case,
+and a proof that the trivial pair cannot be reached from a nontrivial one.
+Conrad's modern exposition is credited as guidance, not treated as an old
+source. The argument uses Euler's factorization and rational substitutions.
+https://kconrad.math.uconn.edu/blurbs/ugradnumthy/descentbyeuler.pdf
+
+H3: Heinrich Weber, Elliptische Functionen und algebraische Zahlen,
+Braunschweig: Friedrich Vieweg und Sohn, 1891. All locations below refer
+to this edition and printed pages, not scan-page numbers:
+https://archive.org/details/ellipfuncundalg00weberich
+https://archive.org/download/ellipfuncundalg00weberich/ellipfuncundalg00weberich.pdf
+
+* Section 29: product identities for f,f_1,f_2.
+* Section 35, pp. 105-107: transformation laws; the last formula on p. 107
+  gives the cubed multiplier after converting matrix conventions.
+* Section 49, pp. 147-150: modular function fields, theta subgroup,
+  gamma_2, and f^8,-f_1^8,-f_2^8 as roots of X^3-gamma_2 X-16.
+* Section 72, pp. 247-255: invariant modular polynomials, monicity,
+  integer coefficients. Section 89, p. 338 explicitly uses degree two.
+* Sections 73 and 76, pp. 255-269: products over transforms and symmetric
+  coefficient functions. This is the historical METHOD supporting the
+  specialized repair, rather than just old ingredients for a later method.
+* Sections 87-88, pp. 331-337: singular j integrality and class polynomial
+  of degree h. Section 88 uses induction and gcds. General irreducibility
+  of class polynomials is NOT used.
+* Section 92, pp. 350-352: gamma_2(z) in Q(j(z)) when 3 divides the middle
+  coefficient B and does not divide A or the discriminant. Applied both
+  at theta^2+q=0 and at tau^2-3tau+(q+9)/4=0.
+* Section 94, pp. 360-362: f^8 and f^6 invariants. The statement combining
+  them to f^2 is explicit on p. 361; Theorem II is on p. 362. The original
+  proof's root-control issue is repaired in the new paper, not ignored.
+* Section 94, p. 365: stronger f^3 assertion is explicitly conjectural and
+  is NOT used anywhere in the proof.
+* Section 95, pp. 367-368: phase-normalized product identity and factorizations
+  for the known examples. The new proof also checks the identity directly
+  by separating even and odd product indices.
+
+Scope of the proof
+------------------
+The classical modular toolkit is stated and sourced as imported 1891
+mathematics. The paper does not reconstruct all of complex analysis,
+elliptic functions, or Weber's class-polynomial and gamma_2 theory. It is
+self-contained beyond that explicit toolkit: it supplies the exceptional
+modular repair, all class-number-specific deductions, the infinite descent,
+and finite enumeration. This scope is stated in the abstract and introduction.
+
+The later general theorem [Q(j):Q]=h is avoided completely: the cubic for
+alpha^4 is strictly increasing, and its unique real root lies in (0,1),
+so it has no rational root. This establishes the degree exactly where needed.
+No modern algorithm for integral points, QRH, Siegel-zero result,
+class-field existence theorem, or Shimura reciprocity theorem is used.
+
+The two Euclidean-ring factorizations in the Diophantine finish are proved
+by rounding coefficients, then using the Euclidean algorithm and Bezout.
+They are applications of an existing elementary factorization method to
+two explicit rings; no general theorem about ideal classes is invoked.
+
+Stark 1969 retrieval
+--------------------
+H. M. Stark, On the "gap" in a theorem of Heegner, JNT 1 (1969),16-27.
+https://doi.org/10.1016/0022-314X(69)90023-7
+https://hdl.handle.net/2027.42/33039
+
+Public repository item:
+https://backend.production.deepblue-documents.lib.umich.edu/server/api/core/items/7120f4fc-61ee-4aef-8aac-ce80e749a289
+Original PDF:
+https://backend.production.deepblue-documents.lib.umich.edu/server/api/core/bitstreams/d8909e3f-b5a7-4a33-b18e-7d2b4727942e/content
+Repository OCR:
+https://backend.production.deepblue-documents.lib.umich.edu/server/api/core/bitstreams/be09bfe6-658b-4719-b2b2-397c84c653c5/content
+
+Third-party source scans are retained separately and are not redistributed
+in the release bundle. Their primary-source URLs are given above.
+
+Publication
+-----------
+This Weber reconstruction replaces the earlier 1830 determinant paper
+within historical-v0.1.0 on 22 October 2026. The original publication tag
+and Git history preserve the superseded paper. The current release
+downloads and companion directory contain the Weber reconstruction.

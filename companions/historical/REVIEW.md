@@ -1,36 +1,45 @@
 # Historical companion: review and verification
 
-## historical-v0.1.0 - 21 October 2026
+## historical-v0.1.0 - Weber replacement, 22 October 2026
 
-No independent audit verdict is asserted for this historical
-reconstruction. The mathematical argument and the proposed historical
-cutoff of 1830 require separate review. The independent verification of
-the elementary companion does not automatically cover the adaptations
-or historical interpretation in this paper.
+**No independent audit verdict is asserted for this reconstruction.**
+The mathematical proof and the proposed historical cutoff `N ≤ 1891`
+require separate review. Earlier checks of other papers do not cover
+this modular argument or its historical admissibility.
 
-The development-session checks establish the following computational
-facts:
+The exact checker and recorded output are unchanged from the completed
+local Weber draft. Its checks cover:
 
-- All exact rational constant checks pass, including the final positive
-  margin `1009/55200`.
-- The checker reads the tables directly from `proof.tex` and validates
-  all 30 CRT rows, 104 large-range witnesses, and 15 small-range witnesses.
-- A separate Euler-criterion sieve of all 4,095 candidates gives the same
-  survivors, and reduced-form enumeration verifies all nine final lists.
-- An isolated extraction of the release bundle reproduces both programs'
-  recorded outputs using the Python standard library.
+- Weber multiplier conversion for all 1,024 admissible matrix residues;
+- the complete root-selection residue calculation and representative
+  exact modular matrix identities;
+- cubic resultants, coefficient substitution, and Euler descent identities;
+- the rational exponential bound, finite discriminant exclusions, and
+  reduced-form enumeration for the nine surviving discriminants.
 
-The fourteen-page PDF was compiled, rendered, and visually inspected.
-Its printed modular certificate matches the source. The citation revision
-preserved the mathematical displays and certificate data; publication
-retains that revised manuscript and PDF unchanged.
+An isolated extraction of the replacement release bundle reproduces
+[verification.txt](verification.txt). Its file checksums were also checked.
+The paper was rebuilt and its rendered layout checked. The date label is
+the only manuscript change from the completed local Weber draft; the
+mathematical text is unchanged.
 
-These computations support the paper's proof. They do not verify its
-general mathematical steps or establish the historical eligibility of
-its concepts. They are not formal verification. The code and exposition
-were prepared with Codex; no separate reviewer or review report is
-claimed for this release.
+These computations do not establish the analytic modular toolkit, the
+infinite descent, or historical eligibility. The code, proof, and source
+audit were prepared in the same Codex session; these checks are not an
+independent mathematical audit or formal verification.
 
-The paper's Section 1.1 and [historical source documentation](historical_sources.txt)
-state the scope of the date claim. The [recorded checks](checks.txt) give
-the computational output.
+The main historical issue is whether the explicit root-control repair
+and Heegner's problem-specific deduction are admissible applications of
+the organizing methods already published by 1891. The paper gives the
+construction and identifies Weber's corresponding passages so that this
+judgment can be assessed. See Section 9, Appendix C, and the
+[historical source audit](historical_sources.txt).
+
+## Superseded 1830 reconstruction
+
+The previous paper's computational checks concerned a different,
+determinant-based argument. Its historical eligibility claim is withdrawn
+under the revised criterion. The earlier files and review record are
+preserved at the [original publication commit](https://github.com/twinheterodox/tenth-discriminant/tree/5d358722319d90f9458a7e95fb76c4044e24f486/companions/historical)
+and in Git history. This replacement retains `historical-v0.1.0` and the
+existing release URLs.

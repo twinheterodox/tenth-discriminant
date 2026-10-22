@@ -1,47 +1,55 @@
-**A modern reconstruction using tools documented by 1830:** the cutoff
-`q < 32,768`, followed by a complete printed finite certificate leaving
-`3, 4, 7, 8, 11, 19, 43, 67, 163`.
+**Could the class-number-one theorem have been proved in 1891?**
+A reconstruction from Weber's modular theory, with **`q < 196`** and a
+complete finite classification.
+
+**Replacement dated 22 October 2026, retaining `historical-v0.1.0`.**
+This release now contains the Weber paper. It supersedes the earlier 1830
+determinant reconstruction, whose historical claim does not meet the
+revised requirement that substantial methods themselves were already
+published. The release name and download URLs remain unchanged.
 
 [Read the fourteen-page paper](https://github.com/twinheterodox/tenth-discriminant/releases/download/historical-v0.1.0/historical-v0.1.0.pdf) ·
-[Download the source and verification bundle](https://github.com/twinheterodox/tenth-discriminant/releases/download/historical-v0.1.0/historical-v0.1.0.zip) ·
-[Fixed source and reproduction instructions](https://github.com/twinheterodox/tenth-discriminant/tree/historical-v0.1.0/companions/historical)
+[Download the replacement source and verification bundle](https://github.com/twinheterodox/tenth-discriminant/releases/download/historical-v0.1.0/historical-v0.1.0.zip) ·
+[Current source and reproduction instructions](https://github.com/twinheterodox/tenth-discriminant/tree/main/companions/historical)
 
 Research note prepared with Codex
 
-This is the first release of the historical companion series, addressing
-[Tao's historical variant, communicated by Ben Green](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/#comment-698559).
-The proposed historical cutoff is 1830, under the interpretation of
-"results and concepts" stated in Section 1.1. The claim concerns available
-foundations; it does not assert that this proof was known in 1830 or that
-the year is optimal.
+The paper develops
+[Pratt's proposal of 1891](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/#comment-698625)
+for [Tao's historical variant, communicated by Ben Green](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/#comment-698559).
+The modular toolkit is stated explicitly and located in Weber's 1891 book.
+The paper then supplies:
 
-The reconstruction replaces the elementary companion's ideal theory by
-explicit quadratic forms and Hadamard's inequality by determinant
-permutation expansion. It explains the required arithmetic modulo an
-irreducible quadratic and includes all prime estimates, numerical
-inequalities, and finite exclusions in the paper. The finite certificate
-contains 119 modular witnesses and a reduced-form table; software is
-supplementary.
+- the special root-control repair of Weber's class-invariant argument,
+  using the product method already described in his section 76;
+- Heegner's comparison of cubic equations and the Diophantine restriction
+  `y² = 2x(x³ + 1)`;
+- an elementary solution including Euler's descent with a strict decrease;
+- `q < 196`, four small-prime exclusions above 163, and the finite
+  classification below 164.
 
-Historical references H1-H4 document the foundations in Gauss, Cauchy,
-and Galois. Modern references M1-M8 credit the sources of the argument,
-with attribution footnotes at their points of use. Every assertion needed
-from a modern source is proved in the paper. The historical judgment is
-whether the determinant construction is an admissible new use of the
-documented older concepts.
+The result leaves exactly `3, 4, 7, 8, 11, 19, 43, 67, 163`.
+Historical references H1-H3 and modern references M1-M6 distinguish old
+inputs from later provenance. Heegner, Stark, and Pratt are credited in
+context. The cutoff is a defensible historical proposal under the stated
+criterion, not a proved earliest year or a claim that the proof was known
+in 1891. The paper is self-contained after its stated classical modular
+toolkit; it does not rebuild elliptic-function theory from elementary
+analysis.
 
-Exact rational checks, all printed witnesses, a separate sieve of 4,095
-candidates, and the nine reduced-form lists pass. An isolated run of the
-release bundle reproduces the recorded program outputs. The PDF and
-source are unchanged from the revised local draft.
+The exact algebra, multiplier residue calculations, finite exclusions,
+and reduced-form checks pass. An isolated extraction of the replacement
+bundle reproduces the recorded output. **No independent audit verdict is
+asserted for this reconstruction.** These checks do not establish the
+analytic modular toolkit, the infinite descent, or historical
+admissibility, and they are not formal verification. See the
+[review record](https://github.com/twinheterodox/tenth-discriminant/blob/main/companions/historical/REVIEW.md).
 
-**No independent audit verdict is asserted for this historical
-reconstruction.** Mathematical correctness and historical eligibility
-require separate review. The computational checks are not formal
-verification. See the [review record](https://github.com/twinheterodox/tenth-discriminant/blob/historical-v0.1.0/companions/historical/REVIEW.md).
-
-This is a research prerelease with its own `historical-` version series.
-The numbered bounds and elementary companion retain their separate
-histories and review records. The downloads include the paper, source,
-verification programs, recorded outputs, historical documentation, and
-checksums.
+**Use the attached replacement ZIP for the Weber source.** The original
+tag `historical-v0.1.0` is preserved, so GitHub's automatic “Source code”
+archives still contain the superseded 1830 paper. Its
+[original publication snapshot](https://github.com/twinheterodox/tenth-discriminant/tree/5d358722319d90f9458a7e95fb76c4044e24f486/companions/historical)
+and Git history remain available. The
+[companion changelog](https://github.com/twinheterodox/tenth-discriminant/blob/main/companions/historical/CHANGELOG.md)
+records the replacement. The numbered bounds and elementary companion
+are unchanged.
