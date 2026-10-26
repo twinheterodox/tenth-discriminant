@@ -9,6 +9,22 @@ On 22 October 2026, the historical companion was replaced within
 `q < 196`. Its own changelog records the superseded 1830 claim and the
 retained original publication snapshot.
 
+## Repository reading guide — 26 October 2026
+
+- Reorganizes the main README around the three current papers: optimized,
+  elementary, and historical, with direct paper, source, release, and
+  review links near the top.
+- Explains that the displayed bounds are analytic cutoffs preceding a
+  complete finite classification, and that the historical route permits
+  a different toolkit. Keeps Murphy's Lean adaptation beside the elementary
+  paper and records its scope.
+- Replaces repeated release and audit descriptions with a compact table
+  of earlier versions and links to the detailed records. Links the archived v1
+  README instead of appending it, and retains the historical replacement's
+  citation instructions.
+- Changes repository navigation only; paper versions, mathematical results,
+  review verdicts, programs, and release assets are unchanged.
+
 ## v0.7.0 — model cross-check completed, 26 October 2026
 
 - Records the repository owner's confirmation that the v0.7.0 paper passed
