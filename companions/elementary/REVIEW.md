@@ -1,9 +1,11 @@
 # Review and verification: elementary-v0.1.0
 
-**The elementary companion has passed independent mathematical verification,**
-confirmed on 21 October 2026. No formal verification is supplied.
+**The elementary companion passed a cross-check by a second AI model,**
+confirmed on 21 October 2026. Peter W. Murphy subsequently published an
+external Lean adaptation, with reported Lean and nanoda kernel checks.
+These are separate kinds of evidence, described below.
 
-## Independent verification
+## AI-model cross-check
 
 The repository owner confirmed on 21 October 2026:
 
@@ -14,8 +16,36 @@ At confirmation, the current publication was
 Its mathematical argument and verification programs are unchanged from
 the original `elementary-v0.1.0` publication; the intervening revision
 changed authorship attributions only. No reviewer/model identity or
-detailed review report was supplied. The reported independent verification
-is distinct from the development-session checks listed below.
+detailed review report was supplied. On 26 October the repository owner
+clarified that this was a model cross-check. The quoted phrase does not
+indicate human peer review or formal verification, and the cross-check is
+distinct from the development-session computations listed below.
+
+## External Lean adaptation — recorded 26 October 2026
+
+Peter W. Murphy's [determinant development](https://github.com/DrMurphyIsIn/tenth-discriminant/tree/f0995bf604056a98f0af0d182ed152c6bd996419/determinant)
+explicitly credits this companion at commit `64694aae` for the constants
+and assembly. Links here are pinned to his repository commit
+`f0995bf604056a98f0af0d182ed152c6bd996419`. The first archived release
+containing the determinant proof is
+[v1.1.0, DOI 10.5281/zenodo.23563656](https://doi.org/10.5281/zenodo.23563656).
+
+His [paper](https://github.com/DrMurphyIsIn/tenth-discriminant/blob/f0995bf604056a98f0af0d182ed152c6bd996419/determinant/paper/paper.pdf)
+describes a Lean proof of the complete class-number-one classification,
+using the same cutoff `q < 32,768` and finite sieve. The adaptations
+include a Leibniz bound in place of Hadamard's inequality, a different
+endpoint-monotonicity argument, and a Minkowski-based converse for the
+nine surviving fields. It is not a verbatim formalization of this paper;
+Murphy also distinguishes its analytic dependencies from the elementary
+presentation here.
+
+His [verification record](https://github.com/DrMurphyIsIn/tenth-discriminant/blob/f0995bf604056a98f0af0d182ed152c6bd996419/determinant/formalization/VERIFICATION.md)
+and README report Comparator acceptance under Lean and nanoda, using
+only `propext`, `Quot.sound`, and `Classical.choice`, plus a separate AI
+review session's replay and a clean CI build. This entry records those
+published checks; the external build was not rerun for this documentation
+update. No Mathlib acceptance is asserted. The formalization covers the
+adapted elementary route, not v1-v6 or the historical reconstruction.
 
 ## Mathematical scope
 
@@ -68,10 +98,15 @@ publication. The bundle manifest covers its payload; the downloadable
 release checksums identify the PDF and ZIP assets.
 
 The subsequent review-status update of 21 October 2026 records the
-completed independent verification in the paper and documentation under
+completed AI-model cross-check in the paper and documentation under
 the same version number. It changes no mathematics, programs, or numerical
 results. The PDF was rebuilt and visually checked, and the bundle and
 checksums were updated. The original tag retains the status at publication.
+
+The documentation update of 26 October adds the external formalization
+and clarifies terminology. The current source manifest reflects these
+documentation changes; the published PDF and ZIP, with the ZIP's original
+manifest, remain unchanged.
 
 ## Recording subsequent reviews
 

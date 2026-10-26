@@ -93,13 +93,17 @@ The arithmetic and finite checks pass. The new finite result agrees with
 the retained C++ and Python computations covering `q < 10^10`.
 The expanded PDF was compiled, rendered, and all ten pages visually inspected.
 
-**An independent mathematical cross-check of v3, including this expanded
-exposition, is pending.** The completed v2 check applies to v2. The finite
+**Both v3.0 and this expanded paper passed cross-checks by another AI
+model,** confirmed on 20 October 2026. These are not human peer review
+or formal verification. The finite
 sanity examples do not prove the general analytic lemmas, and the
 programs do not verify Banks's interpolation theorem.
 
-See [the review record for this release](REVIEW.md) and the
+See [the publication-time review record for this release](REVIEW.md) and the
 [current repository review record](https://github.com/twinheterodox/tenth-discriminant/blob/main/REVIEW.md).
+
+Review terminology was clarified on 26 October 2026. The published
+paper, bundle, and fixed tag remain unchanged.
 
 ## Optional larger finite computation
 

@@ -11,6 +11,14 @@ records arguments, computations, and revisions for examination and citation.
 
 **[Compare all papers and versions](#versions-and-improvements)**
 
+**External Lean formalization:** Peter W. Murphy has published a
+[Lean adaptation of the elementary companion](https://github.com/DrMurphyIsIn/tenth-discriminant/tree/f0995bf604056a98f0af0d182ed152c6bd996419/determinant),
+with [reported Lean and nanoda kernel checks](https://github.com/DrMurphyIsIn/tenth-discriminant/blob/f0995bf604056a98f0af0d182ed152c6bd996419/determinant/formalization/VERIFICATION.md).
+It proves the complete class-number-one classification using the cutoff
+`q < 32,768`. Its scope and adaptations are recorded
+[below](#companion-papers); it does not formalize the numbered series or
+the historical reconstruction.
+
 The work has three complementary aims, with separate publication series:
 
 - **Sharper bounds:** the numbered versions, v1, v2, and so on, record
@@ -68,14 +76,19 @@ for numerical remainder bounds. The mathematics and certificate files are
 unchanged. The [original v0.6.0 release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.0)
 remains available for citation.
 
-**Independent mathematical review of v6 is pending.** Its 429 grouped
-exact rational checks and 101,524 finite structural cases pass; an isolated
-rerun reproduced the exact certificate outputs. These computations are
-not an independent mathematical audit or formal verification.
+**V6 has a reported successful second-model cross-check and a separate
+AI-assisted audit coordinated by Henric Larsson.** His
+[clarification](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/#comment-698595)
+reports no mathematical error or certificate requiring correction. These
+are AI reviews, not human peer review or formal verification. Separately,
+the development-session checks passed 429 grouped exact rational checks
+and 101,524 finite structural cases, with an isolated reproduction of the
+certificate outputs. The [review record](REVIEW.md) gives the scope and
+sources of each kind of evidence.
 
 The seventeen-page paper treats the new interval `570 <= q <= 2,000`
 in full relative to its stated classical inputs and cites v5 above that
-range. **V5 has passed a manual mathematical audit with exact computational
+range. **V5 has passed a second-AI-model cross-check with exact computational
 checks**; its [corrected proof](versions/v5/output/pdf/proof.pdf) and
 [audit record](versions/v5/AUDIT.md) remain available. The v6 argument
 uses no quasi-Riemann hypothesis or quadratic zero-free theorem.
@@ -93,12 +106,21 @@ elementary residue sieve.
 [Source and reproduction](companions/elementary/README.md) ·
 [elementary-v0.1.0 release and downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/elementary-v0.1.0)
 
-**The elementary companion has passed independent mathematical verification,**
+**The elementary companion passed a cross-check by a second AI model,**
 confirmed on 21 October 2026. Its exact constant checks and exhaustive
 sieve of 4,095 candidate integers also pass; an isolated run of the release
-bundle reproduces the recorded outputs. The [review record](companions/elementary/REVIEW.md)
-records the independent verification separately from those computations.
-No formal verification is supplied.
+bundle reproduces the recorded outputs.
+
+**Peter W. Murphy subsequently formalized an adaptation of this argument
+in Lean.** His [determinant proof and paper](https://github.com/DrMurphyIsIn/tenth-discriminant/tree/f0995bf604056a98f0af0d182ed152c6bd996419/determinant)
+credit this companion, and his
+[verification record](https://github.com/DrMurphyIsIn/tenth-discriminant/blob/f0995bf604056a98f0af0d182ed152c6bd996419/determinant/formalization/VERIFICATION.md)
+reports acceptance by Lean and nanoda. Some estimates and the proof that
+the nine surviving fields have class number one differ from this paper.
+The [companion review record](companions/elementary/REVIEW.md) distinguishes
+that external formalization from the earlier AI-model cross-check and our
+computational checks. This documentation update does not rerun the Lean
+build or assert Mathlib acceptance.
 
 The first release is **`elementary-v0.1.0`**, with the paper, source,
 and verification files under `companions/elementary/`. Subsequent revisions
@@ -163,13 +185,13 @@ its own version history and review status.
 | Series and version | Analytic cutoff | Paper and files | Review status |
 |---|---|---|---|
 | **Historical companion · historical-v0.1.0 (replaced 22 October 2026)** | **`q < 196`** | [Weber reconstruction: proposed historical cutoff 1891](companions/historical/output/pdf/historical-1891.pdf) · [Source and reproduction](companions/historical/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/historical-v0.1.0) | No independent audit verdict recorded; mathematical proof and historical eligibility require separate review; exact algebra and finite checks pass ([review record](companions/historical/REVIEW.md)) |
-| **Elementary companion · elementary-v0.1.0** | **`q < 32,768 = 2^15`** | [Elementary proof](companions/elementary/output/pdf/elementary-companion.pdf) · [Source and reproduction](companions/elementary/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/elementary-v0.1.0) | Independent mathematical verification passed; exact constant checks and the sieve of 4,095 candidates pass ([review record](companions/elementary/REVIEW.md)) |
-| **v6 revised · v0.6.1** | **`q < 570`** | [Revised proof](versions/v6.1/output/pdf/proof.pdf) · [Source and reproduction](versions/v6.1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.1) | Review status unchanged; editorial revision preserves all displayed equations, certificate code, parameters, and results |
-| **v6 original · v0.6.0** | `q < 570` | [Original proof](versions/v6/output/pdf/proof.pdf) · [Source and reproduction](versions/v6/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.0) | Independent mathematical audit pending; 429 grouped exact checks, 101,524 finite structural cases, and 70 finite discriminant candidates pass |
-| **v5 · v0.5.0** | **`q < 2,000`** | [Corrected proof](versions/v5/output/pdf/proof.pdf) · [Source and reproduction](versions/v5/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0) | Manual mathematical audit with exact computational checks passed; §6.2 wording corrected within v0.5.0; calculations unchanged; not formal verification |
-| **v4 · v0.4.0** | **`q < 4,000`** | [Self-contained proof and finite classification](versions/v4/output/pdf/proof.pdf) · [Source and reproduction](versions/v4/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.4.0) | Independent mathematical verification passed; 39 exact arithmetic checks, 62,880 finite sanity cases, and an exhaustive check of 499 candidates pass |
-| **v3 expanded · v0.3.1** | `q < 10^6` | [Expanded proof and finite classification](versions/v3.1/output/pdf/proof.pdf) · [Source and reproduction](versions/v3.1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.1) | Independent mathematical cross-check passed; arithmetic and complete finite checks pass |
-| **v3 original · v0.3.0** | `q < 10^6` | [Original v3 proof](versions/v3/output/pdf/proof.pdf) · [Source and reproduction](versions/v3/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.0) | Independent mathematical cross-check passed; 26 arithmetic checks and 22 finite sanity cases pass |
+| **Elementary companion · elementary-v0.1.0** | **`q < 32,768 = 2^15`** | [Elementary proof](companions/elementary/output/pdf/elementary-companion.pdf) · [Source and reproduction](companions/elementary/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/elementary-v0.1.0) · [Murphy's Lean adaptation](https://github.com/DrMurphyIsIn/tenth-discriminant/tree/f0995bf604056a98f0af0d182ed152c6bd996419/determinant) | Second-AI-model cross-check passed; exact finite checks pass; Murphy reports Lean/nanoda acceptance of his adaptation ([scope and evidence](companions/elementary/REVIEW.md)) |
+| **v6 revised · v0.6.1** | **`q < 570`** | [Revised proof](versions/v6.1/output/pdf/proof.pdf) · [Source and reproduction](versions/v6.1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.1) | Same mathematics and certificates as AI-reviewed v0.6.0; no separate audit of the revised exposition or Lean formalization recorded |
+| **v6 original · v0.6.0** | `q < 570` | [Original proof](versions/v6/output/pdf/proof.pdf) · [Source and reproduction](versions/v6/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.0) | Second-model cross-check and separate AI-assisted audit reported passed; exact checks pass; not formal verification ([review record](REVIEW.md)) |
+| **v5 · v0.5.0** | **`q < 2,000`** | [Corrected proof](versions/v5/output/pdf/proof.pdf) · [Source and reproduction](versions/v5/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0) | AI-model cross-check with exact computational checks passed; §6.2 wording corrected within v0.5.0; calculations unchanged; not formal verification |
+| **v4 · v0.4.0** | **`q < 4,000`** | [Self-contained proof and finite classification](versions/v4/output/pdf/proof.pdf) · [Source and reproduction](versions/v4/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.4.0) | Second-AI-model cross-check passed; 39 exact arithmetic checks, 62,880 finite sanity cases, and an exhaustive check of 499 candidates pass |
+| **v3 expanded · v0.3.1** | `q < 10^6` | [Expanded proof and finite classification](versions/v3.1/output/pdf/proof.pdf) · [Source and reproduction](versions/v3.1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.1) | Second-AI-model cross-check passed; arithmetic and complete finite checks pass |
+| **v3 original · v0.3.0** | `q < 10^6` | [Original v3 proof](versions/v3/output/pdf/proof.pdf) · [Source and reproduction](versions/v3/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.3.0) | Second-AI-model cross-check passed; 26 arithmetic checks and 22 finite sanity cases pass |
 | **v2 · v0.2.0** | `q < 5 × 10^7` | [Complete cumulative proof](versions/v2/output/pdf/proof.pdf) · [Source and reproduction](versions/v2/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.2.0) | Mathematical cross-check with a different frontier model passed; 23 exact arithmetic checks pass |
 | **v1 · v0.1.0** | `q < 10^10` | [Original proof](versions/v1/output/pdf/proof.pdf) · [Unchanged original snapshot](versions/v1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.1.0) | Different-frontier-model cross-check reported by the repository owner; see the review record |
 
@@ -193,7 +215,7 @@ prime estimates, classical quadratic ideal theory, and reduction of
 binary quadratic forms remain external inputs. No earlier paper is
 needed to read v4.
 
-Version 5 cites the independently verified v4 result only for
+Version 5 cites the AI-cross-checked v4 result only for
 `q >= 4,000`. It includes the determinant and resultant proofs needed for
 the new interval, the averaging argument, the primitive-norm Euler
 product, and explicit error bounds for the numerical formulas. Its 37
@@ -214,13 +236,14 @@ contributions from the challenge discussion and the alternatives tested.
 The [v0.6.1 editorial record](versions/v6.1/EDITORIAL.md) maps the revised
 sections to v0.6.0 and documents what was preserved.
 
-The independent mathematical checks of both v3.0 and v3.1, and the
-separate independent verification of v4, were confirmed on
-20 October 2026 after publication. The completed manual audit of v5 and
-its wording correction are recorded in v0.5.0. These checks do not cover
-v6, whose independent mathematical audit is pending. The
-[current review record](REVIEW.md) records subsequent checks; original
-publication snapshots retain their status at publication.
+The checks reported for v1-v5 and the elementary companion were
+cross-checks by another AI model, as clarified on 26 October 2026; no
+human peer review is implied. V5's minor wording correction remains
+recorded in v0.5.0. V6 has its own subsequent AI-review reports, and
+Murphy's Lean adaptation applies to the elementary route only. The
+[current review record](REVIEW.md) distinguishes AI-model review,
+computational checks, and formal verification. Original publication
+snapshots retain their status at publication.
 All releases are research drafts.
 
 ## Fixed versions for citation

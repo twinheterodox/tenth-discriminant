@@ -4,12 +4,12 @@
   "title": "An elementary determinant bound for the tenth discriminant",
   "authorship_note": "Research note prepared with Codex",
   "analytic_cutoff": "q < 32,768 = 2^15",
-  "mathematical_review": "Independent mathematical verification passed; confirmed 2026-10-21; not formal verification.",
+  "mathematical_review": "Second-AI-model cross-check reported passed on 2026-10-21; Murphy separately reports Lean/nanoda checks of an adaptation. See REVIEW.md for scope.",
   "sha256": {
     ".gitignore": "fe4cc5a6cab925396d406eb96a710f218a10be332367e075102f01a989e442ec",
-    "CHANGELOG.md": "5dee9b7bf8f05756828e0cc9fe15120d8d2553bf92cc2cec095098894f0091d9",
-    "README.md": "246fecf24986168efe09956b79e0b8a7150e0429c622d6abaf611343a5dd3682",
-    "REVIEW.md": "870dec74b1a6f66b3ad7cbbf71ccb5640795cc4a2094b5eecf818981689f8b93",
+    "CHANGELOG.md": "9148253f4d0e015ee96b4642b60d98f867bd5820431aaa91fca03587dd709043",
+    "README.md": "152fcb3c9d30901c69cf83eae459ab3063004fb31b7f435847379103fa258a45",
+    "REVIEW.md": "866d482d1907d9c0c1f192b50b0b22cd230ddd0fe36c61da593024dad9620a13",
     "output/pdf/elementary-companion.pdf": "3aad955007d33f77ad9f52a1b54bf64e77720590d63f1e0a01725019e93ccbf3",
     "proof.tex": "53b6259284dffe44e89a50d11bac16c761aca53f58b469095e6092032ce536f7",
     "verification.txt": "911186fd4e58ccedbf317313770eb8b20fb4eb309bdb9d1e8139a6cbb72214b1",
@@ -23,6 +23,12 @@
     "statement": "elementary passed independent verification",
     "publication_at_confirmation": "c46f45b710e9887e4e19c0da66584d04792a77ad",
     "reviewer_or_model": "Not supplied",
-    "detailed_report": "Not supplied"
+    "detailed_report": "Not supplied",
+    "review_type": "Cross-check by a second AI model, clarified 2026-10-26; not human peer review or formal verification."
+  },
+  "documentation_update": {
+    "date": "2026-10-26",
+    "scope": "Current repository documentation and its checksums; proofs, programs, numerical results, and published release files are unchanged.",
+    "release_manifest": "The unchanged release ZIP retains its own publication-time documentation and manifest."
   }
 }

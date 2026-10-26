@@ -9,6 +9,28 @@ On 22 October 2026, the historical companion was replaced within
 `q < 196`. Its own changelog records the superseded 1830 claim and the
 retained original publication snapshot.
 
+## Review documentation and external Lean formalization — 26 October 2026
+
+- Adds prominent links to Peter W. Murphy's Lean adaptation of the
+  elementary companion, its paper, and its reported Lean/nanoda checks.
+  Records its scope separately from the numbered series and historical paper.
+- Clarifies that the reviews reported by the repository owner were
+  cross-checks by another AI model. Earlier descriptions of independent
+  mathematical verification or a manual audit did not mean human peer review.
+- Records the public second-model confirmation and Henric Larsson's
+  separate AI-assisted audit of v0.6.0. His clarification reports no proof
+  or certificate requiring repair; the repairs concerned the audit process.
+- Replaces stale pending statuses in the current documentation and explains
+  how the v6.0 review applies to the unchanged mathematics of v6.1.
+- Distinguishes AI-model review, computational checks, and formal
+  verification. No external Lean build or audit is rerun for this update.
+- Updates documentation and its source manifests only. Paper versions,
+  proofs, programs, numerical results, release downloads, and fixed tags
+  are preserved. Earlier entries below retain the terminology recorded at
+  the time; the current meanings and evidence are in [REVIEW.md](REVIEW.md).
+
+See also the [elementary companion changelog](companions/elementary/CHANGELOG.md).
+
 ## v0.6.1 — revised exposition, 21 October 2026
 
 **The analytic cutoff remains `q < 570`.**

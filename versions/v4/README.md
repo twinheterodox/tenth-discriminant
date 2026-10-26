@@ -76,15 +76,18 @@ survivors. Recorded output: [finite_range_checks.txt](finite_range_checks.txt).
 
 ## Review status
 
-**Independent mathematical review of v4 is pending.** Both v3 papers
-have passed independent mathematical checks, but those checks do not
-cover the new v4 argument. Codex prepared the derivation and verification
+**V4 passed a cross-check by a second AI model,** confirmed on
+20 October 2026. This is a separate check from those of the v3 papers,
+not human peer review or formal verification. Codex prepared the derivation and verification
 programs. The numerical certificate and finite sanity cases do not
 constitute an independent review or a formalization of the general proof.
 
 The supplied PDF was compiled, rendered, and all ten pages visually
-inspected. See the [v4 verification record](REVIEW.md) and the
+inspected. See the [v4 publication-time verification record](REVIEW.md) and the
 [current repository review record](https://github.com/twinheterodox/tenth-discriminant/blob/main/REVIEW.md).
+
+Review terminology was clarified on 26 October 2026. The published
+paper, bundle, and fixed tag remain unchanged.
 
 ## Rebuild the paper
 

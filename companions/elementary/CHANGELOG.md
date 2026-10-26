@@ -1,5 +1,24 @@
 # Elementary companion changelog
 
+## External Lean adaptation and review terminology — 26 October 2026
+
+- Links Peter W. Murphy's external Lean adaptation, paper, verification
+  record, and archived release. Murphy reports acceptance by Lean and
+  nanoda for the full classification using this companion's cutoff.
+- Distinguishes his adapted formal proof from the original paper: some
+  estimates and the converse use different arguments. This is not a
+  formalization of the numbered series or historical reconstruction.
+- Clarifies that the verification confirmed on 21 October was a
+  cross-check by a second AI model, not human peer review or formal verification.
+- Updates the current README, review record, and source manifest. The
+  paper, programs, numerical results, published bundle, and release tag
+  remain unchanged; no version increment is made.
+- Records external verification reports without claiming to have rerun
+  Murphy's build or established Mathlib acceptance.
+
+Earlier entries retain their publication wording. See [REVIEW.md](REVIEW.md)
+for the current terminology, source links, and scope.
+
 ## elementary-v0.1.0 - independent verification, 21 October 2026
 
 - Records that the elementary companion passed independent mathematical

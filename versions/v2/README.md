@@ -57,14 +57,16 @@ zero computation is used.
 
 ## Verification status
 
-**The new refinement has not yet received a separate-model mathematical
-cross-check.** Its 23 exact arithmetic checks pass. The cumulative PDF has
+**The v2 refinement passed a cross-check by a different frontier AI model,**
+confirmed on 20 October 2026. This is not human peer review or formal
+verification. Its 23 exact arithmetic checks pass. The cumulative PDF has
 been rendered and visually inspected; that checks presentation.
 
 The repository owner reports that the original v1 mathematical argument
-was cross-checked with a different frontier model. That report applies to
-v1. Detailed review scope and inherited computational evidence are recorded
-in [REVIEW.md](REVIEW.md).
+was also cross-checked with a different frontier model. The
+[current review record](../../REVIEW.md) documents the separate v1 and v2
+checks and the terminology clarified on 26 October. The original
+[publication-time record](REVIEW.md), PDF, and bundle are preserved.
 
 ## Reproduce
 

@@ -3,10 +3,33 @@
 This log records the scope of available evidence. It does not certify
 the external theorems or intermediate lemmas cited by each version.
 
+## How to read the review labels — clarified 26 October 2026
+
+The repository owner clarified that the checks they reported were
+**cross-checks by a second AI model**. Earlier wording such as
+"independent mathematical verification" and the v5 report's "manual
+mathematical audit" should be understood in that sense. No human peer
+review is recorded.
+
+- **AI-model cross-check:** a separate model or review session examines
+  the mathematical argument. Details and available reports are identified below.
+- **Computational checks:** programs check numerical inequalities,
+  certificates, or finite cases; these do not establish the general
+  mathematical argument on their own.
+- **Formal verification:** a proof assistant checks an encoded theorem
+  and its dependencies. Peter W. Murphy reports this for an adaptation
+  of the elementary companion, with Lean and nanoda. That formalization
+  does not cover the numbered versions or the historical paper.
+
+This update records the public v6 audit clarification and external Lean
+work. It does not rerun those external checks. Published PDFs, release
+bundles, and fixed tags retain their publication records; this file gives
+the current scope and terminology.
+
 ## v0.1.0 — original argument
 
 The repository owner reported on 20 October 2026 that the mathematical
-argument was cross-checked with a different frontier model. A model name
+argument passed a cross-check by a different frontier AI model. A model name
 and detailed review report are not bundled in this repository.
 
 The original finite computation was run with two algorithms, both written
@@ -26,8 +49,8 @@ sieve programs and outputs are reused byte-for-byte and cover the entire
 remaining range. The cumulative PDF has been compiled, rendered, and
 visually inspected.
 
-**The v2 mathematical argument has been cross-checked with a different
-frontier model. The independent check passed.** Completion was confirmed
+**The v2 mathematical argument passed a cross-check by a different
+frontier AI model.** Completion was confirmed
 by the repository owner on 20 October 2026. A model name and detailed
 review report are not bundled in this repository.
 
@@ -56,7 +79,7 @@ The original finite-sieve code and recorded outputs are included
 byte-for-byte. Their existing coverage below `10^10` includes the new
 remaining interval; the finite sieve was not rerun for v3.
 
-**The v0.3.0 mathematical argument has passed an independent cross-check.**
+**The v0.3.0 mathematical argument passed a cross-check by a second AI model.**
 Completion was confirmed on 20 October 2026 together with the
 expanded v0.3.1 paper. The reviewer/model and detailed
 review reports were not supplied for inclusion in this repository.
@@ -84,8 +107,8 @@ original outputs apart from machine-dependent runtime.
 The PDF has a clean LaTeX build, and all ten pages were rendered and
 visually inspected. The generating assistant checked the expanded
 exposition against the original v3 deductions and the cited determinant
-estimates. **The expanded v0.3.1 paper has also passed an independent
-mathematical cross-check.** Completion for both v3 versions was confirmed
+estimates. **The expanded v0.3.1 paper also passed a cross-check by a
+second AI model.** Completion for both v3 versions was confirmed
 on 20 October 2026. The reviewer/model and detailed reports were not
 supplied for inclusion in this repository. This subsequent review update
 does not change either fixed paper or its publication-time review record.
@@ -110,7 +133,7 @@ enumerates the reduced forms of the nine surviving fields. Both programs
 use only the Python standard library and reproduce the recorded outputs.
 The ten-page PDF has been compiled, rendered, and visually inspected.
 
-**The v4 mathematical argument has passed independent verification.**
+**The v4 mathematical argument passed a cross-check by a second AI model.**
 Completion was confirmed on 20 October 2026. The reviewer/model and
 detailed report were not supplied for inclusion in this repository.
 This is a separate check of v4, subsequent to the checks of v3.0 and v3.1.
@@ -130,7 +153,7 @@ The analytic cutoff is `q < 2,000`. The new argument averages Green's
 derivative determinant inequality over its size parameter and compares
 the resulting prime sum with the Euler product of primitive quadratic
 norms. Euler summation controls the norm series and its derivative.
-The independently verified v4 result is cited for `q >= 4,000`; the
+The AI-cross-checked v4 result is cited for `q >= 4,000`; the
 new interval, including its determinant and resultant arguments, is
 treated in full relative to the stated classical inputs.
 
@@ -143,8 +166,10 @@ below 2,000 and confirms the nine survivors by reduced-form enumeration.
 The programs use only the Python standard library. The eleven-page PDF
 has a clean LaTeX build and has been rendered and visually inspected.
 
-**V5 has passed a manual mathematical audit with exact computational
-checks**, as confirmed on 20 October 2026. This is not formal verification.
+**V5 passed a cross-check by a second AI model, with exact computational
+checks**, as confirmed on 20 October 2026. The original description
+"manual mathematical audit" referred to that AI review, not to a human
+reviewer. This is not formal verification.
 The audit reported one minor wording correction in §6.2: `(log R)/S`,
 where `S = floor(R/110)`, is not itself decreasing between floor jumps.
 The justification should explicitly use the upper bound
@@ -177,8 +202,8 @@ the final printed review-status sentence changes. The full suite was
 not rerun for this wording correction. The PDF was rebuilt, rendered, and
 visually inspected.
 
-The [current v5 verification record](versions/v5/REVIEW.md) records
-the completed manual audit and the implementation of its finding.
+The [current v5 audit record](versions/v5/AUDIT.md) records
+the AI-model cross-check and the implementation of its finding.
 This minor correction retains version v0.5.0. The existing release and
 download links serve the corrected paper and bundle; the original files
 remain available from the original publication tag and Git commit.
@@ -189,7 +214,7 @@ The analytic cutoff is `q < 570`. The new paper excludes the entire real
 interval `[570,2,000]` through a smoothed prime-sum comparison, stronger
 Frobenius divisibility, eight acyclic factorial refinements, joint
 derivative/radius bounds, and a positive squared-polynomial kernel.
-The audited v5 result supplies `q >= 2,000`. The new interval proof is
+The AI-cross-checked v5 result supplies `q >= 2,000`. The new interval proof is
 self-contained relative to its stated classical inputs; it does not
 depend on intermediate unpublished drafts.
 
@@ -208,16 +233,47 @@ the mathematical body of the paper is unchanged. The fifteen-page PDF
 was rebuilt, rendered, and visually inspected. The lengthy certificate
 was not rerun for these publication-only changes.
 
-**Independent mathematical audit of v6 is pending.** The previous reviews
-of v3, v4, and v5 do not cover this argument. The computations and
-manuscript checks were performed within the same Codex session and are
-not formal verification. No optimality claim is made for the cutoff.
+**V6 has a reported successful second-model cross-check and a separate
+AI-assisted audit coordinated by Henric Larsson.** These subsequent
+reviews are distinct from the development-session computations above.
+They are not human peer review or formal verification. No optimality
+claim is made for the cutoff.
+
+### Subsequent AI reviews — recorded 26 October 2026
+
+The repository owner
+[confirmed a second-model check on 21 October](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/#comment-698514).
+Separately, Henric Larsson
+[reported a GPT-Pro audit of v0.6.0](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/#comment-698516)
+and then
+[clarified its verdict](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/#comment-698595).
+He reports that the completed audit found no mathematical error or
+numerical certificate requiring correction. The initial phrase
+"VERIFIED WITH REPAIR" concerned completion and strengthening of his
+audit process, not a repair to this proof.
+
+His report covers 1,258 derivative interval cells, 368 auxiliary-prime
+endpoints, 1,472 feedback updates, five signed-kernel comparisons, and
+explicit Stirling remainder checks. Its conclusion is relative to the
+stated classical inputs, the inherited v5 result, and correct outward
+interval arithmetic. The external audit reports and scripts are not
+bundled here; this entry records the public report and clarification,
+not a reproduction of that audit.
 
 The [v6 review record](versions/v6/REVIEW.md) gives the per-band margins
 and mathematical audit targets. The
 [research record](versions/v6/RESEARCH.md) and
 [source record](versions/v6/sources.json) document attribution,
 tested alternatives, and remaining possibilities.
+
+## v0.6.1 — revised exposition
+
+The displayed mathematics, parameters, certificate programs, and results
+are unchanged from v0.6.0. The AI-review evidence above therefore concerns
+the mathematical argument retained in v0.6.1. No separate AI audit of the
+revised prose or Lean formalization is recorded. The
+[editorial record](versions/v6.1/EDITORIAL.md) documents the preservation
+checks and presentation changes.
 
 ## elementary-v0.1.0 — elementary companion
 
@@ -234,11 +290,12 @@ reproduced both programs' recorded outputs exactly. The first publication
 copied the paper, source, programs, and results from the completed local
 draft and added documentation and checksums.
 
-**The elementary companion has passed independent mathematical verification,**
+**The elementary companion passed a cross-check by a second AI model,**
 as confirmed by the repository owner on 21 October 2026. No reviewer/model
 identity or detailed report was supplied. The computations above were
 performed in the development session and are separate from the reported
-independent verification. No formal verification is supplied.
+AI-model cross-check. Murphy subsequently published an external Lean
+adaptation, as described below.
 The [companion review record](companions/elementary/REVIEW.md) gives its
 scope and publication checks. It has its own version history, starting at
 [elementary-v0.1.0](https://github.com/twinheterodox/tenth-discriminant/releases/tag/elementary-v0.1.0).
@@ -253,12 +310,27 @@ original release; the mathematical checks were not rerun. The release
 downloads contain the corrected files, while the original tag and Git
 history preserve the first publication.
 
-The subsequent review-status update records the independent verification
+The subsequent review-status update records the AI-model cross-check
 in the paper and documentation, with no change to the mathematical
 argument, programs, or results. At confirmation, the current publication
 was [c46f45b](https://github.com/twinheterodox/tenth-discriminant/commit/c46f45b710e9887e4e19c0da66584d04792a77ad).
 The original tag retains the status at first publication; the release
 downloads include the completed-verification status under the same version.
+
+### Peter W. Murphy's external Lean adaptation — recorded 26 October 2026
+
+Murphy's [determinant development](https://github.com/DrMurphyIsIn/tenth-discriminant/tree/f0995bf604056a98f0af0d182ed152c6bd996419/determinant)
+credits this companion at commit `64694aae` as the source of its explicit
+constants and assembly. It proves the full class-number-one classification
+using `q < 32,768`, with some changes to the estimates and the converse.
+Its [verification record](https://github.com/DrMurphyIsIn/tenth-discriminant/blob/f0995bf604056a98f0af0d182ed152c6bd996419/determinant/formalization/VERIFICATION.md)
+reports acceptance by Lean and nanoda, with only `propext`, `Quot.sound`,
+and `Classical.choice`. See the
+[companion review record](companions/elementary/REVIEW.md) for the adaptations,
+archive, and verification scope. This is a formalization of the adapted
+elementary route, not of v1-v6 or the historical reconstruction; this
+documentation update has not rerun the external build or checked Mathlib
+submission status.
 
 ## historical-v0.1.0 - Weber replacement, 22 October 2026
 

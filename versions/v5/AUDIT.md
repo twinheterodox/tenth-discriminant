@@ -1,8 +1,10 @@
 # V5 audit finding and correction
 
-Completion of the v5 audit was confirmed on 20 October 2026. The
-reported review was a **manual mathematical audit with exact computational
-checks**, not formal verification. The reviewed release was
+Completion of the v5 cross-check was confirmed on 20 October 2026.
+**This was a cross-check by a second AI model, with exact computational
+checks**, as clarified by the repository owner on 26 October. The original
+description "manual mathematical audit" did not mean human peer review;
+it was not formal verification. The reviewed release was
 [original v0.5.0 snapshot](https://github.com/twinheterodox/tenth-discriminant/tree/7a883b764213cc52c76c9849925b823861eefc38/versions/v5),
 commit
 [7a883b7](https://github.com/twinheterodox/tenth-discriminant/commit/7a883b764213cc52c76c9849925b823861eefc38).
@@ -10,8 +12,8 @@ No reviewer identity or longer report was supplied.
 
 ## Reported finding
 
-The following is the supplied comment, with its displayed fraction
-transcribed into LaTeX:
+The following preserves the supplied AI-review comment, including its
+original terminology, with its displayed fraction transcribed into LaTeX:
 
 > There is one minor wording correction in §6.2: $\log R/\lfloor R/110\rfloor$
 > is not itself decreasing between floor jumps. The justification should

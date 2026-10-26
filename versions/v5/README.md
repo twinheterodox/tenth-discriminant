@@ -23,9 +23,11 @@ q = 3, 4, 7, 8, 11, 19, 43, 67, 163.
 
 ## Correction following the v5 audit
 
-V5 has passed a **manual mathematical audit with exact computational
-checks**. This correction applies the audit's minor wording correction in
-§6.2. It is not formal verification. The bound `q < 2,000`, numerical
+V5 passed a **cross-check by a second AI model, with exact computational
+checks**. The original description "manual mathematical audit" referred
+to this model review, as clarified on 26 October 2026. This correction
+applies its minor wording correction in §6.2. It is not human peer review
+or formal verification. The bound `q < 2,000`, numerical
 constants, and certificate calculations are unchanged.
 
 With `S = floor(R/110)`, the paper now explicitly uses
@@ -61,7 +63,7 @@ the monomial rows, and computes a tighter prime-square tail. It uses
 
 ## Relationship to v4
 
-The only earlier-version input is the independently verified
+The only earlier-version input is the AI-cross-checked
 [v4 result](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.4.0)
 excluding `q >= 4,000`. Its infinite-range proof is cited rather than
 repeated. The new interval argument is self-contained relative to its
@@ -108,15 +110,15 @@ examples do not establish the general mathematical proof.
 
 ## Review and AI disclosure
 
-**The v5 mathematical argument has passed a manual audit with exact
-computational checks**, confirmed on 20 October 2026. This release
-implements its wording correction in §6.2. The audit is not formal
+**The v5 mathematical argument passed a cross-check by a second AI model,
+with exact computational checks**, confirmed on 20 October 2026. This release
+implements its wording correction in §6.2. The audit is not human peer review or formal
 verification. Codex developed the argument and programs and applied the
 reported correction. The separate checks of v4 and both v3 papers have
 also passed.
 
 The eleven-page PDF was compiled, rendered, and visually inspected.
-See the [audit finding](AUDIT.md), [version review record](REVIEW.md),
+See the [audit finding](AUDIT.md), [publication-time review record](REVIEW.md),
 and [current repository review record](https://github.com/twinheterodox/tenth-discriminant/blob/main/REVIEW.md).
 The certificate's calculations and numerical outputs are unchanged;
 its final status message now refers to the review record.

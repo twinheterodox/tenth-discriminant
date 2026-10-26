@@ -16,11 +16,22 @@ has absolute fundamental discriminant `q < 32,768`. An integer residue
 sieve and reduced-form enumeration leave the nine absolute discriminants
 `3, 4, 7, 8, 11, 19, 43, 67, 163`.
 
-**The elementary companion has passed independent mathematical verification,**
+**The elementary companion passed a cross-check by a second AI model,**
 confirmed on 21 October 2026. The exact constant checks and exhaustive
 finite sieve also pass. The [review record](REVIEW.md) distinguishes the
-reported independent verification from the computations performed in the
-development session. No formal verification is supplied.
+reported AI-model cross-check from the computations performed in the
+development session.
+
+**External Lean formalization:** Peter W. Murphy has published an
+[adaptation of this argument](https://github.com/DrMurphyIsIn/tenth-discriminant/tree/f0995bf604056a98f0af0d182ed152c6bd996419/determinant),
+with a [paper](https://github.com/DrMurphyIsIn/tenth-discriminant/blob/f0995bf604056a98f0af0d182ed152c6bd996419/determinant/paper/paper.pdf)
+and [verification record](https://github.com/DrMurphyIsIn/tenth-discriminant/blob/f0995bf604056a98f0af0d182ed152c6bd996419/determinant/formalization/VERIFICATION.md)
+reporting acceptance by Lean and nanoda. It proves the full classification
+using `q < 32,768`, with changes to some estimates and the converse.
+The [scope and adaptations](REVIEW.md#external-lean-adaptation--recorded-26-october-2026)
+are recorded separately from the earlier AI cross-check. This update
+does not rerun the external build or claim that the development has been
+accepted into Mathlib.
 
 ## The argument
 
@@ -61,8 +72,9 @@ Run without `-O` or `-OO`, since assertions express the checks.
   below the cutoff using primes at most 31, verifies its residue tables
   by Euler's criterion, and enumerates reduced forms for the nine survivors.
 - [verification.txt](verification.txt) contains the reproduced outputs.
-- [MANIFEST.json](MANIFEST.json) records the checksums of the publication
-  files. The ZIP includes all of them and the manifest.
+- [MANIFEST.json](MANIFEST.json) records checksums for the current source
+  files, including updated review documentation. The unchanged published
+  ZIP contains its own publication-time documentation and manifest.
 
 To build the PDF with LaTeX:
 

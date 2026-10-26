@@ -10,7 +10,7 @@ The claimed implication is
 h(Q(sqrt(D))) = 1  implies  q = |D| < 570,
 ```
 
-for a negative fundamental discriminant `D`. The new proof excludes the whole real interval `[570,2000]`, without enumerating discriminants in that interval. The published, audited [v5 result](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0) supplies the range `q >= 2000`. V5 in turn cites v4 for `q >= 4000`; those arguments also avoid quadratic zero-free-region inputs.
+for a negative fundamental discriminant `D`. The new proof excludes the whole real interval `[570,2000]`, without enumerating discriminants in that interval. The published, AI-cross-checked [v5 result](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.5.0) supplies the range `q >= 2000`. V5 in turn cites v4 for `q >= 4000`; those arguments also avoid quadratic zero-free-region inputs.
 
 [Read the fifteen-page proof](output/pdf/proof.pdf) · [LaTeX source](proof.tex) · [Download the proof and verification bundle](https://github.com/twinheterodox/tenth-discriminant/releases/download/v0.6.0/tenth-discriminant-v0.6.0.zip)
 
@@ -60,7 +60,20 @@ The fixed inputs are in [parameters.json](parameters.json). Floating-point searc
 
 ## Review status and AI disclosure
 
-**Independent mathematical review of this v6 draft is pending.** The prior reviews of v3, v4, and v5 do not cover it. Exact numerical certification, finite algebraic tests, a mathematical audit, and formal verification are different things. This is not formally verified.
+**V6 has a reported successful second-model cross-check and a separate
+AI-assisted audit coordinated by Henric Larsson.** His
+[clarification](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/#comment-698595)
+reports no mathematical error or certificate requiring correction; the
+repairs concerned his audit process. The conclusion is relative to the
+stated classical inputs, inherited v5 result, and correct outward interval
+arithmetic. These are AI reviews, not human peer review or formal verification.
+
+The [current repository review record](../../REVIEW.md) records the
+sources and scope, added on 26 October 2026. V0.6.1 retains v0.6.0's
+mathematics and certificates; no separate audit of its revised prose is
+recorded. The original papers and release bundles retain their
+publication-time review statements. No external audit is rerun for this
+documentation update.
 
 Codex developed the refinements, chose parameters, wrote the manuscript and programs, and checked their outputs. The specific external contributions are attributed in the proof and [source record](sources.json). No priority claim is made for the new refinements.
 
@@ -77,4 +90,8 @@ pdflatex -interaction=nonstopmode -halt-on-error -output-directory=output/pdf pr
 pdflatex -interaction=nonstopmode -halt-on-error -output-directory=output/pdf proof.tex
 ```
 
-The table builder rounds the exact certificate endpoints outward for the manuscript. `MANIFEST.json` records the packaged files and their SHA-256 hashes. Third-party papers are cited rather than redistributed.
+The table builder rounds the exact certificate endpoints outward for the manuscript.
+`MANIFEST.json` records the current source files and their SHA-256 hashes,
+including updated review documentation. The unchanged release ZIP retains
+its own publication-time documentation and manifest. Third-party papers
+are cited rather than redistributed.

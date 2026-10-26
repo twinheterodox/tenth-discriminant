@@ -1,10 +1,10 @@
 {
   "version": "v0.6.0",
-  "review_status": "Independent mathematical audit pending; not formal verification.",
+  "review_status": "Second-model cross-check and separate AI-assisted audit reported passed; not human peer review or formal verification. See REVIEW.md for scope.",
   "files": {
     "README.md": {
-      "bytes": 6129,
-      "sha256": "d715d51cf252bd68874593ed20f7b23ec511d4e01f3b54a1fdefff2ab2f8c9ab"
+      "bytes": 6991,
+      "sha256": "b5f1d651c3492c92feab4daa210c0730afc36a1d3f68ab860fa850feaf0fe438"
     },
     "REPRODUCTION.json": {
       "bytes": 1158,
@@ -15,8 +15,8 @@
       "sha256": "5b3826c3f4bc5127c73ab3f5eb1eaf560a5ecbf276f1455f65aa0f0e8da8039e"
     },
     "REVIEW.md": {
-      "bytes": 3494,
-      "sha256": "ec502a378900a3a0df36c1f75097457f75a3be940ea15682cfd2bff2f7c4de35"
+      "bytes": 4458,
+      "sha256": "80c1991f87691d7ee63884c9307d04401696004160b7b9b9c30a43a3c745688e"
     },
     "archive_check.txt": {
       "bytes": 1168,
@@ -106,5 +106,10 @@
       "bytes": 14152,
       "sha256": "29c2d5436e44e1e5d1433a66c67b250fb7a4c6111a3b4e4cde2cb136f5b8deba"
     }
+  },
+  "documentation_update": {
+    "date": "2026-10-26",
+    "scope": "Current repository documentation and its checksums; proofs, programs, numerical results, and published release files are unchanged.",
+    "release_manifest": "The unchanged release ZIP retains its own publication-time documentation and manifest."
   }
 }

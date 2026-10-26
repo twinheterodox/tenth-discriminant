@@ -1,5 +1,23 @@
 # Review record
 
+## Current review status — 26 October 2026
+
+V6 has a reported successful second-model cross-check and Henric
+Larsson's separate AI-assisted audit. His
+[clarification](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/#comment-698595)
+reports no proof or certificate requiring correction. These are AI-model
+reviews, not human peer review or formal verification; the conclusions
+retain the stated mathematical and numerical premises.
+
+See the [current repository review record](../../REVIEW.md) for the source
+reports and scope. V0.6.1 retains the reviewed v0.6.0 mathematics and
+certificates; no separate audit of the revised prose is recorded.
+
+## Original v0.6.0 publication record — 20 October 2026
+
+The remainder preserves the original review record. Its pending status
+describes publication time and is superseded by the update above.
+
 **Status: v0.6.0 research draft; independent mathematical audit pending.**
 
 The claimed new result is the analytic exclusion of `[570,2000]`. The published v5 implication handles the range above 2000. The previous independent reviews do not cover the new argument.

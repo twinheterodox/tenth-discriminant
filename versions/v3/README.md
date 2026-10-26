@@ -59,9 +59,9 @@ class-number database, or small-conductor zero computation is used.
 
 ## Verification status
 
-**All 26 exact arithmetic checks and 22 finite sanity cases pass.
-An independent mathematical cross-check of the new v3 argument is pending.**
-The completed cross-check of v2 applies to v2.
+**The v3 argument passed a cross-check by a second AI model,** confirmed
+on 20 October 2026. This is not human peer review or formal verification.
+All 26 exact arithmetic checks and 22 finite sanity cases also pass.
 
 The finite sanity cases compare direct lattice enumeration with the
 counting formulas and check prime-norm multiplicities in known fields.
@@ -74,9 +74,10 @@ The original finite-sieve programs and recorded outputs are copied
 byte-for-byte. Their existing results cover the larger range below
 `10^10`; they were not rerun for this release.
 
-See [this version's review record](REVIEW.md) and the
+See [this version's publication-time review record](REVIEW.md) and the
 [current review record](https://github.com/twinheterodox/tenth-discriminant/blob/main/REVIEW.md)
-for the scope of completed checks and any later updates.
+for the scope of completed checks and the terminology clarified on
+26 October 2026. The published paper and bundle remain unchanged.
 
 ## Reproduce
 

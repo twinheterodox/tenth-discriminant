@@ -1,6 +1,6 @@
 {
   "version": "v0.6.1",
-  "review_status": "Independent mathematical audit pending; not formal verification.",
+  "review_status": "Second-model cross-check and separate AI-assisted audit reported passed; not human peer review or formal verification. See REVIEW.md for scope.",
   "revision": "Revised exposition, 21 October 2026; bound and certificates unchanged.",
   "source_snapshot": "https://github.com/twinheterodox/tenth-discriminant/tree/v0.6.0/versions/v6",
   "files": {
@@ -13,8 +13,8 @@
       "sha256": "e14a4633dc195c765c982455cd96d05ce83a4e0fcf1aa08a3a44432ee150b257"
     },
     "README.md": {
-      "bytes": 6989,
-      "sha256": "9c599492c49d06f9909c96adca82d4b9d62bacfe26e73f01700994da20fb95b6"
+      "bytes": 7864,
+      "sha256": "cdd57de82f1093c13d7803d7823457bf34341b4903600e6020b68dbb00b15199"
     },
     "REPRODUCTION.json": {
       "bytes": 1158,
@@ -25,8 +25,8 @@
       "sha256": "5b3826c3f4bc5127c73ab3f5eb1eaf560a5ecbf276f1455f65aa0f0e8da8039e"
     },
     "REVIEW.md": {
-      "bytes": 3494,
-      "sha256": "ec502a378900a3a0df36c1f75097457f75a3be940ea15682cfd2bff2f7c4de35"
+      "bytes": 4458,
+      "sha256": "80c1991f87691d7ee63884c9307d04401696004160b7b9b9c30a43a3c745688e"
     },
     "archive_check.txt": {
       "bytes": 1168,
@@ -116,5 +116,10 @@
       "bytes": 14152,
       "sha256": "29c2d5436e44e1e5d1433a66c67b250fb7a4c6111a3b4e4cde2cb136f5b8deba"
     }
+  },
+  "documentation_update": {
+    "date": "2026-10-26",
+    "scope": "Current repository documentation and its checksums; proofs, programs, numerical results, and published release files are unchanged.",
+    "release_manifest": "The unchanged release ZIP retains its own publication-time documentation and manifest."
   }
 }
