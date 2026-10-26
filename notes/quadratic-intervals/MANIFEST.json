@@ -1,0 +1,52 @@
+{
+  "version": "quadratic-intervals-v0.1.0",
+  "title": "A uniform interval bound for inert-prime mass",
+  "date": "2026-10-26",
+  "review_status": "A separate AI-model cross-check reported no substantive gap in the ten-page draft; publication incorporates the subsequent clarifications described in REVIEW.md. Not human peer review or formal verification.",
+  "files": {
+    ".gitignore": {
+      "bytes": 85,
+      "sha256": "fe4cc5a6cab925396d406eb96a710f218a10be332367e075102f01a989e442ec"
+    },
+    "CHANGELOG.md": {
+      "bytes": 1191,
+      "sha256": "e0137373da57ac872da607cfde2da2e557a017140c3bd635e18df552678bac1a"
+    },
+    "LICENSE": {
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "NOTICE": {
+      "bytes": 192,
+      "sha256": "5d1e17b35281958a4875c111b0fe1931a119d8a20a2f863988a92460c1aafc20"
+    },
+    "README.md": {
+      "bytes": 6038,
+      "sha256": "43122913765b31935e80b7ac59b43f5c9f08e621d109f590268b906c0395b9b4"
+    },
+    "REVIEW.md": {
+      "bytes": 3703,
+      "sha256": "64a827b688fc9e02494983cef178ff46ed4c213c1befc8f457c2308defbce48e"
+    },
+    "checks.txt": {
+      "bytes": 637,
+      "sha256": "f94cbb9a2e31bff01be5023daf14a84e932e79d869becbe92dd2d0bb7f5000ea"
+    },
+    "cross_check.txt": {
+      "bytes": 2899,
+      "sha256": "3ef1b18aeefdffc2408ec8f2d6f946e225261003585d3529d6fb72762a0c8340"
+    },
+    "intervals.tex": {
+      "bytes": 30084,
+      "sha256": "a8e076b5853ca0a07c1fb60300aaf2af8a1da90af8a05cb390611c89363dee81"
+    },
+    "output/pdf/quadratic-intervals.pdf": {
+      "bytes": 362360,
+      "sha256": "ee93cb9c5ba290ae9fbb1db49c9f3d365928edeefe20b6824e275c41eed73888"
+    },
+    "verify_intervals.py": {
+      "bytes": 9718,
+      "sha256": "23b12c0666cb4816d28345ff4e59e1590c1f789f7c8b6e17991f3acc162c4d1b"
+    }
+  }
+}

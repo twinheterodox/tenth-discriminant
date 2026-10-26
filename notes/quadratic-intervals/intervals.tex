@@ -1,0 +1,726 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype,xurl}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\F}{\mathbb F}
+\newcommand{\OO}{\mathcal O}
+\newcommand{\Nm}{\operatorname{N}}
+\title{A uniform interval bound for inert-prime mass}
+\author{Research note prepared with Codex}
+\date{26 October 2026}
+\hypersetup{pdftitle={A uniform interval bound for inert-prime mass: quadratic-intervals-v0.1.0},
+pdfauthor={Research note prepared with Codex},
+pdfsubject={Quadratic characters, divided derivatives, and limits of aggregate prime profiles}}
+\begin{document}
+\maketitle
+\begin{center}\small
+Research draft: \texttt{quadratic-intervals-v0.1.0}.\\
+Independently cross-checked by another model;
+see Section~\ref{sec:checks} for scope and subsequent clarifications.
+\end{center}
+
+\begin{abstract}
+We give an elementary determinant proof of a uniform bound on the
+weighted mass of inert primes in arbitrary intervals. For every
+primitive nonprincipal real character $\chi$ of conductor $q$, we prove
+\[
+ \sum_{\substack{Y<p\le X\\\chi(p)=-1}}\frac{\log p}{p}
+ \le \frac12\log\frac XY+\frac14\log q
+       +\log(\log q+33)+18\qquad(1\le Y\le X).
+\]
+For a fixed quadratic field, the allowance above $\tfrac12\log(X/Y)$
+depends only on the field, independently of both endpoints. Thus the
+same estimate controls every interval $(Y,AY]$ of a fixed ratio $A>1$,
+however large $Y$ becomes.
+
+The proof combines divided derivatives with factorial divisibility at
+split primes. Their contributions cancel a loss that would otherwise
+grow with $\log(X/Y)$, producing an explicit error independent of the
+interval endpoints. As a consequence, we bound the logarithmic
+derivative of the associated Dirichlet $L$-function:
+$L'(\sigma,\chi)/L(\sigma,\chi)
+\le\frac12\log q+3\log(\log q+33)+45$ for every real $\sigma\ge1$.
+Finally, an explicit continuous model shows that the leading interval
+inequalities, together with specified positivity and counting
+constraints, are compatible with a residue of order $1/\log q$.
+This identifies a limitation of those aggregate constraints alone.
+\end{abstract}
+
+\section{Introduction}
+Motivated by the broader aims of Tao's challenge \cite{tao}, we turn
+from class number one to all quadratic characters.
+Let $\Delta$ be a fundamental discriminant, $q=|\Delta|\ge3$, and
+$\chi=\chi_\Delta$ its primitive real character. Both signs of
+$\Delta$ are allowed. Write $t=\log q$ and
+\[
+ I_\chi(Y,X)=\sum_{\substack{Y<p\le X\\\chi(p)=-1}}\frac{\log p}{p},
+ \qquad C_\chi(X)=\sum_{p\le X}\chi(p)\frac{\log p}{p}.
+\]
+All logarithms are natural.
+
+\begin{theorem}\label{thm:interval}
+For $1\le Y\le X$,
+\begin{equation}\label{eq:main}
+ I_\chi(Y,X)\le\frac12\log\frac XY+\frac t4+\log(t+33)+18.
+\end{equation}
+\end{theorem}
+
+Fix a quadratic field and a ratio $A>1$. Theorem~\ref{thm:interval}
+gives the same upper bound for the weighted sum of inert primes in
+$(Y,AY]$, however large $Y$ becomes. The allowance above
+$\tfrac12\log A$ depends only on the field. Thus the estimate places
+a uniform restriction on the concentration of inert primes across
+all multiplicative scales. For narrow intervals the error may dominate;
+the restriction becomes informative for sufficiently wide intervals.
+
+\subsection{Classical uniformity and the explicit refinement}
+Endpoint independence for a fixed field already follows from classical
+analytic number theory. The prime number theorem in arithmetic
+progressions with its classical error term
+\cite[Chapter 11]{kedlaya}, followed by partial summation, gives
+\[
+ I_\chi(1,x)=\tfrac12\log x+c_\chi+o_\chi(1)
+ \qquad(x\to\infty).
+\]
+The remainder is bounded for $x\ge1$. Subtracting the expressions at
+$X$ and $Y$ therefore gives, uniformly for $1\le Y\le X$,
+\[
+ I_\chi(Y,X)=\tfrac12\log(X/Y)+O_\chi(1).
+\]
+The hidden constant may depend on the field. Theorem~\ref{thm:interval}
+supplies the explicit allowance $t/4+\log(t+33)+18$ uniformly as the
+field varies, by an elementary determinant argument. Its contribution
+is this quantitative refinement within the determinant method;
+qualitative endpoint independence is not claimed as new.
+
+The original polynomial argument is due to OpenAI \cite{openai}.
+Green's derivative determinant \cite{green} provides the local row
+operation. Van Dijk \cite{vandijk} proves nonvanishing by reduction at
+an inert prime and gives the cumulative estimate
+$I_\chi(1,X)\le\frac12\log X+\frac14\log q+
+\log\log(3X)+O(1)$. Kominers \cite{kominers} extends cumulative
+prime-mass bounds to every Frobenius class in a Galois extension.
+Theorem~\ref{thm:interval} is narrower in its field scope, but controls
+an arbitrary interval with an error independent of its location and
+length. It is not obtained by subtracting two upper bounds.
+
+Our v7 proof \cite{v7}, Section 4.3, retains factorial divisibility at
+split primes to strengthen the inert-prime comparison. Here those
+factors have a structural role: they remove a coefficient loss that
+would otherwise grow with $\log(X/Y)$. Divided derivatives and their
+factorial valuation cost are classical. We use them with the number
+of nodes proportional to $R/Y$, where $R$ is the last inert prime
+in the interval. The refinement studied here is this combination and
+its explicit interval consequence; no novelty is asserted for the
+individual ingredients. The source comparison does not establish
+priority for the exact numerical bound over all existing literature.
+
+\subsection{Analytic comparisons and consequences}
+The associated Dirichlet $L$-function is initially defined by
+\[
+ L(s,\chi)=\sum_{n=1}^{\infty}\frac{\chi(n)}{n^s},
+ \qquad \operatorname{Re}s>1.
+\]
+Here $L'$ denotes differentiation with respect to $s$. Its logarithmic
+derivative $L'/L$ measures the rate of change of $L$ relative to its
+value; for real $\sigma>1$ it equals
+$\frac{d}{d\sigma}\log L(\sigma,\chi)$.
+
+The quasi-Riemann hypothesis (QRH) supplies stronger asymptotic control.
+Taking a zero-free half-plane with fixed boundary $1/2\le\alpha<1$
+as input---for example, the
+OpenAI result with boundary $\alpha=11/12$ \cite[Theorem 1.1]{qrh}---the
+standard explicit formula gives
+\[
+ \vartheta_\chi(x):=\sum_{p\le x}\chi(p)\log p
+ \ll_\alpha x^\alpha\log^2(qx),\qquad x\ge2,
+\]
+uniformly in $q$ and $\chi$; see \cite[Section 11.1]{kedlaya} for the
+explicit formula and the uniform zero count. Here all nontrivial zeros
+have real part at most $\alpha<1$; the functional equation bounds
+their real parts below by $1-\alpha$, and removing prime powers changes
+the estimate by $O(\sqrt x\log^2x)$.
+For clarity, the resulting interval comparison is
+\[
+ I_\chi(Y,X)\le\tfrac12\log(X/Y)
+                 +O_\alpha\bigl(\log\log(3q)\bigr)
+ \qquad(1\le Y\le X).
+\]
+Indeed, put $U=(\log(3q))^{3/(1-\alpha)}$. Mertens' estimate bounds
+the absolute value of $C_\chi(\min(X,U))$ by $O_\alpha(\log\log(3q))$.
+For $X\ge U$, partial summation of the displayed estimate for
+$\vartheta_\chi$ gives
+\[
+ |C_\chi(X)-C_\chi(U)|
+ \ll_\alpha U^{\alpha-1}\log^2(qU)=O_\alpha(1).
+\]
+Thus $C_\chi(X)=O_\alpha(\log\log(3q))$ uniformly in $X$.
+Combining the difference $C_\chi(X)-C_\chi(Y)$ with Mertens' estimate,
+and discarding the nonnegative ramified-prime term, proves the
+comparison. This is a deduction from the cited analytic input.
+Its dependence on $q$ is asymptotically stronger than
+Theorem~\ref{thm:interval}; we do not compute a numerical constant for
+it here. The value of the present argument is its explicit estimate
+and elementary mechanism, rather than a stronger asymptotic
+prime-distribution theorem.
+
+Cairn \cite{cairn}, Appendix C, already treats all quadratic
+characters and transfers the determinant profile to the residue and
+regular part of $\zeta(s)L(s,\chi)$. In particular, that paper proves
+\[
+ \frac{L'(1,\chi)}{L(1,\chi)}<\frac t2+8\log t+45\qquad(t\ge10).
+\]
+Our interval bound gives the following replacement, without importing
+the ideal count or a preliminary lower bound for $L(1,\chi)$.
+
+\begin{corollary}\label{cor:derivative}
+Put $B_q=t/2+3\log(t+33)+45$. For $1\le Y\le X$,
+\begin{equation}\label{eq:drawdown}
+ C_\chi(X)-C_\chi(Y)\ge-B_q.
+\end{equation}
+For every real $\sigma\ge1$, $L(\sigma,\chi)>0$ and
+\begin{equation}\label{eq:derivative}
+ \frac{L'(\sigma,\chi)}{L(\sigma,\chi)}\le B_q.
+\end{equation}
+\end{corollary}
+
+These statements do not assert a new class-number classification,
+a fixed zero-free half-plane, or an improvement on the strongest
+available bounds obtained using that heavier input. The proof below
+uses elementary prime estimates, quadratic arithmetic, and finite
+determinants. The $L$-function corollary additionally uses the Euler
+product and convergence of the Dirichlet series and its derivative
+on the real line at 1. No zero-free theorem is an input.
+
+\section{Elementary prime estimates}
+Put $c=2\log2<7/5$, $M(x)=\sum_{p\le x}(\log p)/p$, and
+$\vartheta(x)=\sum_{p\le x}\log p$.
+We will use, for real $x\ge1$,
+\begin{equation}\label{eq:mertens}
+ \vartheta(x)\le cx,\qquad \log x-4\le M(x)\le\log x+c.
+\end{equation}
+Consequently, for $1\le a\le b$ and $a>1$ in the last inequality,
+\begin{align}
+ \left|M(b)-M(a)-\log(b/a)\right|&<6,\label{eq:interval-mertens}\\
+ \sum_{p>a}\frac{\log p}{p^2}&\le\frac{2c}{a},&
+ \sum_{p>a}\frac{\log p}{p(p-1)}&\le\frac{2c}{a-1}.
+ \label{eq:tails}
+\end{align}
+
+For completeness, the usual binomial-coefficient induction gives
+$\vartheta(n)\le2n\log2$: for $n=2m$ use $\binom{2m}{m}$ and
+the primes in $(m,2m]$; for $n=2m+1$ use
+$\binom{2m+1}{m}\le2^{2m}$ and $(m+1,2m+1]$.
+The factorial identity gives
+\[
+ nM(n)-\vartheta(n)\le\log(n!)
+ \le n\sum_{p\le n}\frac{\log p}{p-1},\qquad
+ \log(n!)\ge n\log n-n.
+\]
+Partial summation of $\vartheta(x)\le cx$ gives
+\eqref{eq:tails}. Retaining the boundary term at 2 also gives
+\[
+ \sum_p\frac{\log p}{p(p-1)}
+ \le\frac{\log2}{2}+\frac32
+       \left(c-\frac{\log2}{4}\right)=\frac{25}{8}\log2.
+\]
+Thus $M(n)\ge\log n-1-(25/8)\log2$. Taking $n=\lfloor x\rfloor$
+and using $1+(33/8)\log2<4$ proves the lower bound in
+\eqref{eq:mertens}; the upper bound follows from
+$\log(n!)\le n\log n$. The range $1\le x<2$ is immediate.
+For example, $\log2<7/10$ follows by retaining the first four
+terms of the exponential series for $e^{7/10}$.
+
+\section{A determinant adapted to an interval}
+Fix for now an integer $K\ge32$. If the interval contains an inert
+prime, let $R$ be its largest one. Put
+\begin{equation}\label{eq:parameters}
+ Z=R/Y>1,\qquad n=\lceil Z\rceil,\qquad
+ S=\lfloor n/K\rfloor,\qquad J=\lceil RS/n\rceil.
+\end{equation}
+We first assume
+\begin{equation}\label{eq:nontrivial-range}
+ n\ge2K,\qquad n\ge\sqrt q.
+\end{equation}
+Then $n\le R$, $S\ge2$, $R\ge64$, and $J<R$.
+
+Choose exactly $n$ points $z=u+v\sqrt\Delta$ from the grid
+\[
+ 0\le u<\lceil\sqrt n q^{1/4}\rceil,
+ \qquad 0\le v<\lceil\sqrt n q^{-1/4}\rceil,
+\]
+and put $w=\bar z$. There are at least $n$ grid points, and both
+embeddings have modulus less than
+\begin{equation}\label{eq:height}
+ H=2\sqrt n q^{1/4},\qquad
+ \log H=\log2+\tfrac12\log n+\tfrac14t.
+\end{equation}
+The coordinate ranges have lengths at most $R$, since
+$q^{1/4}\sqrt n\le n\le R$. As $R$ is odd and inert,
+$\OO_{\Q(\sqrt\Delta)}/R\OO\simeq\F_{R^2}$ and
+$1,\sqrt\Delta$ are an $\F_R$-basis. The selected points remain
+distinct after reduction.
+
+Use rows $z^rw^s$, $0\le r<R$, $0\le s<S$, and at each point
+use the $J$ divided derivatives
+\[
+ D_z^{[k]}(z^rw^s)=\binom rk z^{r-k}w^s,\qquad 0\le k<J,
+\]
+with value zero for $k>r$. The entries are algebraic integers.
+
+\begin{lemma}\label{lem:rank}
+This matrix has full row rank $N=RS$.
+\end{lemma}
+\begin{proof}
+Modulo $R$, Frobenius gives $w=z^R$. A nonzero row combination
+therefore becomes a nonzero polynomial with distinct exponents
+$r+Rs$ and degree at most $RS-1$. Its derivatives of orders
+$k<J<R$ agree with the prescribed derivatives after substitution;
+equivalently, multiply the divided derivatives by the invertible
+$k!$. Vanishing of all the columns would give $n$ distinct roots,
+each of multiplicity at least $J$, whereas $nJ\ge RS$.
+This is van Dijk's argument \cite{vandijk}, with the different
+node and derivative counts in \eqref{eq:parameters}.
+\end{proof}
+
+Select a nonzero $N$-square minor $d$ and put
+$\mathcal D=|\Nm_{\Q(\sqrt\Delta)/\Q}d|\in\Z_{>0}$.
+Define the total row degrees and the selected column orders by
+\[
+ U=\frac{N(R-1)}2,\qquad W=\frac{N(S-1)}2,\qquad
+ V=\sum_{\text{selected columns}}k,
+\]
+and set
+\begin{equation}\label{eq:ratios}
+ b=\frac WU,\qquad v=\frac VU,\qquad d_0=1-b-v.
+\end{equation}
+The symbol $d_0$ is a real coefficient, not a discriminant or determinant.
+The parameter choices imply
+\begin{equation}\label{eq:ratio-bounds}
+ 0\le b\le\frac1K,\qquad 0\le v<\frac3K,\qquad
+ d_0>1-\frac4K\ge\frac78.
+\end{equation}
+Indeed, $(S-1)/(R-1)\le S/R\le1/K$, and
+$J-1<RS/n\le R/K$, so $v<2R/[K(R-1)]<3/K$.
+
+\subsection{Size at both embeddings}
+For every nonzero determinant term, the sum of the exponents
+$r+s-k$ is $U+W-V$. The bound $\binom rk\le2^r$ therefore gives
+\[
+ \log\mathcal D\le2\log(N!)+2U\log2+2(U+W-V)\log H.
+\]
+Since $N\le R^2$ and $R\ge64$,
+$\log(N!)/U\le4\log R/(R-1)<1$. Thus
+\begin{equation}\label{eq:arch}
+ \frac{\log\mathcal D}{2U}
+ \le(1+b-v)\log H+\log2+1.
+\end{equation}
+The absence of a $J\log R$ term is the reason for dividing the
+derivative columns by their factorials. The corresponding arithmetic
+cost must still be paid, as follows.
+
+\section{Inert and split primes in the same minor}
+Put $Q=R/S$. Then $K\le Q<R$ and $Y<Q$.
+Write $I=I_\chi(Q,R)$ and let $P$ be the analogous sum over split
+primes in $(Q,R]$.
+
+\subsection{Inert primes and the factorial cost}
+At an inert prime $p$, Green's integral unitriangular row operation is
+\[
+ z^rw^s\longmapsto z^{r-pa}(z^p-w)^aw^s,
+ \qquad a=\min(\lfloor r/p\rfloor,S-1-s).
+\]
+Every ordinary derivative of $z^p-w$ is divisible by $p$ after
+evaluation, including its zeroth derivative by Frobenius. The
+ordinary derivative minor has norm divisible by $p^{2E_p}$, where
+\[
+ E_p=\sum_{r<R,s<S}\min(\lfloor r/p\rfloor,S-1-s).
+\]
+Dividing its selected columns by $k!$ gives exactly $d$, hence
+\begin{equation}\label{eq:inert-raw}
+ \frac{v_p(\mathcal D)}{2U}
+ \ge\frac{E_p}{U}-\frac v{p-1}.
+\end{equation}
+We used $\sum_k v_p(k!)\le V/(p-1)$, and do not claim that
+the ordinary-derivative divisibility survives unchanged.
+
+For every integer $a\ge0$,
+$\sum_{s<S}\min(a,S-1-s)\ge Sa-a(a+1)/2$.
+Using $r/p-1\le\lfloor r/p\rfloor\le r/p$ gives
+\begin{equation}\label{eq:E}
+ \frac{E_p}{U}\ge
+ \frac1p-\frac2{R-1}-\frac1{2Sp}
+              -\frac{2R-1}{6Sp^2}.
+\end{equation}
+
+\subsection{Split primes}
+At a split prime replace $w^s$ by
+$(w)_s=w(w-1)\cdots(w-s+1)$. This is another integral
+unitriangular change preserving the same selected minor. Each block
+of $p$ consecutive factors vanishes in both components of
+$\OO/p\OO\simeq\F_p\times\F_p$. Thus its values belong to
+$p^{\lfloor s/p\rfloor}\OO$. Divided differentiation in $z$
+preserves this factor and integrality. Consequently
+\begin{equation}\label{eq:split}
+ \frac{v_p(\mathcal D)}{2U}
+ \ge\frac{\sum_{r,s}\lfloor s/p\rfloor}{U}
+ \ge\frac bp-\frac2{R-1}.
+\end{equation}
+The inert and split operations are used at disjoint sets of primes,
+so their contributions can be added. This is the factorial mechanism
+from \cite[Section 4.3]{v7}.
+
+\subsection{A uniform bound for all discarded terms}
+Sum \eqref{eq:inert-raw}--\eqref{eq:split} over $(Q,R]$.
+Equations \eqref{eq:mertens}--\eqref{eq:tails} show that the total
+error in retaining $(1-v)I+bP$ is at most
+\begin{equation}\label{eq:error}
+ \frac{2cR}{R-1}+\frac{2c}{3}
+ +\frac{\log S+6}{2S}+\frac{6c}{K(Q-1)}<6.
+\end{equation}
+The four terms respectively bound the floor loss across the disjoint
+prime sets, the $p^{-2}$ row loss, the $I/(2S)$ term, and the
+difference $1/(p-1)-1/p$ in the column cost. For the third term,
+$I\le M(R)-M(Q)<\log S+6$.
+For $R\ge64$, $S\ge2$, and $Q,K\ge32$, the four bounds are,
+respectively, less than $2.845$, $0.934$, $1.675$, and $0.009$.
+The sum is less than 6. All inequalities are uniform in $Y$.
+
+Combining this with \eqref{eq:arch} and $1+\log2+6<8$ gives
+\begin{equation}\label{eq:coupled}
+ (1-v)I+bP\le(1+b-v)\log H+8.
+\end{equation}
+Let $A$ be the ramified-prime mass in $(Q,R]$. Then
+\[
+ I+P=M(R)-M(Q)-A,\qquad A\le t/Q.
+\]
+Substitution in \eqref{eq:coupled}, and
+$M(R)-M(Q)\ge\log S-6$, prove
+\begin{equation}\label{eq:coupled-two}
+ d_0I\le(1+b-v)\log H-b\log S+6b+bt/Q+8.
+\end{equation}
+Crucially, $1+b-v=d_0+2b$. The $b\log n$ contributed by the
+height in \eqref{eq:height} cancels against $b\log S$, up to
+$b\log(n/S)$. Discarding the split-prime term would lose this
+cancellation and leave an error proportional to $\log(X/Y)/K$.
+
+\section{Completing the constants}
+Dividing \eqref{eq:coupled-two} by $d_0$ gives
+\begin{align}
+ I\le{}&\tfrac12\log n+\tfrac14t+\log2+\frac8{d_0}\notag\\
+ &+\frac b{d_0}
+     \left(\frac t2+2\log2+\log(n/S)+6+\frac tQ\right).
+ \label{eq:before-restore}
+\end{align}
+The omitted interval has mass at most
+\[
+ I_\chi(Y,Q)\le\log(Q/Y)+6\le\log(n/S)+6.
+\]
+Here $R\le nY$, $Y<Q$, and $Q=R/S$.
+Also $S\ge n/(2K)$, $n\le2Z$, and
+\[
+ \frac b{d_0}\le\frac1{K-4},\qquad
+ \frac8{d_0}\le\frac{8K}{K-4},\qquad Q\ge K.
+\]
+It follows that
+\begin{equation}\label{eq:K-bound}
+ I_\chi(Y,R)\le\frac12\log Z+\frac t4+\log K
+ +\frac{K+2}{2K(K-4)}t+C_K,
+\end{equation}
+where
+\begin{equation}\label{eq:CK}
+ C_K=\frac52\log2+6+\frac{8K}{K-4}
+       +\frac{2\log2+\log(2K)+6}{K-4}<\frac{35}{2}.
+\end{equation}
+For $K\ge32$ the two variable terms decrease; the derivative of
+the last one has numerator
+$(K-4)/K-[3\log2+\log K+6]<0$. At 32 the upper bound
+$\log2<7/10$ already gives $C_K<17.308<35/2$.
+
+Choose
+\[
+ K=\lceil t\rceil+32.
+\]
+Then $K<t+33$ and
+\[
+ \frac{K+2}{2K(K-4)}t
+ \le\frac{(K-32)(K+2)}{2K(K-4)}<\frac12.
+\]
+Equations \eqref{eq:K-bound}--\eqref{eq:CK} give
+\eqref{eq:main} with $R$ in place of $X$ in the nontrivial range.
+
+If \eqref{eq:nontrivial-range} fails, use
+$I_\chi(Y,R)\le\log Z+6$. If $n<\sqrt q$, then
+$\frac12\log Z\le t/4$. If $n<2K$, then
+$\frac12\log Z<\frac12\log(2K)\le\log K$. Either case gives
+the same claimed bound, with room to spare. If there is no inert
+prime in the interval, the assertion is immediate. Finally,
+$I_\chi(Y,X)=I_\chi(Y,R)$ and $R\le X$, so the right side can
+only increase when $R$ is replaced by $X$. This proves
+Theorem~\ref{thm:interval}.
+
+\section{The signed profile and the logarithmic derivative}
+The total ramified mass satisfies
+\begin{equation}\label{eq:ramified}
+ \sum_{p\mid q}\frac{\log p}{p}
+ \le M(t+1)+\frac{t}{t+1}
+ <\log(t+33)+\frac{12}{5}.
+\end{equation}
+Subtract twice \eqref{eq:main} and this ramified contribution from
+$M(X)-M(Y)\ge\log(X/Y)-6$. The result is
+\[
+ C_\chi(X)-C_\chi(Y)
+ \ge-\frac t2-3\log(t+33)-\frac{222}{5}>-B_q,
+\]
+which proves \eqref{eq:drawdown}.
+
+For $\eta>0$, summation by parts gives
+\[
+ \sum_p\frac{\chi(p)\log p}{p^{1+\eta}}
+ =\eta\int_1^\infty C_\chi(x)x^{-1-\eta}\,dx\ge-B_q.
+\]
+The higher-prime-power terms in the Euler logarithmic derivative are
+nonnegative after summing at each prime:
+\[
+ \sum_{a\ge2}\frac{\chi(p)^a}{p^{a\sigma}}
+ =\frac{\chi(p)^2p^{-2\sigma}}{1-\chi(p)p^{-\sigma}}\ge0.
+\]
+It follows that $L'(\sigma,\chi)/L(\sigma,\chi)\le B_q$ for
+$\sigma>1$. Positivity at 1 need not be imported: integrate from
+$1+\varepsilon$ to 2 to obtain
+$L(1+\varepsilon,\chi)\ge e^{-B_q}L(2,\chi)>0$.
+The bounded partial sums of the nonprincipal periodic character
+ensure continuity of $L$ and $L'$ on the real line at 1.
+Taking the limit gives $L(1,\chi)>0$ and \eqref{eq:derivative}.
+
+The stronger interval statement also gives, for every $Y\ge1$,
+\[
+ \sum_{p>Y}\frac{\chi(p)\log p}{p^{1+\eta}}
+ \ge-B_qY^{-\eta}.
+\]
+Indeed, integrate $C_\chi(x)-C_\chi(Y)$ from $Y$ to infinity.
+This conclusion concerns the signed tail, not its absolute value.
+
+\begin{corollary}\label{cor:split-gap}
+For every $Y\ge1$ there is a split prime in
+\[
+ Y<p\le e^{53}\sqrt q\,(\log q+33)^4Y.
+\]
+\end{corollary}
+\begin{proof}
+The split-prime mass in $(Y,X]$ is at least
+\[
+ \frac12\log(X/Y)-\frac t4-2\log(t+33)-\frac{132}{5},
+\]
+by subtracting \eqref{eq:main} and \eqref{eq:ramified} from
+\eqref{eq:interval-mertens}. At the stated endpoint this is $1/10>0$.
+\end{proof}
+This illustrates the uniformity in the starting point. It is an
+application of this proof, not a claim to improve on the strongest
+available analytic prime-distribution theorems.
+
+For comparison with the general residue bound in
+\cite[Appendix C.4, (C13)]{cairn}, importing that paper's Fourier
+ideal count and regular-part transfer now gives, for $t\ge10$,
+\begin{equation}\label{eq:residue}
+ L(1,\chi)>
+ \frac{\zeta(2)-21/t^3}{t+8\log t+3\log(t+33)+46}.
+\end{equation}
+This is a corollary relative to those stated inputs, not an additional
+self-contained proof of the ideal count. To check the substitution,
+take $X_0=\sqrt q\,t^8$ in (C13), use \eqref{eq:derivative},
+and use $\gamma-1<0$. The previous denominator was
+$t+16\log t+46$. We do not claim a better limiting coefficient
+than Cairn's stronger moment and Burgess refinements.
+
+\section{A limit of the aggregate information}
+It is tempting to expect that combining enough scale inequalities
+will automatically replace $1/\log q$ by $1/\log\log q$ in the
+residue bound. The following explicit model shows why a specified
+collection of relaxed constraints cannot establish that improvement.
+It is not asserted to arise from actual Dirichlet characters.
+
+Use the scaled variable $u=\log x/t$. Let the total prime-log
+density be 1, the inert density be
+\[
+ i(u)=\frac{1+e^{-2u}}2,
+\]
+and the split density be $(1-e^{-2u})/2$. These densities are
+nonnegative and sum to 1. On every interval $0\le a\le b$,
+\begin{equation}\label{eq:model-interval}
+ \int_a^b i(u)\,du
+ =\frac{b-a}{2}+\frac{e^{-2a}-e^{-2b}}4
+ \le\frac{b-a}{2}+\frac14.
+\end{equation}
+Thus the leading part of Theorem~\ref{thm:interval} holds on
+\emph{every} interval, not only at a single cutoff.
+
+To retain multiplicative information as well, define the positive
+primitive-prime logarithmic measure
+\[
+ d\nu(u)=\frac{1-e^{-2u}}u\,du\qquad(u>0).
+\]
+For $z>0$, the elementary identity
+\[
+ \int_0^\infty\frac{e^{-zu}-e^{-(z+2)u}}u\,du
+ =\int_z^{z+2}\frac{dv}{v}=\log\frac{z+2}{z}
+\]
+shows that its convolution exponential has Laplace transform
+\begin{equation}\label{eq:model-euler}
+ F(z)=\exp\left(\int_0^\infty e^{-zu}\,d\nu(u)\right)
+ =1+\frac2z.
+\end{equation}
+Equivalently, the resulting primitive-ideal measure is
+$\mu=\delta_0+2\,du$. It has the identity ideal, positivity, and an
+exactly constant tail density at every positive scale.
+
+We specify the counting constraints retained in this relaxation.
+The arithmetic quantity being modeled is the weighted measure
+\[
+ \mu_\chi=\sum_{n\ge1}\frac{b_\chi(n)}n\,
+                \delta_{\log n/t},\qquad
+ \frac{\zeta(s)L(s,\chi)}{\zeta(2s)}
+       =\sum_{n\ge1}\frac{b_\chi(n)}{n^s},
+\]
+where $b_\chi(n)\ge0$ counts primitive ideals and $b_\chi(1)=1$.
+For a threshold $a\in\{1/2,1/4\}$ and a normalized residue $r>0$
+corresponding to $tL(1,\chi)/\zeta(2)$, the retained conditions on
+a locally finite measure $\mu$ on $[0,\infty)$ are
+\begin{align}
+ \mu-\delta_0&\ge0,\label{eq:model-positive}\\
+ \mu((u,v])&=r(v-u)\quad(a<u<v),\label{eq:model-count-tail}\\
+ 1\le\mu([0,a])&\le r(a+\tfrac12).\label{eq:model-count-head}
+\end{align}
+Here \eqref{eq:model-count-tail} retains the leading constant density
+beyond the counting threshold: $a=1/2$ for the finite-Fourier count,
+and $a=1/4$ when the Burgess count is imported
+\cite[Appendices C.5--C.6, (C15) and (C22)]{cairn}.
+The lower bound in \eqref{eq:model-count-head} is the identity ideal.
+The upper bound retains the regular-part constraint from
+$L'(1,\chi)/L(1,\chi)\le t/2+o(t)$. Indeed, as $z\downarrow0$,
+\[
+ \int_{[0,\infty)}e^{-zu}\,d\mu(u)
+ =\frac rz+\mu([0,a])-ra+O(z),
+\]
+so the retained bound on the constant term is
+$\mu([0,a])-ra\le r/2$.
+These are limiting constraints; no finite-$q$ counting error term
+or realization by a sequence of characters is imposed.
+
+For example, these conditions imply the first-moment bound
+\[
+ \int_{[0,V]}u\,d\mu(u)
+ \le a\bigl(\mu([0,a])-1\bigr)
+       +\frac r2(V^2-a^2),\qquad V\ge a,
+\]
+by removing the identity atom and using $u\le a$ on the head.
+Our model satisfies \eqref{eq:model-positive}--\eqref{eq:model-count-head}
+with $r=2$ for both thresholds, since
+\[
+ \mu([0,a])=1+2a=2(a+\tfrac12),\qquad
+ \mu((u,v])=2(v-u)\quad(0\le u<v).
+\]
+Its first moment is $V^2$, while the displayed upper bound is
+$V^2+a^2$. Thus the counting conditions and their first-moment
+consequence hold explicitly.
+
+In the usual residue scaling,
+$\zeta(1+z/t)\sim t/z$ and $\zeta(2+2z/t)\to\zeta(2)$.
+Consequently the model \eqref{eq:model-euler} corresponds to
+\[
+ \frac{t}{\zeta(2)}L(1+z/t)\longrightarrow z+2,
+ \qquad tL(1)\longrightarrow2\zeta(2),
+ \qquad \frac1t\frac{L'(1)}{L(1)}\longrightarrow\frac12.
+\]
+The scaled last expression saturates the leading logarithmic
+derivative coefficient. Hence positivity of this convolution
+exponential, the constant primitive-ideal tail, and all the leading
+interval inequalities are compatible with a residue of order
+$1/\log q$.
+
+This is a countermodel only to that limiting relaxation. It omits
+the existence of a single periodic character with the prescribed
+prime behavior, its functional equation, individual ideal-class
+geometry, and other arithmetic correlations. It proves neither
+optimality of the determinant method in general nor a limitation
+of every possible use of these ideas. It identifies the kind of
+additional information a larger improvement would have to retain.
+
+\section{Checks and remaining work}\label{sec:checks}
+The accompanying Python program checks exact quadratic-ring minors,
+finite-field ranks, inert-prime divisibility with the column-factorial
+cost, split-prime row divisibility, the finite row-sum inequality, and
+the rational constant bounds. Its small examples deliberately use
+more varied derivative-to-node ratios than the final conservative
+parameter choice. They check the algebraic mechanisms; they do not
+replace the proof over the infinite range. The saved output records
+the executed checks and their scope.
+There are 25 nonzero-minor checks, 85 inert-prime and 51 split-prime
+valuation checks, 55,091 finite row-sum bounds, and 2,286 separately
+expanded row-sum identities. In 13 cases, omitting the column-factorial
+cost would give a false divisibility claim; the corrected bound passes.
+
+An independent model cross-check, reported on 26 October 2026,
+reviewed the ten-page draft and its source and found no substantive
+gap in Theorem~\ref{thm:interval}, Corollary~\ref{cor:derivative}, or
+Corollary~\ref{cor:split-gap}. The checker reported reproducing all
+the supplied checks and verifying another 11 determinant norms through
+a separate implementation using ordinary integer block matrices,
+covering both real and imaginary fields. It also confirmed the
+substitution giving \eqref{eq:residue}, subject to its stated external
+ideal-count input. The report is recorded in the accompanying
+\texttt{cross\_check.txt}. The two presentation corrections it
+requested---the v7 section references and the explicit specification
+of the model's counting constraints---are incorporated in this
+revision. This is a model cross-check, not formal verification or
+human peer review, and it does not establish priority.
+
+The source comparison covers classical analytic estimates, the QRH
+comparison, Green, van Dijk, Kominers, the relevant Cairn manuscript,
+and the v7 proof; it does not establish priority over all current
+manuscripts. The generalization to other Frobenius
+classes is not claimed here.
+
+\clearpage
+\begingroup\small
+\begin{thebibliography}{9}
+\bibitem{openai} OpenAI, \emph{Uniform exclusion of Landau--Siegel zeros},
+1 October 2026.
+\href{https://github.com/openai/math/tree/main/preprints/Uniform-exclusion-of-Landau-Siegel-zeros-October-1-2026}{OpenAI Math Release}.
+\bibitem{green} B.~Green, \emph{On Landau--Siegel zeros}, v2, 2026.
+\href{https://hexagonmath.org/2610.00311v2}{hexagon:2610.00311v2}.
+\bibitem{vandijk} R.~van Dijk, \emph{A Frobenius determinant proof of the
+non-existence of Landau--Siegel zeros}, v2, 2026.
+\href{https://hexagonmath.org/2610.00409v2}{hexagon:2610.00409v2}.
+\bibitem{kominers} S.~D.~Kominers, \emph{Small algebraic integers and
+Frobenius prime sums}, v1, 2026, Theorem 1 and Corollary 2.
+\href{https://hexagonmath.org/2610.00451v1}{hexagon:2610.00451v1}.
+\bibitem{v7} Research note prepared with Codex,
+\emph{A unified Frobenius determinant proof for the tenth discriminant},
+v0.7.0, 26 October 2026, Sections 3--6.
+\href{https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.7.0}{Release and reproducibility files}.
+\bibitem{cairn} M.~Cairn, \emph{Uniform quadratic $L$-value bounds from
+Green's determinant and ideal counting}, v3, 2026, Appendix C.
+\href{https://rstation.ai/problems/tenth_discriminant/papers/1}{rStation paper 1}.
+\bibitem{tao} T.~Tao, \emph{An experimental AI-math challenge: using
+tenth discriminant bounds to explore arguments ruling out Siegel zeroes},
+20 October 2026.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/}{What's New}.
+\bibitem{kedlaya} K.~S.~Kedlaya, \emph{Error bounds for primes in
+arithmetic progressions}, Chapter 11 of online lecture notes on analytic
+number theory, Sections 11.1--11.2.
+\href{https://kskedlaya.org/ant/chapter-11.html}{Online lecture notes}.
+\bibitem{qrh} OpenAI, \emph{The Quasi-Riemann Hypothesis},
+5 October 2026, Theorem 1.1.
+\href{https://github.com/openai/math/tree/main/preprints/The-Quasi-Riemann-Hypothesis-October-5-2026}{OpenAI Math Release}.
+\end{thebibliography}
+\endgroup
+\end{document}

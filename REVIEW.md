@@ -19,12 +19,35 @@ review is recorded.
 - **Formal verification:** a proof assistant checks an encoded theorem
   and its dependencies. Peter W. Murphy reports this for an adaptation
   of the elementary companion, with Lean and nanoda. That formalization
-  does not cover the numbered versions or the historical paper.
+  does not cover the numbered versions, historical paper, or
+  quadratic-interval note.
 
-This update records the public v6 audit clarification and external Lean
-work. It does not rerun those external checks. Published PDFs, release
+The records below identify the available reports and checks for each
+paper. External Lean checks have not been rerun here. Published PDFs, release
 bundles, and fixed tags retain their publication records; this file gives
 the current scope and terminology.
+
+## quadratic-intervals-v0.1.0 — general quadratic fields
+
+**A cross-check by another AI model found no substantive gap in the
+interval theorem, logarithmic-derivative bound, or split-prime corollary.**
+The repository owner supplied the report on 26 October 2026. It covers
+the ten-page draft and its source; the eleven-page publication incorporates
+the requested section-reference corrections and explicit counting
+constraints. Those subsequent clarifications are distinguished from the
+reviewed snapshot in the [note's review record](notes/quadratic-intervals/REVIEW.md).
+
+The checker reported reproducing the supplied exact computations and
+checking another eleven determinant norms with a separate implementation.
+The bundled program checks 25 determinant minors, 136 prime valuations,
+55,091 row-sum bounds, and 2,286 identities, together with rational
+constant bounds. Its output is separate from the model's report.
+The optional residue consequence retains its external ideal-count input.
+
+The [supplied report](notes/quadratic-intervals/cross_check.txt) identifies
+the reviewed artifacts by SHA-256. No reviewer model name was supplied.
+No human peer review, formal verification, or determination of priority
+is claimed.
 
 ## v0.7.0 — unified proof, current review status
 

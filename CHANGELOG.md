@@ -1,13 +1,40 @@
 # Mathematical changelog
 
-This changelog records the numbered series of bounds and proof revisions. Companion
-papers have separate histories: [elementary companion](companions/elementary/CHANGELOG.md)
-and [historical reconstruction](companions/historical/CHANGELOG.md).
+This changelog records the numbered series of bounds and proof revisions,
+and repository-wide publication updates. Separate histories cover the
+[elementary companion](companions/elementary/CHANGELOG.md),
+[historical reconstruction](companions/historical/CHANGELOG.md), and
+[quadratic-interval note](notes/quadratic-intervals/CHANGELOG.md).
 
 On 22 October 2026, the historical companion was replaced within
 `historical-v0.1.0` by the Weber reconstruction proposing 1891 and
 `q < 196`. Its own changelog records the superseded 1830 claim and the
 retained original publication snapshot.
+
+## quadratic-intervals-v0.1.0 — 26 October 2026
+
+- Publishes *A uniform interval bound for inert-prime mass* as a separate
+  research-note series for general quadratic fields, with an eleven-page
+  paper, source, verification program, exact outputs, and review record.
+- Gives the explicit bound
+  `I_chi(Y,X) <= (1/2) log(X/Y) + (1/4) log(q) + log(log(q)+33) + 18`
+  uniformly for `1 <= Y <= X`, using divided derivatives and factorial
+  divisibility at split primes.
+- Derives an upper bound for `L'/L` on the real line `sigma >= 1`, a
+  split-prime interval consequence, and a continuous model for the
+  specified limiting aggregate constraints. An optional residue bound
+  retains its explicitly cited external ideal-count input.
+- Records the reported successful cross-check by another AI model,
+  its two incorporated presentation corrections, and the exact scope of
+  the computational checks. This is not formal verification or a claim
+  of established priority.
+- Adds the note prominently to the main README and links its own version
+  history. The numbered cutoff series and existing companion releases
+  retain their identities.
+
+[Paper and reproduction](notes/quadratic-intervals/README.md) ·
+[Review scope](notes/quadratic-intervals/REVIEW.md) ·
+[Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/quadratic-intervals-v0.1.0).
 
 ## Repository licensing — 26 October 2026
 

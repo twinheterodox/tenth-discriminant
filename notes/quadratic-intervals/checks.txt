@@ -1,0 +1,11 @@
+AUTHOR CHECKS ONLY: no independent audit or formal verification.
+Rational arithmetic-error bound: 24379/4464 < 6
+Rational final-constant bound: 2493/140 < 18
+All scalar certificates pass; monotonic extensions are proved in the note.
+Exact finite row-sum lower bounds: 55091; independently expanded identities: 2286
+Exact quadratic-ring minors and full finite-field ranks: 25
+Inert-prime valuation checks: 85; nonzero column-factorial costs: 13
+Split-prime valuation checks: 51; positive row-factorial lower bounds: 3
+Cases where omitting the column-factorial cost gives a false divisibility claim: 13
+Largest tested minor: 52 by 52
+PASS

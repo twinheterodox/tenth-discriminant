@@ -1,0 +1,61 @@
+Independent model cross-check
+Reported by the user on 26 October 2026
+
+Scope and provenance
+The user supplied the assessment below from another model. No model name
+was specified. The report covers the ten-page draft and its LaTeX source
+before the presentation corrections recorded below. This is not formal
+verification, human peer review, or a determination of priority.
+
+Reviewed local artifacts at the time the feedback was received
+PDF: output/pdf/quadratic-intervals-working.pdf
+SHA256: 10485e567156b2766fd2085b680e562fbb387ffae482ad1c4dab115d989732b2
+Source: research/quadratic-intervals/intervals.tex
+SHA256: b6ee5c2fabd99f3253eb2b633d2449632afb48053a802474242b63ca208e86d2
+
+Assessment supplied by the user (mathematical typography normalized)
+
+I found no substantive gap in the interval theorem, the L'/L bound, or
+the split-prime corollary. I checked all ten pages and the accompanying
+source.
+
+The crucial cancellation works: the split-prime factorial contribution
+cancels the extra b log n from the height estimate, leaving an error
+independent of both interval endpoints. The divided-derivative factorial
+cost is correctly retained. I also checked the small-interval cases and
+the argument establishing L(1,chi)>0 before passing the derivative bound
+to sigma=1.
+
+The constants have sufficient slack:
+C_32 + 1/2 = 17.7880528601... < 18.
+
+All supplied checks reproduced exactly: 25 determinant minors, 136
+prime-valuation checks, 55,091 row-sum bounds, and 2,286 identities.
+My separate implementation verified another 11 determinant norms through
+ordinary integer block matrices, including both real and imaginary fields.
+
+Two small corrections or clarifications:
+
+- Wrong section reference: on PDF pages 2 and 6, "v7, Section 5.3" should
+  read Section 4.3. The occurrences are in the introduction and the
+  split-prime argument.
+
+- Specify the model's counting constraints: Section 7's displayed
+  identities are correct, but the "half-power or quarter-power"
+  constraints should be written explicitly. That would make the precise
+  scope of the limitation claim easier to verify.
+
+The optional residue bound is a correct substitution into Cairn's
+equation (C13); that conclusion retains the stated external ideal-count
+input. This audit does not constitute formal verification or establish
+priority.
+
+Follow-up in the current revision
+Both v7 section references are corrected to Section 4.3.
+Section 7 now defines the retained limiting positivity, tail-density,
+and regular-part/head-mass constraints, and displays their first-moment
+consequence and the model's exact values. This expanded formulation was
+written after the reported cross-check. The interval theorem, its
+constants, and its two principal corollaries are unchanged.
+The additional 11 determinant computations are reported by the independent
+checker; they are not additional cases in the bundled verify_intervals.py.
