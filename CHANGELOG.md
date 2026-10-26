@@ -9,6 +9,18 @@ On 22 October 2026, the historical companion was replaced within
 `q < 196`. Its own changelog records the superseded 1830 claim and the
 retained original publication snapshot.
 
+## Repository licensing — 26 October 2026
+
+- Licenses the papers, LaTeX sources, and prose documentation under
+  Creative Commons Attribution 4.0 International (CC BY 4.0).
+- Licenses verification programs and other code, computational certificates,
+  parameters, and numerical outputs under MIT.
+- Adds the full license texts and a [scope and attribution notice](LICENSING.md)
+  explicitly covering the project's material in earlier commits, tagged
+  versions, and release downloads. Preserves third-party terms and notices.
+- Adds licensing links to the README. Published papers, bundles, tags,
+  mathematical results, and review records are unchanged.
+
 ## Repository reading guide — 26 October 2026
 
 - Reorganizes the main README around the three current papers: optimized,
