@@ -11,11 +11,9 @@ retained original publication snapshot.
 
 ## Repository licensing — 26 October 2026
 
-- Licenses the papers, LaTeX sources, and prose documentation under
-  Creative Commons Attribution 4.0 International (CC BY 4.0).
-- Licenses verification programs and other code, computational certificates,
-  parameters, and numerical outputs under MIT.
-- Adds the full license texts and a [scope and attribution notice](LICENSING.md)
+- Licenses the papers, LaTeX sources, documentation, verification programs,
+  computational certificates, parameters, and numerical outputs under Apache 2.0.
+- Adds the full license text, [NOTICE](NOTICE), and a [scope statement](LICENSING.md)
   explicitly covering the project's material in earlier commits, tagged
   versions, and release downloads. Preserves third-party terms and notices.
 - Adds licensing links to the README. Published papers, bundles, tags,

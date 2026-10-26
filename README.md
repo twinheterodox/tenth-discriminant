@@ -107,12 +107,10 @@ identifies the replacement and its source snapshot.
 
 ## License
 
-The papers, LaTeX sources, and prose documentation are licensed under
-[CC BY 4.0](LICENSE). Verification code, computational certificates,
-parameters, and numerical outputs are licensed under [MIT](LICENSE-MIT).
-These grants also cover earlier versions and release downloads. See
-[licensing scope and attribution](LICENSING.md) for details and third-party
-exceptions.
+The papers, LaTeX sources, documentation, verification code, and computational
+materials are licensed under [Apache 2.0](LICENSE). This also covers earlier
+versions and release downloads. See [licensing scope and attribution](LICENSING.md)
+for details and third-party exceptions.
 
 ## Credits and archive
 
