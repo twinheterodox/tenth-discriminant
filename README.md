@@ -3,8 +3,8 @@
 This is an AI-assisted contribution to
 [Terence Tao's tenth-discriminant challenge](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/).
 The numbered series obtains explicit bounds for a hypothetical tenth
-imaginary quadratic field of class number one from arguments ruling out
-Siegel zeroes, without using Heegner's solution. Companion papers explore
+imaginary quadratic field of class number one using methods developed
+in connection with Siegel zeroes, without using Heegner's solution. Companion papers explore
 simpler proofs and the historical availability of methods; the historical
 variant permits the modular approach later used by Heegner. The repository
 records arguments, computations, and revisions for examination and citation.
@@ -22,7 +22,7 @@ the historical reconstruction.
 The work has three complementary aims, with separate publication series:
 
 - **Sharper bounds:** the numbered versions, v1, v2, and so on, record
-  progressively smaller analytic cutoffs and revisions of those arguments.
+  improvements to analytic cutoffs and to the proofs of those bounds.
 - **Simpler proofs:** [companion papers](#companion-papers) pursue objectives
   such as reducing the machinery or giving a self-contained exposition.
   Each companion has its own version history and release tags.
@@ -54,7 +54,9 @@ prime sum with the Euler product of primitive quadratic norms, accounting
 for composite norms. Version 6 retains a smoothed prime sum, strengthens
 the Frobenius divisibility and size estimates, and uses an auxiliary inert
 prime with a positive averaging kernel. The determinant arguments are
-proved in the papers.
+proved in the papers. Version 7 brings the optimized proof into one
+self-contained paper, using the same determinant for the bounded and
+infinite ranges and retaining the cutoff `q < 570`.
 
 Each approach gives an explicit analytic cutoff. Exact integer sieves and
 reduced-form enumeration handle the remaining finite range, leaving the
@@ -63,35 +65,34 @@ nine absolute fundamental discriminants
 Codex prepared the derivations, write-ups, and verification programs;
 the review record identifies the checks completed for each version.
 
-**Strongest bound in the numbered series: v0.6.1, with analytic cutoff `q < 570`
-(previously `q < 2,000`).**
+**Latest numbered paper: v0.7.0, a unified proof of `q < 570`.**
 
-**[Read the revised v6 proof](versions/v6.1/output/pdf/proof.pdf)** ·
-[Source and reproduction](versions/v6.1/README.md) ·
-[v0.6.1 release and downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.1)
+**[Read the self-contained v7 proof](versions/v7/output/pdf/proof.pdf)** ·
+[Source and reproduction](versions/v7/README.md) ·
+[v0.7.0 release and downloads](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.7.0)
 
-**V0.6.1 revises the exposition:** a proof roadmap, explanations before
-the technical estimates, citations beside the ideas used, and an appendix
-for numerical remainder bounds. The mathematics and certificate files are
-unchanged. The [original v0.6.0 release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.0)
-remains available for citation.
+V7 keeps the strongest cutoff and replaces the inherited v4/v5 arguments
+with a uniform application of the same determinant used near 570. One
+common comparison proposition handles both ranges: a direct norm count
+and one factorial refinement exclude every `q >= 2,000`; the retained
+five-band certificate excludes `[570,2,000]`. The paper includes the
+complete finite classification. No earlier version is a proof dependency.
+See the [consolidation record](versions/v7/CONSOLIDATION.md).
 
-**V6 has a reported successful second-model cross-check and a separate
-AI-assisted audit coordinated by Henric Larsson.** His
+**The new v7 tail and consolidated paper are awaiting a separate model
+cross-check.** Its 34 new exact arithmetic checks pass, and the retained
+429-check interval certificate reproduces byte-for-byte. The 101,524
+finite structural cases and the finite classification also pass. These
+computations are distinct from independent mathematical review or formal
+verification; the [v7 review record](versions/v7/REVIEW.md) states their scope.
+
+V6 previously received a reported second-model cross-check and a separate
+AI-assisted audit coordinated by Henric Larsson. His
 [clarification](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/#comment-698595)
-reports no mathematical error or certificate requiring correction. These
-are AI reviews, not human peer review or formal verification. Separately,
-the development-session checks passed 429 grouped exact rational checks
-and 101,524 finite structural cases, with an isolated reproduction of the
-certificate outputs. The [review record](REVIEW.md) gives the scope and
-sources of each kind of evidence.
-
-The seventeen-page paper treats the new interval `570 <= q <= 2,000`
-in full relative to its stated classical inputs and cites v5 above that
-range. **V5 has passed a second-AI-model cross-check with exact computational
-checks**; its [corrected proof](versions/v5/output/pdf/proof.pdf) and
-[audit record](versions/v5/AUDIT.md) remain available. The v6 argument
-uses no quasi-Riemann hypothesis or quadratic zero-free theorem.
+reports no proof or certificate requiring correction. Those reports
+predate v7 and do not certify its new uniform tail. All earlier papers
+and release assets remain available, including
+[v0.6.1](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.1).
 
 ## Companion papers
 
@@ -126,9 +127,10 @@ The first release is **`elementary-v0.1.0`**, with the paper, source,
 and verification files under `companions/elementary/`. Subsequent revisions
 will retain the `elementary-` prefix and their own citation snapshots;
 the [companion changelog](companions/elementary/CHANGELOG.md) records that history.
-The next numbered version, v7, remains available for a further improvement
-in the analytic cutoff. Published release links and earlier snapshots in
-each series will remain available for citation.
+The numbered series also records improvements to the optimized proof:
+v7 is its self-contained consolidation, with the same analytic cutoff as
+v6. Published release links and earlier snapshots in each series remain
+available for citation.
 
 ### Historical companion
 
@@ -169,8 +171,8 @@ historical admissibility, and they are not formal verification. The
 
 ## Versions and improvements
 
-In the numbered series, improved bounds are added as new versions, each
-with its own proof and verification files. Published snapshots and
+In the numbered series, improvements to bounds or their proofs are added
+as new versions, each with its own proof and verification files. Published snapshots and
 release links are preserved, so earlier comments can continue to cite the
 exact argument they discussed. This README is the entry point to all
 series and their histories; the changelog records mathematical changes
@@ -184,6 +186,7 @@ its own version history and review status.
 
 | Series and version | Analytic cutoff | Paper and files | Review status |
 |---|---|---|---|
+| **v7 · v0.7.0** | **`q < 570`** | [Unified self-contained proof](versions/v7/output/pdf/proof.pdf) · [Source and reproduction](versions/v7/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.7.0) | New uniform tail and consolidated exposition awaiting a separate model cross-check; 34 new exact checks and the retained 429-check certificate pass; not formal verification ([review record](versions/v7/REVIEW.md)) |
 | **Historical companion · historical-v0.1.0 (replaced 22 October 2026)** | **`q < 196`** | [Weber reconstruction: proposed historical cutoff 1891](companions/historical/output/pdf/historical-1891.pdf) · [Source and reproduction](companions/historical/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/historical-v0.1.0) | No independent audit verdict recorded; mathematical proof and historical eligibility require separate review; exact algebra and finite checks pass ([review record](companions/historical/REVIEW.md)) |
 | **Elementary companion · elementary-v0.1.0** | **`q < 32,768 = 2^15`** | [Elementary proof](companions/elementary/output/pdf/elementary-companion.pdf) · [Source and reproduction](companions/elementary/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/elementary-v0.1.0) · [Murphy's Lean adaptation](https://github.com/DrMurphyIsIn/tenth-discriminant/tree/f0995bf604056a98f0af0d182ed152c6bd996419/determinant) | Second-AI-model cross-check passed; exact finite checks pass; Murphy reports Lean/nanoda acceptance of his adaptation ([scope and evidence](companions/elementary/REVIEW.md)) |
 | **v6 revised · v0.6.1** | **`q < 570`** | [Revised proof](versions/v6.1/output/pdf/proof.pdf) · [Source and reproduction](versions/v6.1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.1) | Same mathematics and certificates as AI-reviewed v0.6.0; no separate audit of the revised exposition or Lean formalization recorded |
@@ -236,6 +239,14 @@ contributions from the challenge discussion and the alternatives tested.
 The [v0.6.1 editorial record](versions/v6.1/EDITORIAL.md) maps the revised
 sections to v0.6.0 and documents what was preserved.
 
+Version 7 replaces both inherited range proofs with a uniform application
+of the v6 determinant estimates above 2,000. It proves the auxiliary-prime
+supply, a pointwise factorial refinement, a direct smoothed norm bound,
+and the monotonic endpoint comparison. The five bounded-band certificates
+are unchanged and reproduce exactly. The paper develops the complete
+argument and finite finish relative to its stated classical inputs; no
+v4 or v5 implication is imported. The cutoff remains 570.
+
 The checks reported for v1-v5 and the elementary companion were
 cross-checks by another AI model, as clarified on 26 October 2026; no
 human peer review is implied. V5's minor wording correction remains
@@ -256,6 +267,7 @@ All releases are research drafts.
 - [v0.5.0: original publication snapshot](https://github.com/twinheterodox/tenth-discriminant/tree/v0.5.0/versions/v5)
 - [v0.6.0: smoothed Frobenius determinant proof and verification](https://github.com/twinheterodox/tenth-discriminant/tree/v0.6.0/versions/v6)
 - [v0.6.1: revised v6 exposition, with the same bound and certificates](https://github.com/twinheterodox/tenth-discriminant/tree/v0.6.1/versions/v6.1)
+- [v0.7.0: unified proof and complete classification, q < 570](https://github.com/twinheterodox/tenth-discriminant/tree/v0.7.0/versions/v7)
 - [elementary-v0.1.0: original elementary companion publication](https://github.com/twinheterodox/tenth-discriminant/tree/elementary-v0.1.0/companions/elementary)
 - [historical-v0.1.0: original 1830 reconstruction, superseded by the Weber replacement](https://github.com/twinheterodox/tenth-discriminant/tree/historical-v0.1.0/companions/historical)
 
@@ -299,7 +311,7 @@ checksums; each version also retains its own manifest.
 > The following text is retained verbatim as a historical snapshot.
 > Its review and publication statements describe that snapshot. Subsequent
 > review information is recorded in [REVIEW.md](REVIEW.md); current work is
-> documented in [v6.1](versions/v6.1/README.md).
+> documented in [v7](versions/v7/README.md).
 
 # An explicit tenth-discriminant bound from Banks's zero-free theorem
 

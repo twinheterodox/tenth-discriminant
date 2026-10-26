@@ -1,0 +1,16 @@
+BEGIN 570 580
+  determinant and positive-kernel lower bound complete
+PASS 570 580 lower > 10.975413160309 upper < 10.965023309487 gap > 0.010389850822 norm error < 0.000076518406608161
+BEGIN 580 600
+  determinant and positive-kernel lower bound complete
+PASS 580 600 lower > 9.566392271045 upper < 9.544453349522 gap > 0.021938921524 norm error < 0.000000000196892970
+BEGIN 600 700
+  determinant and positive-kernel lower bound complete
+PASS 600 700 lower > 9.755174436449 upper < 9.682807072960 gap > 0.072367363489 norm error < 0.000000000046746585
+BEGIN 700 1050
+  determinant and positive-kernel lower bound complete
+PASS 700 1050 lower > 9.890348467407 upper < 9.507107805092 gap > 0.383240662315 norm error < 0.000000000000067384
+BEGIN 1050 2000
+  determinant and positive-kernel lower bound complete
+PASS 1050 2000 lower > 12.460477948401 upper < 11.013701796926 gap > 1.446776151475 norm error < 0.000000000000000001
+All 429 exact checks passed. General proof and independent review remain separate.

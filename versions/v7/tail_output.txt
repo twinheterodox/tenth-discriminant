@@ -1,0 +1,7 @@
+PASS: 34 exact interval checks
+auxiliary_prime_margin in 0.11695674601742857 0.11695674601742857
+base_cost in 2.210698516722731 2.210698516722731
+refined_cost in 2.7531396108331174 2.7531396108331174
+normalized_upper_at_2000 in 1.166654358768113 1.166654358768113
+normalized_contradiction_gap in 0.018345641231886964 0.018345641231886964
+Decimals above are displays only; all acceptance comparisons use rational endpoints.

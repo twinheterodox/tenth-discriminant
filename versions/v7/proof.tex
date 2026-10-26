@@ -1,0 +1,1565 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,longtable}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage{microtype,xurl}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\OK}{\mathcal O_K}
+\newcommand{\pos}[1]{\left(#1\right)_+}
+\newcommand{\Tn}{\mathcal T}
+\newcommand{\eps}{\varepsilon}
+
+\title{A unified Frobenius determinant proof\\for the tenth discriminant\\
+\large Version 0.7.0: \(q<570\)}
+\author{Research note prepared with Codex}
+\date{26 October 2026}
+\hypersetup{pdftitle={A unified Frobenius determinant proof for the tenth discriminant, v0.7.0},
+pdfauthor={Research note prepared with Codex},
+pdfsubject={A self-contained proof of q < 570 and the class-number-one classification}}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove \(q<570\) for the absolute fundamental discriminant of an
+imaginary quadratic field of class number one, and complete the finite
+classification. One derivative determinant supplies the entire analytic
+argument. An auxiliary inert prime proves nonvanishing; Frobenius and
+factorial divisibility, compared with complex size, force a smoothed sum
+over split and ramified primes to be large. For \(q\ge2000\), one
+factorial refinement and a direct primitive-norm count give a uniform
+contradiction. For \(570\le q\le2000\), positive averaging and the
+quadratic norm Euler product give the sharper comparison, certified on
+five bands by exact rational intervals. No earlier version of this paper
+is a proof dependency. The external inputs are standard quadratic ideal
+theory and reduction of binary quadratic forms, explicit ordinary-prime
+estimates, and classical analysis. We use neither Heegner's method nor
+a quasi-Riemann hypothesis or quadratic zero-free theorem.
+\end{abstract}
+
+\section{Introduction}
+For a negative fundamental discriminant \(D\), put \(q=|D|\) and
+\(K=\Q(\sqrt D)\). Tao's challenge asks for effective bounds for a
+hypothetical tenth imaginary quadratic field of class number one,
+without using Heegner's solution \cite{tao}. His subsequent request for
+bounds using lighter machinery motivates the route developed here
+\cite{taocomment}.
+
+\begin{theorem}\label{main}
+If \(h(K)=1\), then \(q<570\).
+\end{theorem}
+
+The determinant strategy traces to OpenAI's manuscript on uniform
+exclusion of Landau--Siegel zeros \cite{openai}. We use Green's
+derivative-matrix variant \cite{green} and the auxiliary-prime
+nonvanishing argument of van Dijk \cite{vandijk}. All the determinant
+arguments needed here are proved below. The specialized contributions
+from the challenge discussion are cited at their points of use.
+
+This version keeps the cutoff and the five interval certificates of
+v6.1 \cite{v6}. Its mathematical change is a new uniform treatment of
+\(q\ge2000\) using the same determinant estimates as the bounded
+interval. This removes the inherited dependence on two earlier papers
+and the intermediate boundary at 4000. The result is one proof with
+two final estimates, rather than a sequence of improvements that must
+be read cumulatively.
+
+\paragraph{The common quantity.}
+Class number one gives two competing descriptions of split primes.
+Each is represented by the quadratic norm form, which restricts their
+number. A determinant argument, on the other hand, forces a weighted
+sum of noninert primes to be large. Throughout the paper that sum is
+\[
+ \Tn(X)=\sum_{p\text{ split or ramified}}\frac{\log p}{p}f(p/X),
+\]
+where the nonnegative decreasing weight \(f\) is defined by the exact
+floor identity in Section~\ref{divisibility}. The same \(\Tn\) appears
+in the determinant comparison, the factorial refinements, and both
+upper bounds. This common quantity is the organizing device of the proof.
+
+\paragraph{Proof outline.}
+Assume \(h(K)=1\) and \(q\ge570\).
+\begin{enumerate}
+\item The norm obstruction makes every prime \(p<q/4\) inert.
+It also identifies the quadratic lattice and its geometry
+(Section~\ref{background}).
+\item Given a sufficiently large inert prime \(R\), put
+\(S=\lfloor3R/64\rfloor\) and \(J=\lceil R/9\rceil\).
+Reduction modulo \(R\) proves that a derivative matrix on a lattice
+disk has a nonzero minor (Section~\ref{determinant}).
+\item Bound this same minor from below by prime divisibility and from
+above by complex size. Their comparison gives the common lower bound
+for \(\Tn(R)\). An already established bound for \(\Tn\) supplies
+additional factorial divisibility, permitting finite refinement
+(Sections~\ref{divisibility}--\ref{comparison}).
+\item For \(q\ge2000\), a short sieve supplies an inert prime
+\(q^3<R\le3q^3/2\). One refinement and a primitive-norm count give
+opposing bounds for \(\Tn(R)\). A decreasing scalar function reduces
+the entire infinite range to its endpoint \(q=2000\)
+(Section~\ref{large}).
+\item For \(570\le q\le2000\), a finer auxiliary-prime sieve,
+eight finite refinements, and a positive weighted norm-series comparison
+give a contradiction on five certified bands
+(Sections~\ref{bands}--\ref{certificate}).
+\end{enumerate}
+The remaining 70 candidates below 570 are handled in
+Section~\ref{finite}, yielding the nine values
+\(3,4,7,8,11,19,43,67,163\).
+
+\paragraph{Scope of self-containment and notation.}
+The rank argument, divisibility transformations, size bounds, norm
+estimates, error bounds, and finite finish are included. Standard
+quadratic ideal theory and reduced-form theory, the explicitly stated
+Rosser--Schoenfeld estimates, and classical summation and special-function
+identities are the background inputs. The fixed rational parameter
+tables and computational certificates are part of the accompanying
+package; they need no earlier version's files. A determinant of enormous
+size is used only theoretically: the programs check its numerical
+inequalities, not its entries.
+
+All logarithms are natural, \(x_+=\max(x,0)\), and a prime is
+\emph{noninert} if it is split or ramified. A \emph{band} is one of
+the fixed bounded intervals \([Q_0,Q_1]\) used in the second application.
+The common estimates are first formulated for general \(q\ge570\).
+
+\section{Arithmetic and ordinary-prime estimates}\label{background}
+\subsection{The norm obstruction and lattice geometry}
+Assume henceforth that \(h(K)=1\) and \(q\ge570\).
+We first use the classical small-prime obstruction emphasized by
+Silberman in the discussion \cite{silberman}.
+Every nonrational algebraic integer has norm at least \(q/4\).
+A noninert rational prime has an integral ideal of norm \(p\);
+under class number one its generator is nonrational. Consequently
+\begin{equation}\label{small-inert}
+ p<q/4\quad\Longrightarrow\quad p\text{ is inert}.
+\end{equation}
+In particular \(q\) is an odd prime: an even discriminant has a small
+ramified prime 2, and a composite odd discriminant has a ramified prime
+at most \(\sqrt q<q/4\). Inertness of 2 gives \(q\equiv3\pmod8\).
+The only units are \(\pm1\), and
+\[
+ \OK=\Z+\Z\omega,\qquad \omega=(1+i\sqrt q)/2,\qquad
+ Q_q(a,b)=|a+b\omega|^2=(a+b/2)^2+qb^2/4.
+\]
+Write
+\[
+ v=\sqrt q/2,\qquad \rho=\tfrac12\sqrt{1+v^2}.
+\]
+The lattice has covolume \(v\) and a rectangular tiling of covering
+radius \(\rho\). Its disk count \(N(r)\) therefore satisfies
+\begin{equation}\label{disk}
+ \frac{\pi\max(r-\rho,0)^2}{v}\le N(r)
+ \le\frac{\pi(r+\rho)^2}{v}.
+\end{equation}
+Every principal ideal of norm \(m\) is a rotation and dilation by
+\(\sqrt m\) of this lattice.
+
+\subsection{Explicit bounds for ordinary primes}\label{prime-inputs}
+The auxiliary-prime sieves compare the logarithmic weight of all rational primes
+with the weight of split primes represented by the norm form. We record
+the ordinary-prime estimates needed for this comparison and for the
+later valuation bounds.
+Put \(\vartheta(x)=\sum_{p\le x}\log p\) and
+\(A(x)=\sum_{p\le x}\log p/p\). We use Rosser--Schoenfeld
+\cite{rs}, with \(c_0=1.01624\):
+\begin{align}
+ \vartheta(x)&<c_0x,\label{theta-global}\\
+ x\left(1-\frac1{2\log x}\right)&<\vartheta(x)
+       \quad(x\ge563),\label{theta-lower}\\
+ \vartheta(x)&<x\left(1+\frac1{2\log x}\right)\quad(x>1),\label{theta-upper}\\
+ A(x)&>\log x-1.334-\frac1{2\log x}\quad(x\ge319).
+ \label{mertens}
+\end{align}
+The last constant follows from their Theorem 6 and the explicit prime
+sum at 319: the certificate checks
+\(\log319-A(319)+1/(2\log319)<1.334\).
+
+For sharper bounds at our scales, Table I on printed page 90 gives
+pairs \((b,\epsilon_b)\) such that
+\((1-\epsilon_b)x<\psi(x)<(1+\epsilon_b)x\) for \(x\ge e^b\).
+The corollary to their Theorem 14 gives
+\(0\le\psi(x)-\vartheta(x)<1.02\sqrt x+3x^{1/3}\).
+Thus, uniformly for \(\log x\ge m\ge b\),
+\begin{equation}\label{tabletheta}
+ 1-\epsilon_b-1.02e^{-m/2}-3e^{-2m/3}
+ <\frac{\vartheta(x)}x<1+\epsilon_b.
+\end{equation}
+Let \(c(m),d(m)\) be any certified upper and lower bounds obtained
+by taking the best of these inequalities and
+\eqref{theta-global}--\eqref{theta-upper}. The table entries used are
+included as exact decimals in \texttt{parameters.json}.
+
+We also use \(A(R)<2\log R\) at our scales. This follows without a
+further prime estimate: \(\log(R!)\ge RA(R)-\vartheta(R)\), so
+\(A(R)\le\log R+c_0<2\log R\).
+
+\section{The common derivative determinant}\label{determinant}
+We first construct the determinant conditional on an inert prime of
+suitable size. Its existence will be proved separately for each
+application; it is not an extra number-theoretic assumption. The
+construction and its nonvanishing argument are the same in both ranges.
+
+\subsection{The derivative matrix and its rank}\label{rank}
+We use Green's derivative matrix \cite{green}, with interpolation points
+in a disk as suggested by Pratt \cite{pratt}. Choosing the auxiliary
+prime itself as the monomial width makes the finite-field degree count
+particularly simple.
+Take an inert prime \(p_0\), and set \(R=p_0\).
+Throughout the proof use the fixed constants
+\begin{equation}\label{fixed}
+ t=\frac3{64},\qquad C=\frac{27}{64},\qquad
+ S=\lfloor tR\rfloor,\qquad J=\lceil R/9\rceil,
+ \qquad T=\sqrt{CRv/\pi}+\rho.
+\end{equation}
+Use all \(n\) lattice points \(z_i\) in the disk of radius \(T\).
+Then \(n\ge CR\), so \(nJ\ge tR^2\ge RS\).
+The matrix has rows \(0\le r<R,0\le s<S\), columns \((i,k)\),
+\(0\le k<J\), and entries
+\[
+ \partial_z^k(z^r w^s)\big|_{(z_i,\bar z_i)}.
+\]
+These are ordinary derivatives, without division by factorials.
+
+The next lemma is van Dijk's auxiliary-prime argument \cite{vandijk}.
+Green also attributes a related unpublished argument to Pescador
+\cite{greencomment}; the proof here uses the public finite-field argument.
+
+\begin{lemma}\label{nonzero}
+If \(2T<R\) and \(J\le R\), this matrix has full row rank.
+\end{lemma}
+\begin{proof}
+Reduce modulo \(p_0\OK\), a field of \(p_0^2\) elements. The points
+are distinct: a nonzero element of \(p_0\OK\) has modulus at least
+\(p_0\), whereas two points in the disk differ by less than \(2T\).
+Frobenius gives \(\bar z_i=z_i^{p_0}\).
+If a nonzero row combination vanished, substitute \(w=z^{p_0}\) in
+its polynomial. The exponents \(r+p_0s\) are distinct, so the result
+is a nonzero polynomial of degree at most \(RS-1\). For \(k<J\le p_0\),
+its ordinary derivatives agree with the specified \(z\)-derivatives
+in characteristic \(p_0\). Each node is thus a zero of multiplicity
+at least \(J\), since \(k!\ne0\) for \(k<p_0\). This gives at least
+\(nJ\ge RS\) zeros, a contradiction. Full rank after reduction
+implies full rank in characteristic zero.
+\end{proof}
+
+Fix a nonzero \(RS\)-square minor \(\mathcal D\), and put
+\(N=RS\) and \(\Delta=|\mathcal D|^2\in\Z_{>0}\).
+Different triangular row changes below may be used for different
+primes: they leave this same determinant unchanged.
+
+\section{Prime divisibility of the determinant}\label{divisibility}
+We now bound the prime divisibility of the fixed positive integer
+\(\Delta\). The baseline bound comes from Frobenius at inert primes.
+Its leading term is a sum over all primes minus a smoothed sum over
+noninert primes. Higher Frobenius factors and factorials add compatible
+divisibility to the same minor. The resulting estimates will be combined
+with the size bound in Section~\ref{comparison}.
+
+\paragraph{Uniform parameters for the estimates.}
+For a chosen determinant take \(R\ge M\ge2^{18}\) and
+\(\eps=1/M\). Choose \(e\ge\rho/\sqrt{CRv/\pi}\) and set
+\[
+ \nu=C(1+2e)^2,\qquad
+ \eps<b_0\le(t-\eps)/\nu,\qquad j=1/9+\eps.
+\]
+The disk count gives \(n\le\nu R\), hence \(b_0\le S/n\).
+The applications choose \(e\) uniformly on their whole ranges.
+The small geometry conditions used in Section~\ref{arch} will be
+stated there and checked in each application. The choice \(M\ge2^{18}\)
+ensures that all ordinary-prime and decreasing-error estimates used below
+are within their stated domains.
+
+\subsection{The baseline bound and its smoothing weight}
+The floor \(\lfloor r/p\rfloor\) counts how many Frobenius factors
+can be taken from a row of degree \(r\). Summing this floor over the
+rows produces the following weight.
+For \(0<u\le1\), put
+\begin{equation}\label{fdef}
+ f(u)=2au-a(a+1)u^2,\qquad a=\lfloor1/u\rfloor;
+ \qquad f(u)=0\ (u>1),\quad f(0)=1.
+\end{equation}
+This is continuous, nonnegative, nonincreasing, and at most 1. Also
+\begin{equation}\label{fidentity}
+ f(u)=2u\sum_{m\ge1}(1-mu)_+,\qquad
+ \frac2{R^2}\sum_{r=0}^{R-1}\left\lfloor\frac rp\right\rfloor
+       =\frac{f(p/R)}p.
+\end{equation}
+Define the noninert sum
+\begin{equation}\label{Tdef}
+ \Tn(X)=\sum_{p\text{ noninert}}\frac{\log p}{p}f(p/X).
+\end{equation}
+It is nonnegative and nondecreasing in \(X\), and is at most the
+ordinary cumulative noninert sum.
+
+Green's triangular change \cite{green}, using
+\(a_{r,s}=\min(\lfloor r/p\rfloor,S-1-s)\), replaces \(z^rw^s\) by
+\(z^{r-pa_{r,s}}(z^p-w)^{a_{r,s}}w^s\). For inert \(p\), every
+ordinary derivative of \(z^p-w\) is divisible by \(p\), so
+\[
+ v_p(\Delta)\ge2\sum_{r,s}a_{r,s}.
+\]
+Write this normalized valuation as \(e(R,S,p)\). Counting layers gives
+\begin{equation}\label{elayers}
+ e(R,S,p)=\frac2{R^2S}\sum_{h=1}^{S-1}(S-h)(R-ph)_+.
+\end{equation}
+For \(p(S-1)\le R-1\), this equals
+\((S-1)/R-p(S^2-1)/(3R^2)\). In general,
+\begin{equation}\label{etail}
+ e(R,S,p)\ge\frac{f(p/R)}p
+       -\frac{R-1}{2RSp}
+       -\frac{(R-1)(2R-1)}{6RSp^2}.
+\end{equation}
+Indeed, sum
+\(\sum_{s<S}\min(k,S-1-s)\ge Sk-k(k+1)/2\), then use
+\(k(k+1)\le r^2/p^2+r/p\) and \eqref{fidentity}.
+
+The main term in the inert-prime sum in \eqref{etail} is exactly
+\[
+ \sum_p\frac{\log p}{p}f(p/R)-\Tn(R).
+\]
+Thus the prime sum that must be bounded from below is \(\Tn(R)\).
+Its specific weight will also allow the factorial gains and the final
+norm-series comparison to be expressed in terms of \(\Tn\).
+
+\subsubsection{The all-prime term}
+We first compare the sum over all primes with \(A(R)\), retaining a
+nonnegative correction from the floor remainder.
+If \(R=ap+b\), the exact floor identity gives
+\[
+ \frac{f(p/R)}p=\frac1p-\frac1R+\frac1R\delta_a(p/R),\qquad
+ \delta_a(u)=2a+1-u^{-1}-a(a+1)u.
+\]
+On \([1/(a+1),1/a]\), \(\delta_a\) is nonnegative, vanishes at
+the endpoints, and has one maximum. Partial summation with
+\(d_*x\le\vartheta(x)\le c_*x\), valid for \(x\ge M/33\), gives
+\begin{equation}\label{Gfloor}
+ G_{\rm floor}=\max(0,Bd_*-Ac_*),\quad
+ A=\frac{\log33-H_{33}+1}{2},\quad
+ B=\frac{H_{32}-\log33}{2}.
+\end{equation}
+Here \(H_n=\sum_{j\le n}1/j\). The increasing and decreasing pieces
+contribute integrals
+\(\frac12\log(1+1/a)-\frac1{2(a+1)}\) and
+\(\frac1{2a}-\frac12\log(1+1/a)\), respectively; sum for
+\(1\le a\le32\). Thus
+\begin{equation}\label{allf}
+ \sum_p\frac{\log p}{p}f(p/R)
+ \ge A(R)-c(\log M)+G_{\rm floor}\qquad(R\ge M).
+\end{equation}
+
+\subsubsection{The small primes and the quadratic tail}
+The loss involving \(p^{-2}\) in \eqref{etail} is needlessly large
+for small primes. We evaluate their contribution directly, then remove
+the known split and ramified primes from the remaining inert-prime tail.
+Put \(H=\lfloor1/t\rfloor=21\),
+\[
+ a_H=\sum_{p\le H}\frac{\log p}p,\quad
+ \theta_H=\sum_{p\le H}\log p,\quad
+ W_H=\sum_{p\le H}\log p\,(t-pt^2/3).
+\]
+Let \(B_H\) be a certified upper bound for
+\(\sum_{p>H}\log p/p^2\). Specifically, with \(P=10000\),
+partial summation and \eqref{theta-global} give
+\[
+ B_H=\sum_{H<p\le P}\frac{\log p}{p^2}
+               +\frac{2c_0}{P}-\frac{\vartheta(P)}{P^2}
+ >\sum_{p>H}\frac{\log p}{p^2}.
+\]
+Choose any nonnegative certified lower bound
+\begin{equation}\label{Ktwo}
+ K_2\le\sum_{\substack{p>H\\p\text{ noninert}}}\frac{\log p}{p^2},
+ \qquad K_2<B_H.
+\end{equation}
+Then the inert quadratic tail is at most \(B_H-K_2\).
+The choice \(K_2=0\) is always available. The bounded-band application
+will improve it using explicitly represented prime norms. Combining \eqref{etail}, \eqref{allf}, the
+exact small-prime formula, and \(A(R)<2\log R\), gives
+\begin{align}\label{basevaluation}
+ \frac{\log\Delta}{NR}\ge{}&
+ A(R)-c(\log M)+G_{\rm floor}-\Tn(R)-a_H+W_H\\
+ &-\frac{B_H-K_2}{3(t-1/M)}
+ -\frac{2\theta_H}{M}-\frac{\log M}{(t-1/M)M}.
+ \notag
+\end{align}
+The next two subsections add further divisibility while preserving this
+bound for the same determinant.
+
+\subsection{Higher Frobenius factors}\label{frobenius}
+Kerr's suggestion to retain higher Frobenius relations, including the
+ninth-power relation at 3, motivates the extra factors here
+\cite{kerrcomment}. To add their gains, we must put them into one
+triangular row transformation and account for differentiation of the
+resulting product.
+At an inert prime use
+\[
+ G=z^p-w,\qquad H_1=z^{p^2}-z,\qquad H_2=w^{p^2}-w.
+\]
+For each row let
+\[
+ a=\min(\lfloor r/p\rfloor,S-1-s),\quad
+ c=\lfloor(r-pa)/p^2\rfloor,\quad b=\lfloor s/p^2\rfloor,
+\]
+and replace the row polynomial by
+\begin{equation}\label{threefactor}
+ z^{r-pa-p^2c}G^aH_1^c\,w^{s-p^2b}H_2^b.
+\end{equation}
+Its leading term is \(z^rw^s\); all other terms have smaller
+lexicographic index and remain in the rectangle, since their
+\(z\)-degree is at most \(r\) and their \(w\)-degree at most
+\(s+a\le S-1\).
+
+The \(k\)th Hasse derivative in \(z\) is the coefficient of \(X^k\)
+in \(F(z+X,w)\); ordinary differentiation multiplies it by \(k!\).
+All three factors have values divisible by \(p\). A Hasse derivative
+can lose a factor \(G\) only at order \(p\), and a factor \(H_1\)
+only at order 1 or \(p^2\). At total order \(k\), the number of lost
+factors is therefore at most
+\[
+ L=\min(k,c)+\left\lfloor\frac{k-\min(k,c)}p\right\rfloor.
+\]
+Ordinary differentiation supplies \(k!\). The elementary inequality
+\[
+ c+\lfloor k/p\rfloor-L\ge\lfloor c/p\rfloor
+\]
+holds both for \(k\ge c\) and \(k<c\). Consequently the entry
+valuation is at least
+\begin{equation}\label{newval}
+ a+b+\lfloor c/p\rfloor+\sum_{e\ge2}\lfloor k/p^e\rfloor.
+\end{equation}
+The additional residual row factor is
+\(\lfloor(r-pa)/p^3\rfloor\). Moreover, beyond this bound one may
+retain
+\begin{equation}\label{coupled-entry}
+ \max\left(0,(1-1/p)(c-k)-1\right).
+\end{equation}
+For \(k<c\), this follows by bounding \(\lfloor k/p\rfloor\)
+below by \(k/p-1\); for \(k\ge c\), \eqref{newval} suffices.
+
+\subsubsection{Averaging the row and column gains}
+The minor contains every row but only a selection of the available
+columns. Each derivative order occurs in at most \(n\) columns.
+This restriction bounds the mean derivative order in any chosen minor;
+the parameter \(b_0\) is the uniform lower bound for \(S/n\)
+specified above.
+Suppose \(R\ge M\), put \(\varepsilon=1/M\), and choose
+\(b_0\le S/n\). At most \(n\) columns have each derivative order.
+Their mean order is at least \((b_0R-1)/2\), and at most \(j_*R\),
+where
+\begin{equation}\label{jstar}
+ j=1/9+\varepsilon,\qquad j_*=j-b_0/2+b_0/M.
+\end{equation}
+The latter is a conservative consequence of sorting the orders:
+the \(i\)th is at most \(J-1-\lfloor(N-1-i)/n\rfloor\).
+
+Let \(P_*\le q/4\); all primes \(p<P_*\) are inert.
+The \(b\) and higher-column terms in \eqref{newval} give
+\begin{equation}\label{Gsmall}
+ G_{\rm small}=\sum_{p<P_*}\log p\left\{
+ \sum_{\substack{e\ge2\\p^e<M}}
+       \left(\frac{b_0-\varepsilon}{p^e}-2\varepsilon\right)_+
+ +\left(\frac{t-\varepsilon}{p^2}-3\varepsilon\right)_+
+ \right\}.
+\end{equation}
+For the residual factor, define
+\[
+ A_p(t)=
+ \begin{cases}
+  1/(2p^2)-t/(2p)+t^2/6,&pt\le1,\\
+  1/(6tp^3),&pt\ge1.
+ \end{cases}
+\]
+Then the further gains are
+\begin{align}
+ G_{\rm res}&=\sum_{p<P_*}\log p
+       \left(\frac{2A_p(t)}p-(2+2/p^3)\varepsilon\right)_+,
+       \label{Gres}\\
+ G_{\rm coup}&=2\sum_{p<P_*}\log p
+       \left((1-1/p)\{A_p(t)-(1+1/p^2)\varepsilon-j_*\}
+                         -\varepsilon\right)_+.
+       \label{Gcoup}
+\end{align}
+Here is a direct integral justification. Put \(x_r=r/R\) and
+\(y_s=(S-1-s)/R\). We have
+\(c/R\ge (x_r-py_s)_+/p^2-1/R\).
+On the cell \([x_r,x_r+1/R]\times[y_s,y_s+1/R]\),
+\((x-py)_+\le(x_r-py_s)_++1/R\).
+The average of \((x-py)_+/p^2\) over
+\([0,1]\times[0,S/R]\) equals \(A_p(S/R)\), which decreases
+as \(S/R\) increases. Thus the normalized mean of
+\(c\) is at least \(A_p(t)-(1+1/p^2)/M\).
+For \eqref{Gres}, use the exact identity
+\(\lfloor c/p\rfloor=\lfloor(r-pa)/p^3\rfloor\).
+The same cell argument, now divided by \(p^3\), bounds its
+normalized mean below by \(A_p(t)/p-(1+1/p^3)/M\).
+The mean of a positive part is at least the positive
+part of its mean, so \eqref{coupled-entry} and \eqref{jstar} give
+\eqref{Gcoup}. All these terms are added to \eqref{basevaluation}.
+
+\subsection{Factorial divisibility and finite refinement}\label{factorials}
+Noninert primes contribute factorial divisibility of their own. The
+floor identity \eqref{fidentity} expresses the first-power contribution
+using the same function \(\Tn\), now at smaller scales. Thus an already
+proved lower bound for \(\Tn\) strengthens the next determinant comparison.
+
+At a split prime, replace \(w^s\) by its falling factorial \((w)_s\).
+The two components of
+\(\OK/p^e\OK\simeq(\Z/p^e\Z)^2\) show that its values are
+divisible by \(p^{v_p(s!)}\): in each component a product of \(s\)
+consecutive integers has that divisibility. The column factor \(k!\)
+remains. At the ramified prime retain only the column factorial.
+These are triangular row changes, so they bound the same determinant
+as the inert-prime transformations, at a disjoint set of primes.
+
+The split row factorial contributes exactly
+\((S/R)\Tn_{\rm split}(S)\) at the first powers of the primes.
+For the columns put \(K_0=\lfloor b_0R\rfloor\). The increasing
+chosen orders are at least \(\lfloor i/n\rfloor\). Since
+\(N/n\ge K_0\), their mean \(\lfloor k/p\rfloor\) is at least
+the mean over \(0\le k<K_0\). The identity \eqref{fidentity}
+therefore gives a contribution at least
+\((K_0/R)\Tn(K_0)\).
+
+Consequently, for any
+\(0<z\le b_0-\eps\) and \(0<h\le t-\eps\), a compatible
+additional normalized valuation is at least
+\begin{equation}\label{Gpointwise}
+ z\Tn(zR)+h\left(\Tn(hR)-\frac{\log q}{q}\right)_+.
+\end{equation}
+Here \(\eps=1/M\) and \(R\ge M\); the ramified term was bounded
+by \((\log q)/q\), and \(\Tn\) is nonnegative and nondecreasing.
+This pointwise version is useful in the infinite range.
+
+For an interval of scales, suppose a nonnegative nondecreasing function
+\(\Phi\) is already known to satisfy \(\Tn(e^x)\ge\Phi(x)\)
+at the scales used. Taking \(z=b_0-\eps\), \(h=t-\eps\), and
+\(R\ge M\) in \eqref{Gpointwise} gives the uniform gain
+\begin{align}\label{Gfeedback}
+ G_{\rm fb}={}&(b_0-\eps)\Phi(\log(M(b_0-\eps)))\\
+ &+(t-\eps)\left(\Phi(\log(M(t-\eps)))-\frac{\log q}{q}\right)_+.
+ \notag
+\end{align}
+On a band, \((\log q)/q\le(\log Q_0)/Q_0\), giving the constant
+used by its certificate. Starting with \(\Phi=0\) makes every later
+refinement an implication from a previously proved bound. The infinite
+range below needs one refinement; the bounded calculation uses eight.
+
+\section{An upper bound for the complex size}\label{arch}
+We now bound the same nonzero minor from above. A typical entry contains
+both a falling factorial from differentiation and a power of the radius
+of its interpolation point. These depend on the same monomial exponent.
+The following estimate keeps that dependence when averaging over rows
+and columns. The result is \eqref{arch-final}; it will be compared with
+the divisibility bounds in Section~\ref{comparison}.
+
+\subsection{A pointwise inequality for each entry}
+Fix \(\tau=3/10\), and, for \(0\le k\le u\le1\), put
+\[
+ F(u,k)=u\log u-(u-k)\log(u-k)-k,\qquad
+ \phi(u)=\tau(u\log u-u).
+\]
+At zero use the continuous values. For \(0<a\le1\), define
+\(\psi(k,a)=\max_{k\le u\le1}\{(u-k)\log a+F(u,k)-\phi(u)\}\).
+The maximized function is strictly concave. If \(a\le1-k\), its
+critical point satisfies \(u-k=au^{1-\tau}\), and
+\[
+ \psi(k,a)=\tau u+(1-\tau)k\log u-k.
+\]
+If \(a\ge1-k\), the maximum is at 1 and
+\[
+ \psi(k,a)=(1-k)\log\frac a{1-k}-k+\tau.
+\]
+Differentiation shows that \(\psi\) decreases in \(k\), increases in
+\(a\), and is 1-Lipschitz in \(a\). In particular, for \(k\le j\),
+\[
+ \psi(k,a)+B\ge0,\qquad B=(1-\tau)j(1-\log j).
+\]
+
+To prepare for averaging over the disk and derivative orders, let
+\(I(k)=\int_0^1 2a\psi(k,a)\,da\) and
+\(K(j)=\int_0^j I(k)\,dk\). We have \(I(0)=2\tau^2/(2\tau+1)\).
+Changing variables from \(a\) to the critical point gives
+\[
+ I'(k)=-(1-\tau)\int_k^1(u-k)^2u^{2\tau-3}\,du
+               +\log(1-k)+k-k^2/2.
+\]
+Thus, writing \(A=2\tau\),
+\begin{align}\label{Kformula}
+ K(j)={}&j\frac{2\tau^2}{2\tau+1}
+ -(1-\tau)\left\{\frac{j^2}{2A}-\frac{j^3}{3(A-1)}
+ +\frac{j^4}{12(A-2)}
+ -\frac{2j^{A+2}}{A(A-1)(A-2)(A+1)(A+2)}\right\}\\
+ &+\frac j2-\frac{3j^2}4+\frac{(1-j)^2}2\log(1-j)
+        +\frac{j^3}6-\frac{j^4}{24}.
+ \notag
+\end{align}
+
+Write \((r)_k=r(r-1)\cdots(r-k+1)\) for the falling factorial,
+with \((r)_0=1\). For an actual row and derivative order, take \(u=(r+1)/R\) and
+\(k'=k/R\). Increasing-log integration gives
+\(\log(r)_k\le k\log R+RF(u,k')\).
+Clip the normalized radius to \(a=\max(1,|z|)/T\). A nonzero entry
+satisfies
+\begin{align*}
+ \log|\partial_z^k(z^rw^s)|\le{}&
+ (r+s)\log T+k\log(R/T)\\
+ &+R\{\phi(u)+\psi(k',a)\}+s\log a-\log a.
+\end{align*}
+The final term is at most \(\log T\). Since \(\phi\) decreases, its
+right Riemann sum gives a normalized row contribution at most
+\(-3\tau/2\) to \(\log\Delta/(NR)\).
+
+\subsection{Averaging over the lattice and chosen columns}\label{arch-averaging}
+The minor may select any \(N\) of the available columns. We therefore
+need an upper bound that is uniform over that selection. Adding \(B\)
+makes the quantity to be summed nonnegative, so we can first sum over
+all available columns and then subtract \(NB\).
+
+With the uniform parameters of Section~\ref{divisibility}, put
+\begin{equation}\label{geometry}
+ r_* =\sqrt{CRv/\pi},\qquad e\ge\rho/r_*,\qquad
+ \nu=C(1+2e)^2,\qquad
+ g=\tfrac12\log(C/(2\pi))+\log(1+e).
+\end{equation}
+Then \(n\le\nu R\), \(b_0\le S/n\), and
+\(\log T\le\frac12\log R+\frac14\log q+g\).
+These estimates require only the displayed inequality for the actual
+\(q,R\). They impose no upper bound on \(q\).
+
+Lattice-cell integration, using nonnegativity and the Lipschitz property,
+gives for each order
+\[
+ \sum_{|z|\le T}\{\psi(k/R,a_z)+B\}
+ \le\nu R\left\{I(k/R)+B+\frac{5e}{3(1+e)}\right\}.
+\]
+Indeed, cells lie in the disk of radius \(T+\rho\). Its normalized
+radial argument is \(((1+2e)a+e)/(1+e)\), whose difference from
+\(a\) is \(e(1+a)/(1+e)\). Integrating against \(2a\,da\) gives
+the displayed error. Clipping at 1 only improves the estimate;
+\(\rho\ge1\) also covers the clipped origin.
+
+We may fill in unchosen columns before subtracting \(NB\).
+Since \(I\) decreases and \(I+B\ge0\), the order sum is at most
+\[
+ R\left\{K(j)+j\left(B+\frac{5e}{3(1+e)}\right)\right\}+I(0)+B.
+\]
+It follows that the normalized joint contribution is at most
+\begin{equation}\label{Djoint}
+ D_*=-\frac{3\tau}2+
+ \frac{2\nu}{t-\varepsilon}
+ \left\{K(j)+j\left(B+\frac{5e}{3(1+e)}\right)
+                  +\varepsilon(I(0)+B)\right\}-2B.
+\end{equation}
+
+\subsection{The remaining radius factor and the final bound}
+The entry estimate also contains \(s\log a\), which has not yet been
+used. It is nonpositive. To retain a definite saving, count how many
+chosen columns must lie inside each smaller disk and how small their
+assigned row exponents can be in a determinant term.
+At least \(\lambda(a)N\) chosen columns have radius at most \(aT\), where
+\[
+ \lambda(a)=\left(1-\frac{jC}{t-\varepsilon}
+   \{(1+2e)^2-\max(a(1+e)-e,0)^2\}\right)_+.
+\]
+Among that many distinct rows the normalized sum of the \(s\)'s is
+at least \(((t-\varepsilon)\lambda(a)^2-\varepsilon)/2\).
+Put
+\[
+ \delta=\frac{jC}{t-\varepsilon}
+       \left\{(1+2e)^2+\frac e{2+e}\right\}-1.
+\]
+Since \(\max(a(1+e)-e,0)^2\ge a^2-e/(2+e)\) and
+\(jC/(t-\varepsilon)\ge1\), we have
+\(\lambda(a)\ge(a^2-\delta)_+\).
+Assume \(0<\delta<1\) and \(\delta\ge e\), as checked in both applications. Then
+\(\sqrt\delta\ge1/T\). Integrating from \(\sqrt\delta\) to 1 gives
+the additional saving
+\begin{equation}\label{Gs}
+ G_s=\left((t-\varepsilon)
+       \left\{\frac14-\delta+\frac{3\delta^2}4
+                    -\frac{\delta^2}2\log\delta\right\}
+                     +\frac\varepsilon2\log\delta\right)_+.
+\end{equation}
+
+There are at most \(N!\) terms in the determinant. Using
+\(\log N!\le N\log N\), \eqref{jstar}, and \(1<T<R\), we obtain
+\begin{equation}\label{arch-final}
+ \frac{\log\Delta}{NR}\le
+ (1-\alpha)\log R+\frac\beta4\log q+\beta g
+       +D_*+\frac{2\log M}{M}-G_s+\frac{2\log(tM^2)}M,
+\end{equation}
+where
+\(\alpha=(1-t)/2-j_*\), \(\beta=1+t-2j_*\).
+The functions \((\log R)/R\) and \(\log(tR^2)/R\) decrease for \(R\ge M\ge2^{18}\). The terms \(D_*\) and \(-G_s\) account for different
+parts of the displayed entry bound: the former treats
+\(\phi+\psi\), and the latter treats \(s\log a\).
+
+\section{The common prime-sum comparison}\label{comparison}
+We can now state the conclusion of the determinant argument without
+committing to a particular range of discriminants. The main valuation
+is an ordinary-prime contribution minus \(\Tn(R)\); comparing it
+with the size bound therefore forces \(\Tn(R)\) to be large.
+
+\begin{proposition}\label{common-proposition}
+Suppose \(q\ge570\), \(h(K)=1\), and \(R\) is inert. Use
+\eqref{fixed} and the uniform parameters specified above, with
+\(2T<R\), \(1<T\), \(0<\delta<1\), \(\delta\ge e\),
+and \(0<\alpha,\beta\). Choose \(P_*\le q/4\) and \(K_2\)
+as in \eqref{Ktwo}. Define
+\begin{equation}\label{basecost}
+\begin{aligned}
+ \mathcal K_0={}&a_H-W_H+c(\log M)
+ +\frac{B_H-K_2}{3(t-\eps)}+\beta g+D_*
+ +\frac{2\log M}{M}-G_s\\
+ &+\frac{2\theta_H}{M}+\frac{\log M}{(t-\eps)M}
+ +\frac{2\log(tM^2)}M+1.334+\frac1{2\log M}\\
+ &-G_{\rm floor}-G_{\rm small}-G_{\rm res}-G_{\rm coup}.
+\end{aligned}
+\end{equation}
+Then
+\begin{equation}\label{common-line}
+ \Tn(R)\ge\alpha\log R-\frac\beta4\log q-\mathcal K_0+G,
+\end{equation}
+where \(G=0\) is always allowed. Any previously established lower
+bound for \eqref{Gpointwise}, or \(G_{\rm fb}\) in
+\eqref{Gfeedback}, is also allowed as \(G\).
+\end{proposition}
+\begin{proof}
+Add the compatible gains \eqref{Gsmall}, \eqref{Gres}, and
+\eqref{Gcoup} to \eqref{basevaluation}, use \eqref{mertens}, and
+compare with \eqref{arch-final}. All these bounds concern the same
+positive integer \(\Delta\). This gives \eqref{common-line} with
+\(G=0\). The additional factorial divisibility in
+Section~\ref{factorials} gives the stated refinement.
+\end{proof}
+
+The estimates used in this proposition are proved above. The remaining
+work consists of supplying inert primes, choosing the uniform constants,
+and bounding this same \(\Tn\) from above. These tasks differ between
+the infinite range and the interval close to the cutoff.
+
+\section{The uniform exclusion for \texorpdfstring{\(q\ge2000\)}{q >= 2000}}\label{large}
+The common proposition already has enough strength in the infinite
+range. We use a simple auxiliary-prime interval and one factorial
+refinement, then compare the resulting pointwise bound with an
+elementary primitive-norm count. This section is independent of the
+bounded-band certificates that follow.
+
+Assume \(q\ge2000\), and write \(L=\log q\), \(u=\sqrt q\),
+and \(Q=Q_q\) for the norm form.
+
+\subsection{A supply of auxiliary inert primes}
+
+Set $\kappa=3/2$. We claim that, for every
+\begin{equation}\label{Urange}
+ q^2\le U\le\kappa q^3,
+\end{equation}
+there is an inert prime $R\in(U,\kappa U]$.
+
+Following Pratt's norm-counting suggestion \cite{pratt}, we use
+the elementary condition \(\gcd(a,b,210)=1\).
+The disk estimate \eqref{disk} bounds the absolute counting error by
+\((2\pi\rho r+\pi\rho^2)/v\), even when \(r<\rho\).
+Apply it to both annulus boundaries at each divisor of 210 and use
+\[
+ \sum_{d\mid210}\frac{\mu(d)}{d^2}=\frac{768}{1225},\quad
+ \sum_{d\mid210}\frac{|\mu(d)|}{d}=\frac{96}{35},\quad
+ \sum_{d\mid210}|\mu(d)|=16.
+\]
+Here \(\mu\) is the M\"obius function; for a divisor of 210 its value
+is \((-1)^k\), where \(k\) is the number of prime factors.
+Every split prime norm has four generators. Consequently the number
+of split primes in $(U,\kappa U]$ is at most
+\[
+ A_q(\kappa-1)U+B_q^*(1+\sqrt\kappa)\sqrt U+C_q^*,
+\]
+where
+\[
+ A_q=\frac{\pi}{2u}\frac{768}{1225},\quad
+ B_q^*=\frac\pi4\sqrt{1+4/q}\frac{96}{35},\quad
+ C_q^*=2\pi(v+v^{-1}).
+\]
+The area term is exact; using the disk error on both annulus
+boundaries gives the displayed square-root and constant errors.
+
+Let $q_0=2000$, $M=q_0^2=4\,000\,000$, and $c_0=1.01624$.
+Rosser--Schoenfeld's ordinary-prime estimates give
+\[
+ \vartheta(\kappa U)-\vartheta(U)
+ >\left[\kappa\left(1-\frac1{2\log M}\right)-c_0\right]U.
+\]
+In contrast the split-prime weight, divided by $U$, is at most
+\begin{equation}\label{sievecost}
+ (3L+2\log\kappa)
+ \left\{A_q(\kappa-1)+\frac{B_q^*(1+\sqrt\kappa)}q
+                         +\frac{C_q^*}{q^2}\right\}.
+\end{equation}
+Each term of this expression decreases for $q\ge2000$.
+For the powers of $q$ this follows from
+$3-a(3L+2\log\kappa)<0$ for $a\ge1/2$; the extra factor
+$\sqrt{1+4/q}$ also decreases. At $q=2000$ the difference between
+the ordinary-prime lower bound and \eqref{sievecost} exceeds $0.116$.
+The unique ramified prime $q$ is below the annulus. An inert prime
+therefore exists throughout \eqref{Urange}.
+
+\subsection{Uniform determinant constants}
+Take any inert prime \(R\ge q^2\). Use the dimensions and disk in
+\eqref{fixed}, and set
+\[
+ M=4\,000\,000,\quad \eps=1/M,\quad
+ e=\frac{33}{10000},\quad b_0=\frac{2193}{20000},\quad
+ P_*=500,\quad K_2=0.
+\]
+These constants satisfy the common proposition for all \(q\ge2000\).
+For the geometric condition,
+\[
+ \frac{\rho}{\sqrt{CRv/\pi}}
+ \le\sqrt{\frac{\pi}{4Cq^2}(v+v^{-1})}<e.
+\]
+The square of the middle expression decreases with \(q\), so the
+endpoint 2000 suffices. The same endpoint verifies \(2T<R\) and
+\(T>1\), and
+\(b_0\le(t-\eps)/(C(1+2e)^2)\). Notice that this uses
+\(R\ge q^2\), not an upper bound on \(q\).
+
+In \eqref{basecost} use the global constant \(c(\log M)=1.01624\).
+For \eqref{Gfloor} take
+\(d_*=1-1/(2\log(M/33))\) and \(c_*=1.01624\).
+The higher-Frobenius sums use only the fixed primes \(p<500\),
+all inert here. The exact rational certificate proves
+\[
+ \alpha>0.42,\qquad 0<\beta/4<0.234,\qquad
+ \mathcal K_0<2.211<2.22.
+\]
+It checks the remaining geometry conditions as well. The actual
+enclosure gives \(\mathcal K_0<2.210699\); the larger rounded
+constant is convenient for the argument. Proposition~\ref{common-proposition}
+with \(G=0\) therefore yields
+\begin{equation}\label{base}
+ \Tn(R)>0.42\log R-0.234L-2.22
+ \qquad(R\text{ inert prime},\ R\ge q^2).
+\end{equation}
+
+\subsection{One factorial refinement}
+
+For every real $X$ in
+\[
+ \kappa q^2\le X\le\kappa^2 q^3,
+\]
+apply the auxiliary-prime lemma at $U=X/\kappa$. Monotonicity of
+$\Tn$ and \eqref{base} imply
+\begin{equation}\label{transfer}
+ \Tn(X)>0.42\log X-0.234L-2.4,
+\end{equation}
+because $2.22+0.42\log(3/2)<2.4$.
+
+Now choose an inert prime $q^3<R\le\kappa q^3$, and use its
+determinant once more. Put
+\[
+ z=0.109<b_0-\eps,\qquad h=0.046<t-\eps.
+\]
+The column factorial contribution is at least $z\Tn(zR)$,
+and the split row factorial contribution is at least
+$h(\Tn(hR)-L/q)$, by \eqref{Gpointwise}.
+Both scales lie in the interval of \eqref{transfer}:
+$h q>\kappa$ for $q\ge2000$, and their upper bounds are immediate.
+Both lower bounds are positive, and $L/q<0.004$.
+Consequently a compatible gain for this same determinant is
+\begin{align*}
+ G_{\rm fb}\ge{}&z\{0.42\log(zR)-0.234L-2.4\}\\
+ &+h\{0.42\log(hR)-0.234L-2.404\}.
+\end{align*}
+There is no circular step: \eqref{transfer} was established with
+zero noninert factorial gain before using this refinement.
+
+Adding this to \eqref{base}, and using $\log R>3L$, gives
+\begin{equation}\label{final-lower}
+ \boxed{\ \Tn(R)>1.185L-2.76.\ }
+\end{equation}
+Indeed the exact coefficient is
+$(3\cdot0.42-0.234)(1+z+h)=1.18503$, and the constant is
+\[
+ 2.22+2.4(z+h)-0.42(z\log z+h\log h)+0.004h
+ <2.753140<2.76.
+\]
+This uses one refinement, not the eight used near $q=570$.
+
+\subsection{A direct upper bound for the same smoothed sum}
+
+We now give the primitive norm count used in this application.
+It implements the split-prime counting approach suggested by Pratt
+\cite{pratt}. Write $N(x)$ for the number of pairs
+$b>0$, $a\in\mathbb Z$ with $Q(a,b)\le x$.
+The horizontal row length is \(2\sqrt{x-qb^2/4}\) when nonempty;
+its integral over \(0\le b\le2\sqrt x/u\) is \(\pi x/u\).
+The decreasing integral comparison loses at most \(2\sqrt x\),
+and the integer-point error at most one per row. Therefore
+\[
+ \frac{\pi x}{u}-2\sqrt x-\frac{2\sqrt x}{u}
+ \le N(x)\le\frac{\pi x}{u}+\frac{2\sqrt x}{u}.
+\]
+Insert these bounds with the appropriate signs into
+$\sum_{d\mid210}\mu(d)N(x/d^2)$. Using the 210 products already
+displayed and $\prod_{p\mid210}(1-p^{-1})=8/35$ yields
+\[
+ N_{210}(x)\le\frac{\pi\eta x}{u}+B_q\sqrt x,
+ \qquad \eta=\frac{768}{1225},\qquad
+ B_q=\frac{88}{35}+\frac{192}{35u}.
+\]
+Each split prime has two primitive generators with $b>0$. Hence
+\begin{equation}\label{count}
+ \pi_+(x)\le\frac{\pi\eta}{2u}x+\frac{B_q}{2}\sqrt x.
+\end{equation}
+There are no split primes below $q/4$.
+
+There is a useful simple bound for the smoothing weight:
+\begin{equation}\label{smooth}
+ f(s)\le1-\frac45s\qquad(0\le s\le1).
+\end{equation}
+For $a=\lfloor1/s\rfloor$, write
+$f(s)=1-s+s\delta_a(s)$ with
+$\delta_a(s)=2a+1-s^{-1}-a(a+1)s$.
+Its maximum is at most
+$(\sqrt{a+1}-\sqrt a)^2\le3-2\sqrt2<1/5$, proving
+\eqref{smooth}.
+
+For any $X\ge q/4$, the function
+$g_X(x)=(\log x)/x\,(1-4x/(5X))$ is nonnegative and decreasing
+on $[q/4,X]$. Partial summation with \eqref{count} therefore applies
+with an upper bound in the correct direction. Put $x=\log X$ and
+$a=\log(q/4)$. The linear part of the count contributes
+\[
+ \frac{\pi\eta}{4u}
+ \left\{x^2-a^2+2a-\frac85\left(x-1+\frac{q}{4X}\right)\right\}.
+\]
+For the square-root part we may drop the smoothing, giving at most
+$2B_q(a+1)/u$; the discarded endpoint term is nonpositive.
+The ramified prime contributes at most $L/q$. We obtain
+\begin{equation}\label{norm-upper}
+ \Tn(X)\le\frac{\pi\eta}{4u}
+   \left\{x^2-a^2+2a-\frac85(x-1)\right\}
+       +\frac{2B_q(a+1)}u+\frac Lq.
+\end{equation}
+This bounds exactly the same smoothed noninert sum as
+\eqref{final-lower}; no change of target quantity is required.
+
+\subsection{One endpoint covers the infinite range}
+
+Since $R\le\kappa q^3$, monotonicity allows us to use
+\eqref{norm-upper} at $X=\kappa q^3$. Write $k=\log(3/2)$ and
+$\ell=\log4$. The polynomial in braces, divided by $L$, is
+\[
+ 8L+(6k+2\ell-14/5)
+       +\frac{k^2-\ell^2-2\ell-(8/5)k+8/5}{L}.
+\]
+The rational certificate checks
+\[
+ \frac{\pi\eta}4<0.4926,\quad
+ 6k+2\ell-14/5<2.406,\quad
+ k^2-\ell^2-2\ell-(8/5)k+8/5<-3.578,\quad
+ \ell-1>0.386.
+\]
+The upper and lower bounds would therefore require
+\begin{equation}\label{contradiction}
+\begin{aligned}
+ 1.185<F(q):={}&
+ \frac{0.4926}{\sqrt q}\left(8L+2.406-\frac{3.578}{L}\right)
+ \\
+ &+\frac2{\sqrt q}\left(\frac{88}{35}+\frac{192}{35\sqrt q}\right)
+        \left(1-\frac{0.386}{L}\right)
+ +\frac1q+\frac{2.76}{L}.
+\end{aligned}
+\end{equation}
+Each term decreases for $L\ge\log2000>7.6$. For the first term,
+the sign of the derivative with respect to $L$ is the sign of
+\[
+ 8+\frac{3.578}{L^2}-4L-1.203+\frac{1.789}{L}<0.
+\]
+For the boundary terms, use
+\[
+ \frac{0.386}{L^2}-a\left(1-\frac{0.386}{L}\right)<0
+ \qquad(a=1/2\text{ or }1).
+\]
+The remaining terms decrease immediately. Finally the exact interval
+calculation proves
+\[
+ F(2000)<1.166655<1.167<1.185.
+\]
+This contradicts \eqref{contradiction} for every $q\ge2000$.
+The normalized endpoint gap exceeds $0.018$.
+The 34 exact checks in \texttt{verify\_tail.py} certify the constants
+in this section; the monotonicity arguments above explain why finite
+checks cover the infinite range.
+
+\section{Auxiliary primes and refinement on bounded bands}\label{bands}\label{affine}
+We now assume \(570\le q\le2000\). Near the cutoff, the direct
+count used in Section~\ref{large} is too coarse for the desired bound.
+We strengthen the same comparison by working at many scales and then
+taking a positive average. All determinant estimates remain those of
+Sections~\ref{determinant}--\ref{comparison}.
+
+The sieve in this section implements Pratt's suggestion to use norm
+counts to obtain auxiliary inert primes \cite{pratt}. The additional
+small-ideal conditions improve the scale intervals available for averaging.
+The fixed inputs are precisely those of the retained v6 interval
+certificate; we develop their mathematical justification here.
+
+\subsection{Auxiliary inert primes on bounded bands}\label{sieve}
+The sieve counts possible split primes in an annulus. Removing elements
+divisible by a fixed collection of small ideals improves this count;
+a second-order inclusion-exclusion bound keeps the estimate explicit.
+Comparing it with the total prime weight will then force an inert prime.
+
+Fix one band \(Q_0\le q\le Q_1\). Form the fixed, finite list of pairs
+\begin{equation}\label{normlist}
+ b>0,\quad 2a+b>0,\quad \gcd(a,b)=1,\quad
+ Q_{Q_1}(a,b)<(Q_0/4)^2,
+\end{equation}
+ordered by \((Q_{Q_1}(a,b),a,b)\). Write \(p_j(q)=Q_q(a_j,b_j)\),
+\(p_j^-=Q_{Q_0}(a_j,b_j)\), and \(p_j^+=Q_{Q_1}(a_j,b_j)\).
+
+Each \(p_j(q)\) is prime. A composite norm below \((q/4)^2\) has a
+prime factor below \(q/4\); inertness would force that prime to divide
+both coordinates. It is split rather than ramified: generators of the
+unique prime ideal above \(q\) have zero real part. These primes are
+distinct, because the four generators of a split prime norm are
+\(\alpha,-\alpha,\bar\alpha,-\bar\alpha\), and the chosen quadrant
+contains exactly one of them.
+
+Choose the first \(n_s\) such split primes, and the first \(h\) rational
+primes \(r>7\) with \(r<Q_0/4\). Sieve by the two prime ideals above
+each selected \(p_j\), and by each ideal \(r\OK\). Their norms are
+\(p_j,p_j,r^2\), and they are pairwise coprime. Also impose the exact
+condition \(\gcd(a,b,210)=1\).
+
+If an element belongs to \(k\) of the selected ideals, then
+\(1-k+\binom{k}{2}\) is an upper bound for the indicator that it
+belongs to none. Apply this second Bonferroni inequality, multiplied
+by the exact 210 indicator, to the annulus
+\(U<|\alpha|^2\le\kappa U\). A split prime in this interval has four
+generators. Assume \(U>Q_1\) and \(U>\max_{j\le n_s}p_j^+\), so the
+sieving primes themselves are not counted.
+
+For an ideal of norm \(m\), the disk estimate gives an annulus count
+with area term \(\pi(\kappa-1)U/(vm)\), boundary error at most
+\(2\pi\rho(1+\sqrt\kappa)\sqrt U/(v\sqrt m)\), and constant error
+at most \(2\pi\rho^2/v\). The 210 expansion has
+\[
+ \sum_{d\mid210}\frac{\mu(d)}{d^2}=\frac{768}{1225},\qquad
+ \sum_{d\mid210}\frac{|\mu(d)|}{d}=\frac{96}{35},\qquad
+ \sum_{d\mid210}|\mu(d)|=16.
+\]
+Define
+\begin{align*}
+ u&=2\sum_{j\le n_s}(p_j^+)^{-1}+\sum_{r}r^{-2},&
+ u_2&=2\sum_{j\le n_s}(p_j^+)^{-2}+\sum_r r^{-4},\\
+ z&=2\sum_{j\le n_s}(p_j^-)^{-1/2}+\sum_r r^{-1},&
+ z_2&=2\sum_{j\le n_s}(p_j^-)^{-1}+\sum_r r^{-2},
+ \qquad m_0=2n_s+h.
+\end{align*}
+The certificate checks that the analogous \(u\) at the minus endpoints
+is less than 1. The area polynomial then decreases in every reciprocal
+ideal norm, since its partial derivative is \(-1\) plus the sum of
+the other reciprocals. Therefore uniform upper bounds for the number
+of split primes in \((U,\kappa U]\) are
+\begin{equation}\label{split-annulus}
+ A_*(\kappa-1)U+B_*(1+\sqrt\kappa)\sqrt U+C_*,
+\end{equation}
+where \(v_-=\sqrt{Q_0}/2\), \(v_+=\sqrt{Q_1}/2\), and
+\begin{align*}
+ A_*&=\frac{\pi}{4v_-}\frac{768}{1225}
+          \left(1-u+\frac{u^2-u_2}{2}\right),\\
+ B_*&=\frac\pi4\sqrt{1+v_-^{-2}}\frac{96}{35}
+          \left(1+z+\frac{z^2-z_2}{2}\right),\\
+ C_*&=2\pi(v_++v_+^{-1})
+          \left(1+\frac{m_0(m_0+1)}2\right).
+\end{align*}
+
+For a parameter row, put \(M=2^a\), and let
+\(2^a\le U\le2^b\). Set \(d=d(\log M)\), \(c=c(\log M)\).
+An inert prime exists in \((U,\kappa U]\) if
+\begin{equation}\label{sieve-margin}
+ G(x)=\kappa d-c-(x+\log\kappa)
+ \{A_*(\kappa-1)+B_*(1+\sqrt\kappa)e^{-x/2}+C_*e^{-x}\}>0,
+ \quad x=\log U.
+\end{equation}
+Indeed, the total prime logarithmic weight exceeds the possible split
+weight, and the ramified prime is below the interval. Since
+\(x+\log\kappa>4\), the function \(G\) is concave. It suffices to
+check its two endpoints. These are exact rational interval checks in
+the certificate; all \(\kappa,n_s,h,a,b\) are in the parameter file.
+
+\subsection{The geometry and quadratic-tail subtraction}\label{band-inputs}
+For a parameter row with \(M=2^a\), choose
+\[
+ v_+=\sqrt{Q_1}/2,\qquad \rho_+=\tfrac12\sqrt{1+v_+^2},\qquad
+ e\ge\frac{\rho_+}{\sqrt{CMv_+/\pi}},\qquad
+ 0<b_0\le\frac{t-1/M}{C(1+2e)^2}.
+\]
+Since \(\rho/\sqrt v=\tfrac12\sqrt{v+v^{-1}}\) increases in
+our range, these choices satisfy the common geometric hypothesis for
+every \(q\) in the band and \(R\ge M\). Take \(P_*=Q_0/4\).
+With all pairs in \eqref{normlist}, use
+\begin{equation}\label{band-Ktwo}
+ K_2=\sum_j\frac{\log p_j^+}{(p_j^+)^2}
+             +\frac{\log Q_1}{Q_1^2}.
+\end{equation}
+The function \((\log x)/x^2\) decreases at these primes. The prime
+norms in the list and the ramified prime therefore prove
+\eqref{Ktwo}. The certificate checks \(K_2<B_H\), the auxiliary-prime
+margins, and all the remaining hypotheses of the common proposition.
+
+\subsection{From a determinant scale to an interval of scales}
+Apply Proposition~\ref{common-proposition}, with the band inputs
+just specified and the already proved factorial gain. This gives
+\begin{equation}\label{Tline}
+ \Tn(R)\ge\alpha\log R-\frac\beta4\log q-\mathcal K,
+ \qquad \mathcal K=\mathcal K_0-G_{\rm fb}.
+\end{equation}
+For a band-uniform calculation replace \((\log q)/q\) in
+\eqref{Gfeedback} by \((\log Q_0)/Q_0\).
+
+For every \(U\in[2^a,2^b]\), the auxiliary prime satisfies
+\(U<R\le\kappa U\). Monotonicity of \(\Tn\) and \(\alpha>0\)
+therefore transfer \eqref{Tline} to \(X=\kappa U\), with the
+additional intercept cost \(\alpha\log\kappa\).
+
+The auxiliary prime need not have a fixed ratio to \(U\); the interval
+guarantee alone suffices. The certificate rounds slopes down and
+intercept costs up, obtaining
+\[
+ \Tn(e^x)\ge A_i x-D_i-\gamma\log(q/Q_0),\qquad
+ \gamma=3/10,
+\]
+on the indicated finite interval. It checks \(\beta/4<\gamma\).
+The term involving \(q\) records the possible loss relative to the
+lower band endpoint \(Q_0\).
+
+\subsection{Eight finite refinements}
+Each affine bound applies on a finite interval of \(x\). Beyond its
+right endpoint, keep its endpoint value: monotonicity of \(\Tn\)
+makes that value a valid lower bound at all later scales. Taking the
+maximum of the available bounds and zero gives a nondecreasing
+envelope.
+
+For each of eight refinement stages, subtract
+\(\gamma\log(Q_1/Q_0)\) from the preceding envelope and clip at
+zero. This gives a band-uniform lower bound \(\Phi\), which can be
+inserted into the factorial gain \eqref{Gfeedback}. Repeating the
+determinant comparison produces the next stage. The initial stage
+uses \(\Phi=0\); every later stage is an implication from previously
+proved bounds, with no limiting or fixed-point assertion.
+
+Write \(L(x)\) for a certified piecewise affine selection from the
+final bounds at \(Q_0\), including zero and frozen endpoint values.
+Then throughout the band,
+\begin{equation}\label{Luniform}
+ \Tn(e^x)\ge L(x)-\gamma\log(q/Q_0).
+\end{equation}
+The exact parameter and output files record all lines, stages, and
+selected segments. For the rest of the proof, the conclusion of the
+determinant argument is precisely \eqref{Luniform}.
+
+\section{Positive kernels and the quadratic norm series}\label{mellin}
+The lower bound \eqref{Luniform} is strongest at different scales in
+different bands. We average over the scale using a positive kernel,
+then use the norm Euler product to bound the same average from above.
+The resulting norm series is estimated by Poisson summation, following
+the approach discussed by michaelmross and Tao \cite{ross,taocomment}.
+
+\subsection{A positive average of the determinant lower bound}
+Choose positive rational \(d,e\) and a nonzero integer polynomial
+\(P\), and normalize
+\[
+ h(x)=Z^{-1}e^{-dx}P(e^{-ex})^2\quad(x\ge0),\qquad
+ Z=\int_0^\infty e^{-dx}P(e^{-ex})^2\,dx.
+\]
+Then \(h\ge0\) and \(\int h=1\). Expand
+\(h(x)=\sum_i c_i d_i e^{-d_i x}\), with \(d_i=d+ie\).
+All \(c_i\) and \(Z\) are exact rationals. The coefficients \(c_i\)
+may have either sign, but the unexpanded kernel is nonnegative.
+Integrating
+\eqref{Luniform} gives
+\begin{equation}\label{weightedlower}
+ \int_0^\infty h(x)\Tn(e^x)\,dx
+ \ge\sum_i c_i\!\int_0^\infty d_i e^{-d_i x}L(x)\,dx
+             -\gamma\log(q/Q_0).
+\end{equation}
+One and the same \(L\) is used in every signed term: the inequality
+is obtained by integration against \(h\ge0\), before expanding the
+square. Termwise lower estimates with unrelated functions \(L\)
+would not justify this step.
+
+\subsection{The prime weight and its Euler-product upper bound}
+Define
+\[
+ W(y)=\int_y^\infty h(x)f(e^{y-x})\,dx.
+\]
+This is nonnegative, nonincreasing, and at most 1. Tonelli's theorem
+and \eqref{fidentity} show that
+\begin{equation}\label{multiplier}
+ W(y)=\sum_i c_i F(d_i)e^{-d_i y},\qquad
+ F(d)=\int_0^1 d\,u^{d-1}f(u)\,du
+       =\frac{2d\zeta(1+d)}{(1+d)(2+d)}.
+\end{equation}
+The right side follows by integrating each
+\(2d\,u^d(1-mu)_+\) from 0 to \(1/m\).
+Thus the left side of \eqref{weightedlower} is
+\(\sum_{p\text{ noninert}}(\log p)/p\,W(\log p)\).
+
+We next express an upper bound for this weighted prime sum through the
+norm series. For \(s>1\), put
+\[
+ \mathcal A_q(s)=\sum_{b\ge1}\sum_{a\in\Z}Q_q(a,b)^{-s},\qquad
+ B_q(s)=1+\mathcal A_q(s)/\zeta(2s).
+\]
+Every nonzero ideal is principal and has exactly two generators, differing
+by sign. Rational generators contribute \(\zeta(2s)\); a nonrational
+ideal has exactly one generator with \(b>0\). Thus
+\(\zeta_K(s)=\zeta(2s)+\mathcal A_q(s)\). Dividing out rational
+integer factors in the ideal Euler product gives
+\[
+ B_q(s)=\prod_{p\text{ split}}\frac{1+p^{-s}}{1-p^{-s}}\,(1+q^{-s}).
+\]
+An inert prime contributes 1. At a split prime the primitive ideals
+are positive powers of either of the two prime ideals, contributing
+\(1+2\sum_{k\ge1}p^{-ks}\); at the ramified prime the primitive
+exponents are 0 and 1. All products and differentiated series converge
+absolutely for \(s>1\). Logarithmic differentiation now gives
+\[
+ -\frac{B_q'(s)}{2B_q(s)}
+ =\sum_{p\text{ split}}\sum_{\substack{m\ge1\\m\text{ odd}}}
+      \frac{\log p}{p^{ms}}
+ +\frac{\log q}{2}\sum_{m\ge1}(-1)^{m-1}q^{-ms}.
+\]
+Multiply by the signed coefficients \(c_iF(d_i)\) and sum at
+\(s_i=1+d_i\). Since \(W\ge0\), the discarded higher odd powers
+have nonnegative weights. Adding
+\(\frac12\log q\sum_{m\ge1}q^{-m}W(m\log q)\) also covers the
+ramified first-power term. It is at most
+\begin{equation}\label{ramerror}
+ \frac{\log Q_0}{2(Q_0-1)}.
+\end{equation}
+
+\subsection{Poisson summation with an explicit error}\label{poisson}
+The zero Fourier mode of the norm series has a closed form, and the
+remaining modes decay exponentially in \(v\). Both the series and
+its derivative need explicit error bounds, because the Euler-product
+comparison uses a logarithmic derivative.
+Set
+\[
+ C(s)=\sqrt\pi\frac{\Gamma(s-1/2)}{\Gamma(s)},\quad
+ g(s)=\psi(s)-\psi(s-1/2),\quad
+ \mathcal F_q(s)=C(s)v^{1-2s}\zeta(2s-1).
+\]
+Here \(\psi=\Gamma'/\Gamma\) is the digamma function, distinct
+from the auxiliary function used in Section~\ref{arch}.
+Poisson summation in the real coordinate gives
+\(\mathcal F_q\) as the zero-mode contribution. We bound the error
+uniformly on the band, allowing for the magnitudes of all signed
+kernel coefficients.
+
+Choose any rational \(0<a_0<v_-\). For
+\(f_{s,t}(x)=(x^2+t^2)^{-s}\), shift the Fourier contour by
+\(y=t-a_0\), where \(t=bv\). Since
+\[
+ |(x+iy)^2+t^2|\ge x^2+a_0^2,
+\]
+the nonzero Fourier coefficients are bounded by
+\(C(s)a_0^{1-2s}e^{-2\pi n(t-a_0)}\). Summing both signs and
+all \(b,n\ge1\), put
+\[
+ z=e^{-2\pi v_-},\quad y_0=e^{-2\pi(v_--a_0)},\qquad
+ E_A=\frac{2C(s)a_0^{1-2s}y_0}{(1-z)(1-y_0)}.
+\]
+Then \(|\mathcal A_q(s)-\mathcal F_q(s)|\le E_A\) uniformly in
+the band.
+
+For the \(s\)-derivative, the complex argument of
+\((x+iy)^2+t^2\) has absolute value at most \(\pi/2\), and its
+logarithm is bounded in modulus by
+\[
+ \log(1+x^2/a_0^2)+2\log(2t)+2|\log a_0|+\pi/2.
+\]
+The integral of the first term against
+\((x^2+a_0^2)^{-s}\) is
+\(C(s)a_0^{1-2s}g(s)\). Using \(\log b\le b-1\) in the remaining
+geometric sum therefore gives
+\begin{equation}\label{EN}
+ |\mathcal A_q'(s)-\mathcal F_q'(s)|\le E_N,
+ \quad E_N=E_A\left\{2\log(2v_+)+2|\log a_0|+g(s)+\frac\pi2
+                                      +\frac{2z}{1-z}\right\}.
+\end{equation}
+The contour shift is justified by decay at infinity for \(s>1\);
+the same decay with an extra logarithm justifies differentiation.
+
+\subsection{The resulting upper bound}
+Put \(d=s-1\), \(z_2=\zeta(2s)\),
+\(c_s=-2\zeta'(2s)/\zeta(2s)\), and
+\[
+ \kappa_d=g(s)-2\frac{\zeta'(2s-1)}{\zeta(2s-1)}-c_s.
+\]
+The main upper term is
+\begin{equation}\label{Hmain}
+ H_q(d)=\frac{\mathcal F_q(s)\{\log(q/4)+\kappa_d\}}
+                   {2\{z_2+\mathcal F_q(s)\}}.
+\end{equation}
+The certificate checks that \(H_q(d)>0\) and decreases with \(q\)
+for each exponent used. Since \(z_2>1\), the logarithmic-derivative
+error is at most
+\begin{equation}\label{Herror}
+ E_H(d)=\frac{E_N+(c_s+2H_{Q_0}(d))E_A}{2(1-E_A)}.
+\end{equation}
+Consequently a uniform upper bound for the weighted noninert sum is
+\begin{equation}\label{weightedupper}
+ U(q)=\sum_i c_iF(d_i)H_q(d_i)
+       +\sum_i|c_i|F(d_i)E_H(d_i)
+       +\frac{\log Q_0}{2(Q_0-1)}.
+\end{equation}
+The main terms retain their signs. The error terms use absolute
+coefficient values, so cancellation is not assumed in the error
+estimate. Equations \eqref{weightedlower} and \eqref{weightedupper}
+now bound the same positive average from opposite sides.
+
+\section{Exact certification and completion of the proof}\label{certificate}
+The final step has two numerical obligations on each band: a strict
+gap at \(Q_0\), and a derivative comparison ensuring that the gap
+persists up to \(Q_1\). All parameters are fixed before checking
+either obligation.
+
+\subsection{A contradiction on each whole band}
+The certificate uses the five bands
+\[
+ [570,580],\quad[580,600],\quad[600,700],\quad[700,1050],\quad[1050,2000].
+\]
+The first uses a polynomial of degree 16 with \(d=3/10,e=1/25\);
+the others use degree 12 with \(d=2/5,e=1/20\). The integer
+polynomial coefficients, auxiliary-prime rows, and eight-stage
+refinement schedule are fixed in \texttt{parameters.json}.
+
+The lower bound \eqref{weightedlower} decreases with slope
+\(-\gamma\) as a function of \(Y=\log(q/Q_0)\). To compare the
+upper bound with it, write
+\(a_i=1/2+d_i\) and
+\(r_i=\mathcal F_{Q_0}(s_i)/\zeta(2s_i)\). Expand
+\[
+ H_q(d_i)=\frac12(\log(Q_0/4)+Y+\kappa_{d_i})
+       \sum_{\ell\ge1}(-1)^{\ell+1}r_i^\ell e^{-\ell a_iY}.
+\]
+The certificate bounds the differentiated geometric tail explicitly.
+For each retained \(\ell\), the signed finite sum is evaluated as
+a polynomial in \(1-e^{-\ell eY}\), with its coefficients computed
+by exact interval arithmetic. This avoids naive interval cancellation.
+Cells of width \(1/1000\) cover the entire \(Y\)-interval. On every
+cell the derivative of the main sum in \eqref{weightedupper} is
+strictly less than \(-\gamma\). The two error bounds in that equation
+are uniform constants, so they require no differentiation.
+
+\IfFileExists{numerical_table.tex}{\input{numerical_table.tex}}{}
+
+At \(q=Q_0\), the exact lower endpoint of
+\eqref{weightedlower} is strictly greater than the exact upper
+endpoint of \eqref{weightedupper}. Since the latter decreases faster
+than \(-\gamma\log(q/Q_0)\), \eqref{Luniform} proves a contradiction
+throughout the band. The five bands exclude \([570,2000]\).
+Section~\ref{large} excludes every \(q\ge2000\), proving
+Theorem~\ref{main} without an earlier-version dependency.
+
+\subsection{The remaining finite range}\label{finite}
+We include the short finite finish, following the small-prime sieving
+suggestion in Pratt's comment \cite{prattsieve}.
+For \(q>8\), the norm obstruction at 2 forces \(q\equiv3\pmod8\).
+For an odd prime \(p<q/4\), inertness requires \(-q\) to be a nonzero
+nonsquare modulo \(p\). The following complete integer computation
+tests those necessary conditions on the 70 candidates below 570:
+\begin{verbatim}
+primes = [p for p in range(3, 110)
+          if all(p % d for d in range(2, p))]
+squares = {p: {a*a % p for a in range(p)} for p in primes}
+survivors = [q for q in range(11, 570, 8)
+             if all(4*p >= q or (-q) % p not in squares[p]
+                    for p in primes)]
+assert survivors == [11, 19, 43, 67, 163]
+\end{verbatim}
+The negative fundamental discriminants of absolute value at most 8 are
+\(-3,-4,-7,-8\), giving the nine claimed possibilities.
+
+For the converse, enumerate reduced positive definite primitive forms
+\((a,b,c)\) of discriminant \(-q\). Reduction gives
+\(1\le a\le\sqrt{q/3}\), \(-a\le b\le a\), and
+\(c=(b^2+q)/(4a)\ge a\). Require \(c\) integral,
+\(\gcd(a,b,c)=1\), and \(b\ge0\) when \(|b|=a\) or \(a=c\).
+For each of the nine values, this finite enumeration gives exactly one
+form: \((1,0,q/4)\) for \(q=4,8\), and
+\((1,1,(q+1)/4)\) for the seven odd values.
+The standard reduced-form correspondence with ideal classes proves:
+\begin{theorem}\label{classification}
+A negative fundamental discriminant has class number one exactly when
+its absolute value is
+\[
+ 3,4,7,8,11,19,43,67,163.
+\]
+\end{theorem}
+The program \texttt{verify\_finite.py} performs both finite steps.
+This computation completes the classification below the analytic cutoff;
+no discriminants in \([570,\infty)\) were enumerated to prove that cutoff.
+
+\subsection{Reproducing the certificate}
+The numerical proof uses integer and rational intervals throughout.
+Logarithms use a convergent positive series after range reduction;
+exponentials use a Taylor series with an explicit tail; square roots
+use integer square roots. Zeta values and derivatives use
+Euler--Maclaurin with the periodic-Bernoulli remainder, while gamma
+and digamma use positive-real Stirling expansions with remainder
+bounds. These are evaluations in \(\Re s>1\), not zero-location
+inputs. Appendix~\ref{remainders} specifies the remainder formulas.
+Floating-point searches selected the fixed inputs, but acceptance
+depends only on the stated interval inequalities.
+
+Run, without Python's \texttt{-O} option,
+\begin{verbatim}
+python3 verify_tail.py
+python3 verify_v6.py
+python3 verify_structures.py
+python3 verify_finite.py
+\end{verbatim}
+The first command checks the 34 constant inequalities for the uniform
+tail in Section~\ref{large}. The second certifies the five bounded
+bands and writes exact endpoints to JSON. Its filename is retained to
+make the unchanged v6 calculation easy to compare with its predecessor.
+The third checks finite instances of the algebraic identities and
+divisibility statements; these tests do not replace their proofs.
+The fourth performs the finite check in Section~\ref{finite}.
+
+The bounded-band run passes 429 grouped checks, including 1,258 cells
+for the dependence on \(q\), using 184 auxiliary-prime parameter
+rows. Its smallest strict gap exceeds \(0.010389\).
+The parameter file and exact output files are part of the accompanying
+package. The programs check explicit inequalities; they do not
+construct the theoretical determinant.
+
+
+In addition, the uniform-tail certificate gives the normalized gap
+\(1.185-F(2000)>0.018345\). The structural checks pass 101,524 finite
+cases. All files needed for these runs are included in this version;
+the source manifest records their hashes. Numerical certification is
+distinct from checking the general mathematical deductions or formalizing
+them in a proof assistant.
+
+\section*{Acknowledgements and AI disclosure}
+We thank Tao for organizing the challenge and its participants for
+sharing their arguments. The determinant strategy originates in OpenAI's
+release \cite{openai}; Green and van Dijk developed the variants used
+here \cite{green,vandijk}. Green credits ChatGPT for the mathematical
+arguments and describes his role as exposition. The other contributions
+are cited where they enter the proof. No priority claim is made for the
+refinements or consolidation in this note.
+
+Codex developed the refinements, selected parameters, and prepared the
+manuscript and programs through an extended collaboration with the
+repository owner. V6 received a reported second-model cross-check and a
+separate AI-assisted audit; their scope is documented in the repository.
+The bounded certificate is retained here, but the new uniform tail and
+the consolidated v7 exposition have not yet received a separate model
+cross-check. No human peer review or formal verification of v7 is claimed.
+The exact computations supplement the mathematical argument; they do
+not certify every deduction in the paper. The cutoff 570 is not asserted
+to be optimal for this method.
+
+\appendix
+\section{Numerical remainder bounds}\label{remainders}
+Here are the remainder formulas used in the certificate; the integer
+parameters in this paragraph are numerical evaluation parameters,
+independent of the determinant dimensions.
+For \(s>1\), Euler--Maclaurin with \(N_0=64\), \(m=18\) gives
+\begin{align*}
+ \zeta(s)={}&\sum_{n<N_0}n^{-s}+\frac{N_0^{1-s}}{s-1}
+      +\frac12N_0^{-s}
+      +\sum_{k=1}^{m}\frac{B_{2k}(s)_{2k-1}}{(2k)!}
+                      N_0^{1-s-2k}+\mathcal R,\\
+ |\mathcal R|\le{}&E=
+ \frac{|B_{2m}|(s)_{2m}}{(2m)!(s+2m-1)}N_0^{1-s-2m},\\
+ |\mathcal R'|\le{}&E\left\{\log N_0+
+       \sum_{j=0}^{2m-1}\frac1{s+j}+\frac1{s+2m-1}\right\}.
+\end{align*}
+Here \((s)_j\) denotes the rising factorial. These bounds follow
+from the periodic-Bernoulli integral and its derivative.
+For log gamma and digamma, shift to \(z=x+64\), retain the terms
+\(1\le k<20\) in the positive-real Stirling expansions, and use
+the first omitted term as an absolute remainder bound
+\cite{dlmf}:
+\[
+ |R_{\log\Gamma}|\le\frac{|B_{40}|}{40\cdot39\,z^{39}},
+ \qquad |R_\psi|\le\frac{|B_{40}|}{40z^{40}}.
+\]
+The recurrence formulas then recover the values at \(x\).
+
+After range reduction to \(1\le y\le2\), logarithms use 80 terms
+of \(2\sum_{k\ge0}t^{2k+1}/(2k+1)\), where
+\(t=(y-1)/(y+1)\), and tail
+\(2t^{161}/(161(1-t^2))\). Exponentials are reduced to
+\(0\le x\le1\); the series through degree 80 has positive tail
+at most \(82/(81\cdot81!)\). Repeated squaring and reciprocation
+undo the reduction. Machin's formula with 60 arctangent terms
+encloses \(\pi\). Elementary interval operations round outward
+to 65 decimal places; square roots use integer bounds.
+
+For the differentiated geometric series in Section~\ref{certificate},
+the tail after
+\(L\) terms is at most
+\[
+ \frac12\sum_i |c_i|F(d_i)r_i^{L+1}
+ \left\{\frac1{1-r_i}+a_i E_*
+       \left(\frac{L+1}{1-r_i}+\frac{r_i}{(1-r_i)^2}\right)\right\},
+ \qquad E_*=\max_i\{\log(Q_1/4)+\kappa_{d_i}\}.
+\]
+The certificate increases \(L\) until this bound is below
+\(10^{-10}\), then includes it in every derivative cell test.
+
+\begin{thebibliography}{99}
+\bibitem{tao} T.~Tao, \emph{An experimental AI-math challenge: using
+tenth-discriminant bounds to explore arguments ruling out Siegel zeroes},
+20 October 2026.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/}{Challenge and discussion}.
+\bibitem{taocomment} T.~Tao, comment 698471 on \cite{tao}.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/\#comment-698471}{Request for bounds using lighter machinery}.
+\bibitem{openai} OpenAI, \emph{Uniform exclusion of Landau--Siegel zeros},
+manuscript dated 1 October 2026, publicly released 6 October 2026.
+\href{https://github.com/openai/math/blob/main/preprints/Uniform-exclusion-of-Landau-Siegel-zeros-October-1-2026/paper.pdf}{Original manuscript};
+\href{https://openai.com/index/sharing-ai-progress-in-mathematics/}{release announcement}.
+\bibitem{green} B.~Green, \emph{On Landau--Siegel zeros}, v2, 2026.
+\href{https://hexagonmath.org/2610.00311v2}{hexagon:2610.00311v2}.
+\bibitem{vandijk} R.~van Dijk, \emph{A Frobenius determinant proof of
+the non-existence of Landau--Siegel zeros}, v1, 2026.
+\href{https://hexagonmath.org/2610.00409v1}{hexagon:2610.00409v1}.
+\bibitem{v6} \emph{A smoothed Frobenius determinant bound for the tenth
+discriminant}, version 0.6.1, 21 October 2026.
+\href{https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.1}{Previous exposition and fixed interval certificate}.
+\bibitem{silberman} L.~Silberman, comment 698449 on \cite{tao}.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/\#comment-698449}{Small-prime inertness and weighted prime sums}.
+\bibitem{rs} J.~Barkley Rosser and L.~Schoenfeld,
+\emph{Approximate formulas for some functions of prime numbers},
+Illinois J. Math. \textbf{6} (1962), 64--94.
+\href{https://doi.org/10.1215/ijm/1255631807}{doi:10.1215/ijm/1255631807}.
+Theorems 4, 6, 9 and 14, and Table I on printed page 90.
+\bibitem{pratt} K.~Pratt, comment 698476 on \cite{tao}.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/\#comment-698476}{Norm counts, stronger divisibility, and disk interpolation}.
+\bibitem{greencomment} B.~Green, comment 698463 on \cite{tao}.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/\#comment-698463}{Auxiliary-prime rank argument and Pescador attribution}.
+\bibitem{kerrcomment} B.~Kerr, comment 698475 on \cite{tao}.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/\#comment-698475}{Monomial regions and higher Frobenius relations}.
+See also \emph{A simpler proof that there are no Landau--Siegel zeros},
+\href{https://arxiv.org/abs/2610.21099}{arXiv:2610.21099}.
+\bibitem{ross} michaelmross, comment 698466 on \cite{tao}.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/\#comment-698466}{Poisson expansion of the principal quadratic form}.
+\bibitem{prattsieve} K.~Pratt, comment 698460 on \cite{tao}.
+\href{https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/\#comment-698460}{Small-prime congruences and finite sieving}.
+\bibitem{dlmf} NIST Digital Library of Mathematical Functions,
+\href{https://dlmf.nist.gov/2.10}{Section 2.10 (Euler--Maclaurin)} and
+\href{https://dlmf.nist.gov/5.11}{Section 5.11 (Stirling expansions
+and positive-real remainder bounds)}.
+\end{thebibliography}
+\end{document}

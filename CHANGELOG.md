@@ -1,6 +1,6 @@
 # Mathematical changelog
 
-This changelog records the numbered series of improving bounds. Companion
+This changelog records the numbered series of bounds and proof revisions. Companion
 papers have separate histories: [elementary companion](companions/elementary/CHANGELOG.md)
 and [historical reconstruction](companions/historical/CHANGELOG.md).
 
@@ -8,6 +8,36 @@ On 22 October 2026, the historical companion was replaced within
 `historical-v0.1.0` by the Weber reconstruction proposing 1891 and
 `q < 196`. Its own changelog records the superseded 1830 claim and the
 retained original publication snapshot.
+
+## v0.7.0 — unified self-contained proof, 26 October 2026
+
+**The analytic cutoff remains `q < 570`.**
+
+- Proves the full analytic bound and finite classification in one paper,
+  with no earlier-version theorem as an input.
+- States one determinant comparison under explicit local hypotheses and
+  applies it in both ranges. The finite-field rank argument, divisibility
+  transformations, and size bounds are proved once.
+- Replaces the inherited v4/v5 exclusions with a new uniform argument for
+  `q >= 2,000`, using one factorial refinement, a direct smoothed
+  primitive-norm bound, and an endpoint comparison with normalized gap
+  greater than `0.018345`. There is no longer a boundary at 4,000.
+- Retains the five-band certificate for `[570,2,000]` byte-for-byte. A full
+  rerun reproduces all five band JSON files and their combined output.
+- Passes 34 new exact rational checks, the retained 429 grouped interval
+  checks, 101,524 finite structural cases, and the full finite finish.
+- Adds an integrated proof roadmap, in-context citations including the
+  originating OpenAI manuscript, a common comparison proposition, the
+  explicit finite sieve, and a numerical-remainder appendix.
+- Records the new tail and consolidated exposition as awaiting a separate
+  model cross-check. The prior v6 AI reviews are not relabeled as v7 review.
+- Preserves all earlier version directories, release tags, and assets.
+  The elementary and historical companions retain their separate series.
+
+[Paper and reproduction](versions/v7/README.md) ·
+[Consolidation record](versions/v7/CONSOLIDATION.md) ·
+[Review scope](versions/v7/REVIEW.md) ·
+[Fixed release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.7.0).
 
 ## Review documentation and external Lean formalization — 26 October 2026
 

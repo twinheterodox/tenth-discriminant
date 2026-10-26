@@ -1,0 +1,177 @@
+{
+  "version": "v0.7.0",
+  "date": "2026-10-26",
+  "pdf": {
+    "sha256": "f54abdeae1eae788a0d69c79283d650eec6695e58769cffdc2fbba27a42a266a",
+    "pages": 23,
+    "all_pages_rendered": true,
+    "all_pages_visually_inspected_by_generating_assistant": true,
+    "layout_defects_found": 0,
+    "automated_checks": {
+      "pages": 23,
+      "unresolved_references": 0,
+      "duplicate_labels": 0,
+      "citations": 14,
+      "latex_warnings": 0,
+      "overfull_boxes": 0,
+      "underfull_boxes": 0,
+      "out_of_page_words": 0,
+      "paper_sieve_snippet_executed": true,
+      "page_text_bounds": [
+        {
+          "page": 1,
+          "words": 380,
+          "left": 71.561,
+          "right": 542.144355
+        },
+        {
+          "page": 2,
+          "words": 460,
+          "left": 71.141,
+          "right": 542.145851
+        },
+        {
+          "page": 3,
+          "words": 476,
+          "left": 70.724,
+          "right": 542.116937
+        },
+        {
+          "page": 4,
+          "words": 613,
+          "left": 71.444,
+          "right": 542.140755
+        },
+        {
+          "page": 5,
+          "words": 483,
+          "left": 71.444,
+          "right": 542.116456
+        },
+        {
+          "page": 6,
+          "words": 410,
+          "left": 70.724,
+          "right": 541.859465
+        },
+        {
+          "page": 7,
+          "words": 471,
+          "left": 71.607,
+          "right": 542.116937
+        },
+        {
+          "page": 8,
+          "words": 638,
+          "left": 70.724,
+          "right": 542.120313
+        },
+        {
+          "page": 9,
+          "words": 528,
+          "left": 71.444,
+          "right": 542.1168
+        },
+        {
+          "page": 10,
+          "words": 525,
+          "left": 71.596,
+          "right": 542.122674
+        },
+        {
+          "page": 11,
+          "words": 502,
+          "left": 70.283,
+          "right": 542.120532
+        },
+        {
+          "page": 12,
+          "words": 508,
+          "left": 71.596,
+          "right": 542.117618
+        },
+        {
+          "page": 13,
+          "words": 439,
+          "left": 71.444,
+          "right": 542.117029
+        },
+        {
+          "page": 14,
+          "words": 511,
+          "left": 71.607,
+          "right": 542.1168
+        },
+        {
+          "page": 15,
+          "words": 590,
+          "left": 71.444,
+          "right": 542.126929
+        },
+        {
+          "page": 16,
+          "words": 600,
+          "left": 71.607,
+          "right": 541.516635
+        },
+        {
+          "page": 17,
+          "words": 476,
+          "left": 70.724,
+          "right": 542.143147
+        },
+        {
+          "page": 18,
+          "words": 494,
+          "left": 71.596,
+          "right": 542.134578
+        },
+        {
+          "page": 19,
+          "words": 506,
+          "left": 71.607,
+          "right": 542.137104
+        },
+        {
+          "page": 20,
+          "words": 493,
+          "left": 70.724,
+          "right": 542.118809
+        },
+        {
+          "page": 21,
+          "words": 450,
+          "left": 71.297,
+          "right": 542.146057
+        },
+        {
+          "page": 22,
+          "words": 516,
+          "left": 71.444,
+          "right": 542.116731
+        },
+        {
+          "page": 23,
+          "words": 430,
+          "left": 71.607,
+          "right": 541.523754
+        }
+      ]
+    }
+  },
+  "source_checks": {
+    "all_tex_environments_balanced": true,
+    "all_cross_references_resolve": true,
+    "all_bibliography_entries_cited": true,
+    "paper_finite_sieve_executed": true
+  },
+  "local_link_checks": {
+    "markdown_documents_checked": 7,
+    "local_links_and_anchors_checked": 121,
+    "missing_local_links": 0
+  },
+  "isolated_replay": "All four mathematical checking commands passed; stdout and exact JSON outputs match. See REPRODUCTION.json.",
+  "python_runtime": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "latex_engine": "This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.10.14)  26 OCT 2026 11:03",
+  "review_scope": "Development-session validation; the new tail and consolidated proof await a separate AI-model cross-check. Not formal verification."
+}

@@ -1,0 +1,156 @@
+{
+  "version": "v0.7.0",
+  "date": "2026-10-26",
+  "scope": "Development-session exact computations; not independent mathematical review or formal verification.",
+  "commands": [
+    {
+      "command": "python3 verify_tail.py",
+      "exit_code": 0,
+      "checks": 34,
+      "output": "tail_output.txt",
+      "exact_results": "tail_checks.json"
+    },
+    {
+      "command": "python3 verify_v6.py",
+      "exit_code": 0,
+      "checks": 429,
+      "derivative_cells": 1258,
+      "output": "certificate_output.txt",
+      "exact_results": "certificate_results.json"
+    },
+    {
+      "command": "python3 verify_structures.py",
+      "exit_code": 0,
+      "cases": 101524,
+      "output": "structural_checks.txt"
+    },
+    {
+      "command": "python3 verify_finite.py",
+      "exit_code": 0,
+      "candidates": 70,
+      "survivors": [
+        3,
+        4,
+        7,
+        8,
+        11,
+        19,
+        43,
+        67,
+        163
+      ],
+      "output": "finite_checks.txt"
+    }
+  ],
+  "byte_preserved_from_v0_6_1": {
+    "certificate_support.py": {
+      "sha256": "2fb3135c86d5b60c6dd2e5326029ab0b6689cc4b97224571670942235e2d11d6",
+      "bytes": 1212,
+      "matches_v0_6_1": true
+    },
+    "exact_arithmetic.py": {
+      "sha256": "9514b9589cf4288b3d705248b87c088989b8094ddfdc2a41795938ff55323303",
+      "bytes": 2849,
+      "matches_v0_6_1": true
+    },
+    "exact_high.py": {
+      "sha256": "c1b3b57dd303646e5816a3659f0db835d95f0839fcfdd29a3c9469d8d975e9e1",
+      "bytes": 2060,
+      "matches_v0_6_1": true
+    },
+    "verify_v6.py": {
+      "sha256": "29c2d5436e44e1e5d1433a66c67b250fb7a4c6111a3b4e4cde2cb136f5b8deba",
+      "bytes": 14152,
+      "matches_v0_6_1": true
+    },
+    "verify_structures.py": {
+      "sha256": "07b5d6039974fb4d03e9a9a2cf2bdfef3ecacad40b4dcd2b9c79c2104de33744",
+      "bytes": 3265,
+      "matches_v0_6_1": true
+    },
+    "verify_finite.py": {
+      "sha256": "f42a65ab3b56f4d2200488a0fcddc2bf37319c05614465ed7b089b3d9638c7e5",
+      "bytes": 3398,
+      "matches_v0_6_1": true
+    },
+    "build_numerical_table.py": {
+      "sha256": "b567b57e0fca11a4879dc5ae8b7e805aa4ce7490cffd808fb72a784e024084c0",
+      "bytes": 1688,
+      "matches_v0_6_1": true
+    },
+    "parameters.json": {
+      "sha256": "602f67c93c097ca07af0897d82397ad8d02b491bc57a2e791fc8d266411292b7",
+      "bytes": 35683,
+      "matches_v0_6_1": true
+    },
+    "numerical_table.tex": {
+      "sha256": "e64a5534755c9a7b9538e82015a6366bd6038950c8e13678b30504918ac2b7c5",
+      "bytes": 724,
+      "matches_v0_6_1": true
+    },
+    "certificate_results.json": {
+      "sha256": "c1d7d9b65864b4e01b378687ab77610436203b4dac18edeb163101b57bee2fbf",
+      "bytes": 2232291,
+      "matches_v0_6_1": true
+    },
+    "certificate_1050_2000.json": {
+      "sha256": "c75f613610921565431972019af3cb22950e50e4ef73ac68652ca59130b12645",
+      "bytes": 485179,
+      "matches_v0_6_1": true
+    },
+    "certificate_570_580.json": {
+      "sha256": "bb023f29d31609e74b13aa332493fdad67632396d0cd06b36615b6213c24d5c5",
+      "bytes": 415408,
+      "matches_v0_6_1": true
+    },
+    "certificate_580_600.json": {
+      "sha256": "226b432f90d045af2e2c98bd8306495b89d404554141439b277a8f2f774748f0",
+      "bytes": 414475,
+      "matches_v0_6_1": true
+    },
+    "certificate_600_700.json": {
+      "sha256": "af081baadcc9d6f045293f0767fa79e0eb34270f7278bb6b8160f1be66ef8141",
+      "bytes": 402517,
+      "matches_v0_6_1": true
+    },
+    "certificate_700_1050.json": {
+      "sha256": "a6349b37cf18452082e43ff185939a32a9dc0f463c57739b2ebd84ef3e28f075",
+      "bytes": 402018,
+      "matches_v0_6_1": true
+    }
+  },
+  "earlier_repository_head": "19652b57e36af4310b900e4b6c73cfb8c8c01480",
+  "isolated_packaged_replay": {
+    "all_four_commands_exit_code": 0,
+    "stdout_comparisons": {
+      "tail_output.txt": {
+        "identical_stdout": true,
+        "sha256": "8270636c6dbedc6e34a17f8a47c18e9ffa800533027341b2defdd85f02a86c95"
+      },
+      "certificate_output.txt": {
+        "identical_stdout": true,
+        "sha256": "2f874208dc53c8331a595e27d7576054599fb9f6a314b9d05ecab98b7343009f"
+      },
+      "structural_checks.txt": {
+        "identical_stdout": true,
+        "sha256": "6ba95687a0db4e670919784d994d2841fb2fbab4061c02bbedcc8a3fee6e1274"
+      },
+      "finite_checks.txt": {
+        "identical_stdout": true,
+        "sha256": "937c48be2eadad8fdf5d9740b4462272836e2710d79047adcfb82a0a61fc2bf5"
+      }
+    },
+    "exact_json_outputs_reproduced": [
+      "tail_checks.json",
+      "certificate_results.json",
+      "certificate_1050_2000.json",
+      "certificate_570_580.json",
+      "certificate_580_600.json",
+      "certificate_600_700.json",
+      "certificate_700_1050.json"
+    ],
+    "mathematical_code_and_fixed_inputs_identical": true,
+    "network_needed": false,
+    "scope": "Same-assistant replay of packaged code and inputs in a separate extracted directory; not an independent mathematical audit."
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "version": "v0.7.0",
+  "analytic_cutoff": "q < 570",
+  "review_status": "New tail and consolidated exposition awaiting a separate AI-model cross-check; not formal verification.",
+  "files": {
+    ".gitignore": {
+      "bytes": 110,
+      "sha256": "bc4b8f2f8e2ba2fb47937dab33ac259b7a723be0dcf4fecbfe8c8e349bb1f65c"
+    },
+    "CONSOLIDATION.md": {
+      "bytes": 4487,
+      "sha256": "d5b61af7c4f6ec6679f03929f06bcc5376ab3100d1f171d2d6126bdd575f3400"
+    },
+    "README.md": {
+      "bytes": 7308,
+      "sha256": "7dd88796553a0eb2fef4b8164e2911631f6ee7bfefea9084bdd9fd14ad63425f"
+    },
+    "REPRODUCTION.json": {
+      "bytes": 4946,
+      "sha256": "092ab5a417524e576af8a262f649ffd16544a73a58a402137ad25e2d8346b646"
+    },
+    "RESEARCH.md": {
+      "bytes": 2221,
+      "sha256": "cf779456432a8b6515db3779158dea1287186ba43a81f45142c6ba90a9c09124"
+    },
+    "REVIEW.md": {
+      "bytes": 4142,
+      "sha256": "d4d851307de2ae0287dfc2263864a408fc603a63097edab871bbd9f810d8ff92"
+    },
+    "VALIDATION.json": {
+      "bytes": 4281,
+      "sha256": "0b91d520d779c8ff647df0db6a4523ab5cd49fcdabf4b9c916ed387a3b112754"
+    },
+    "build_numerical_table.py": {
+      "bytes": 1688,
+      "sha256": "b567b57e0fca11a4879dc5ae8b7e805aa4ce7490cffd808fb72a784e024084c0"
+    },
+    "certificate_1050_2000.json": {
+      "bytes": 485179,
+      "sha256": "c75f613610921565431972019af3cb22950e50e4ef73ac68652ca59130b12645"
+    },
+    "certificate_570_580.json": {
+      "bytes": 415408,
+      "sha256": "bb023f29d31609e74b13aa332493fdad67632396d0cd06b36615b6213c24d5c5"
+    },
+    "certificate_580_600.json": {
+      "bytes": 414475,
+      "sha256": "226b432f90d045af2e2c98bd8306495b89d404554141439b277a8f2f774748f0"
+    },
+    "certificate_600_700.json": {
+      "bytes": 402517,
+      "sha256": "af081baadcc9d6f045293f0767fa79e0eb34270f7278bb6b8160f1be66ef8141"
+    },
+    "certificate_700_1050.json": {
+      "bytes": 402018,
+      "sha256": "a6349b37cf18452082e43ff185939a32a9dc0f463c57739b2ebd84ef3e28f075"
+    },
+    "certificate_output.txt": {
+      "bytes": 1008,
+      "sha256": "2f874208dc53c8331a595e27d7576054599fb9f6a314b9d05ecab98b7343009f"
+    },
+    "certificate_results.json": {
+      "bytes": 2232291,
+      "sha256": "c1d7d9b65864b4e01b378687ab77610436203b4dac18edeb163101b57bee2fbf"
+    },
+    "certificate_support.py": {
+      "bytes": 1212,
+      "sha256": "2fb3135c86d5b60c6dd2e5326029ab0b6689cc4b97224571670942235e2d11d6"
+    },
+    "exact_arithmetic.py": {
+      "bytes": 2849,
+      "sha256": "9514b9589cf4288b3d705248b87c088989b8094ddfdc2a41795938ff55323303"
+    },
+    "exact_high.py": {
+      "bytes": 2060,
+      "sha256": "c1b3b57dd303646e5816a3659f0db835d95f0839fcfdd29a3c9469d8d975e9e1"
+    },
+    "finite_checks.txt": {
+      "bytes": 740,
+      "sha256": "937c48be2eadad8fdf5d9740b4462272836e2710d79047adcfb82a0a61fc2bf5"
+    },
+    "numerical_table.tex": {
+      "bytes": 724,
+      "sha256": "e64a5534755c9a7b9538e82015a6366bd6038950c8e13678b30504918ac2b7c5"
+    },
+    "output/pdf/proof.pdf": {
+      "bytes": 451640,
+      "sha256": "f54abdeae1eae788a0d69c79283d650eec6695e58769cffdc2fbba27a42a266a"
+    },
+    "parameters.json": {
+      "bytes": 35683,
+      "sha256": "602f67c93c097ca07af0897d82397ad8d02b491bc57a2e791fc8d266411292b7"
+    },
+    "proof.tex": {
+      "bytes": 68319,
+      "sha256": "9f802ff0ef92cc1f56f5ee6b46e6641bc630c868884baeb5ba38b79a1b3648a7"
+    },
+    "sources.json": {
+      "bytes": 6039,
+      "sha256": "674fc7a40619c46deb10101fed0607e3b40e98316d8cff859e667dec55612847"
+    },
+    "structural_checks.txt": {
+      "bytes": 274,
+      "sha256": "6ba95687a0db4e670919784d994d2841fb2fbab4061c02bbedcc8a3fee6e1274"
+    },
+    "tail_checks.json": {
+      "bytes": 6458,
+      "sha256": "2d27cb9213381949ea03713c75ae5d610b2f28e01342c4f1910fa929ae4ef010"
+    },
+    "tail_output.txt": {
+      "bytes": 423,
+      "sha256": "8270636c6dbedc6e34a17f8a47c18e9ffa800533027341b2defdd85f02a86c95"
+    },
+    "verify_finite.py": {
+      "bytes": 3398,
+      "sha256": "f42a65ab3b56f4d2200488a0fcddc2bf37319c05614465ed7b089b3d9638c7e5"
+    },
+    "verify_structures.py": {
+      "bytes": 3265,
+      "sha256": "07b5d6039974fb4d03e9a9a2cf2bdfef3ecacad40b4dcd2b9c79c2104de33744"
+    },
+    "verify_tail.py": {
+      "bytes": 9081,
+      "sha256": "6b6a986cb09d412232b0e34598c2b33e41be3868719a7957a4adeef9a2b7c37c"
+    },
+    "verify_v6.py": {
+      "bytes": 14152,
+      "sha256": "29c2d5436e44e1e5d1433a66c67b250fb7a4c6111a3b4e4cde2cb136f5b8deba"
+    }
+  }
+}
