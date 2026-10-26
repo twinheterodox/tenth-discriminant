@@ -2,7 +2,23 @@
 
 Recorded 26 October 2026.
 
-## Mathematical review status
+## Current mathematical review status
+
+**The v0.7.0 paper passed a cross-check by another AI model.** On
+26 October 2026 the repository owner reported: "The paper has been
+independently verified by another model." No model name or detailed
+review report was supplied. This records a separate model check of the
+v7 paper; it is not inferred from the earlier v6 reviews or from the
+development-session computations below.
+
+This is an AI-model cross-check, not human peer review or formal verification.
+The mathematical argument and computational files have not changed.
+The published PDF, release bundle, fixed tag, and original validation
+record remain the publication snapshot. Their pending-review wording
+describes the status before this report; this record and the release
+notes give the updated status.
+
+## Original mathematical review status at publication
 
 The new uniform exclusion for `q >= 2,000` and the consolidated paper
 have **not yet received a separate AI-model cross-check**. They were

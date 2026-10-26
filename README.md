@@ -79,9 +79,9 @@ five-band certificate excludes `[570,2,000]`. The paper includes the
 complete finite classification. No earlier version is a proof dependency.
 See the [consolidation record](versions/v7/CONSOLIDATION.md).
 
-**The new v7 tail and consolidated paper are awaiting a separate model
-cross-check.** Its 34 new exact arithmetic checks pass, and the retained
-429-check interval certificate reproduces byte-for-byte. The 101,524
+**V7 has passed a cross-check by another AI model**, as reported by the
+repository owner on 26 October 2026. Its 34 new exact arithmetic checks
+pass, and the retained 429-check interval certificate reproduces byte-for-byte. The 101,524
 finite structural cases and the finite classification also pass. These
 computations are distinct from independent mathematical review or formal
 verification; the [v7 review record](versions/v7/REVIEW.md) states their scope.
@@ -89,8 +89,8 @@ verification; the [v7 review record](versions/v7/REVIEW.md) states their scope.
 V6 previously received a reported second-model cross-check and a separate
 AI-assisted audit coordinated by Henric Larsson. His
 [clarification](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/#comment-698595)
-reports no proof or certificate requiring correction. Those reports
-predate v7 and do not certify its new uniform tail. All earlier papers
+reports no proof or certificate requiring correction. Those earlier reports
+are separate from the subsequent v7 model cross-check. All earlier papers
 and release assets remain available, including
 [v0.6.1](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.1).
 
@@ -186,7 +186,7 @@ its own version history and review status.
 
 | Series and version | Analytic cutoff | Paper and files | Review status |
 |---|---|---|---|
-| **v7 · v0.7.0** | **`q < 570`** | [Unified self-contained proof](versions/v7/output/pdf/proof.pdf) · [Source and reproduction](versions/v7/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.7.0) | New uniform tail and consolidated exposition awaiting a separate model cross-check; 34 new exact checks and the retained 429-check certificate pass; not formal verification ([review record](versions/v7/REVIEW.md)) |
+| **v7 · v0.7.0** | **`q < 570`** | [Unified self-contained proof](versions/v7/output/pdf/proof.pdf) · [Source and reproduction](versions/v7/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.7.0) | Second-AI-model cross-check reported passed; 34 new exact checks and the retained 429-check certificate pass; not formal verification ([review record](versions/v7/REVIEW.md)) |
 | **Historical companion · historical-v0.1.0 (replaced 22 October 2026)** | **`q < 196`** | [Weber reconstruction: proposed historical cutoff 1891](companions/historical/output/pdf/historical-1891.pdf) · [Source and reproduction](companions/historical/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/historical-v0.1.0) | No independent audit verdict recorded; mathematical proof and historical eligibility require separate review; exact algebra and finite checks pass ([review record](companions/historical/REVIEW.md)) |
 | **Elementary companion · elementary-v0.1.0** | **`q < 32,768 = 2^15`** | [Elementary proof](companions/elementary/output/pdf/elementary-companion.pdf) · [Source and reproduction](companions/elementary/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/elementary-v0.1.0) · [Murphy's Lean adaptation](https://github.com/DrMurphyIsIn/tenth-discriminant/tree/f0995bf604056a98f0af0d182ed152c6bd996419/determinant) | Second-AI-model cross-check passed; exact finite checks pass; Murphy reports Lean/nanoda acceptance of his adaptation ([scope and evidence](companions/elementary/REVIEW.md)) |
 | **v6 revised · v0.6.1** | **`q < 570`** | [Revised proof](versions/v6.1/output/pdf/proof.pdf) · [Source and reproduction](versions/v6.1/README.md) · [Release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.6.1) | Same mathematics and certificates as AI-reviewed v0.6.0; no separate audit of the revised exposition or Lean formalization recorded |

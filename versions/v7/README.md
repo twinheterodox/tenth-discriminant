@@ -97,16 +97,22 @@ is for display only.
 
 ## Review status and AI disclosure
 
-**The new uniform tail and the consolidated v7 paper have not yet received
-a separate model cross-check.** The successful computational checks above
-are development-session evidence, not an independent mathematical review.
+**The v0.7.0 paper has passed a cross-check by another AI model.** The
+repository owner confirmed completion on 26 October 2026. A model name
+and detailed report were not supplied. The successful computational checks
+above are separate development-session evidence.
 
 The retained v6 argument has a reported second-model cross-check and a
 separate AI-assisted audit coordinated by Henric Larsson. His
 [clarification](https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/comment-page-1/#comment-698595)
 reports no proof or certificate requiring correction. Those reports
-predate v7 and do not certify its new tail or generalized presentation.
+predate v7 and are separate from the new v7 model cross-check.
 The [review record](REVIEW.md) states the distinctions explicitly.
+
+The published paper, release ZIP, fixed tag, and original validation record
+retain their publication-time status, when the v7 cross-check was pending.
+This documentation and the release notes record its subsequent completion;
+the proof and computational files are unchanged.
 
 Codex prepared the mathematics, exposition, and verification programs
 through collaboration with the repository owner. No human peer review
@@ -128,7 +134,9 @@ pdflatex -interaction=nonstopmode -halt-on-error -output-directory=output/pdf pr
 Repeat LaTeX if it requests another pass. The table builder rounds exact
 certificate endpoints outward. [MANIFEST.json](MANIFEST.json) records the
 source, numerical outputs, documentation, and PDF hashes. The manifest
-does not hash itself or the ZIP that contains it.
+does not hash itself or the ZIP that contains it. On the main branch it
+tracks the current documentation; the unchanged release ZIP retains its
+own publication-time documentation and manifest.
 
 For a stable citation use the
 [v0.7.0 release](https://github.com/twinheterodox/tenth-discriminant/releases/tag/v0.7.0)

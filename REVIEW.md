@@ -28,20 +28,27 @@ the current scope and terminology.
 
 ## v0.7.0 — unified proof, current review status
 
-The new uniform tail for `q >= 2,000` and the consolidated paper have
-**not yet received a separate model cross-check**. The development-session
-checks pass: 34 new exact rational checks, all 429 retained interval
-checks, 101,524 structural cases, and the complete finite classification.
+**The v0.7.0 paper passed a cross-check by another AI model.** Completion
+was reported by the repository owner on 26 October 2026: "The paper has
+been independently verified by another model." A model name and detailed
+review report were not supplied. This is a report of a separate model
+check of v7, not an extension of the earlier v6 review record.
+
+The development-session checks pass: 34 new exact rational checks, all
+429 retained interval checks, 101,524 structural cases, and the complete
+finite classification.
 The five band JSON files and their combined output reproduce v6.1
 byte-for-byte. The [v7 review record](versions/v7/REVIEW.md) and
 [consolidation record](versions/v7/CONSOLIDATION.md) identify the new
 mathematical obligations and the preserved calculation.
 
-The earlier second-model cross-check and Larsson's separate AI-assisted
-v6 audit predate the new tail. They are not an audit verdict for v7.
 No human peer review or proof-assistant formalization of v7 is claimed.
 The paper includes its own large-range proof and imports no v4/v5 theorem.
-All previous publication snapshots remain unchanged.
+At publication, the new tail and consolidated exposition were awaiting
+this check. The fixed paper, bundle, tag, and original validation record
+retain that publication-time status; the current documentation and release
+notes record the completed check. The mathematical argument, programs,
+and numerical outputs have not changed.
 
 ## v0.1.0 — original argument
 

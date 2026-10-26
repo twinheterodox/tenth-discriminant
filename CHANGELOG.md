@@ -9,6 +9,19 @@ On 22 October 2026, the historical companion was replaced within
 `q < 196`. Its own changelog records the superseded 1830 claim and the
 retained original publication snapshot.
 
+## v0.7.0 — model cross-check completed, 26 October 2026
+
+- Records the repository owner's confirmation that the v0.7.0 paper passed
+  an independent cross-check by another AI model. No model name or detailed
+  report was supplied; this is not human peer review or formal verification.
+- Updates the main README, version documentation, review records, and
+  release notes. The published paper, bundle, fixed tag, mathematical
+  argument, and computational outputs retain their original contents.
+- Refreshes the current documentation's source manifest. The release ZIP
+  keeps its publication-time manifest and review status.
+
+See the [current v7 review record](versions/v7/REVIEW.md).
+
 ## v0.7.0 — unified self-contained proof, 26 October 2026
 
 **The analytic cutoff remains `q < 570`.**
@@ -29,8 +42,9 @@ retained original publication snapshot.
 - Adds an integrated proof roadmap, in-context citations including the
   originating OpenAI manuscript, a common comparison proposition, the
   explicit finite sieve, and a numerical-remainder appendix.
-- Records the new tail and consolidated exposition as awaiting a separate
-  model cross-check. The prior v6 AI reviews are not relabeled as v7 review.
+- At publication, records the new tail and consolidated exposition as
+  awaiting a separate model cross-check; its subsequent completion is
+  recorded above. The prior v6 AI reviews are not relabeled as v7 review.
 - Preserves all earlier version directories, release tags, and assets.
   The elementary and historical companions retain their separate series.
 

@@ -1,7 +1,7 @@
 {
   "version": "v0.7.0",
   "analytic_cutoff": "q < 570",
-  "review_status": "New tail and consolidated exposition awaiting a separate AI-model cross-check; not formal verification.",
+  "review_status": "Second-AI-model cross-check reported passed by the repository owner on 26 October 2026; not human peer review or formal verification. See REVIEW.md for scope.",
   "files": {
     ".gitignore": {
       "bytes": 110,
@@ -12,8 +12,8 @@
       "sha256": "d5b61af7c4f6ec6679f03929f06bcc5376ab3100d1f171d2d6126bdd575f3400"
     },
     "README.md": {
-      "bytes": 7308,
-      "sha256": "7dd88796553a0eb2fef4b8164e2911631f6ee7bfefea9084bdd9fd14ad63425f"
+      "bytes": 7761,
+      "sha256": "57bd8443dd9ced0bcb30e6de36831cd61b6889fc7cb40711efdce7fb3c193b7a"
     },
     "REPRODUCTION.json": {
       "bytes": 4946,
@@ -24,8 +24,8 @@
       "sha256": "cf779456432a8b6515db3779158dea1287186ba43a81f45142c6ba90a9c09124"
     },
     "REVIEW.md": {
-      "bytes": 4142,
-      "sha256": "d4d851307de2ae0287dfc2263864a408fc603a63097edab871bbd9f810d8ff92"
+      "bytes": 4974,
+      "sha256": "8c1ad93b3a81866df957ae4d1f665f2991f1f7a578182896836ccf09b1dba642"
     },
     "VALIDATION.json": {
       "bytes": 4281,
@@ -96,8 +96,8 @@
       "sha256": "9f802ff0ef92cc1f56f5ee6b46e6641bc630c868884baeb5ba38b79a1b3648a7"
     },
     "sources.json": {
-      "bytes": 6039,
-      "sha256": "674fc7a40619c46deb10101fed0607e3b40e98316d8cff859e667dec55612847"
+      "bytes": 6099,
+      "sha256": "ab83f71188e90725c972f390e6c5aa4d5822514a39022a36f1d5eb1d8ebed266"
     },
     "structural_checks.txt": {
       "bytes": 274,
@@ -127,5 +127,10 @@
       "bytes": 14152,
       "sha256": "29c2d5436e44e1e5d1433a66c67b250fb7a4c6111a3b4e4cde2cb136f5b8deba"
     }
+  },
+  "documentation_update": {
+    "date": "2026-10-26",
+    "scope": "Records the reported successful second-model cross-check in current documentation and metadata; proofs, programs, numerical results, and published release files are unchanged.",
+    "release_manifest": "The unchanged release ZIP retains its own publication-time documentation and manifest."
   }
 }
